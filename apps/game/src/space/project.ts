@@ -305,7 +305,11 @@ const WIDEST = 1 << 20;
  *  stepped edges, and no dither anywhere. With `marks` a thing the game sizes smaller than the sheet's smallest drawing
  *  of it is a mark of its own size and colour, not that drawing: a far galaxy map is not crowded by its scenery. */
 export interface MapFrame {
-  nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; orbit?: number; epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean; solid?: boolean; marks?: boolean;
+  nav: NavState; cam: Camera; view: Viewport; dpr: number; time: number; orbit?: number;
+  /** The seconds the moons, the comets and the visitor have run, where they are held apart from `time`: the map
+   *  holds them while the card of one of them is open. Without it they run with `time`. */
+  small?: number;
+  epoch: number; reach: number; charts: boolean; passes?: MapPasses; sized?: boolean; solid?: boolean; marks?: boolean;
   /** Present when the map's words are stood clear of each other and of their bodies: the parts of the view, in CSS
    *  pixels, that words keep off (the top bar and the dock); with `tails`, words also keep off a comet's tail; with
    *  `stand`, the name of a comet and of the visitor stands on its foot above it, as the game anchors it; with `apart`,
@@ -316,6 +320,8 @@ export interface MapPicture extends SpacePicture { scale: number }
 
 /** The seconds a frame's orbits have run: none under reduced motion, which holds every clock of the map at its start. */
 export const orbitTime = (frame: MapFrame): number => (frame.passes?.motion === false ? 0 : frame.orbit ?? frame.time);
+/** The seconds the moons, the comets and the visitor of a frame have run: none where its motion is off. */
+export const smallTime = (frame: MapFrame): number => (frame.passes?.motion === false ? 0 : frame.small ?? frame.time);
 
 /** What a frame paints, from the back: the star field, the map's scenery, then its bodies. With the `sheet` of a
  *  picture sized by the camera, a planet whose type the sheet draws is that drawing in place of its bands. */
@@ -324,13 +330,14 @@ export function mapItems(frame: MapFrame, grid: Grid, scale: number, sheet?: Int
   // Reduced motion holds every clock of the map at its start.
   const time = frame.passes?.motion === false ? 0 : frame.time;
   const orbit = orbitTime(frame);
+  const small = smallTime(frame);
   const bodies = [...visibleBodies(frame.nav, frame.cam, frame.view, orbit), ...supernovaBodies(frame.nav, frame.epoch)];
   const drawn = sheet === undefined ? {} : { drawn: (name: string, span: number) => fittedWidth(sheet, name, span) };
   const sizing = frame.sized === true ? { sizing: { perCss: frame.dpr / scale, ...drawn, ...(frame.solid === true ? { solid: true } : {}) } } : {};
   const scenery = projectScenery(frame.nav, cam, grid, time, { reach: frame.reach, charts: frame.charts, orbit, ...sizing });
-  if (frame.passes === undefined) return [...projectBackdrop(grid), ...scenery, ...projectMap(bodies, cam, grid, time, sizing.sizing)];
-  const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, reach: frame.reach, charts: frame.charts, ...sizing, ...(frame.solid === true ? { solid: true } : {}) };
-  const items = withPasses(view, projectBackdrop(grid), scenery, bodies.map((body) => ({ body, items: projectMap([body], cam, grid, time, sizing.sizing) })));
+  if (frame.passes === undefined) return [...projectBackdrop(grid), ...scenery, ...projectMap(bodies, cam, grid, small, sizing.sizing)];
+  const view = { ...frame.passes, nav: frame.nav, cam, grid, view: frame.view, zoom: frame.cam.z, time, small, reach: frame.reach, charts: frame.charts, ...sizing, ...(frame.solid === true ? { solid: true } : {}) };
+  const items = withPasses(view, projectBackdrop(grid), scenery, bodies.map((body) => ({ body, items: projectMap([body], cam, grid, small, sizing.sizing) })));
   return frame.marks === true && sizing.sizing?.drawn !== undefined ? marked(items, sizing.sizing.drawn) : items;
 }
 
@@ -340,7 +347,7 @@ export function mapCaptions(frame: MapFrame): Caption[] {
   if (frame.passes === undefined) return [];
   const scale = artScale(frame.view.w, frame.view.h, frame.dpr);
   return passCaptions({ ...frame.passes, nav: frame.nav, cam: artCamera(frame.cam, frame.dpr, scale), grid: artGrid(frame.view.w, frame.view.h, frame.dpr, scale),
-    view: frame.view, zoom: frame.cam.z, time: frame.passes.motion ? frame.time : 0, reach: frame.reach, charts: frame.charts });
+    view: frame.view, zoom: frame.cam.z, time: frame.passes.motion ? frame.time : 0, small: smallTime(frame), reach: frame.reach, charts: frame.charts });
 }
 
 /** The picture of a frame, in palette indices, and the whole number of screen pixels each of its pixels covers. */

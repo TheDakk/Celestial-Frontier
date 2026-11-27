@@ -52,6 +52,27 @@ export function smallBodies(nav: NavState, time: number, orbit: number): MapBody
   return bodies;
 }
 
+/** The bodies of a system's map in the order the legacy game makes its picks of them (celestial-frontier.html): the
+ *  star (7527); each planet in the system's own order, followed by its moons (7665, 7673, 7780); the dwarf planets
+ *  (7806); the visitor (7825); the comets (7842). Of two bodies exactly as near a press, the legacy game selects the
+ *  one whose pick it made first (5607), so the press is tested in this order. Bodies of other maps keep their order. */
+export function inPressOrder(bodies: readonly MapBody[]): MapBody[] {
+  const rank = (body: MapBody): readonly [number, number, number] => {
+    switch (body.kind) {
+      case 'starsys': return [0, 0, 0];
+      case 'planet': return [1, body.ref.ordinal, 0];
+      case 'moon': return [1, body.ref.pl.ordinal, 1 + body.ref.m];
+      case 'dwarf': return [2, 0, 0];
+      case 'visitor': return [3, 0, 0];
+      case 'comet': return [4, body.ref.ci, 0];
+      default: return [5, 0, 0];
+    }
+  };
+  // The sort keeps the given order of equals, so dwarf planets stay in the system's own order.
+  return bodies.map((body) => ({ body, rank: rank(body) }))
+    .sort((a, b) => a.rank[0] - b.rank[0] || a.rank[1] - b.rank[1] || a.rank[2] - b.rank[2]).map(({ body }) => body);
+}
+
 /** A ring a press can meet: three about a system's star, and on the universe's map the edge of the observable
  *  universe. `data` is what the legacy game hands its card. */
 export interface MapRing { kind: 'belt' | 'kuiper' | 'oort' | 'cmb'; data: Raw }

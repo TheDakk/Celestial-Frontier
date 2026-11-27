@@ -103,6 +103,8 @@ export interface MapPasses { effects: boolean; motion: boolean }
  *  already 0 when motion is reduced. */
 export interface PassView {
   nav: NavState; cam: Camera; grid: Grid; view: Viewport; zoom: number; time: number;
+  /** The seconds the comets and the visitor have run, where they are held apart from `time` (see MapFrame). */
+  small?: number;
   reach: number; charts: boolean; effects: boolean; motion: boolean;
   /** Present when the picture sizes its things by the camera. */
   sizing?: Sizing;

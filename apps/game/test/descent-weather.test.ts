@@ -29,7 +29,7 @@ const weatherWorlds = (loadRecorded('landing-weather').cases as Array<WeatherWor
   .filter((c): c is WeatherWorld => c.group === 'world');
 
 const odds = (planet: { seed: number; type: string; band: string }, stormActive: boolean, waveOffCount = 0): DescentOdds =>
-  descentOdds({ planet, band: planet.band, stormActive, waveOffCount, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false });
+  descentOdds({ planet, band: planet.band, stormActive, waveOffCount, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false, rules: null });
 
 /** One recorded world whose biome lands at `land`. */
 function worldLandingAt(land: number): { seed: number; type: string; band: string } {

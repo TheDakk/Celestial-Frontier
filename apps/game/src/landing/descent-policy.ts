@@ -95,8 +95,8 @@ export interface DescentOddsInput {
   /** The worn bonus tuned to this world's type. */
   readonly familyGearBonus: number;
   readonly landingGuaranteed: boolean;
-  /** A new world type's descent rules for this world; absent on every world that plays by the legacy rules. */
-  readonly rules?: WorldDescentRules;
+  /** A new world type's descent rules for this world; null is the legacy rules. Required, so no caller forgets them. */
+  readonly rules: WorldDescentRules | null;
 }
 
 export interface DescentOdds {
@@ -119,7 +119,8 @@ export function descentOdds(input: DescentOddsInput): DescentOdds {
   const type = Object.prototype.hasOwnProperty.call(DESCENT_TYPE_TIERS_V1, input.planet.type)
     ? input.planet.type as DescentPlanetTypeV1 : 'terran';
   const typeBase = DESCENT_TYPE_TIERS_V1[type];
-  const rules = input.rules ?? null;
+  const { rules } = input;
+  if (rules === undefined) throw new TypeError('descent odds are asked with the world\'s rules, or with null for the legacy rules');
   const biome = rules === null || rules.biome === 'parent' ? biomeFor(input.planet, input.band) : rules.biome;
   const biomeLanding = biome && typeof biome.land === 'number' && Number.isFinite(biome.land)
     && biome.land >= 0 && biome.land <= 100 ? biome.land : null;
@@ -334,7 +335,7 @@ export function projectDescentApproachV1(value: DescentPolicyInputV1): DescentAp
     gearBonus: input.capabilities.landingSuccessBonus,
     familyGearBonus,
     landingGuaranteed: input.capabilities.landingGuaranteed,
-    ...(rules === null ? {} : { rules }),
+    rules,
   });
   const odds = descentOdds(oddsInput);
   const safeReason: DescentSafeReasonV1 = input.trainingActive

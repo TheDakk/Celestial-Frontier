@@ -6,7 +6,7 @@ import { loadRecorded } from './v1-recorded';
 
 /** A first landing as the game works it out: no storm, no wave-off, no gear. */
 export function firstLanding(planet: CensusPlanet, band: string): CensusDescent {
-  const odds = descentOdds({ planet: planet.P, band, stormActive: false, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false });
+  const odds = descentOdds({ planet: planet.P, band, stormActive: false, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false, rules: null });
   return { percent: odds.successPercent, damageMin: odds.damageMin, damageMax: odds.damageMax };
 }
 

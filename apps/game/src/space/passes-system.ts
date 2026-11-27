@@ -252,7 +252,7 @@ export interface CometDrawn { head: { x: number; y: number }; tail: { x: number;
 export function cometsDrawn(v: PassView): CometDrawn[] {
   if (v.nav.mode !== 'system') return [];
   return (rawOf(v.nav.star.seed).comets ?? []).map((comet) => {
-    const world = cometAt(comet, v.time);
+    const world = cometAt(comet, v.small ?? v.time);
     const far = Math.sqrt(world.x * world.x + world.y * world.y) || 1;
     const head = place(v.cam, v.grid, world.x, world.y);
     const length = Math.round((Math.max(0, SYS_R * 0.55 - far) * 0.5 + 8) * v.cam.z);
@@ -280,7 +280,7 @@ export function visitorItems(v: PassView): SpaceItem[] {
   if (v.nav.mode !== 'system') return [];
   const visitor = rawOf(v.nav.star.seed).visitor;
   if (visitor === undefined) return [];
-  const world = visitorAt(visitor, v.time);
+  const world = visitorAt(visitor, v.small ?? v.time);
   const at = place(v.cam, v.grid, world.x, world.y);
   if (v.solid === true) {
     // In whole pixels it is the game's own shape, and never too small to see: a tumbling rock 10 units long and 3.8
@@ -328,12 +328,12 @@ export function systemCaptions(v: PassView): { text: string; wx: number; wy: num
   const minSide = minSideOf(v.view);
   if (v.zoom > minSide / 520) {
     (raw.comets ?? []).forEach((comet, i) => {
-      const at = cometAt(comet, v.time);
+      const at = cometAt(comet, v.small ?? v.time);
       captions.push({ text: `Comet ${properName(hashInt(seed, 31 + i, 17), 2)}`, wx: at.x, wy: at.y - 2, stand: 2 });
     });
   }
   if (raw.visitor !== undefined && v.zoom > minSide / 650) {
-    const at = visitorAt(raw.visitor, v.time);
+    const at = visitorAt(raw.visitor, v.small ?? v.time);
     captions.push({ text: 'interstellar object', wx: at.x, wy: at.y - 4, stand: 4 });
   }
   return captions;

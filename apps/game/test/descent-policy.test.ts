@@ -72,7 +72,7 @@ describe('the descent odds, against the legacy game', () => {
         const [pct, lo, hi, wx] = at[i++]!;
         if (wx !== null) storms++;
         const odds = descentOdds({
-          planet: input, band: input.band, stormActive: wx !== null, waveOffCount, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false,
+          planet: input, band: input.band, stormActive: wx !== null, waveOffCount, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false, rules: null
         });
         const label = JSON.stringify({ ...input, times: undefined, waveOffs: undefined, seconds, waveOffCount });
         expect([odds.successPercent, odds.damageMin, odds.damageMax], label).toEqual([pct, lo, hi]);

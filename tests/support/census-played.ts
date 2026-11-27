@@ -24,7 +24,7 @@ export function played(world: CensusWorld, sol: boolean, rules: PlayRules | null
   const { planet, survey } = world;
   const odds = descentOdds({
     planet: planet.P, band: survey.band, stormActive: false, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false,
-    ...(rules === null ? {} : { rules }),
+    rules,
   });
   const veins = worldVeinsBySeed({
     planetSeed: planet.P.seed, planetType: planet.P.type, biosphereLevel: survey.life.level, biomeKey: world.biomeKey,

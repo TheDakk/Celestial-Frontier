@@ -132,8 +132,12 @@ export const WORLD_RULES_RESERVE_MAX = 1.15;
 export type WorldRulesRefusal = 'biome' | 'landing' | 'land-family' | 'life' | 'deposits' | 'deposit-count' | 'material' | 'trickle' | 'reserve' | 'tier';
 
 export class WorldRulesRefused extends RangeError {
-  constructor(readonly refusal: WorldRulesRefusal, detail: string) {
+  // Declared and assigned, not a parameter property: the hand-run tools load this file with node's own type
+  // stripping, which refuses one (tests/tools-load.test.ts).
+  readonly refusal: WorldRulesRefusal;
+  constructor(refusal: WorldRulesRefusal, detail: string) {
     super(`world rules refused: ${refusal}: ${detail}`);
+    this.refusal = refusal;
   }
 }
 

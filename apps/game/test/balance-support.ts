@@ -34,7 +34,7 @@ export function balanceSources(capabilities: EngineeringCapabilitySnapshot): Bal
       const odds = descentOdds({
         planet: { seed: snapshot.source.planetSeed, type: snapshot.source.planetType }, band: snapshot.source.climateBand,
         stormActive: false, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false,
-        ...(snapshot.descentRules === null ? {} : { rules: snapshot.descentRules }),
+        rules: snapshot.descentRules,
       });
       return { percent: odds.successPercent, damageMin: odds.damageMin, damageMax: odds.damageMax };
     },

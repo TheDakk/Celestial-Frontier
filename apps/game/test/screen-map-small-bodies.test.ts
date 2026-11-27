@@ -1,50 +1,23 @@
 // @vitest-environment jsdom
+// A press on the star and the small bodies of a system, the keyboard's stops among them, and which of two bodies
+// exactly as near a press is selected: the legacy game's rules, with its lines.
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { OBS_R, SYS_R } from '@cf/domain-worldconfig';
 import { NAV_HOME } from '@cf/scene';
 import { systemFor } from '@cf/domain-worldgen';
 import { describePickWithState } from '@cf/domain-descriptors';
 import { PICK_PADDING, pick } from '../src/input';
-import { descentCamera, entryZoom, pickRadius, ringUnder, smallBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type MapBody } from '../src/space';
+import { inPressOrder, pickRadius, ringUnder, smallBodies, toScreen, visibleBodies, type Camera, type MapBody } from '../src/space';
 import { canvas, cardTitle, fire, key, keyboardFocus, rest, tap } from './screen-map-support';
-import { bootPage, pretendLayout, pretendSize, runFrames } from './shell-support';
+import { pretendLayout, pretendSize, runFrames } from './shell-support';
 import { recordCanvasPainting } from './support/fake-canvas';
 import { VISITED, galaxyNav, systemNav } from './space-support';
+import { VIEW, FAR, atSystem, zoomedIn, small, placeOf, pressed } from './screen-map-small-support';
 
 recordCanvasPainting();
 pretendLayout();
 pretendSize(800, 600);
 beforeEach(() => { vi.restoreAllMocks(); recordCanvasPainting(); });
-
-const VIEW = { w: 800, h: 600 };
-/** The view a system opens on: under 1/420 of the shorter side a unit, so no name of a moon is drawn. */
-const FAR = descentCamera('system', 600).to;
-
-/** Sol's map on a page 800 by 600, every clock of it held at its start. */
-async function atSystem() {
-  const page = await bootPage({ width: 800, height: 600 });
-  page.live.motionMode = 1;
-  rest(page);
-  return page;
-}
-/** Six wheel steps in about a screen point, come to rest: the camera the view then has, over 1/420 of the shorter side. */
-function zoomedIn(page: Awaited<ReturnType<typeof atSystem>>, at: { x: number; y: number }): Camera {
-  let cam = FAR;
-  for (let i = 0; i < 6; i++) {
-    fire(canvas(), 'wheel', { deltaY: -120, clientX: at.x, clientY: at.y });
-    cam = zoomAbout(cam, 1.14, at.x - VIEW.w / 2, at.y - VIEW.h / 2, zoomLimits('system', 600, entryZoom('system', 600)));
-  }
-  rest(page);
-  expect(cam.z).toBeGreaterThan(600 / 420);
-  return cam;
-}
-const small = (page: Awaited<ReturnType<typeof atSystem>>, _cam: Camera, time = 0, orbit = 0): MapBody[] => smallBodies(page.nav.nav, time, orbit);
-const placeOf = (cam: Camera, body: MapBody): { x: number; y: number } => toScreen(cam, VIEW, body.wx, body.wy);
-/** The title of the card open after a press by mouse, or null: a press on nothing closes the card that was open. */
-const pressed = (x: number, y: number): string | null => {
-  tap(x, y);
-  return cardTitle();
-};
 
 describe('the small bodies of a system answer a press, as in the legacy game', () => {
   it('a tap on Earth, or beside the Moon, at the view a system opens on is Earth\'s: the Moon has no floor there (7773 to 7780)', async () => {
@@ -208,87 +181,6 @@ describe('the small bodies of a system answer a press, as in the legacy game', (
   });
 });
 
-describe('the two clocks of a system: its planets and dwarf planets stand by the orbits\' clock, its moons, comets and visitor by the running one (7668, 7797; 7760, 7818, 7832)', () => {
-  /** Sol's map with motion on: the clocks run. */
-  async function running() {
-    const page = await bootPage({ width: 800, height: 600 });
-    const born = page.time.now();
-    rest(page);
-    return Object.assign(page, { seconds: (): number => (page.time.now() - born) / 1000 });
-  }
-  const planetAt = (page: Awaited<ReturnType<typeof running>>, cam: Camera, name: string, orbit: number) =>
-    placeOf(cam, visibleBodies(page.nav.nav, cam, VIEW, orbit).find((body) => body.label === name)!);
-  const far = (a: { x: number; y: number }, b: { x: number; y: number }): number => Math.hypot(a.x - b.x, a.y - b.y);
-
-  it('with the orbits held and the clock running on, a dwarf planet is pressed where it was held, not where the running clock would have it', async () => {
-    const page = await running();
-    const held = page.seconds();
-    const jupiter = planetAt(page, FAR, 'Jupiter', held);
-    expect(pressed(jupiter.x, jupiter.y)).toBe('Jupiter');
-    page.time.advance(60_000);
-    const now = page.seconds();
-    expect(now - held).toBe(60);
-    const ceres = (orbit: number) => placeOf(FAR, smallBodies(page.nav.nav, now, orbit).find((body) => body.label === 'Ceres')!);
-    expect(far(ceres(held), ceres(now))).toBeGreaterThan(60);
-    // Where the running clock would have it there is no Ceres; where it was held it is.
-    expect(pressed(ceres(now).x, ceres(now).y)).not.toBe('Ceres');
-    expect(pressed(jupiter.x, jupiter.y)).toBe('Jupiter');
-    expect(pressed(ceres(held).x, ceres(held).y)).toBe('Ceres');
-  });
-
-  it('with the orbits held and the clock running on, a moon is pressed where the running clock has it, about its planet where that was held', async () => {
-    const page = await running();
-    const held = page.seconds();
-    const earthFar = planetAt(page, FAR, 'Earth', held);
-    expect(pressed(earthFar.x, earthFar.y)).toBe('Earth');
-    const near = zoomedIn(page, earthFar);
-    page.time.advance(61_000);
-    const now = page.seconds();
-    const moon = (time: number, orbit: number) => placeOf(near, smallBodies(page.nav.nav, time, orbit).find((body) => body.kind === 'moon' && body.ref.pl.name === 'Earth')!);
-    const [right, frozen, drifted] = [moon(now, held), moon(held, held), moon(now, now)];
-    // The three places are well apart: a press on one cannot be a press on another.
-    expect(far(right, frozen)).toBeGreaterThan(13);
-    expect(far(right, drifted)).toBeGreaterThan(40);
-    expect(pressed(right.x, right.y)).toBe('The Moon');
-    // Away from Earth, at the place a moon held with the orbits would be: no moon.
-    const earth = planetAt(page, near, 'Earth', held);
-    const out = { x: (frozen.x - earth.x) / far(frozen, earth), y: (frozen.y - earth.y) / far(frozen, earth) };
-    expect(pressed(frozen.x + out.x * 11, frozen.y + out.y * 11)).not.toBe('The Moon');
-  });
-
-  it('the card of every body of a system holds the orbits while it is open: a dwarf planet\'s, a comet\'s and the star\'s, opened from nothing or over another card; a ring\'s card does not, and lets them go', async () => {
-    const page = await running();
-    let held = page.seconds();
-    const ceres = (orbit: number) => placeOf(FAR, smallBodies(page.nav.nav, page.seconds(), orbit).find((body) => body.label === 'Ceres')!);
-    const comet = () => placeOf(FAR, smallBodies(page.nav.nav, page.seconds(), held).find((body) => body.kind === 'comet')!);
-    // A dwarf planet, opened from nothing: two minutes on it is where it was pressed.
-    const first = ceres(held);
-    expect(pressed(first.x, first.y)).toBe('Ceres');
-    page.time.advance(120_000);
-    expect(far(ceres(held), ceres(page.seconds()))).toBeGreaterThan(100);
-    expect(pressed(first.x, first.y)).toBe('Ceres');
-    // A comet's card over it keeps the hold; the comet itself runs on.
-    const cometTitle = pressed(comet().x, comet().y);
-    expect(cometTitle).toMatch(/Comet/);
-    page.time.advance(30_000);
-    expect(pressed(first.x, first.y)).toBe('Ceres');
-    // The star's card from nothing holds too.
-    key(document, 'Escape');
-    held = page.seconds() - 150;
-    expect(far(ceres(held), first)).toBeLessThan(1e-6);
-    expect(pressed(400, 300)).not.toBeNull();
-    page.time.advance(60_000);
-    expect(pressed(first.x, first.y)).toBe('Ceres');
-    // A ring's card over a body's lets the orbits go: a minute on, Ceres has left the place it was held at.
-    const sys = systemFor(page.nav.nav.mode === 'system' ? page.nav.nav.star.seed : 0) as unknown as { kuiper: { r: number } };
-    const ringTitle = pressed(400, 300 - sys.kuiper.r * FAR.z);
-    expect(ringTitle).not.toBeNull();
-    expect(ringTitle).not.toBe('Ceres');
-    page.time.advance(60_000);
-    expect(pressed(first.x, first.y)).not.toBe('Ceres');
-  });
-});
-
 describe('the keyboard\'s stops on a system\'s map', () => {
   /** Every stop the arrow keys step through from the first, by where the focus ring stands and what it says. */
   async function stops(page: Awaited<ReturnType<typeof atSystem>>): Promise<string[]> {
@@ -313,10 +205,65 @@ describe('the keyboard\'s stops on a system\'s map', () => {
     expect(all.map((stop) => stop.split(' at ')[0])).toEqual(expect.arrayContaining(['Earth', 'Jupiter', 'Ceres', 'Pluto', 'Comet Taran']));
   });
 
+  it('a small body off the screen is no stop: with the view dragged so Ceres and the star stand beyond its edge, neither is stepped to', async () => {
+    const page = await atSystem();
+    expect((await stops(page)).map((stop) => stop.split(' at ')[0])).toEqual(expect.arrayContaining(['Ceres', 'Sun (Sol)']));
+    const ceres = placeOf(FAR, small(page, FAR).find((body) => body.label === 'Ceres')!);
+    // Drag the view left until the star is 60 pixels beyond its left edge; Ceres, left of the star, goes with it.
+    expect(ceres.x).toBeLessThan(400);
+    for (let moved = 0; moved < 460; moved += 230) {
+      fire(canvas(), 'pointerdown', { pointerId: 1, clientX: 600, clientY: 300, pointerType: 'mouse' });
+      fire(document, 'pointermove', { pointerId: 1, clientX: 370, clientY: 300, pointerType: 'mouse' });
+      fire(document, 'pointerup', { pointerId: 1, clientX: 370, clientY: 300, pointerType: 'mouse' });
+    }
+    rest(page);
+    const after = (await stops(page)).map((stop) => stop.split(' at ')[0]);
+    expect(after.length).toBeGreaterThan(2);
+    expect(after).not.toContain('Ceres');
+    expect(after).not.toContain('Sun (Sol)');
+  });
+
   it('near enough that a moon has its floor, the Moon is a stop', async () => {
     const page = await atSystem();
     const earth = visibleBodies(page.nav.nav, FAR, VIEW, 0).find((body) => body.label === 'Earth')!;
     zoomedIn(page, placeOf(FAR, earth));
     expect((await stops(page)).map((stop) => stop.split(' at ')[0])).toContain('The Moon');
+  });
+});
+
+describe('of two bodies exactly as near a press, the one the legacy game makes its pick of first is selected (5607)', () => {
+  const nav = systemNav();
+  const all = inPressOrder([...visibleBodies(nav, FAR, VIEW, 0), ...smallBodies(nav, 0, 0)]);
+  const named = (name: string): MapBody => all.find((body) => body.label === name || (body.kind === 'starsys' && name === 'star') || (body.kind === 'comet' && name === 'comet'))!;
+  const moonOf = (planet: string, m: number): MapBody => all.find((body) => body.kind === 'moon' && body.ref.pl.name === planet && body.ref.m === m)!;
+
+  it('the order is the legacy game\'s: the star (7527); each planet in the system\'s own order with its moons after it (7673, 7780); the dwarf planets (7806); the comets (7842)', () => {
+    const kinds = all.map((body) => (body.kind === 'planet' ? body.label : body.kind === 'moon' ? `${body.ref.pl.name} ${body.ref.m}` : body.kind === 'dwarf' ? body.label : body.kind));
+    expect(kinds.slice(0, 6)).toEqual(['starsys', 'Mercury', 'Venus', 'Earth', 'Earth 0', 'Mars']);
+    expect(kinds.slice(-3)).toEqual(['Ceres', 'Pluto', 'comet']);
+    expect(kinds.indexOf('Jupiter 0')).toBe(kinds.indexOf('Jupiter') + 1);
+    expect(kinds.indexOf('Neptune')).toBeLessThan(kinds.indexOf('Ceres'));
+  });
+
+  it.each([
+    ['the star and Mercury', () => [named('star'), named('Mercury')], 0],
+    ['Venus and Earth', () => [named('Venus'), named('Earth')], 0],
+    ['a moon of Mars and Ceres', () => [moonOf('Mars', 0), named('Ceres')], 0],
+    ['Pluto and the comet', () => [named('Pluto'), named('comet')], 0],
+    ['the star and the comet', () => [named('star'), named('comet')], 0],
+    ['Earth and its Moon', () => [named('Earth'), moonOf('Earth', 0)], 0],
+    ['Mars and Jupiter', () => [named('Mars'), named('Jupiter')], 0],
+    ['Mercury and Venus', () => [named('Mercury'), named('Venus')], 0],
+    ['two moons of Jupiter', () => [moonOf('Jupiter', 0), moonOf('Jupiter', 1)], 0],
+    ['Ceres and Pluto', () => [named('Ceres'), named('Pluto')], 0],
+    ['Neptune and Pluto', () => [named('Neptune'), named('Pluto')], 0],
+  ] as const)('%s: the first of the two', (_name, pair, winner) => {
+    const [a, b] = pair();
+    // The two stand 10 pixels apart and the press is exactly between them, whichever side each is on.
+    for (const [left, right] of [[a!, b!], [b!, a!]] as const) {
+      const placed = new Map([[left.key, 95], [right.key, 105]]);
+      const targets = all.filter((body) => placed.has(body.key)).map((body) => ({ body, key: body.key, x: placed.get(body.key)!, y: 100, priority: body.priority }));
+      expect(pick(targets, 100, 100, () => 20)?.body.key).toBe(pair()[winner]!.key);
+    }
   });
 });

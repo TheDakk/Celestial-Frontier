@@ -29,7 +29,7 @@ const rules = (over: Partial<WorldOpportunityRules>): WorldOpportunityRules => (
 
 const odds = (seed: number, type: string, band: string, ruled?: WorldOpportunityRules) => descentOdds({
   planet: { seed, type }, band, stormActive: false, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false,
-  ...(ruled === undefined ? {} : { rules: ruled }),
+  rules: ruled ?? null,
 });
 
 /** The materials of each of the first `pulls` pulls of a world, mined one press at a time with bare hands. */

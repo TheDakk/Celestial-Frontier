@@ -30,7 +30,7 @@ describe('a descent to a world never stood on is rolled inside the landing\'s re
       const { descent } = press.facts;
       const odds = descentOdds({
         ...worldFacts(venus), stormActive: descent.stormActive, waveOffCount: waveOffs,
-        gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false,
+        gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false, rules: null
       });
       expect(descent.successPercent).toBe(odds.successPercent);
       expect(descent.kind).toBe(success! * 100 < odds.successPercent ? 'landed' : 'wave-off');
@@ -104,7 +104,7 @@ describe('a descent to a world never stood on is rolled inside the landing\'s re
     const page = await landingPage();
     const venus = solWorld(SOL.venus);
     const landed = committed((await page.landUntilDown(venus)).at(-1)!);
-    expect(descentOdds({ ...worldFacts(venus), stormActive: false, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false }).biomeLanding).toBeLessThanOrEqual(30);
+    expect(descentOdds({ ...worldFacts(venus), stormActive: false, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false, rules: null }).biomeLanding).toBeLessThanOrEqual(30);
     expect(landed.facts.descent.throughTheFire).toBe(true);
     expect(committed(await page.land(venus)).facts.descent.throughTheFire).toBe(false);
   });
@@ -124,7 +124,7 @@ describe('the storm of the moment', () => {
     const stormy = committed(await (await landingPage({ activePlayMs: spell(true) * 1000 })).land(venus));
     expect(calm.facts.descent.stormActive).toBe(false);
     expect(stormy.facts.descent.stormActive).toBe(true);
-    const base = descentOdds({ planet, band, stormActive: false, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false }).successPercent;
+    const base = descentOdds({ planet, band, stormActive: false, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false, rules: null }).successPercent;
     expect(calm.facts.descent.successPercent).toBe(base);
     expect(stormy.facts.descent.successPercent).toBe(base - 5);
   });

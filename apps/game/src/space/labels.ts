@@ -10,7 +10,7 @@ import { placeLabels, wrapWords, type Disc, type LabelSpec, type PlacedLabel } f
 import { galaxyContent, visibleBodies } from './model';
 import { cometsDrawn } from './passes-system';
 import { webZoom } from './passes-universe';
-import { artCamera, artGrid, artScale, mapCaptions, orbitTime, primaryWidth } from './project';
+import { artCamera, artGrid, artScale, mapCaptions, orbitTime, primaryWidth, smallTime } from './project';
 import type { MapFrame } from './project';
 import { SOL_MARK_CSS, STAR_WIDTH, starBase } from './sizes';
 
@@ -144,7 +144,7 @@ export function placedLabels(frame: MapFrame, charter: string, font: DisplayFont
   const discs: Disc[] = drawn.map((body) => ({ ...place(cam, grid, body.wx, body.wy), r: Math.round(body.r * cam.z) })).filter((disc) => disc.r >= DISC_MIN);
   // A comet's tail is a line across the map: each of its pixels is kept off as a body is.
   if (frame.placement?.tails === true && frame.passes !== undefined) {
-    const passes = { ...frame.passes, nav: frame.nav, cam, grid, view, zoom: frame.cam.z, time: frame.passes.motion ? frame.time : 0, reach: frame.reach, charts: frame.charts };
+    const passes = { ...frame.passes, nav: frame.nav, cam, grid, view, zoom: frame.cam.z, time: frame.passes.motion ? frame.time : 0, small: smallTime(frame), reach: frame.reach, charts: frame.charts };
     for (const comet of cometsDrawn(passes)) discs.push(...comet.tail.map((at) => ({ ...at, r: 1 })));
   }
   const keepOut = (frame.placement?.keepOut ?? []).map((bar) => {

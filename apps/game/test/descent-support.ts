@@ -62,7 +62,7 @@ export function oddsInputOf(input: Planet & { equip?: Partial<Record<GearSlot, s
       waveOffCount: input.waveOffs,
       gearBonus: capabilities.landingSuccessBonus,
       familyGearBonus: descentFamilyBonus(input.type, capabilities.landingFamilyBonus),
-      landingGuaranteed: capabilities.landingGuaranteed,
+      landingGuaranteed: capabilities.landingGuaranteed, rules: null
     },
   };
 }

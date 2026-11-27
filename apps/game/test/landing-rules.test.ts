@@ -46,7 +46,7 @@ describe('the landing action plays a world by the rules it is handed', () => {
       const ruled = await firstPress(seed, { ...PARENT, weather });
       expect(ruled.stormActive, `${seed} ${weather}`).toBe(expected);
       // The storm's 5 is in the odds of the press.
-      const odds = descentOdds({ planet, band, stormActive: expected, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false });
+      const odds = descentOdds({ planet, band, stormActive: expected, waveOffCount: 0, gearBonus: 0, familyGearBonus: 0, landingGuaranteed: false, rules: null });
       expect(ruled.successPercent, `${seed} ${weather}`).toBe(odds.successPercent);
       proved++;
       if (proved >= 2) break;

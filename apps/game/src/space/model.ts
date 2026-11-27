@@ -97,7 +97,7 @@ function fineStars(galaxy: ProvenGalaxy, cam: Camera, view: Viewport): StarNode[
 }
 
 /** Whether a world point is on the screen, clear of its 12 px edge. */
-export function onScreen(cam: Camera, viewport: Viewport, wx: number, wy: number): boolean {
+function onScreen(cam: Camera, viewport: Viewport, wx: number, wy: number): boolean {
   const at = toScreen(cam, viewport, wx, wy);
   return at.x >= SCREEN_EDGE && at.y >= SCREEN_EDGE && at.x <= viewport.w - SCREEN_EDGE && at.y <= viewport.h - SCREEN_EDGE;
 }

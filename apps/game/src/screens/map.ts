@@ -4,7 +4,9 @@
    The orbits hold while the card of any body of a system is open (Dakk's rulings of 2026-11-26 and 2026-11-27), and go on from where they were when it closes or the map
    changes (the legacy game lifts its hold on a change of map: celestial-frontier.html 26942). Holding for an open
    card is a named difference from the legacy game, which holds only on approach and landing: see space/orbit-clock.ts.
-   A press is tested against each world where its orbit has it now, which is where it is drawn (7668, 7673). */
+   A press is tested against each world where its orbit has it now, which is where it is drawn (7668, 7673).
+   While the card of a moon, a comet or the visitor is open, the clock that moves those three holds too, so the body
+   read about stays where it was pressed (Dakk's decision of 2026-11-27; the legacy game holds nothing for a card). */
 import { describePickWithState, type Descriptor } from '@cf/domain-descriptors';
 import { systemFor } from '@cf/domain-worldgen';
 import type { SaveStateV2 } from '@cf/persistence';
@@ -13,7 +15,7 @@ import { paintPixels } from '../platform/canvas';
 import { PICK_PADDING, escapeTarget, mountGestures, mountMapKeys, pick, type Gesture, type MapKeyTarget } from '../input';
 import type { NavController, NavOutcome } from '../nav';
 import {
-  ascentCamera, descentCamera, diveIntent, entryZoom, everyBody, mapPicture, minSideOf, orbitClock, onScreen, parkBelowTrigger, pickFloor, pickRadius, placedLabels, ringUnder, showSpace,
+  ascentCamera, descentCamera, diveIntent, entryZoom, everyBody, inPressOrder, mapPicture, minSideOf, orbitClock, parkBelowTrigger, pickFloor, pickRadius, placedLabels, ringUnder, showSpace,
   smallBodies, supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Lettered, type MapBody, type MapFrame, type Viewport,
 } from '../space';
 import { createFrameCoalescer, currentSheet, drawLines, edged, interfaceGaps, sheetColours, type Toast } from '../ui';
@@ -59,8 +61,8 @@ export function mapScreen(ports: MapPorts): ScreenDef {
       root.append(area);
       const card = createSelectionCard(root, () => {
         root.dataset.card = card.open ? 'open' : 'closed';
-        // However the card closes, the orbits go on.
-        if (!card.open) orbits.release();
+        // However the card closes, the orbits and the small bodies go on.
+        if (!card.open) { orbits.release(); smalls.release(); }
         redraw.request();
       });
       root.dataset.card = 'closed';
@@ -90,11 +92,18 @@ export function mapScreen(ports: MapPorts): ScreenDef {
       /** The seconds the orbits have run, for the picture and for a press alike: none under reduced motion, which
        *  holds every clock of the map at its start whatever the orbit clock has counted. */
       const orbit = (): number => (ports.reducedMotion() ? 0 : orbits.time());
+      /** The clock of the moons, the comets and the visitor: the map's own, but held while the card of one of them is
+       *  open, so that body stays where it was pressed, and running on from where it was when the card closes or
+       *  another kind of body's card replaces it: no jump. A named improvement over the legacy game, which holds
+       *  nothing for an open card and runs these three by its one clock (7760, 7818, 7832). Dakk's decision of
+       *  2026-11-27. The three share the clock, so under the card of one of them all three stand still. */
+      const smalls = orbitClock(seconds);
+      const smallTime = (): number => (ports.reducedMotion() ? 0 : smalls.time());
       /** The bodies a zoom can dive into and the keyboard can step to: those on the screen. */
       const bodiesAt = (camera: Camera): MapBody[] =>
         [...visibleBodies(nav.nav, camera, view(), orbit()), ...supernovaBodies(nav.nav, ports.epoch())];
       /** The star and the small bodies of a system, where they stand now. */
-      const small = (): MapBody[] => smallBodies(nav.nav, time(), orbit());
+      const small = (): MapBody[] => smallBodies(nav.nav, smallTime(), orbit());
 
       const describe = (kind: string, data: unknown): Descriptor | null => {
         const names = ports.live().customNames;
@@ -128,7 +137,11 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         if (descriptor === null) return false;
         card.show(descriptor, action, opener);
         // Every body's card holds the orbits while it is open, so what is read stays where it was pressed.
-        if (nav.nav.mode === 'system') orbits.hold();
+        if (nav.nav.mode === 'system') {
+          orbits.hold();
+          // The clock that moves the body whose card this is holds too; under any other body's card it runs.
+          if (body.kind === 'moon' || body.kind === 'comet' || body.kind === 'visitor') smalls.hold(); else smalls.release();
+        }
         if (ping) ports.sound.ping();
         return true;
       };
@@ -162,14 +175,16 @@ export function mapScreen(ports: MapPorts): ScreenDef {
           },
         };
       };
-      /** What a press is tested against: every body of the map, on the screen or off it, as in the game (5604). */
+      /** What a press is tested against: every body of the map, on the screen or off it, in the order the game makes
+       *  its picks (5604, 5607). */
       const pressTargets = (): Selected[] =>
-        [...everyBody(nav.nav, cam, view(), orbit()), ...supernovaBodies(nav.nav, ports.epoch()), ...small()].map(targetOf);
-      /** The keyboard's stops: the bodies on the screen that a pointer has a floor for at this zoom. A moon drawn too
-       *  small to have one (sizes.ts) is no stop until the view is near enough. */
+        inPressOrder([...everyBody(nav.nav, cam, view(), orbit()), ...supernovaBodies(nav.nav, ports.epoch()), ...small()]).map(targetOf);
+      /** The keyboard's stops: the bodies a pointer has a floor for at this zoom; of those the keyboard steps only to
+       *  the ones on the screen (input/keys.ts). A moon drawn too small to have a floor (sizes.ts) is no stop until
+       *  the view is near enough. */
       const targets = (): Selected[] => [
         ...bodiesAt(cam),
-        ...small().filter((body) => onScreen(cam, view(), body.wx, body.wy) && pickFloor(body, cam.z, minSide()) > 0),
+        ...small().filter((body) => pickFloor(body, cam.z, minSide()) > 0),
       ].map(targetOf);
 
       const onGesture = (gesture: Gesture): void => {
@@ -194,6 +209,7 @@ export function mapScreen(ports: MapPorts): ScreenDef {
             card.show(about, null, null);
             // A ring is no body: its card holds no orbit, one it replaces included.
             orbits.release();
+            smalls.release();
             ports.sound.ping();
           } else if (card.open) card.hide(false);   // A tap on empty space closes the card (5619).
         }
@@ -309,7 +325,7 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         const state = ports.live();
         const region = currentRegionOf(Object.keys(state.primeFill || {}).length);
         const shown: MapFrame = {
-          nav: nav.nav, cam, view: size, dpr: ports.dpr(), time: time(), orbit: orbit(), epoch: ports.epoch(), reach: region.r, charts: state.chartsOn,
+          nav: nav.nav, cam, view: size, dpr: ports.dpr(), time: time(), orbit: orbit(), small: smallTime(), epoch: ports.epoch(), reach: region.r, charts: state.chartsOn,
           // The whole map of the game, each thing the size the game gives it at this zoom; reduced motion holds every
           // clock of it at its start.
           passes: { effects: state.fxOn, motion: animate }, sized: true,
