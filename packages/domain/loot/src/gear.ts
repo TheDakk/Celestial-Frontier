@@ -60,10 +60,12 @@ const MAX_PROVENANCE_ID_CHARS = 512;
 const MAX_SOURCE_ACTION_ID_CHARS = 2_048;
 const LEGACY_RAW_RARITY_TIER_MAX = 14;
 /** Authored numbers a well-made piece never raises. A piece with only these
- * (the Gravitic Anchor, the Star Compass) can never be well made. */
-const NEVER_WELL_MADE_EFFECT_KEYS: readonly string[] = Object.freeze(['speed', 'land100', 'struts']);
+ * (the Gravitic Anchor, the Star Compass) can never be well made. Scrape
+ * armour is such a number too, but no piece holds it alone, so it is not
+ * needed here. */
+const NEVER_WELL_MADE_EFFECT_KEYS: readonly string[] = Object.freeze(['speed', 'land100']);
 
-/** Where a stored modifier came from. A row with no source predates the key. */
+/** Where a stored modifier came from. Every stored row says. */
 export const GEAR_MODIFIER_SOURCES = Object.freeze(['spoils', 'forge'] as const);
 export type GearModifierSource = (typeof GEAR_MODIFIER_SOURCES)[number];
 
@@ -101,7 +103,7 @@ export interface GearNaturalAffix {
   readonly value: number;
   /** The world tier (0 to 14) or item level that seeded the roll. */
   readonly tier: number;
-  readonly source?: GearModifierSource;
+  readonly source: GearModifierSource;
 }
 export type GearAffix = GearNaturalAffix;
 
@@ -491,8 +493,8 @@ function instanceCore(
 
 function checkedNaturalAffix(raw: unknown, index: number): GearNaturalAffix {
   assertPlainRecord(raw, `natural affix ${index}`);
-  const hasSource = Object.hasOwn(raw, 'source');
-  assertExactKeys(raw, ['affixId', 'tier', 'value', 'role', ...(hasSource ? ['source'] : [])], `natural affix ${index}`);
+  if (!Object.hasOwn(raw, 'source')) throw new RangeError(`natural affix ${index} has no source`);
+  assertExactKeys(raw, ['affixId', 'tier', 'value', 'role', 'source'], `natural affix ${index}`);
   const definitionValue = affixDefinition(raw.affixId);
   if (!definitionValue || !validGeneratedAffixValue(definitionValue, raw.value)) {
     throw new RangeError(`natural affix ${index} is unknown or outside its authored range`);
@@ -500,7 +502,7 @@ function checkedNaturalAffix(raw: unknown, index: number): GearNaturalAffix {
   if (raw.role !== 'prefix' && raw.role !== 'suffix') {
     throw new RangeError(`natural affix ${index} has unsupported role`);
   }
-  if (hasSource && !(GEAR_MODIFIER_SOURCES as readonly unknown[]).includes(raw.source)) {
+  if (!(GEAR_MODIFIER_SOURCES as readonly unknown[]).includes(raw.source)) {
     throw new RangeError(`natural affix ${index} source is not spoils or forge`);
   }
   return {
@@ -508,7 +510,7 @@ function checkedNaturalAffix(raw: unknown, index: number): GearNaturalAffix {
     tier: checkedInteger(raw.tier, 0, LEGACY_RAW_RARITY_TIER_MAX, `natural affix ${index} tier`),
     value: raw.value,
     role: raw.role,
-    ...(hasSource ? { source: raw.source as GearModifierSource } : {}),
+    source: raw.source as GearModifierSource,
   };
 }
 
@@ -845,8 +847,8 @@ export function encodeGearInstance(instance: GearInstance): string {
 function decodeGearValue(raw: unknown): GearInstance {
   assertPlainRecord(raw, 'GearInstance');
   const hasProperty = Object.hasOwn(raw, 'property');
-  const hasCraftedModifier = Object.prototype.hasOwnProperty.call(raw, 'craftedModifier');
-  const hasDrawback = Object.prototype.hasOwnProperty.call(raw, 'drawback');
+  const hasCraftedModifier = Object.hasOwn(raw, 'craftedModifier');
+  const hasDrawback = Object.hasOwn(raw, 'drawback');
   assertExactKeys(raw, [
     'schema', 'tableVersion', 'construction', 'instanceId', 'baseId', 'baseName',
     'slot', 'baseTier', 'itemLevel', 'quality', 'rarityTier', 'rarity', 'tags',

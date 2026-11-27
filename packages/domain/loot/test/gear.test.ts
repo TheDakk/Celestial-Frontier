@@ -35,8 +35,8 @@ const migrationSource = makeGearSourceActionId({
 });
 
 const twoNaturalAffixes = [
-  { affixId: 'yield', tier: 1, value: 0.10, role: 'prefix' },
-  { affixId: 'contact', tier: 3, value: 4, role: 'suffix' },
+  { affixId: 'yield', tier: 1, value: 0.10, role: 'prefix', source: 'spoils' },
+  { affixId: 'contact', tier: 3, value: 4, role: 'suffix', source: 'spoils' },
 ] as const;
 
 const generationPlan = (
@@ -239,18 +239,18 @@ describe('@cf/domain-loot — receipt identity and GearInstance authority', () =
     expect(isAffixCompatible(wrongSlot, twoAffixes.naturalAffixes[0]!)).toBe(false);
 
     expect(() => createGearInstance(source, 10, generationPlan([
-      { affixId: 'yield', tier: 1, value: 0.10, role: 'prefix' },
-      { affixId: 'strike', tier: 1, value: 0.02, role: 'prefix' },
-      { affixId: 'scut', tier: 1, value: 0.08, role: 'prefix' },
+      { affixId: 'yield', tier: 1, value: 0.10, role: 'prefix', source: 'spoils' },
+      { affixId: 'strike', tier: 1, value: 0.02, role: 'prefix', source: 'spoils' },
+      { affixId: 'scut', tier: 1, value: 0.08, role: 'prefix', source: 'spoils' },
     ]))).toThrow('layout');
     expect(() => createGearInstance(source, 11, generationPlan([
-      { affixId: 'contact', tier: 1, value: 4, role: 'suffix' },
-      { affixId: 'land', tier: 1, value: 4, role: 'suffix' },
-      { affixId: 'heal', tier: 1, value: 0.08, role: 'suffix' },
+      { affixId: 'contact', tier: 1, value: 4, role: 'suffix', source: 'spoils' },
+      { affixId: 'land', tier: 1, value: 4, role: 'suffix', source: 'spoils' },
+      { affixId: 'heal', tier: 1, value: 0.08, role: 'suffix', source: 'spoils' },
     ]))).toThrow('layout');
     expect(() => createGearInstance(source, 12, generationPlan([
-      { affixId: 'yield', tier: 1, value: 0.10, role: 'prefix' },
-      { affixId: 'yield', tier: 1, value: 0.10, role: 'suffix' },
+      { affixId: 'yield', tier: 1, value: 0.10, role: 'prefix', source: 'spoils' },
+      { affixId: 'yield', tier: 1, value: 0.10, role: 'suffix', source: 'spoils' },
     ]))).toThrow('layout');
   });
 

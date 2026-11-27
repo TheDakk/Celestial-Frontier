@@ -41,13 +41,14 @@ const plan = (baseId: string, changes: Partial<GearGenerationPlan> = {}): GearGe
 });
 
 type Key = GearNaturalAffix['affixId'];
-/** One stored modifier at its weakest authored value; the first of a piece is
- * its prefix and the second its suffix. */
+/** One stored modifier at its weakest authored value, from spoils unless said;
+ * the first of a piece is its prefix and the second its suffix. */
 const row = (affixId: Key, position: 0 | 1, more: Record<string, unknown> = {}): GearNaturalAffix => ({
   affixId,
   tier: 3,
   value: LEGACY_AFFIX_DEFINITIONS.find((definition) => definition.key === affixId)!.min,
   role: position === 0 ? 'prefix' : 'suffix',
+  source: 'spoils',
   ...more,
 } as GearNaturalAffix);
 const pair = (first: Key, second: Key) => [row(first, 0), row(second, 1)];
@@ -73,6 +74,15 @@ const migratedRig = () => migrateLegacyGear({
   equipped: { tool: 'rig1' },
   equippedAffixes: { tool: { k: 'yield', v: 0.2, forId: 'rig1' } },
 }).instances[0]!;
+/** A Meteorite Pendant forged from pure exceptional stock whose modifier is yield. */
+const forgedYieldMeteor = () => {
+  for (let receipt = 0; receipt < 200; receipt++) {
+    const source = craftSource('meteor', receipt);
+    const forgedPlan = getFixedCraftGenerationPlan('meteor', receipt, source);
+    if (forgedPlan.craftedModifier?.affixId === 'exceptional-v1:yield') return { source, forgedPlan };
+  }
+  throw new Error('no forged yield modifier in 200 receipts');
+};
 const UNIQUE_BASES = SLOTTED_GEAR_BASES_V1.filter((base) => base.category === 'relic' || base.id.startsWith('cg-'));
 const CRAFTED_BASES = SLOTTED_GEAR_BASES_V1.filter((base) => !UNIQUE_BASES.includes(base));
 
@@ -81,9 +91,9 @@ const digest = (pieces: readonly GearInstance[]) => {
   return { pieces: pieces.length, length: text.length, sha256: createHash('sha256').update(text).digest('hex') };
 };
 
-/** Every kind of piece the game could store before the shape gained a
- * property and a source: built, forged with the painted port's modifier,
- * holding one or two unsourced modifiers, and migrated from a legacy save. */
+/** Every kind of piece the game could make before the shape gained a property
+ * and a source: built, forged with the painted port's modifier, and migrated
+ * from a legacy save. No writer made a stored modifier row. */
 function piecesOfTheOldShape(): readonly GearInstance[] {
   const built = SLOTTED_GEAR_BASES_V1.map((base, index) => createGearInstance(
     craftSource(base.id, index), 0, getFixedCraftGenerationPlan(base.id, 0x5eed + index),
@@ -92,17 +102,6 @@ function piecesOfTheOldShape(): readonly GearInstance[] {
     const source = craftSource(base.id, 100 + index);
     return createGearInstance(source, 0, getFixedCraftGenerationPlan(base.id, 0xf07e + index, source));
   });
-  const oneModifier = LEGACY_AFFIX_DEFINITIONS.flatMap((definition, index) => [0, 9].map((tier) => createGearInstance(
-    fieldSource, index * 2 + (tier === 0 ? 0 : 1), plan('rig1', {
-      naturalAffixes: [{ affixId: definition.key, tier, value: definition.max, role: 'prefix' }],
-    }),
-  )));
-  const twoModifiers = createGearInstance(fieldSource, 20, plan('fieldsuit', {
-    naturalAffixes: [
-      { affixId: 'yield', tier: 3, value: 0.21, role: 'prefix' },
-      { affixId: 'contact', tier: 5, value: 9, role: 'suffix' },
-    ],
-  }));
   const migrated = migrateLegacyGear({
     sourceActionId: makeGearSourceActionId({ kind: 'legacy-migration', ownerId: 'shape-test', actionKey: 'items-v1' }),
     itemCounts: SLOTTED_GEAR_BASES_V1.map((base) => [base.id, base.id === 'rig1' ? 2 : 1] as const),
@@ -113,39 +112,70 @@ function piecesOfTheOldShape(): readonly GearInstance[] {
       suit: { k: 'heal', v: 0.2, forId: 'cg-proto' },
     },
   }).instances;
-  return [...built, ...forged, ...oneModifier, twoModifiers, ...migrated];
+  return [...built, ...forged, ...migrated];
 }
 
 describe('@cf/domain-loot: the stored shape of a piece', () => {
   it('a piece made before this change still reads byte for byte', () => {
     const pieces = piecesOfTheOldShape();
     expect(digest(pieces)).toEqual({
-      pieces: 140, length: 88_845, sha256: '1220f43d91a9f301c4e452b5595c1057e0cdd33a4a006e54de2812e4357e1644',
+      pieces: 127, length: 81_254, sha256: 'fbeb021a3fe5c0bf26ecca3b87ea38c3730f81f7c2f0f08c6312ea024b1da154',
     });
     for (const piece of pieces) {
       const bytes = encodeGearInstance(piece);
       expect(encodeGearInstance(decodeGearInstance(bytes))).toBe(bytes);
     }
-    expect(encodeGearInstance(createGearInstance(fieldSource, 3, plan('rig1', {
-      naturalAffixes: [{ affixId: 'strike', tier: 9, value: 0.06, role: 'prefix' }],
-    })))).toBe(
+    expect(encodeGearInstance(make('rig1', {}, 3))).toBe(
       '{"schema":1,"tableVersion":1,"construction":"generated","instanceId":"gear1|loot1|conquest|shape-test|world-1||||3",'
       + '"baseId":"rig1","baseName":"Mining Rig I","slot":"tool","baseTier":1,"itemLevel":1,"quality":0,"rarityTier":1,'
       + '"rarity":"uncommon","tags":["gear","tool","yield"],"baseEffects":{"yield":0.5},"implicits":["yield"],'
-      + '"naturalAffixes":[{"affixId":"strike","tier":9,"value":0.06,"role":"prefix"}],"upgrade":0,"sockets":[],'
+      + '"naturalAffixes":[],"upgrade":0,"sockets":[],'
       + '"generation":{"seed":24301,"ordinal":3},"legacyAffix":null,'
       + '"provenance":{"kind":"conquest","sourceActionId":"loot1|conquest|shape-test|world-1|||"}}',
+    );
+  });
+
+  it('a piece that uses the new fields is stored as exactly these bytes', () => {
+    const legendary = make('rig2', {
+      quality: 1,
+      naturalAffixes: [row('yield', 0, { source: 'forge', tier: 14 }), row('contact', 1, { source: 'spoils', tier: 0 })],
+      property: { id: 'motherlode' },
+    }, 7);
+    expect(readsBack(legendary)).toBe(
+      '{"schema":1,"tableVersion":1,"construction":"generated","instanceId":"gear1|loot1|conquest|shape-test|world-1||||7",'
+      + '"baseId":"rig2","baseName":"Mining Rig II","slot":"tool","baseTier":2,"itemLevel":1,"quality":1,"rarityTier":1,'
+      + '"rarity":"uncommon","tags":["gear","tool","yield"],"baseEffects":{"yield":1},"implicits":["yield"],'
+      + '"naturalAffixes":[{"affixId":"yield","tier":14,"value":0.1,"role":"prefix","source":"forge"},'
+      + '{"affixId":"contact","tier":0,"value":4,"role":"suffix","source":"spoils"}],"property":{"id":"motherlode"},'
+      + '"upgrade":0,"sockets":[],"generation":{"seed":24301,"ordinal":7},"legacyAffix":null,'
+      + '"provenance":{"kind":"conquest","sourceActionId":"loot1|conquest|shape-test|world-1|||"}}',
+    );
+
+    const { source, forgedPlan } = forgedYieldMeteor();
+    const forgedLegendary = createGearInstance(source, 0, {
+      ...forgedPlan, quality: 1, naturalAffixes: [row('contact', 0, { tier: 12 })], property: { id: 'envoy' },
+    });
+    expect(readsBack(forgedLegendary)).toBe(
+      '{"schema":1,"tableVersion":1,"construction":"generated",'
+      + '"instanceId":"gear1|loot1|craft|legacy-v1.8.9-items|recipe%3Ameteor|||receipt%3A3|0",'
+      + '"baseId":"meteor","baseName":"Meteorite Pendant","slot":"necklace","baseTier":1,"itemLevel":1,"quality":1,'
+      + '"rarityTier":1,"rarity":"uncommon","tags":["gear","necklace","strike"],"baseEffects":{"strike":0.02},'
+      + '"implicits":["strike"],'
+      + '"naturalAffixes":[{"affixId":"contact","tier":12,"value":4,"role":"prefix","source":"spoils"}],'
+      + '"property":{"id":"envoy"},"craftedModifier":{"affixId":"exceptional-v1:yield","tier":1,"value":0.2},'
+      + '"upgrade":0,"sockets":[],"generation":{"seed":3,"ordinal":0},"legacyAffix":null,'
+      + '"provenance":{"kind":"craft","sourceActionId":"loot1|craft|legacy-v1.8.9-items|recipe%3Ameteor|||receipt%3A3",'
+      + '"receiptId":"receipt:3"}}',
     );
   });
 
   it('a piece holds a well-made flag, two modifiers and a property, and reads back the same', () => {
     const modifierSets: readonly (readonly GearNaturalAffix[])[] = [
       [],
-      [row('heal', 0)],
       [row('heal', 0, { source: 'spoils' })],
-      [row('yield', 0), row('contact', 1)],
+      [row('heal', 0, { source: 'forge' })],
       [row('yield', 0, { source: 'forge' }), row('contact', 1, { source: 'spoils' })],
-      [row('yield', 0, { source: 'spoils' }), row('contact', 1)],
+      [row('yield', 0, { source: 'spoils' }), row('contact', 1, { source: 'spoils' })],
     ];
     let ordinal = 0;
     for (const quality of [0, 1]) {
@@ -172,14 +202,25 @@ describe('@cf/domain-loot: the stored shape of a piece', () => {
     expect(decodeGearInventory(encodeGearInventory(held.state)).entries[0]!.instance).toEqual(fullest);
   });
 
-  it('a modifier with no source and a piece with no property store no trace of either', () => {
-    const unsourced = make('rig1', { naturalAffixes: [row('strike', 0)] });
-    expect('source' in unsourced.naturalAffixes[0]!).toBe(false);
-    expect(readsBack(unsourced)).not.toContain('"source":');
-    const sourced = make('rig1', { naturalAffixes: [row('strike', 0, { source: 'spoils' })] });
-    expect(sourced.naturalAffixes[0]!.source).toBe('spoils');
-    expect(readsBack(sourced)).toContain('"role":"prefix","source":"spoils"}');
-    expect(sourced).not.toEqual(unsourced);
+  it('every stored modifier says where it came from: one with no source is refused', () => {
+    const { source: _omitted, ...unsourced } = row('strike', 0);
+    expect(() => make('rig1', { naturalAffixes: [unsourced as never] })).toThrow('natural affix 0 has no source');
+    expect(() => make('rig1', { naturalAffixes: [row('yield', 0), { ...unsourced, affixId: 'contact', value: 4, role: 'suffix' } as never] }))
+      .toThrow('natural affix 1 has no source');
+    const sourced = make('rig1', { naturalAffixes: [row('strike', 0, { source: 'forge' })] });
+    expect(sourced.naturalAffixes[0]!.source).toBe('forge');
+    expect(readsBack(sourced)).toContain('"role":"prefix","source":"forge"}');
+    expect(() => decodeGearInstance(edited(sourced, (raw) => { delete raw.naturalAffixes[0].source; })))
+      .toThrow('natural affix 0 has no source');
+    /* The piece the old shape allowed, one row of four keys, no longer reads. */
+    expect(() => decodeGearInstance(
+      '{"schema":1,"tableVersion":1,"construction":"generated","instanceId":"gear1|loot1|conquest|shape-test|world-1||||3",'
+      + '"baseId":"rig1","baseName":"Mining Rig I","slot":"tool","baseTier":1,"itemLevel":1,"quality":0,"rarityTier":1,'
+      + '"rarity":"uncommon","tags":["gear","tool","yield"],"baseEffects":{"yield":0.5},"implicits":["yield"],'
+      + '"naturalAffixes":[{"affixId":"strike","tier":9,"value":0.06,"role":"prefix"}],"upgrade":0,"sockets":[],'
+      + '"generation":{"seed":24301,"ordinal":3},"legacyAffix":null,'
+      + '"provenance":{"kind":"conquest","sourceActionId":"loot1|conquest|shape-test|world-1|||"}}',
+    )).toThrow('natural affix 0 has no source');
   });
 
   it('a modifier keeps the world tier that seeded its roll, from 0 to 14', () => {
@@ -224,14 +265,7 @@ describe('@cf/domain-loot: the stored shape of a piece', () => {
   });
 
   it('the family rule and the limit of two count a forged or migrated modifier too', () => {
-    const forgedYield = (() => {
-      for (let receipt = 0; receipt < 200; receipt++) {
-        const source = craftSource('meteor', receipt);
-        const forgedPlan = getFixedCraftGenerationPlan('meteor', receipt, source);
-        if (forgedPlan.craftedModifier?.affixId === 'exceptional-v1:yield') return { source, forgedPlan };
-      }
-      throw new Error('no forged yield modifier in 200 receipts');
-    })();
+    const forgedYield = forgedYieldMeteor();
     const forged = (changes: Partial<GearGenerationPlan>) => (
       createGearInstance(forgedYield.source, 0, { ...forgedYield.forgedPlan, ...changes })
     );
@@ -248,6 +282,11 @@ describe('@cf/domain-loot: the stored shape of a piece', () => {
     expect(hasValidAffixLayout({ ...migrated, naturalAffixes: [row('contact', 0)] })).toBe(true);
     expect(hasValidAffixLayout({ ...migrated, naturalAffixes: [row('strike', 0)] })).toBe(false);
     expect(hasValidAffixLayout({ ...migrated, naturalAffixes: pair('contact', 'heal') })).toBe(false);
+    /* The exported check holds a hand-built piece to the same limits as the codec. */
+    expect(hasValidAffixLayout({ ...migrated, naturalAffixes: [row('contact', 0, { tier: 14 })] })).toBe(true);
+    expect(hasValidAffixLayout({ ...migrated, naturalAffixes: [row('contact', 0, { tier: 15 })] })).toBe(false);
+    expect(hasValidAffixLayout({ ...migrated, legacyAffix: { ...migrated.legacyAffix!, value: 0.36 } })).toBe(false);
+    expect(hasValidAffixLayout({ ...migrated, legacyAffix: { ...migrated.legacyAffix!, forBaseId: 'rig2' } })).toBe(false);
   });
 
   it('a property is one of the six named, on a piece with two modifiers, whatever their families', () => {
@@ -291,6 +330,22 @@ describe('@cf/domain-loot: the stored shape of a piece', () => {
       expect(() => make(base.id, { quality: 1 }), base.id).toThrow('never be well made');
       expect(() => decodeGearInstance(edited(one, (raw) => { raw.quality = 1; })), base.id).toThrow('never be well made');
       expect(mayBeWellMade(base.id)).toBe(false);
+    }
+  });
+
+  it('a forged relic or cosmic piece already holds its one modifier and takes no row', () => {
+    for (const [index, base] of UNIQUE_BASES.entries()) {
+      const source = craftSource(base.id, 300 + index);
+      const forgedPlan = getFixedCraftGenerationPlan(base.id, 0xf07e + index, source);
+      const forged = createGearInstance(source, 0, forgedPlan);
+      expect(forged.craftedModifier, base.id).toBeDefined();
+      for (const definition of LEGACY_AFFIX_DEFINITIONS) {
+        const label = `${base.id}+${definition.key}`;
+        expect(() => createGearInstance(source, 0, { ...forgedPlan, naturalAffixes: [row(definition.key, 0)] }), label)
+          .toThrow('at most one modifier');
+        expect(() => decodeGearInstance(edited(forged, (raw) => { raw.naturalAffixes = [row(definition.key, 0)]; })), label)
+          .toThrow('at most one modifier');
+      }
     }
   });
 

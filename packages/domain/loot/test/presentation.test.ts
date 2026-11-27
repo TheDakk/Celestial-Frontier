@@ -20,7 +20,7 @@ const gearFromBase = (ordinal: number, baseId: string) => createGearInstance(sou
   itemLevel: ordinal + 1,
   quality: ordinal === 1 ? 1 : 0,
   rarityTier: ordinal % 2 === 0 ? 1 : 3,
-  naturalAffixes: ordinal % 2 === 0 ? [] : [{ affixId: 'strike', tier: 1, value: 0.02, role: 'prefix' }],
+  naturalAffixes: ordinal % 2 === 0 ? [] : [{ affixId: 'strike', tier: 1, value: 0.02, role: 'prefix', source: 'spoils' }],
   craftedModifier: null,
   drawback: null,
   upgrade: 0,
