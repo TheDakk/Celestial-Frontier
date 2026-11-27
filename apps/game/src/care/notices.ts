@@ -52,6 +52,8 @@ export function bioscanNotices(facts: BioscanFactsV1): readonly CareNotice[] {
   } else if (facts.target === 'explorer' && !facts.dead) {
     notices.push(notice('wound', `−${facts.damage} HP`,
       `${facts.flavour ?? ''} You’re at ${facts.hpAfter} HP — tap the `, Object.freeze({ icon: 'heart' }), ' by your HP bar to heal with flora.'));
+    // New words (the legacy game has no Rest): why the named scout did not take this strike.
+    if (facts.scoutResting !== null) notices.push(notice('scout', 'Field Scout', `${facts.scoutResting.name} is resting — the strike was yours to take.`));
   }
   if (facts.scanned) {
     notices.push(notice(null, 'Biosphere Surveyed', `${facts.lifeForms} life forms revealed` + (facts.uncatalogued > 0
@@ -66,11 +68,14 @@ export const SCOUT_BUTTON = Object.freeze({
   standing: 'Scouting',
   tip: 'Your Field Scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.',
 });
-/** What a committed press of Scout says of the beast it was pressed on. */
-export function scoutNotice(name: string, named: boolean): CareNotice {
-  return notice('scout', 'Field Scout', named
-    ? `${name} now walks point — it takes the hit when a bioscan turns hostile.`
-    : `${name} stands down. Hostile scans risk your own HP again.`);
+/** What a committed press of Scout says of the beast it was pressed on. A beast named while it rests is not at the
+    post yet (`scoutStands`): the third line says so, in new words made of the legacy two. */
+export function scoutNotice(name: string, named: boolean, resting = false): CareNotice {
+  return notice('scout', 'Field Scout', !named
+    ? `${name} stands down. Hostile scans risk your own HP again.`
+    : resting
+      ? `${name} will walk point when it is rested — until then hostile scans risk your own HP.`
+      : `${name} now walks point — it takes the hit when a bioscan turns hostile.`);
 }
 
 /** What a committed rename says. */
@@ -108,4 +113,11 @@ export function mendNotice(facts: FeedFactsV1): CareNotice {
 /** What a committed Rest says: the painted port's line for a resting companion. The legacy game has no Rest. */
 export function restNotice(facts: RestFactsV1): CareNotice {
   return notice('rest', 'Resting', `${facts.name} — ${facts.minutes} min of play left`);
+}
+/** Everything a committed Rest says: the Rest, and, when the companion holds the scout's post, that it stands down
+    until it is ready (Dakk, 2026-11-27). The second line is new words, after the legacy "stands down" (15202). */
+export function restNotices(facts: RestFactsV1): readonly CareNotice[] {
+  return Object.freeze(facts.scout
+    ? [restNotice(facts), notice('scout', 'Field Scout', `${facts.name} stands down while it rests. Hostile scans risk your own HP until it is ready.`)]
+    : [restNotice(facts)]);
 }

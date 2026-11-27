@@ -6,6 +6,7 @@
    stops at the ninth, at 486 (`levelOf` 17567); the legacy game let the number run on unseen to 1,000,000, the
    save holds it to 486. */
 import { createCreatureInstanceV1, createOwnershipSuccessorV1, type OwnershipStateV1, type SpeciesId } from '@cf/domain-acquisition';
+import { scoutStandsV1 } from '@cf/domain-acquisition/companion-availability';
 
 export const SCOUT_LESSON_XP = 2;
 export const CREATURE_XP_MAX = 486;
@@ -20,10 +21,11 @@ export interface ScoutLesson {
   readonly xp: number;
 }
 /** The capture's step with the scout taught, or null when no scout stands or the scout is the species caught.
-    `caught` is the capture's own step after `parent`. */
-export function teachScout(parent: OwnershipStateV1, caught: OwnershipStateV1, caughtSpecies: SpeciesId): ScoutLesson | null {
+    `caught` is the capture's own step after `parent`. A scout that rests is not at its post at `activePlayMs` and
+    learns nothing (Dakk, 2026-11-27; `scoutStandsV1`). */
+export function teachScout(parent: OwnershipStateV1, caught: OwnershipStateV1, caughtSpecies: SpeciesId, activePlayMs: number): ScoutLesson | null {
   const scout = caught.scoutCreatureId === null ? undefined : caught.creatures.find((row) => row.creatureId === caught.scoutCreatureId);
-  if (scout === undefined || scout.speciesId === caughtSpecies) return null;
+  if (scout === undefined || scout.speciesId === caughtSpecies || !scoutStandsV1(scout, activePlayMs)) return null;
   const xp = scoutLessonXp(scout.xp);
   const successor = createOwnershipSuccessorV1(parent, {
     catalogSpecies: caught.catalogSpecies, discoveries: caught.discoveries,

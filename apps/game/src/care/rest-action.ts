@@ -9,6 +9,9 @@
      (`companionLock`); at the boundary exactly it is free. So every reader of its hurt agrees at every moment and
      nothing is written later. Nothing heals while the game is closed, and the device's clock never enters;
    - the first recovery from Injured or worse (0.3) is the bond memory `recovered:injured`.
+   Dakk, 2026-11-27: a resting companion steps down from the scout's post until it is ready. The Rest writes
+   nothing of the scout: the post stays the beast's, and whoever reads the post asks whether the scout stands
+   (`scoutStands`), so a resting scout takes no strike and at the boundary stands again. The facts say `scout`.
    A companion that already rests, is away or recovers cannot begin a Rest. The rules' numbers are
    `@cf/domain-acquisition`'s (`companion-care.ts`, `companion-availability.ts`), the painted port's for D13; its
    own action (`rest.ts`) works on the second ownership model and is not used. */
@@ -35,6 +38,8 @@ export interface RestFactsV1 {
   readonly readyAtActivePlayMs: number;
   /** This Rest is its first recovery from Injured or worse: a bond memory. */
   readonly recovered: boolean;
+  /** The companion holds the scout's post: it keeps the post and does not stand at it until its Rest is ready. */
+  readonly scout: boolean;
   readonly bond: Readonly<{ levelBefore: number; levelAfter: number; memories: number }>;
 }
 export type RestActionOutcomeV1 = CareOutcome<RestFactsV1>;
@@ -87,6 +92,7 @@ export function commitRestV1(input: RestActionInputV1): Promise<RestActionOutcom
       return {
         facts: Object.freeze({
           speciesId, name: draft.codex.find(([id]) => id === speciesId)?.[1].name ?? '', hurtBefore, minutes, startedAtActivePlayMs: activePlayMs, readyAtActivePlayMs, recovered,
+          scout: ownership.scoutCreatureId === creature.creatureId,
           bond: Object.freeze({ levelBefore: bondOf(creature.bond?.memories.length ?? 0).level, levelAfter: bondOf(rested.bond?.memories.length ?? 0).level, memories: rested.bond?.memories.length ?? 0 }),
         }),
         extensionWrites,

@@ -8,8 +8,10 @@
 
    Ported from the painted port's `arc5-scout-action.ts`, which named a creature by its own id and refused an
    unchanged press; here the press is the legacy toggle on the Compendium's page. A Paragon is a beast like any
-   other and can be named. */
+   other and can be named. So can a beast that rests (D13: "Scout designation still works"); it stands at the post
+   when its Rest is ready, and the facts say `resting` until then. */
 import type { SaveStateV2, V5ExtensionWrite } from '@cf/persistence';
+import { scoutStands } from './bond';
 import { commitCare, refuse, settleCare, type CareAuthority, type CareCharterStager, type CareOutcome, type CareSettleDeps } from './commit';
 import { compendiumRow, contentsOf, ownershipOf, stageOwnership } from './ownership';
 
@@ -23,6 +25,8 @@ export interface ScoutFactsV1 {
   readonly scoutAfter: string | null;
   /** A scout was named: the deed the Charters hear. */
   readonly named: boolean;
+  /** The beast named rests now: it holds the post and stands at it when its Rest is ready (`scoutStands`). */
+  readonly resting: boolean;
   readonly charters: Readonly<{ progressIds: readonly string[]; completedIds: readonly string[] }>;
 }
 export type ScoutActionOutcomeV1 = CareOutcome<ScoutFactsV1>;
@@ -66,7 +70,7 @@ export function commitScoutV1(input: ScoutActionInputV1): Promise<ScoutActionOut
         charters = { progressIds: [...staged.facts.progressIds], completedIds: staged.facts.completions.map(({ id }) => id) };
         writes.push(...staged.facts.extensionWrites);
       }
-      return { facts: { speciesId, scoutBefore, scoutAfter: draft.scoutId, named: !standDown, charters }, extensionWrites: writes };
+      return { facts: { speciesId, scoutBefore, scoutAfter: draft.scoutId, named: !standDown, resting: !standDown && !scoutStands(creature, activePlayMs), charters }, extensionWrites: writes };
     },
     verify: (stored, facts) => stored.scoutId !== facts.scoutAfter ? 'scout'
       : facts.charters.completedIds.some((id) => !stored.chDone.includes(id)) ? 'charters' : null,

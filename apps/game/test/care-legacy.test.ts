@@ -187,6 +187,8 @@ describe('the scan hazard against the legacy game', () => {
         scout: got.target !== 'scout' ? null : got.scoutLost
           ? { id: 's4000', name: 'Scout', hurtBefore: input.scoutHurt!, hurtAfter: null, condition: null, lost: true }
           : { id: 's4000', name: 'Scout', hurtBefore: input.scoutHurt!, hurtAfter: got.scoutHurtAfter, condition: creatureCondition(got.scoutHurtAfter).label, lost: false },
+        // The legacy game has no Rest, so no recorded press met a resting scout.
+        scoutResting: null,
         lifeForms, uncatalogued: lifeForms - [...known].filter((id) => id === 's3000' || /^s200\d$/.test(id)).length,
       } as unknown as BioscanFactsV1;
       expect(words(bioscanNotices(facts)), JSON.stringify(input))

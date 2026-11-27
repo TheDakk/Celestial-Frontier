@@ -146,3 +146,18 @@ export function companionCommandAvailableV1(
   }
   return projectCompanionAvailabilityV1(creature, activePlayMs).blocks[command] === false;
 }
+
+/** Whether a beast named the Field Scout stands at its post at this point of
+ * active play. Dakk, 2026-11-27: "a resting companion steps down from the
+ * scout's post until it is ready". The post stays the beast's: while its D13
+ * Rest runs it takes no strike of a scan and learns no lesson of a capture,
+ * and at the Rest's exact boundary it stands again with nothing written (no
+ * deferred writer). A field mission or a Recovery does not take it from the
+ * post. Every reader of the scout's post asks this. */
+export function scoutStandsV1(
+  creature: Pick<CreatureInstanceV1, 'assignment'>,
+  activePlayMs: number,
+): boolean {
+  const availability = projectCompanionAvailabilityV1(creature, activePlayMs);
+  return availability.assignment === null || availability.restReadyAtActivePlayMs === null;
+}

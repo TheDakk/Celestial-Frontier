@@ -113,6 +113,18 @@ describe('the scout\'s lesson at a capture', () => {
     expect(alone.durable().codex.find(([id]) => id === earthId(11))?.[1].g.xp).toBe(4);
   });
 
+  // Dakk, 2026-11-27: a resting companion steps down from the scout's post until it is ready.
+  it('a scout that rests is not at its post and learns nothing; from the boundary of its Rest it learns again', async () => {
+    const resting = (readyAt: number) => ({ xp: 4, assignment: { kind: 'mission', missionId: `rest:${readyAt}` } });
+    const away = await capturePage({ sessionSeed: hit, activePlayMs: 60_000, change: (state) => { state.codex = [heldPage(11, resting(600_000_000))]; state.scoutId = earthId(11); } });
+    expect(await away.press('tame')).toMatchObject({ kind: 'committed', facts: { hit: true, scoutXp: null } });
+    expect(xpOf(away)).toBe(4);
+    expect(away.durable().scoutId).toBe(earthId(11));
+    const back = await capturePage({ sessionSeed: hit, activePlayMs: 60_000, change: (state) => { state.codex = [heldPage(11, resting(60_000))]; state.scoutId = earthId(11); } });
+    expect(await back.press('tame')).toMatchObject({ kind: 'committed', facts: { hit: true, scoutXp: 6 } });
+    expect(xpOf(back)).toBe(6);
+  });
+
   it('experience stops at 486, where the last level is reached', async () => {
     const page = await capturePage({ sessionSeed: hit, change: (state) => { state.codex = [heldPage(11, { xp: 485 })]; state.scoutId = earthId(11); } });
     await page.press('tame');

@@ -63,6 +63,7 @@ import {
 import { ascStageOf, bankBioscan, reconcileV2Chapters, type CanonicalCF1WorldAddress } from '@cf/scene';
 import { bioscanDanger, creatureCondition, depthTax, resolveBioscanPress, type BioscanDanger, type CreatureConditionLabel } from './bioscan-hazard';
 import { revealBiosphere } from './bioscan-reveal';
+import { scoutStands } from './bond';
 import {
   commitCare, refreshProgression, refuse, settleCare, unlockAchievement, type CareAuthority, type CareCharterStager, type CareOutcome, type CareReceipt, type CareSettleDeps, type CareStaged,
 } from './commit';
@@ -152,6 +153,8 @@ export interface BioscanFactsV1 {
     | Readonly<{ id: string; name: string; hurtBefore: number; hurtAfter: number; condition: CreatureConditionLabel; lost: false }>
     | Readonly<{ id: string; name: string; hurtBefore: number; hurtAfter: null; condition: null; lost: true }>
     | null;
+  /** The named scout that was resting when the strike fell, so that the explorer took it; null otherwise. */
+  readonly scoutResting: Readonly<{ id: string; name: string }> | null;
   /** The roster is revealed. */
   readonly scanned: boolean;
   /** The world joined the surveyed set with this scan. */
@@ -195,9 +198,11 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
   const loadout = readArc2EngineeringLoadout(extensions);
   if (loadout.kind !== 'loaded') return refuse(`gear:${loadout.kind}`);
   const ownership = ownershipOf(extensions);
-  // The scout takes a strike only while it is a beast of the Compendium (13150-13151).
+  // The scout takes a strike only while it is a beast of the Compendium (13150-13151), and not while it rests: a
+  // resting scout is not at its post, and the strike is the explorer's (`scoutStands`).
   const creature = draft.scoutId === null ? null : compendiumRow(ownership, draft.scoutId)?.creature ?? null;
-  const standing = draft.scoutId === null || creature === null ? null : { id: draft.scoutId, creature };
+  const named = draft.scoutId === null || creature === null ? null : { id: draft.scoutId, creature };
+  const standing = named !== null && scoutStands(named.creature, receipt.activePlayMs) ? named : null;
   const resolved = resolveBioscanPress({
     danger, planetType: card.planetType, draws: receipt.draws, reinforcedHull: draft.techOwned.includes(REINFORCED_HULL),
     suitCut: loadout.capabilities.bioscanDamageReduction, hp: draft.hp, scoutHurt: standing === null ? null : standing.creature.hurt ?? 0,
@@ -311,6 +316,8 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
   const facts: BioscanFactsV1 = {
     worldKey: address.key, planetSeed: seed, danger: { pct: danger.pct, dmg: danger.dmg }, rolled: danger.pct > 0, hostile: resolved.hostile, damage: resolved.damage,
     flavour: resolved.flavour, target: resolved.target, hpBefore, hpAfter: draft.hp, dead: resolved.dead, scout: scoutFact,
+    scoutResting: resolved.hostile && named !== null && standing === null
+      ? { id: named.id, name: draft.codex.find(([held]) => held === named.id)?.[1].name ?? '' } : null,
     scanned: resolved.scanCompletes, firstScan, lifeForms: card.species.length,
     uncatalogued: card.species.filter((g) => !held.has(compendiumId(g.seed))).length,
     surveys: draft.stats.surveys ?? 0, paragon, charters, achievementIds: draft.unlocked.filter((id) => !unlockedBefore.has(id)),

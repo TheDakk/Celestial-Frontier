@@ -197,7 +197,7 @@ function stage(input: CaptureActionInputV1, receipt: F4MultiOutcomeDeriveInput):
   // A new species teaches the scout in the same step of the carrier as the capture itself.
   const parent = readArc4Ownership(extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
   if (parent.kind !== 'loaded') throw new CaptureRefusal(`ownership:${parent.kind}`);
-  const lesson = plan.hit && plan.firstForSpecies ? teachScout(parent.state, plan.successor, plan.candidate.identity.speciesId) : null;
+  const lesson = plan.hit && plan.firstForSpecies ? teachScout(parent.state, plan.successor, plan.candidate.identity.speciesId, activePlayMs) : null;
   // A species the player once named and lost (eaten, or fallen as the scout) comes back under that name (14796-14797).
   const kept = plan.hit ? draft.customNames.find(([key]) => key === `c${plan.candidate.legacyCatalogueId}`)?.[1] : undefined;
   const taught = lesson?.successor ?? plan.successor;

@@ -7,6 +7,7 @@ import {
   COMPANION_BOND_LEVELS_V1, companionBondLevelV1, companionMealOutcomeV2, companionRestDurationMsV1, companionRestMissionIdV1,
   companionRestReadyAtV1, faunaTastesV1, projectCompanionBondV1, projectCompanionTastesV1, withCompanionBondMemoriesV1,
 } from '../src/companion-care.js';
+import { scoutStandsV1 } from '../src/companion-availability.js';
 import type { CompanionBondV1 } from '../src/model.js';
 
 /** v1's own `faunaTastes` answers, recorded from the v1 game file (fixtures/v1/recorded/acquisition-companion-care.json). */
@@ -65,5 +66,18 @@ describe('companion tastes and care (D13 stage 1a)', () => {
     expect(companionRestDurationMsV1(0)).toBe(0); expect(companionRestDurationMsV1(null)).toBe(0);
     expect(companionRestDurationMsV1(0.35)).toBe(8 * 60_000); expect(companionRestDurationMsV1(0.95)).toBe(20 * 60_000); expect(companionRestDurationMsV1(0.1)).toBe(2 * 60_000);
     expect(companionRestReadyAtV1(companionRestMissionIdV1(123_456))).toBe(123_456); expect(companionRestReadyAtV1('mission:abc')).toBeNull(); expect(companionRestReadyAtV1('rest:1e3')).toBeNull();
+  });
+
+  // Dakk, 2026-11-27: "a resting companion steps down from the scout's post until it is ready".
+  it('a named scout stands at its post unless it rests: from the boundary of its Rest it stands again', () => {
+    const resting = { assignment: { kind: 'mission', missionId: companionRestMissionIdV1(600_000) } } as const;
+    expect(scoutStandsV1(resting, 0)).toBe(false);
+    expect(scoutStandsV1(resting, 599_999)).toBe(false);
+    expect(scoutStandsV1(resting, 600_000)).toBe(true);
+    expect(scoutStandsV1(resting, 600_001)).toBe(true);
+    // Only a Rest takes it from the post: a field mission and a recovery after a union do not.
+    expect(scoutStandsV1({ assignment: { kind: 'mission', missionId: 'mission:4' } }, 0)).toBe(true);
+    expect(scoutStandsV1({ assignment: { kind: 'recovery', readyAtActivePlayMs: 600_000 } }, 0)).toBe(true);
+    expect(scoutStandsV1({ assignment: null }, 0)).toBe(true);
   });
 });

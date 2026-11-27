@@ -11,7 +11,7 @@
    card shows. A flavour stays hidden on the card until the companion has eaten a flora of it; the legacy card
    showed every taste at once (15135-15136). */
 import type { CreatureInstanceV1 } from '@cf/domain-acquisition';
-import { projectCompanionAvailabilityV1 } from '@cf/domain-acquisition/companion-availability';
+import { projectCompanionAvailabilityV1, scoutStandsV1 } from '@cf/domain-acquisition/companion-availability';
 import { COMPANION_BOND_LEVELS_V1, companionRestDurationMsV1, projectCompanionBondV1, projectCompanionTastesV1 } from '@cf/domain-acquisition/companion-care';
 import { creatureCondition, type CreatureConditionLabel } from './bioscan-hazard';
 import { FLAVOUR_NAMES, type Flavour } from './meals';
@@ -49,6 +49,14 @@ export function companionLock(creature: Pick<CreatureInstanceV1, 'assignment'>, 
   if (availability.assignment.kind === 'recovery') return 'recovering';
   return availability.restReadyAtActivePlayMs !== null ? 'resting' : 'away';
 }
+
+/** Whether a beast named the Field Scout stands at its post at this point of active play. Dakk, 2026-11-27: "a
+    resting companion steps down from the scout's post until it is ready". The post stays the beast's: a resting
+    scout takes no strike and learns no lesson, and at the boundary of its Rest it stands again with nothing
+    written (D13: no deferred writer). The legacy game had the same shape for a scout whose page was no beast: the
+    post named, nobody standing at it, the strike the explorer's (13150-13151). The rule is
+    `@cf/domain-acquisition`'s, where a capture reads it too. */
+export const scoutStands: (creature: Pick<CreatureInstanceV1, 'assignment'>, activePlayMs: number) => boolean = scoutStandsV1;
 
 export interface CompanionCare {
   readonly condition: CreatureConditionLabel;
