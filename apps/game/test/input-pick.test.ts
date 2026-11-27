@@ -23,8 +23,9 @@ describe('pick', () => {
     // Nearness comes before priority.
     expect(pick([body('home', 120, 100, 0), near], 100, 100, () => 22)).toBe(near);
   });
-  it('a body exactly at the radius is picked; one beyond it, or no body at all, gives null', () => {
-    expect(pick([body('edge', 122, 100)], 100, 100, () => 22)?.key).toBe('edge');
+  it('a body nearer than its radius is picked; one exactly at it or beyond, or no body at all, gives null, as in the legacy game (5607)', () => {
+    expect(pick([body('in', 121.9, 100)], 100, 100, () => 22)?.key).toBe('in');
+    expect(pick([body('edge', 122, 100)], 100, 100, () => 22)).toBeNull();
     expect(pick([body('out', 122.5, 100)], 100, 100, () => 22)).toBeNull();
     expect(pick([body('diag', 116, 116)], 100, 100, () => 22)).toBeNull();
     expect(pick([], 100, 100, () => 22)).toBeNull();
@@ -38,20 +39,11 @@ describe('pick', () => {
     // Under both, the nearer middle still wins, whatever the radii.
     expect(pick([wide, body('near', 104, 100)], 100, 100, (b) => (b === wide ? 19.2 : 5))?.key).toBe('near');
   });
-  it('a press anywhere on a body\'s own picture selects it, however far from its middle; off the picture only the radius counts', () => {
-    // A star drawn 60 px wide: its picture is a square 30 px each way from its middle, as the game's sprite is.
-    const sun = { ...body('sun', 100, 100), reach: 30 };
-    expect(pick([sun], 114, 100, () => 10)).toBe(sun);
-    expect(pick([sun], 130, 130, () => 10)).toBe(sun);
-    expect(pick([sun], 131, 100, () => 10)).toBeNull();
-    expect(pick([sun], 100, 69, () => 10)).toBeNull();
-    // A body drawn smaller than the radius is still picked within the radius.
-    const dot = { ...body('dot', 100, 100), reach: 2 };
-    expect(pick([dot], 108, 100, () => 10)).toBe(dot);
-    expect(pick([dot], 108, 108, () => 10)).toBeNull();
-    // On two pictures at once, the body whose middle is nearer is picked.
-    const moon = { ...body('moon', 120, 100), reach: 4 };
-    expect(pick([sun, moon], 118, 100, () => 10)).toBe(moon);
-    expect(pick([moon, sun], 108, 100, () => 10)).toBe(sun);
+  it('a body\'s target is a disc: a press at the corner of the square about it is not on it', () => {
+    const sun = body('sun', 100, 100);
+    expect(pick([sun], 129, 100, () => 30)).toBe(sun);
+    expect(pick([sun], 121, 121, () => 30)).toBe(sun);
+    expect(pick([sun], 122, 122, () => 30)).toBeNull();
+    expect(pick([sun], 129, 129, () => 30)).toBeNull();
   });
 });

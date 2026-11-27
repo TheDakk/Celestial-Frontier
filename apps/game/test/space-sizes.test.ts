@@ -5,7 +5,7 @@ import { NAV_HOME, systemScene } from '@cf/scene';
 import type { GalaxyNode } from '@cf/scene';
 import type { MapBody } from '../src/space/model';
 import { artGrid, artScale, mapItems, projectMap, projectScenery, type MapFrame } from '../src/space/project';
-import { pictureWidth } from '../src/space/sizes';
+import { pickRadius } from '../src/space/sizes';
 import { hazeItems } from '../src/space/passes-galaxy';
 import { MAGNETAR, SOL, galaxyNav, kindOf, passView, systemNav } from './space-support';
 
@@ -123,22 +123,41 @@ describe('sizes that follow the camera', () => {
   });
 });
 
-describe('how wide the game\'s own picture of a body is', () => {
+describe('how near its middle a press selects a body: its own disc, or its floor where that is wider (the legacy game\'s numbers)', () => {
   const deco = (k: string, rr?: number): MapBody => ({ kind: 'deco', key: k, label: k, priority: 3, wx: 0, wy: 0, ref: { k, x: 0, y: 0, ...(rr === undefined ? {} : { rr }) } } as MapBody);
-  it('a galaxy two sizes, a radio galaxy\'s host six tenths of that, a quasar 5.6 sizes', () => {
-    expect([galaxy({}), galaxy({ radio: true }), galaxy({ quasar: true })].map((body) => pictureWidth(body, 1))).toEqual([80, 48, 224]);
+  /** The disc alone: no padding, so no floor. */
+  const disc = (body: MapBody, zoom: number): number => pickRadius(body, zoom, 600, 0);
+  it('a galaxy its size (6151); a grain of light none, so its floor of 9 alone (6146)', () => {
+    expect([galaxy({}), galaxy({ radio: true }), galaxy({ quasar: true })].map((body) => disc(body, 1))).toEqual([40, 40, 40]);
+    expect(disc(galaxy({}), 0.06)).toBe(0);
+    expect(pickRadius(galaxy({}), 0.06, 600, 1.2)).toBeCloseTo(10.8, 9);
+    expect(pickRadius(galaxy({}), 0.2, 600, 1.2)).toBeCloseTo(19.2, 9);
   });
-  it('a star its size times the star base times 8, or 6.5 for a fine star: constant on the screen from afar, growing up close', () => {
-    expect(pictureWidth(star(2), 0.5) * 0.5).toBeCloseTo(2 * 0.7 * 8, 9);
-    expect(pictureWidth(star(2), 1) * 1).toBeCloseTo(2 * 0.7 * 8, 9);
-    expect(pictureWidth(star(2), 4)).toBeCloseTo(2 * 0.55 * 8, 9);
-    expect(pictureWidth(star(2, { priority: 2 }), 4)).toBeCloseTo(2 * 0.55 * 6.5, 9);
+  it('a star of a galaxy 1.6 of its size times the star base (6628), a fine star 1.5 (6651): constant on the screen from afar, growing up close', () => {
+    expect(disc(star(2), 0.5)).toBeCloseTo(2 * 0.7 * 1.6, 9);
+    expect(disc(star(2), 1)).toBeCloseTo(2 * 0.7 * 1.6, 9);
+    expect(disc(star(2), 4)).toBeCloseTo(2 * 0.55 * 1.6 * 4, 9);
+    expect(disc(star(2, { priority: 2 }), 4)).toBeCloseTo(2 * 0.55 * 1.5 * 4, 9);
   });
-  it('a planet three of its radii, which is the square its night is drawn on; scenery and sites their own widths', () => {
+  it('a planet its radius (7673); the star of a system its own, 20 where it has none (7527); scenery 0.8 of its radius, of 16.8 where it has none (6620); a wormhole 12, a supernova site 16, a protostar 3.4', () => {
     const jupiter = systemScene(SOL.seed).planets.find((p) => p.name === 'Jupiter')!;
-    expect(pictureWidth({ kind: 'planet', key: 'p', label: 'p', priority: 1, wx: 0, wy: 0, ref: jupiter }, 1)).toBeCloseTo(3 * 6 * Number(jupiter.P.sizeMul), 9);
-    expect([deco('neb', 10), deco('rem', 10), deco('plan'), deco('rogue'), deco('fbd')].map((body) => pictureWidth(body, 1))).toEqual([23, 26, 8 * 2.4, 2.1, 3.2]);
+    expect(disc({ kind: 'planet', key: 'p', label: 'p', priority: 1, wx: 0, wy: 0, ref: jupiter }, 2)).toBeCloseTo(2 * 6 * Number(jupiter.P.sizeMul), 9);
+    const sun = (starR?: number): MapBody => ({ kind: 'starsys', key: 's', label: 's', priority: 3, wx: 0, wy: 0, ref: { seed: 1, sys: starR === undefined ? {} : { starR } } });
+    expect([disc(sun(26), 2), disc(sun(), 2), pickRadius(sun(4), 1, 600, 1.2), pickRadius(sun(4), 1, 600, 1.4)]).toEqual([52, 40, 18 * 1.2, 18 * 1.4]);
+    expect([deco('neb', 10), deco('rem', 10), deco('plan'), deco('rogue', 5), deco('fbd', 5)].map((body) => disc(body, 1))).toEqual([8, 8, 42 * 0.4 * 0.8, 4, 4]);
     const site = (kind: 'worm' | 'snova' | 'protostar'): MapBody => ({ kind, key: kind, label: kind, priority: 3, wx: 0, wy: 0, ref: {} } as MapBody);
-    expect([site('worm'), site('snova'), site('protostar')].map((body) => pictureWidth(body, 1))).toEqual([30, 48, 6.8]);
+    expect([site('worm'), site('snova'), site('protostar')].map((body) => disc(body, 1))).toEqual([12, 16, 3.4]);
+  });
+  it('a small body of a system its own disc once that is wider than its floor: a dwarf planet 2.2 units (7806), the visitor 4 (7825), a comet 2.2 (7842), a moon 0.108 of its planet and never under half a unit (7762)', () => {
+    const small = (kind: 'dwarf' | 'visitor' | 'comet'): MapBody => ({ kind, key: kind, label: kind, priority: 3, wx: 0, wy: 0, ref: {} } as MapBody);
+    expect([small('dwarf'), small('visitor'), small('comet')].map((body) => pickRadius(body, 10, 600, 1.2))).toEqual([22, 40, 22]);
+    expect([small('dwarf'), small('visitor'), small('comet')].map((body) => pickRadius(body, 1, 600, 1.2))).toEqual([11 * 1.2, 12 * 1.2, 13 * 1.2]);
+    const [jupiter, mercury] = ['Jupiter', 'Mercury'].map((name) => systemScene(SOL.seed).planets.find((p) => p.name === name)!);
+    const moon = (pl: typeof jupiter): MapBody => ({ kind: 'moon', key: 'm', label: 'm', priority: 3, wx: 0, wy: 0, ref: { pl: pl!, m: 0 } });
+    expect(pickRadius(moon(jupiter), 40, 600, 1.2)).toBeCloseTo(6 * Number(jupiter!.P.sizeMul) * 0.108 * 40, 9);
+    expect(6 * Number(mercury!.P.sizeMul) * 0.108).toBeLessThan(0.5);
+    expect(pickRadius(moon(mercury), 40, 600, 1.2)).toBe(20);
+    // Farther out than names are drawn a moon has no floor: its true disc, under a pixel here.
+    expect(pickRadius(moon(jupiter), 1, 600, 1.4)).toBeCloseTo(6 * Number(jupiter!.P.sizeMul) * 0.108, 9);
   });
 });

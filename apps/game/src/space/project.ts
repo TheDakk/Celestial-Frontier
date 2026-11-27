@@ -157,8 +157,8 @@ function bodyItems(body: MapBody, x: number, y: number, cam: Camera, grid: Grid,
     case 'worm': return [{ kind: 'element', name: 'wormhole', x, y, ramp: 0xb48cff, ...spanOf(sizing, WIDTH.wormhole, cam.z) }];
     case 'snova': return [{ kind: 'element', name: `supernova/${body.ref.remnant.toLowerCase()}`, x, y, ramp: 0xffb080, ...spanOf(sizing, WIDTH.supernova, cam.z) }];
     case 'protostar': return [{ kind: 'element', name: 'protostar', x, y, ramp: 0xffd2a0, ...spanOf(sizing, WIDTH.protostar, cam.z) }];
-    // A moon is painted with its planet, a dwarf planet with the scenery, a comet and the visitor by the passes.
-    case 'moon': case 'dwarf': case 'comet': case 'visitor': return [];
+    // A moon is painted with its planet, the star and a dwarf planet with the scenery, a comet and the visitor by the passes.
+    case 'starsys': case 'moon': case 'dwarf': case 'comet': case 'visitor': return [];
   }
 }
 

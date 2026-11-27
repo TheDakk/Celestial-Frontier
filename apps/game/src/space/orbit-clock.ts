@@ -7,9 +7,10 @@
    reset (16970) and on any change of map (26942).
 
    Two named differences from the legacy game:
-   - What sets it. Here the orbits also hold while a planet's survey card is open, so the world a player is reading
-     about stays where it was pressed. The legacy game holds only on approach and landing; an open card alone does
-     not hold its orbits. Dakk's ruling of 2026-11-26. The map screen calls hold and release; approach and landing
+   - What sets it. Here the orbits also hold while the card of a body of the system is open (a planet's, the
+     star's, a moon's, a dwarf planet's, a comet's or the visitor's), so what a player is reading about stays where
+     it was pressed. The legacy game holds only on approach and landing; an open card alone does not hold its
+     orbits. Dakk's rulings of 2026-11-26 (planets) and 2026-11-27 (every body). The map screen calls hold and release; approach and landing
      call the same two when they arrive.
    - What a release does. Here the orbits go on from where they were held: no world jumps. In the legacy game a
      release returns to the running clock, so every world jumps ahead by the length of the hold.

@@ -17,7 +17,8 @@ export type MapBody = BodyBase & (
   | { kind: 'worm'; ref: { x: number; y: number } }
   | { kind: 'snova'; ref: SupernovaSite }
   | { kind: 'protostar'; ref: SupernovaBirth }
-  // The small bodies of a system (small-bodies.ts). `ref` is what the legacy game hands the card of each.
+  // The star and the small bodies of a system (small-bodies.ts). `ref` is what the legacy game hands the card of each.
+  | { kind: 'starsys'; ref: { seed: number; sys: Record<string, unknown> & { starR?: number } } }
   | { kind: 'moon'; ref: { pl: PlanetNode; m: number } }
   | { kind: 'dwarf'; ref: { dw: Record<string, unknown>; sys: Record<string, unknown> } }
   | { kind: 'comet'; ref: { cm: Record<string, unknown>; ci: number } }
@@ -101,7 +102,10 @@ export function onScreen(cam: Camera, viewport: Viewport, wx: number, wy: number
   return at.x >= SCREEN_EDGE && at.y >= SCREEN_EDGE && at.x <= viewport.w - SCREEN_EDGE && at.y <= viewport.h - SCREEN_EDGE;
 }
 
-function bodiesOf(nav: NavState, cam: Camera, view: Viewport, time: number): MapBody[] {
+/** Every selectable body of the map `nav` is on, on the screen or off it: what a press is tested against, as the
+ *  legacy game tests a press against every pick it made (celestial-frontier.html 5604). `time` is the seconds the
+ *  orbits have run. */
+export function everyBody(nav: NavState, cam: Camera, view: Viewport, time: number): MapBody[] {
   if (nav.mode === 'universe') {
     return universeGalaxies(cam.x, cam.y, UNIVERSE_CELLS).map((g) => ({
       kind: 'galaxy', key: `galaxy:${g.seed}:${g.x}:${g.y}`, label: g.home ? 'Milky Way — you are here' : galaxyName(g.seed),
@@ -146,7 +150,7 @@ function bodiesOf(nav: NavState, cam: Camera, view: Viewport, time: number): Map
  *  its 12 px edge, are listed; when none is, all of them are. `time` is the seconds the orbits have run
  *  (0 holds every planet at its starting angle). */
 export function visibleBodies(nav: NavState, cam: Camera, viewport: Viewport, time: number): MapBody[] {
-  const all = bodiesOf(nav, cam, viewport, time);
+  const all = everyBody(nav, cam, viewport, time);
   const visible = all.filter((b) => onScreen(cam, viewport, b.wx, b.wy));
   return visible.length > 0 ? visible : all;
 }

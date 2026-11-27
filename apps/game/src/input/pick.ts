@@ -1,26 +1,23 @@
-/** A body on the map, in CSS pixels. `reach` is half the width of the game's own picture of it, where it has one. */
-export interface Pickable { key: string; x: number; y: number; priority: number; reach?: number }
+/** A body on the map, in CSS pixels. */
+export interface Pickable { key: string; x: number; y: number; priority: number }
 
 /** Keys in code-unit order, the same on every device. */
 export const compareKeys = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
 
 /**
- * The body a press at (x, y) selects. A body is under the press when the press is on its picture (the square `reach`
- * each way from its middle, as the game's sprite is) or within its own radius of its middle (the radius itself
- * included, where the legacy game's test is strictly nearer: celestial-frontier.html 5607), which keeps a body drawn
- * small easy to press. `radiusOf` gives each body's radius: the legacy game's differs by the kind of body. Of the
- * bodies under the press the one whose middle is nearest is selected, as in the legacy game (5604-5608); equal
+ * The body a press at (x, y) selects, as in the legacy game (celestial-frontier.html 5604-5608): a body is under the
+ * press when the press is nearer its middle than its radius, and of the bodies under the press the one whose middle
+ * is nearest is selected. `radiusOf` gives each body's radius: the legacy game's differs by the kind of body. Equal
  * distance goes to the lower priority, then the smaller key. Null when none is under it.
  */
 export function pick<T extends Pickable>(bodies: readonly T[], x: number, y: number, radiusOf: (body: T) => number): T | null {
   let best: T | null = null;
   let bestSquared = Infinity;
   for (const body of bodies) {
-    const [dx, dy] = [Math.abs(body.x - x), Math.abs(body.y - y)];
+    const [dx, dy] = [body.x - x, body.y - y];
     const squared = dx * dx + dy * dy;
-    const reach = body.reach ?? 0;
     const radius = radiusOf(body);
-    if (squared > radius * radius && (dx > reach || dy > reach)) continue;
+    if (!(squared < radius * radius)) continue;
     if (best === null || squared < bestSquared || (squared === bestSquared && (body.priority < best.priority
       || (body.priority === best.priority && compareKeys(body.key, best.key) < 0)))) {
       best = body;

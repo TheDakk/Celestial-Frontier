@@ -5,7 +5,7 @@ import { encodeWhere } from '@cf/domain-strays';
 import { OBS_R } from '@cf/domain-worldconfig';
 import { createMemoryBackend, initializeFreshV5 } from '@cf/persistence';
 import { ascHintFor, navToView } from '@cf/scene';
-import { ascentCamera, descentCamera, pictureWidth, supernovaBodies, toScreen, visibleBodies } from '../src/space';
+import { ascentCamera, descentCamera, entryZoom, pickRadius, supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits } from '../src/space';
 import type { GameEvents } from '../src/events';
 import { REGISTRY } from '../src/save/index';
 import descriptors from '../../../fixtures/current/descriptors.json' with { type: 'json' };
@@ -53,28 +53,35 @@ describe('the map screen', () => {
     expect([canvas().parentElement, canvas().tabIndex]).toEqual([edge.parentElement, 0]);
   });
 
-  it('a press anywhere on a planet\'s picture opens its card, well past the pick radius; a press off it opens none', async () => {
+  it('a press on a planet\'s disc opens its card, past the floor; a press off the disc opens none, the corner of the square about it included (7673)', async () => {
     const page = await bootPage({ width: 800, height: 600 });
     page.live.motionMode = 1;
     rest(page);
-    const cam = descentCamera('system', 600).to;
-    const jupiter = visibleBodies(page.nav.nav, cam, { w: 800, h: 600 }, 0).find((body) => body.label === 'Jupiter')!;
-    const at = toScreen(cam, { w: 800, h: 600 }, jupiter.wx, jupiter.wy);
-    // The game's picture of Jupiter is the square its night is drawn on: three of its radii wide.
-    const reach = pictureWidth(jupiter, cam.z) * cam.z / 2;
-    // The corners of the picture lie past the pick radius: there the picture alone decides.
-    expect(Math.hypot(reach - 1, reach - 1)).toBeGreaterThan(PLANET_BY_MOUSE + 2);
-    tap(at.x + reach - 1, at.y - reach + 1);
-    expect(cardTitle()).toBe('Jupiter');
-    key(document, 'Escape');
-    tap(at.x - reach + 1, at.y + reach - 1);
-    expect(cardTitle()).toBe('Jupiter');
-    key(document, 'Escape');
-    // Off the picture and past the radius, to the side and at the corner.
-    tap(at.x + Math.max(reach, PLANET_BY_MOUSE) + 1, at.y);
-    expect(cardTitle()).toBeNull();
-    tap(at.x + reach + 1, at.y + reach - 1);
-    expect(cardTitle()).toBeNull();
+    const cam = { ...descentCamera('system', 600).to };
+    const view = { w: 800, h: 600 };
+    // Venus has no moon to answer beside it.
+    const venus = visibleBodies(page.nav.nav, cam, view, 0).find((body) => body.label === 'Venus')!;
+    // Fourteen wheel steps in about Venus: its disc is then wider than a planet's floor.
+    const start = toScreen(cam, view, venus.wx, venus.wy);
+    let near = cam;
+    for (let i = 0; i < 14; i++) {
+      fire(canvas(), 'wheel', { deltaY: -120, clientX: start.x, clientY: start.y });
+      near = zoomAbout(near, 1.14, start.x - 400, start.y - 300, zoomLimits('system', 600, entryZoom('system', 600)));
+    }
+    rest(page);
+    const at = toScreen(near, view, venus.wx, venus.wy);
+    const disc = 6 * Number((venus.ref as unknown as { P: { sizeMul: number } }).P.sizeMul) * near.z;
+    expect(disc).toBeGreaterThan(PLANET_BY_MOUSE + 2);
+    expect(pickRadius(venus, near.z, 600, 1.2)).toBeCloseTo(disc, 9);
+    const pressed = (dx: number, dy: number): string | null => {
+      if (cardTitle() !== null) key(document, 'Escape');
+      tap(at.x + dx, at.y + dy);
+      return cardTitle();
+    };
+    const diagonal = (disc - 0.5) / Math.SQRT2;
+    expect([pressed(disc - 0.5, 0), pressed(0, -disc + 0.5), pressed(-diagonal, diagonal)]).toEqual(['Venus', 'Venus', 'Venus']);
+    // Off the disc: just past it to the side, and at the corner of the square about it.
+    expect([pressed(disc + 0.5, 0), pressed(disc - 1, disc - 1), pressed(-(disc + 0.5) / Math.SQRT2, -(disc + 0.5) / Math.SQRT2)]).toEqual([null, null, null]);
   });
 
   it('the same path works from the keyboard alone', async () => {

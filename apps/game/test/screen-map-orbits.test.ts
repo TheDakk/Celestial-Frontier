@@ -2,7 +2,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { encodeWhere } from '@cf/domain-strays';
 import { currentRegionOf } from '@cf/scene';
-import { ascentCamera, descentCamera, mapPicture, pictureWidth, placedLabels, supernovaBodies, toScreen, visibleBodies, type MapFrame } from '../src/space';
+import { ascentCamera, descentCamera, mapPicture, pickRadius, placedLabels, supernovaBodies, toScreen, visibleBodies, type MapFrame } from '../src/space';
 import { currentSheet } from '../src/ui';
 import { canvas, cardTitle, fire, key, rest, tap } from './screen-map-support';
 import { bootPage, pretendLayout, pretendSize, runFrames } from './shell-support';
@@ -28,10 +28,10 @@ async function atSol() {
       const body = visibleBodies(page.nav.nav, cam, view, orbit).find((b) => b.label === name)!;
       return toScreen(cam, view, body.wx, body.wy);
     },
-    /** How far from a world's middle a press by mouse can still be its own: its picture or a planet's 19.2 pixels, whichever is more. */
+    /** How far from a world's middle a press by mouse can still be its own, and half as much again: its disc or a planet's 19.2 pixels, whichever is more. */
     grasp(name: string): number {
       const body = visibleBodies(page.nav.nav, cam, view, 0).find((b) => b.label === name)!;
-      return Math.hypot(1, 1) * Math.max(19.2, pictureWidth(body, cam.z) * cam.z / 2);
+      return Math.hypot(1, 1) * pickRadius(body, cam.z, 600, 1.2);
     },
   });
 }
@@ -48,8 +48,8 @@ describe('the map screen\'s bodies: where a press finds them, and how near it mu
     page.live.motionMode = 1;
     rest(page);
     const mercury = visibleBodies(page.nav.nav, page.cam, page.view, 0).find((body) => body.label === 'Mercury')!;
-    // Its picture is far smaller than the floor: the floor alone decides.
-    expect(pictureWidth(mercury, page.cam.z) * page.cam.z / 2).toBeLessThan(10);
+    // Its disc is far smaller than the floor: the floor alone decides.
+    expect(pickRadius(mercury, page.cam.z, 600, 1.2)).toBeCloseTo(19.2, 9);
     const at = page.placeOf('Mercury', 0);
     const pressed = (dx: number, dy: number, by: 'mouse' | 'touch'): string | null => {
       if (cardTitle() !== null) key(document, 'Escape');
@@ -75,7 +75,7 @@ describe('the map screen\'s bodies: where a press finds them, and how near it mu
       rest(page);
       const cam = { ...near, z: near.z * 0.88 ** steps };
       const all = [...visibleBodies(page.nav.nav, cam, view, 0), ...supernovaBodies(page.nav.nav, page.loop.publishedEpoch())]
-        .map((body) => ({ body, ...toScreen(cam, view, body.wx, body.wy), reach: pictureWidth(body, cam.z) * cam.z / 2 }));
+        .map((body) => ({ body, ...toScreen(cam, view, body.wx, body.wy), reach: pickRadius(body, cam.z, 600, 0) }));
       /** A body drawn smaller than any floor, with a side (left or right) where a press up to 18 pixels from its middle
        *  is out of every other body's reach: there only its own floor decides. */
       return (wanted: (body: (typeof all)[number]['body']) => boolean) => all.flatMap((a) => [-1, 1].map((side) => ({ ...a, side })))

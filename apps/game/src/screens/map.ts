@@ -1,12 +1,11 @@
 /* The map screen: the universe, a galaxy or a system, drawn by seeded code, with the survey card of whatever is
    selected and travel between the three by tap, zoom, keyboard and pasted code.
 
-   The orbits hold while a planet's survey card is open, and go on from where they were when it closes or the map
+   The orbits hold while the card of any body of a system is open (Dakk's rulings of 2026-11-26 and 2026-11-27), and go on from where they were when it closes or the map
    changes (the legacy game lifts its hold on a change of map: celestial-frontier.html 26942). Holding for an open
    card is a named difference from the legacy game, which holds only on approach and landing: see space/orbit-clock.ts.
    A press is tested against each world where its orbit has it now, which is where it is drawn (7668, 7673). */
 import { describePickWithState, type Descriptor } from '@cf/domain-descriptors';
-import { OBS_R } from '@cf/domain-worldconfig';
 import { systemFor } from '@cf/domain-worldgen';
 import type { SaveStateV2 } from '@cf/persistence';
 import { currentRegionOf, type NavState } from '@cf/scene';
@@ -14,7 +13,7 @@ import { paintPixels } from '../platform/canvas';
 import { PICK_PADDING, escapeTarget, mountGestures, mountMapKeys, pick, type Gesture, type MapKeyTarget } from '../input';
 import type { NavController, NavOutcome } from '../nav';
 import {
-  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, orbitClock, parkBelowTrigger, pickFloor, pictureWidth, placedLabels, ringUnder, showSpace,
+  ascentCamera, descentCamera, diveIntent, entryZoom, everyBody, mapPicture, minSideOf, orbitClock, onScreen, parkBelowTrigger, pickFloor, pickRadius, placedLabels, ringUnder, showSpace,
   smallBodies, supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Lettered, type MapBody, type MapFrame, type Viewport,
 } from '../space';
 import { createFrameCoalescer, currentSheet, drawLines, edged, interfaceGaps, sheetColours, type Toast } from '../ui';
@@ -41,8 +40,6 @@ export interface MapPorts {
 }
 
 const REFUSAL_TITLES = { 'prime-reach': 'Beyond Your Saved Reach', 'charter-reach': 'Beyond Your Charter' } as const;
-/** How near the ring of the observable universe, in screen pixels, a tap on empty space opens the origin card. */
-const RING_PICK_PX = 30;
 const DEPTH = { universe: 0, galaxy: 1, system: 2, surface: 3 } as const;
 type Selected = { body: MapBody; x: number; y: number } & MapKeyTarget;
 
@@ -93,8 +90,11 @@ export function mapScreen(ports: MapPorts): ScreenDef {
       /** The seconds the orbits have run, for the picture and for a press alike: none under reduced motion, which
        *  holds every clock of the map at its start whatever the orbit clock has counted. */
       const orbit = (): number => (ports.reducedMotion() ? 0 : orbits.time());
+      /** The bodies a zoom can dive into and the keyboard can step to: those on the screen. */
       const bodiesAt = (camera: Camera): MapBody[] =>
-        [...visibleBodies(nav.nav, camera, view(), orbit()), ...supernovaBodies(nav.nav, ports.epoch()), ...smallBodies(nav.nav, camera, view(), time(), orbit())];
+        [...visibleBodies(nav.nav, camera, view(), orbit()), ...supernovaBodies(nav.nav, ports.epoch())];
+      /** The star and the small bodies of a system, where they stand now. */
+      const small = (): MapBody[] => smallBodies(nav.nav, time(), orbit());
 
       const describe = (kind: string, data: unknown): Descriptor | null => {
         const names = ports.live().customNames;
@@ -127,7 +127,8 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         const { descriptor, action, ping } = cardOf(body);
         if (descriptor === null) return false;
         card.show(descriptor, action, opener);
-        if (body.kind === 'planet') orbits.hold();
+        // Every body's card holds the orbits while it is open, so what is read stays where it was pressed.
+        if (nav.nav.mode === 'system') orbits.hold();
         if (ping) ports.sound.ping();
         return true;
       };
@@ -151,18 +152,25 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         }
       };
 
-      const targets = (): Selected[] => bodiesAt(cam).map((body) => {
+      const targetOf = (body: MapBody): Selected => {
         const at = toScreen(cam, view(), body.wx, body.wy);
         return {
           body, key: body.key, x: at.x, y: at.y, priority: body.priority,
-          // A press anywhere on the body's picture selects it, as in the game: half its width each way.
-          reach: pictureWidth(body, cam.z) * cam.z / 2,
           // A catalogued body is announced by its name; the rest by the title of their card.
           get label(): string {
             return body.kind === 'galaxy' || body.kind === 'star' || body.kind === 'planet' ? body.label : cardOf(body).descriptor?.title ?? body.label;
           },
         };
-      });
+      };
+      /** What a press is tested against: every body of the map, on the screen or off it, as in the game (5604). */
+      const pressTargets = (): Selected[] =>
+        [...everyBody(nav.nav, cam, view(), orbit()), ...supernovaBodies(nav.nav, ports.epoch()), ...small()].map(targetOf);
+      /** The keyboard's stops: the bodies on the screen that a pointer has a floor for at this zoom. A moon drawn too
+       *  small to have one (sizes.ts) is no stop until the view is near enough. */
+      const targets = (): Selected[] => [
+        ...bodiesAt(cam),
+        ...small().filter((body) => onScreen(cam, view(), body.wx, body.wy) && pickFloor(body, cam.z, minSide()) > 0),
+      ].map(targetOf);
 
       const onGesture = (gesture: Gesture): void => {
         if (gesture.kind === 'pan') {
@@ -176,23 +184,18 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         } else if (gesture.kind === 'back') {
           if (card.open) card.hide(false); else goUp();
         } else {
-          // Each kind of body has its own floor, wider under a finger than under a mouse.
+          // Each kind of body has its own radius, wider under a finger than under a mouse.
           const padding = PICK_PADDING[ctx.inputMode()];
-          const hit = pick(targets(), gesture.x, gesture.y, (target) => pickFloor(target.body, cam.z, minSide()) * padding);
+          const hit = pick(pressTargets(), gesture.x, gesture.y, (target) => pickRadius(target.body, cam.z, minSide(), padding));
           const ringHit = hit === null ? ringUnder(nav.nav, cam, view(), gesture.x, gesture.y) : null;
+          const about = ringHit === null ? null : describe(ringHit.kind, ringHit.data);
           if (hit !== null) select(hit.body, null);
-          else if (ringHit !== null) {
-            const about = describe(ringHit.kind, ringHit.data);
-            if (about !== null) { card.show(about, null, null); ports.sound.ping(); }
-          } else if (nav.nav.mode === 'universe') {
-            const { w, h } = view();
-            const wx = cam.x + (gesture.x - w / 2) / cam.z;
-            const wy = cam.y + (gesture.y - h / 2) / cam.z;
-            if (Math.abs(Math.hypot(wx, wy) - OBS_R) * cam.z < RING_PICK_PX) {
-              const origin = describe('cmb', {});
-              if (origin !== null) { card.show(origin, null, null); ports.sound.ping(); }
-            }
-          }
+          else if (about !== null) {
+            card.show(about, null, null);
+            // A ring is no body: its card holds no orbit, one it replaces included.
+            orbits.release();
+            ports.sound.ping();
+          } else if (card.open) card.hide(false);   // A tap on empty space closes the card (5619).
         }
         redraw.request();
       };
