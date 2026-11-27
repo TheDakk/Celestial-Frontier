@@ -5,6 +5,7 @@ import {
   BOND_LEVELS, REST_ACTION, bioscanNotices, bondOf, companionCareV1, companionLock, restMinutes, restNotice, restNotices, scoutNotice, scoutStands, settleRestV1,
   type CareAuthority, type CareCommitted, type CareDoor, type CareTransaction,
 } from '../src/care';
+import { projectCompanionBondV1, withCompanionBondMemoriesV1 } from '@cf/domain-acquisition/companion-care';
 import type { SaveStateV2 } from '@cf/persistence';
 import { EARTH } from './capture-support';
 import { EARTH_WOUND, carePage, earthId, heldPage, strikeSession, type CarePage } from './care-support';
@@ -29,6 +30,11 @@ describe('bond and Rest, by Dakk\'s decision D13', () => {
     expect(levels).toEqual([0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5]);
     expect(bondOf(2)).toMatchObject({ level: 0, name: 'Wary', memories: 2, next: { level: 1, name: 'Familiar', memories: 3, remaining: 1 } });
     expect(bondOf(40)).toMatchObject({ level: 5, name: 'Soulbound', next: null });
+    // A count of memories and a companion that truly holds that many say the same bond.
+    for (const count of [0, 1, 3, 7, 8, 15, 25, 39, 40, 41]) {
+      const held = withCompanionBondMemoriesV1(null, Array.from({ length: count }, (_, index) => ({ id: `first:${index}`, kind: 'test' })), 0);
+      expect(projectCompanionBondV1(held), String(count)).toEqual(bondOf(count));
+    }
   });
 
   it('"2 active minutes per 0.1 hurt, rounded up, at most 20"', () => {

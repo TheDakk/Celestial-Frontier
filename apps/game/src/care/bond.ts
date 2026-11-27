@@ -12,7 +12,7 @@
    showed every taste at once (15135-15136). */
 import type { CreatureInstanceV1 } from '@cf/domain-acquisition';
 import { projectCompanionAvailabilityV1, scoutStandsV1 } from '@cf/domain-acquisition/companion-availability';
-import { COMPANION_BOND_LEVELS_V1, companionRestDurationMsV1, projectCompanionBondV1, projectCompanionTastesV1 } from '@cf/domain-acquisition/companion-care';
+import { COMPANION_BOND_LEVELS_V1, companionBondLevelV1, companionRestDurationMsV1, projectCompanionTastesV1 } from '@cf/domain-acquisition/companion-care';
 import { creatureCondition, type CreatureConditionLabel } from './bioscan-hazard';
 import { FLAVOUR_NAMES, type Flavour } from './meals';
 
@@ -27,10 +27,15 @@ export interface Bond {
   /** The level above and how many memories it still asks; null at the last. */
   readonly next: Readonly<{ level: number; name: string; memories: number; remaining: number; unlock: string }> | null;
 }
-/** The bond of a companion that holds this many memories. */
+/** The bond of a companion that holds this many memories, read from the table of levels itself. */
 export function bondOf(memories: number): Bond {
-  const stand = { length: memories } as unknown as never[];
-  return projectCompanionBondV1({ level: 0, memories: stand, preferredRole: null, worldsSurvived: 0, guardianVictories: 0, mementoIds: [] });
+  const level = companionBondLevelV1(memories);
+  const row = BOND_LEVELS[level]!;
+  const next = BOND_LEVELS[level + 1];
+  return Object.freeze({
+    level, name: row.name, memories,
+    next: next === undefined ? null : Object.freeze({ level: next.level, name: next.name, memories: next.memories, remaining: next.memories - memories, unlock: next.unlock! }),
+  });
 }
 
 const MINUTE_MS = 60_000;
