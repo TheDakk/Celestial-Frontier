@@ -2,13 +2,14 @@
 // The legacy game has neither: its wounds never fade on their own (its guide, 19430).
 import { describe, expect, it } from 'vitest';
 import {
-  BOND_LEVELS, REST_ACTION, bioscanNotices, bondOf, companionCareV1, companionLock, restMinutes, restNotice, restNotices, scoutNotice, scoutStands, settleRestV1,
+  BOND_LEVELS, REST_ACTION, bioscanNotices, bondOf, companionCareV1, companionLock, restMinutes, restNotices, scoutNotice, settleRestV1,
   type CareAuthority, type CareCommitted, type CareDoor, type CareTransaction,
 } from '../src/care';
+import { scoutStandsV1 } from '@cf/domain-acquisition/companion-availability';
 import { projectCompanionBondV1, withCompanionBondMemoriesV1 } from '@cf/domain-acquisition/companion-care';
 import type { SaveStateV2 } from '@cf/persistence';
 import { EARTH } from './capture-support';
-import { EARTH_WOUND, carePage, earthId, heldPage, strikeSession, type CarePage } from './care-support';
+import { EARTH_WOUND, carePage, clearSession, earthId, heldPage, strikeSession, type CarePage } from './care-support';
 import { NOW, dump } from './save-support';
 
 const committed = async <O extends { kind: string }>(outcome: Promise<O>): Promise<Extract<O, { kind: 'committed' }>> => {
@@ -59,7 +60,7 @@ describe('Rest', () => {
     expect(await page.receipts()).toHaveLength(1);
     expect(page.outcomes.committed).toEqual([{ kind: REST_ACTION, receiptOrdinal: 0 }]);
     expect(page.runtime.diagnostics().sessionDraws).toEqual({});
-    expect(restNotice(facts)).toEqual({ icon: 'rest', title: 'Resting', message: ['Platypus — 8 min of play left'] });
+    expect(restNotices(facts)).toEqual([{ icon: 'rest', title: 'Resting', message: ['Platypus — 8 min of play left'] }]);
     // What was stored reads back the same.
     expect((await page.stored()).state.codex.find(([id]) => id === PLATYPUS)?.[1].g.assignment).toEqual({ kind: 'mission', missionId: `rest:${at + 8 * MINUTE}` });
   });
@@ -188,14 +189,14 @@ describe('a resting companion steps down from the scout\'s post until it is read
     const first = await committed(early.rest(PLATYPUS));
     early.time.advance(first.facts.readyAtActivePlayMs - 1 - early.runtime.activePlayMs());
     expect(early.runtime.activePlayMs()).toBe(first.facts.readyAtActivePlayMs - 1);
-    expect(scoutStands(beast(early), first.facts.readyAtActivePlayMs - 1)).toBe(false);
+    expect(scoutStandsV1(beast(early), first.facts.readyAtActivePlayMs - 1)).toBe(false);
     expect((await committed(early.scan(EARTH))).facts).toMatchObject({ target: 'explorer', scout: null, scoutResting: { id: PLATYPUS } });
 
     const ready = await carePage({ sessionSeed: strikeSession(), held: [heldPage(11, { hurt: 0.35 })], scout: PLATYPUS });
     const second = await committed(ready.rest(PLATYPUS));
     ready.time.advance(second.facts.readyAtActivePlayMs - ready.runtime.activePlayMs());
     expect(ready.runtime.activePlayMs()).toBe(second.facts.readyAtActivePlayMs);
-    expect(scoutStands(beast(ready), second.facts.readyAtActivePlayMs)).toBe(true);
+    expect(scoutStandsV1(beast(ready), second.facts.readyAtActivePlayMs)).toBe(true);
     const { state, facts } = await committed(ready.scan(EARTH));
     expect(facts).toMatchObject({ target: 'scout', hpAfter: 100, scoutResting: null });
     // It rested whole: the strike starts from nothing.
@@ -209,9 +210,9 @@ describe('a resting companion steps down from the scout\'s post until it is read
     const page = await carePage({ sessionSeed: strikeSession(), held: [heldPage(11, { hurt: 0.35 }), heldPage(12)], scout: earthId(12) });
     expect((await committed(page.rest(PLATYPUS))).facts.scout).toBe(false);
     // Only a Rest takes a scout from its post: one away on a mission or recovering after a union still stands.
-    expect(scoutStands({ assignment: { kind: 'mission', missionId: 'mission:4' } }, 0)).toBe(true);
-    expect(scoutStands({ assignment: { kind: 'recovery', readyAtActivePlayMs: 1_000_000 } }, 0)).toBe(true);
-    expect(scoutStands({ assignment: null }, 0)).toBe(true);
+    expect(scoutStandsV1({ assignment: { kind: 'mission', missionId: 'mission:4' } }, 0)).toBe(true);
+    expect(scoutStandsV1({ assignment: { kind: 'recovery', readyAtActivePlayMs: 1_000_000 } }, 0)).toBe(true);
+    expect(scoutStandsV1({ assignment: null }, 0)).toBe(true);
     expect((await committed(page.scan(EARTH))).facts).toMatchObject({ target: 'scout', scout: { id: earthId(12) }, scoutResting: null });
   });
 
@@ -221,10 +222,25 @@ describe('a resting companion steps down from the scout\'s post until it is read
     const named = await committed(page.scout(PLATYPUS));
     expect(named.facts).toMatchObject({ scoutAfter: PLATYPUS, named: true, resting: true });
     expect((await committed(page.scan(EARTH))).facts).toMatchObject({ target: 'explorer', scoutResting: { id: PLATYPUS, name: 'Platypus' } });
-    expect(scoutStands(beast(page), rest.facts.readyAtActivePlayMs)).toBe(true);
+    expect(scoutStandsV1(beast(page), rest.facts.readyAtActivePlayMs)).toBe(true);
+    expect(scoutNotice('Platypus', named.facts).message).toEqual(['Platypus will walk point when it is rested — until then hostile scans risk your own HP.']);
+    // A second press stands it down, resting or not: a beast off the post is not a resting scout (LEGACY 15202).
+    const down = await committed(page.scout(PLATYPUS));
+    expect(down.facts).toMatchObject({ scoutAfter: null, named: false, resting: false });
+    expect(scoutNotice('Platypus', down.facts).message).toEqual(['Platypus stands down. Hostile scans risk your own HP again.']);
     // A beast that does not rest is named as it always was.
     const plain = await carePage({ held: [heldPage(11)] });
-    expect((await committed(plain.scout(PLATYPUS))).facts.resting).toBe(false);
+    const walks = await committed(plain.scout(PLATYPUS));
+    expect(walks.facts.resting).toBe(false);
+    expect(scoutNotice('Platypus', walks.facts).message).toEqual(['Platypus now walks point — it takes the hit when a bioscan turns hostile.']);
+  });
+
+  it('a scan that meets no strike says nothing of the resting scout: there was no strike to miss', async () => {
+    const page = await carePage({ sessionSeed: clearSession(), held: [heldPage(11, { hurt: 0.35 })], scout: PLATYPUS });
+    await committed(page.rest(PLATYPUS));
+    const { facts } = await committed(page.scan(EARTH));
+    expect(facts).toMatchObject({ rolled: true, hostile: false, target: 'none', scout: null, scoutResting: null, scanned: true });
+    expect(bioscanNotices(facts).map(({ title }) => title)).toEqual(['Biosphere Surveyed']);
   });
 
   it('what the player is told: at the Rest, at the press of Scout, and at the strike', async () => {
@@ -232,12 +248,13 @@ describe('a resting companion steps down from the scout\'s post until it is read
     const rest = await committed(page.rest(PLATYPUS));
     expect(restNotices(rest.facts)).toEqual([
       { icon: 'rest', title: 'Resting', message: ['Platypus — 8 min of play left'] },
-      { icon: 'scout', title: 'Field Scout', message: ['Platypus stands down while it rests. Hostile scans risk your own HP until it is ready.'] },
+      // It keeps the post: the line must not say "stands down", which in the legacy game means it left (15202).
+      { icon: 'scout', title: 'Field Scout', message: ['Platypus rests and keeps the post — it walks point again when it is ready. Hostile scans risk your own HP until then.'] },
     ]);
     // A Rest of a beast that is not the scout says the Rest alone.
     const other = await committed(page.rest(earthId(12)));
-    expect(restNotices(other.facts)).toEqual([restNotice(other.facts)]);
-    expect(scoutNotice('Platypus', true, true)).toEqual({
+    expect(restNotices(other.facts).map(({ title }) => title)).toEqual(['Resting']);
+    expect(scoutNotice('Platypus', { named: true, resting: true })).toEqual({
       icon: 'scout', title: 'Field Scout', message: ['Platypus will walk point when it is rested — until then hostile scans risk your own HP.'],
     });
     const scan = await committed(page.scan(EARTH));

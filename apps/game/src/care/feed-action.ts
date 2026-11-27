@@ -101,15 +101,16 @@ function beastOf(ownership: OwnershipStateV1, speciesId: string): CreatureInstan
 function speciesFirsts(draft: SaveStateV2, extensions: V5Extensions, speciesId: string) {
   const read = readLegacyXpFirstsAuthority(draft, extensions);
   if (read.kind !== 'loaded') return refuse(`firsts:${read.reason}`);
-  const held = new Set([FIRST_MEAL, ...FLAVOURS.map(firstTaste)].filter((first) => {
+  const paid = [FIRST_MEAL, ...FLAVOURS.map(firstTaste)].filter((first) => {
     const key = xpFirstKey(speciesId, first);
     return read.window.includes(key) || read.archived.includes(key);
-  }));
+  });
   let current = extensions;
   let writes: readonly V5ExtensionWrite[] = [];
   return {
-    /** The firsts already paid, by name. */
-    paid: (): readonly string[] => [...held],
+    /** The firsts paid before this press, by name. One paid in this press is not paid twice in it: the companion
+        remembers it from the meal that paid it. */
+    paid: (): readonly string[] => paid,
     /** Writes a first just paid into the ledger, on the draft; answers its key. */
     claim: (first: string): string => {
       const key = xpFirstKey(speciesId, first);
@@ -120,7 +121,6 @@ function speciesFirsts(draft: SaveStateV2, extensions: V5Extensions, speciesId: 
       current = claimed.extensions;
       // Past its 4,000 keys the ledger keeps its oldest in a carrier of its own; the last write holds them all.
       if (claimed.writes.length > 0) writes = claimed.writes;
-      held.add(first);
       return key;
     },
     writes: (): readonly V5ExtensionWrite[] => writes,

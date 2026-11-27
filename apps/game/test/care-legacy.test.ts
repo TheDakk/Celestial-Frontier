@@ -210,8 +210,8 @@ describe('the scan hazard against the legacy game', () => {
       label: 'Scout', standing: 'Scouting',
       tip: 'Your Field Scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.',
     });
-    expect(scoutNotice('Civet', true)).toEqual({ icon: 'scout', title: 'Field Scout', message: ['Civet now walks point — it takes the hit when a bioscan turns hostile.'] });
-    expect(scoutNotice('Civet', false).message).toEqual(['Civet stands down. Hostile scans risk your own HP again.']);
+    expect(scoutNotice('Civet', { named: true, resting: false })).toEqual({ icon: 'scout', title: 'Field Scout', message: ['Civet now walks point — it takes the hit when a bioscan turns hostile.'] });
+    expect(scoutNotice('Civet', { named: false, resting: false }).message).toEqual(['Civet stands down. Hostile scans risk your own HP again.']);
     expect(renameNotice({ speciesId: 's1', name: 'Rex', achievementIds: [] })).toEqual({
       icon: null, title: 'Renamed', message: ['Rex it is — the name travels inside its creature code too.'],
     });

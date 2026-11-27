@@ -153,7 +153,9 @@ export function companionCommandAvailableV1(
  * Rest runs it takes no strike of a scan and learns no lesson of a capture,
  * and at the Rest's exact boundary it stands again with nothing written (no
  * deferred writer). A field mission or a Recovery does not take it from the
- * post. Every reader of the scout's post asks this. */
+ * post. The legacy game had the same shape for a scout whose page was no
+ * beast: the post named, nobody standing at it, the strike the explorer's
+ * (13150-13151). Every reader of the scout's post asks this. */
 export function scoutStandsV1(
   creature: Pick<CreatureInstanceV1, 'assignment'>,
   activePlayMs: number,

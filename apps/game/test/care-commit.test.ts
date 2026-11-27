@@ -104,6 +104,15 @@ describe('the check after storage', () => {
     const mended = await page();
     expect(await settleMendV1({ door: lyingDoor(mended, genome((g) => ({ ...g, hurt: 0.6 }))) }, { speciesId: beast, codecNow: NOW }))
       .toMatchObject({ kind: 'committed-convergence', detail: 'postcommit:hurt' });
+    // A Mend of two meals: the first paid by the second meal alone (a flavour) is looked for in the ledger too.
+    const twoMeals = () => carePage({ held: [heldPage(11, { hurt: 0.3 }), heldPage(0), heldPage(2)] });
+    const whole = await twoMeals();
+    const honestMend = await settleMendV1({ door: lyingDoor(whole, (committed) => committed) }, { speciesId: beast, codecNow: NOW });
+    expect(honestMend).toMatchObject({ kind: 'committed', facts: { meals: [{ firstsPaid: [`${beast}|welcome`, `${beast}|taste:ins`] }, { firstsPaid: [`${beast}|taste:res`] }] } });
+    const short = await twoMeals();
+    const lost = stored((state) => ({ ...state, xpFirsts: state.xpFirsts.filter((key) => key !== `${beast}|taste:res`) }));
+    expect(await settleMendV1({ door: lyingDoor(short, lost) }, { speciesId: beast, codecNow: NOW }))
+      .toMatchObject({ kind: 'committed-convergence', detail: 'postcommit:firsts' });
   });
 
   it('the explorer\'s meal is held to the same check, whatever is missing', async () => {

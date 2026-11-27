@@ -31,6 +31,7 @@
 
    The painted port (`bioscan-action.ts`) kept the explorer alive at 1, capped the scout at 0.85, found a Paragon
    only at its full address and joined the survey's own receipt to this one; none of that is the legacy game's. */
+import { scoutStandsV1 } from '@cf/domain-acquisition/companion-availability';
 import { paragonGenomeV1, paragonSeedV1 } from '@cf/domain-acquisition/paragon-internal';
 import {
   canonicalGenomeIdentityV1,
@@ -63,7 +64,6 @@ import {
 import { ascStageOf, bankBioscan, reconcileV2Chapters, type CanonicalCF1WorldAddress } from '@cf/scene';
 import { bioscanDanger, creatureCondition, depthTax, resolveBioscanPress, type BioscanDanger, type CreatureConditionLabel } from './bioscan-hazard';
 import { revealBiosphere } from './bioscan-reveal';
-import { scoutStands } from './bond';
 import {
   commitCare, refreshProgression, refuse, settleCare, unlockAchievement, type CareAuthority, type CareCharterStager, type CareOutcome, type CareReceipt, type CareSettleDeps, type CareStaged,
 } from './commit';
@@ -199,10 +199,10 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
   if (loadout.kind !== 'loaded') return refuse(`gear:${loadout.kind}`);
   const ownership = ownershipOf(extensions);
   // The scout takes a strike only while it is a beast of the Compendium (13150-13151), and not while it rests: a
-  // resting scout is not at its post, and the strike is the explorer's (`scoutStands`).
+  // resting scout is not at its post, and the strike is the explorer's (`scoutStandsV1`).
   const creature = draft.scoutId === null ? null : compendiumRow(ownership, draft.scoutId)?.creature ?? null;
   const named = draft.scoutId === null || creature === null ? null : { id: draft.scoutId, creature };
-  const standing = named !== null && scoutStands(named.creature, receipt.activePlayMs) ? named : null;
+  const standing = named !== null && scoutStandsV1(named.creature, receipt.activePlayMs) ? named : null;
   const resolved = resolveBioscanPress({
     danger, planetType: card.planetType, draws: receipt.draws, reinforcedHull: draft.techOwned.includes(REINFORCED_HULL),
     suitCut: loadout.capabilities.bioscanDamageReduction, hp: draft.hp, scoutHurt: standing === null ? null : standing.creature.hurt ?? 0,
@@ -221,17 +221,17 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
     if (resolved.target === 'scout') {
       // The strike was routed to the scout because one stands.
       const { id, creature: scout } = standing!;
-      const named = { id, name: draft.codex.find(([held]) => held === id)?.[1].name ?? '', hurtBefore: scout.hurt ?? 0 };
+      const struck = { id, name: draft.codex.find(([held]) => held === id)?.[1].name ?? '', hurtBefore: scout.hurt ?? 0 };
       if (resolved.scoutLost) {
         // It had nothing left: its post is emptied and it leaves the Compendium (13156-13157).
         contents = { ...withoutSpeciesV1(contents, scout.speciesId) };
         scoutLost = true;
-        scoutFact = { ...named, hurtAfter: null, condition: null, lost: true };
+        scoutFact = { ...struck, hurtAfter: null, condition: null, lost: true };
       } else {
         const hurt = resolved.scoutHurtAfter!;
         contents.creatures = contents.creatures.map((row) => row === scout ? createCreatureInstanceV1({ ...scout, hurt }) : row);
         touched.push(id);
-        scoutFact = { ...named, hurtAfter: hurt, condition: creatureCondition(hurt).label, lost: false };
+        scoutFact = { ...struck, hurtAfter: hurt, condition: creatureCondition(hurt).label, lost: false };
       }
     } else {
       draft.hp = resolved.hpAfter;

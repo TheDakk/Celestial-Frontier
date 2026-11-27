@@ -11,7 +11,7 @@
    - the first recovery from Injured or worse (0.3) is the bond memory `recovered:injured`.
    Dakk, 2026-11-27: a resting companion steps down from the scout's post until it is ready. The Rest writes
    nothing of the scout: the post stays the beast's, and whoever reads the post asks whether the scout stands
-   (`scoutStands`), so a resting scout takes no strike and at the boundary stands again. The facts say `scout`.
+   (`scoutStandsV1`), so a resting scout takes no strike and at the boundary stands again. The facts say `scout`.
    A companion that already rests, is away or recovers cannot begin a Rest. The rules' numbers are
    `@cf/domain-acquisition`'s (`companion-care.ts`, `companion-availability.ts`), the painted port's for D13; its
    own action (`rest.ts`) works on the second ownership model and is not used. */

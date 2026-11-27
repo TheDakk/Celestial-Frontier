@@ -19,6 +19,7 @@ import type { ExplorerMealFactsV1 } from './meal-action';
 import { FLAVOUR_NAMES, type Taste } from './meals';
 import type { RenameFactsV1 } from './rename-action';
 import type { RestFactsV1 } from './rest-action';
+import type { ScoutFactsV1 } from './scout-action';
 
 /** Words with icons among them: each part is text, or the name of an icon drawn in its place in the line. */
 export type CareCopyPart = string | Readonly<{ icon: string }>;
@@ -69,12 +70,13 @@ export const SCOUT_BUTTON = Object.freeze({
   standing: 'Scouting',
   tip: 'Your Field Scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.',
 });
-/** What a committed press of Scout says of the beast it was pressed on. A beast named while it rests is not at the
-    post yet (`scoutStands`): the third line says so, in new words made of the legacy two. */
-export function scoutNotice(name: string, named: boolean, resting = false): CareNotice {
-  return notice('scout', 'Field Scout', !named
+/** What a committed press of Scout says of the beast it was pressed on, from the press's own facts. A beast named
+    while it rests is not at the post yet (`scoutStandsV1`): the second line says so, in new words made of the
+    legacy two. */
+export function scoutNotice(name: string, facts: Pick<ScoutFactsV1, 'named' | 'resting'>): CareNotice {
+  return notice('scout', 'Field Scout', !facts.named
     ? `${name} stands down. Hostile scans risk your own HP again.`
-    : resting
+    : facts.resting
       ? `${name} will walk point when it is rested — until then hostile scans risk your own HP.`
       : `${name} now walks point — it takes the hit when a bioscan turns hostile.`);
 }
@@ -109,38 +111,37 @@ export const MEAL_LINES: Readonly<Record<Taste, string>> = Object.freeze({
 /** What one meal of a companion's says, as the legacy line did (19192): the beast and how it took the meal, then
     what the flora is to it, what it gained, and its wounds if they mended. The legacy line's first sentence, drawn
     in the taste's colour, is the title here. */
-export function feedNotice(name: string, meal: FedMealV1): CareNotice {
+function mealLine(name: string, meal: FedMealV1): CareNotice {
   const rich = `${FLAVOUR_NAMES[meal.flavour]}-rich flora`;
   const taste = meal.taste === 'loved' ? `It loves ${rich}` : meal.taste === 'disliked' ? `It dislikes ${rich}` : `It is indifferent to ${rich}`;
   const gain = meal.fedGain > 0 ? `+${meal.fedGain} bloodline` : 'no change';
   return notice('meal', `${name} ${MEAL_LINES[meal.taste]}.`, `${taste} — ${gain}.` + (meal.mended ? ` Its wounds mend — now ${conditionWords(meal)}.` : ''));
 }
 /** What experience that raised a beast's level says (`awardXP` 18231): the level and the beast, then that an
-    innate art woke (the third and the sixth level), or what the experience was earned for, or, for an award with
-    no reason, that its legend grows. The legacy game drew a shield before the title. */
-export function levelUpNotice(name: string, up: Readonly<{ level: number; why: string | null }>): CareNotice {
-  return notice('shield', `Level ${up.level} — ${name}`,
-    up.level === 3 || up.level === 6 ? 'A new innate art awakens!' : up.why !== null && up.why.length > 0 ? `Earned ${up.why}.` : 'Its legend grows.');
+    innate art woke (the third and the sixth level), or what the experience was earned for. The legacy game drew a
+    shield before the title. (An award with no reason said "Its legend grows."; a meal's awards all have one.) */
+const levelUps = (facts: FeedFactsV1): CareNotice[] => facts.meals.flatMap((meal) => meal.levelUps.map((up) =>
+  notice('shield', `Level ${up.level} — ${facts.name}`, up.level === 3 || up.level === 6 ? 'A new innate art awakens!' : `Earned ${up.why}.`)));
+/** Everything a committed meal says, in the legacy order: each level its experience raised (said as the meal was
+    eaten, 18231), then the meal's own line (19192). */
+export function feedNotices(facts: FeedFactsV1): readonly CareNotice[] {
+  return Object.freeze([...levelUps(facts), ...facts.meals.map((meal) => mealLine(facts.name, meal))]);
 }
-/** Every level the meals of one press raised, in the order they were raised: one meal for Feed, up to ten for Mend. */
-export function levelUpNotices(facts: FeedFactsV1): readonly CareNotice[] {
-  return Object.freeze(facts.meals.flatMap((meal) => meal.levelUps.map((up) => levelUpNotice(facts.name, up))));
-}
-/** What a committed press of "Mend — safest meals" says. */
-export function mendNotice(facts: FeedFactsV1): CareNotice {
+/** Everything a committed press of "Mend — safest meals" says: each level its meals raised, in order, then the
+    count of meals served and the beast's condition (19054-19058). */
+export function mendNotices(facts: FeedFactsV1): readonly CareNotice[] {
   const served = facts.meals.length;
-  return notice('heart', `${served} safe meal${served === 1 ? '' : 's'} served.`,
-    (facts.halt === 'out-of-safe-flora' ? 'out of safe flora. ' : '') + `Now ${conditionWords(facts.meals.at(-1)!)}.`);
+  return Object.freeze([...levelUps(facts), notice('heart', `${served} safe meal${served === 1 ? '' : 's'} served.`,
+    (facts.halt === 'out-of-safe-flora' ? 'out of safe flora. ' : '') + `Now ${conditionWords(facts.meals.at(-1)!)}.`)]);
 }
 
-/** What a committed Rest says: the painted port's line for a resting companion. The legacy game has no Rest. */
-export function restNotice(facts: RestFactsV1): CareNotice {
-  return notice('rest', 'Resting', `${facts.name} — ${facts.minutes} min of play left`);
-}
-/** Everything a committed Rest says: the Rest, and, when the companion holds the scout's post, that it stands down
-    until it is ready (Dakk, 2026-11-27). The second line is new words, after the legacy "stands down" (15202). */
+/** Everything a committed Rest says. First the painted port's line for a resting companion (the legacy game has
+    no Rest). Then, when the companion holds the scout's post, that it keeps the post and does not stand at it
+    until it is ready (Dakk, 2026-11-27): new words, made of the legacy game's "walks point" (15201) and "Hostile
+    scans risk your own HP" (15202). They do not say "stands down", which there means the beast left the post. */
 export function restNotices(facts: RestFactsV1): readonly CareNotice[] {
+  const resting = notice('rest', 'Resting', `${facts.name} — ${facts.minutes} min of play left`);
   return Object.freeze(facts.scout
-    ? [restNotice(facts), notice('scout', 'Field Scout', `${facts.name} stands down while it rests. Hostile scans risk your own HP until it is ready.`)]
-    : [restNotice(facts)]);
+    ? [resting, notice('scout', 'Field Scout', `${facts.name} rests and keeps the post — it walks point again when it is ready. Hostile scans risk your own HP until then.`)]
+    : [resting]);
 }

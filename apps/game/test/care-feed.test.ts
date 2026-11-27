@@ -5,9 +5,9 @@
 import { describe, expect, it } from 'vitest';
 import { SCENE_OWNERSHIP_ADDRESS_RESOLVER, preflightCaptureV1 } from '@cf/domain-acquisition';
 import { createSessionRNG } from '@cf/domain-sessionrng';
-import { arc4OwnershipLegacyMirrorMatches, readArc4Ownership } from '@cf/persistence';
+import { arc4OwnershipLegacyMirrorMatches, readArc4Ownership, readLegacyXpFirstsAuthority } from '@cf/persistence';
 import { captureSnapshotV1 } from '../src/capture';
-import { MEAL_LINES, bioscanFenceV1, feedNotice, flavourOf, levelUpNotices, mendNotice, settleBioscanV1, settleFeedV1, settleMendV1, tasteOf } from '../src/care';
+import { MEAL_LINES, bioscanFenceV1, feedNotices, flavourOf, mendNotices, settleBioscanV1, settleFeedV1, settleMendV1, tasteOf } from '../src/care';
 import { stageStarterCharterEventV1 } from '../src/guidance';
 import { carePage, earthId, farPlant, heldPage } from './care-support';
 import { EARTH, capturePage, captureSession, rosterFor } from './capture-support';
@@ -51,10 +51,10 @@ describe('a meal a beast loves', () => {
     expect(page.runtime.diagnostics().sessionDraws).toEqual({});
     // The legacy line (19192): the beast and how it took the meal, then what the flora is to it and what it gained.
     // Of the four lines the legacy roll chose among for a loved meal, Dakk kept its first (18895), 2026-11-27.
-    expect(feedNotice(facts.name, facts.meals[0]!)).toEqual({
+    expect(feedNotices(facts)).toEqual([{
       icon: 'meal', title: 'Platypus devours it eagerly — a visible surge of vigour.',
       message: ['It loves Insight-rich flora — +2 bloodline. Its wounds mend — now Injured (35% hurt).'],
-    });
+    }]);
   });
 
   it('a flora of tier 4 or more feeds it 3', async () => {
@@ -74,7 +74,7 @@ describe('a meal a beast loves', () => {
     const { facts } = await committed(page.feed(PLATYPUS, PERSIMMON));
     expect(facts.meals[0]).toMatchObject({ hurtBefore: 0.2, hurtAfter: 0, mended: true, condition: 'Healthy' });
     expect(page.creature(PLATYPUS)).not.toHaveProperty('hurt');
-    expect(feedNotice(facts.name, facts.meals[0]!).message).toEqual(['It loves Insight-rich flora — +2 bloodline. Its wounds mend — now Healthy.']);
+    expect(feedNotices(facts).at(-1)!.message).toEqual(['It loves Insight-rich flora — +2 bloodline. Its wounds mend — now Healthy.']);
     // One line a taste, whatever the meal's grade or gain: no roll picks among the legacy four.
     expect(MEAL_LINES).toEqual({
       loved: 'devours it eagerly — a visible surge of vigour', neutral: 'eats without much interest', disliked: 'spits it out and refuses, no worse for it',
@@ -89,10 +89,10 @@ describe('a meal a beast neither loves nor dislikes, and one it dislikes', () =>
     expect(facts.meals[0]).toMatchObject({ taste: 'neutral', flavour: 'res', tier: 1, fedAfter: 11, fedGain: 1, hurtBefore: 0.6, hurtAfter: 0.5, mended: true });
     expect(page.creature(PLATYPUS)).toMatchObject({ fed: 11, hurt: 0.5 });
     // The legacy game's first line for a meal it neither loves nor dislikes (18901).
-    expect(feedNotice(facts.name, facts.meals[0]!)).toEqual({
+    expect(feedNotices(facts)).toEqual([{
       icon: 'meal', title: 'Platypus eats without much interest.',
       message: ['It is indifferent to Resilience-rich flora — +1 bloodline. Its wounds mend — now Injured (50% hurt).'],
-    });
+    }]);
   });
 
   it('a disliked meal does nothing and harms nothing; the flora is still eaten and the meal still counted', async () => {
@@ -105,9 +105,9 @@ describe('a meal a beast neither loves nor dislikes, and one it dislikes', () =>
     expect(state.stats.feeds).toBe(1);
     expect(state.stats.feedfails ?? 0).toBe(0);
     // The one legacy line for a disliked meal that cost the beast nothing (18909), which is what D13's meal does.
-    expect(feedNotice(facts.name, facts.meals[0]!)).toEqual({
+    expect(feedNotices(facts)).toEqual([{
       icon: 'meal', title: 'Platypus spits it out and refuses, no worse for it.', message: ['It dislikes Ferocity-rich flora — no change.'],
-    });
+    }]);
   });
 
   it('fed stops at 200: the meal is eaten, mends, and adds only what is left', async () => {
@@ -218,26 +218,70 @@ describe('what a meal teaches, and what the beast remembers of it', () => {
     expect(state.xpFirsts).toEqual(['s1|welcome', `${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`]);
   });
 
+  // The ledger keeps its newest 4,000 keys in the save's own list and the older ones in a carrier of its own
+  // (`@cf/persistence`, `xp-firsts-authority.ts`). A meal there pays as anywhere, writes both, and the save reads back.
+  it('past the ledger\'s 4,000 keys a meal still pays once a species: the older keys are kept and counted, and the next meal commits', async () => {
+    // A full ledger whose two oldest keys are the Platypus's own: Resilience and Ferocity already tasted and paid.
+    const full = [`${PLATYPUS}|taste:res`, `${PLATYPUS}|taste:fer`, ...Array.from({ length: 3998 }, (_, index) => `s${index + 1}|welcome`)];
+    const page = await carePage({ held: [heldPage(11), heldPage(0), heldPage(2), heldPage(3), heldPage(4)], change: (state) => { state.xpFirsts = [...full]; } });
+    const ledger = () => {
+      const read = readLegacyXpFirstsAuthority(page.durable(), page.runtime.extensions);
+      if (read.kind !== 'loaded') throw new Error(`the ledger was ${read.reason}`);
+      return read;
+    };
+    expect(ledger()).toMatchObject({ mode: 'legacy-tail', totalCount: 4000 });
+    // The first meal pays two firsts: each pushes the oldest key out of the list and into the carrier.
+    const first = await committed(page.feed(PLATYPUS, PERSIMMON));
+    expect(first.facts.meals[0]).toMatchObject({ xpGain: 3, firstsPaid: [`${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`] });
+    expect(first.state.xpFirsts).toHaveLength(4000);
+    expect(first.state.xpFirsts.slice(-2)).toEqual([`${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`]);
+    expect(ledger()).toMatchObject({ mode: 'overflow', totalCount: 4002, archived: [`${PLATYPUS}|taste:res`, `${PLATYPUS}|taste:fer`] });
+    // What storage holds reads back as the same ledger.
+    const stored = await page.stored();
+    expect(stored.state.xpFirsts).toEqual(first.state.xpFirsts);
+    expect(stored.state.xpFirstsBinding).toEqual(first.state.xpFirstsBinding);
+    expect(first.state.xpFirstsBinding).not.toBeNull();
+    // A flavour paid long ago, its key now in the carrier, is remembered by the beast and pays nothing.
+    const old = await committed(page.feed(PLATYPUS, CRANBERRY));
+    expect(old.facts.meals[0]).toMatchObject({ flavour: 'res', xpGain: 0, firstsPaid: [], newMemoryIds: ['taste:res'] });
+    expect(ledger().totalCount).toBe(4002);
+    expect((await committed(page.feed(PLATYPUS, RAMBUTAN))).facts.meals[0]).toMatchObject({ flavour: 'fer', xpGain: 0, firstsPaid: [] });
+    // A flavour never paid still pays, and is written past the 4,000 too.
+    const fresh = await committed(page.feed(PLATYPUS, GUAVA));
+    expect(fresh.facts.meals[0]).toMatchObject({ flavour: 'agi', xpGain: 2, firstsPaid: [`${PLATYPUS}|taste:agi`] });
+    expect(ledger()).toMatchObject({ mode: 'overflow', totalCount: 4003 });
+    expect(ledger().archived).toHaveLength(3);
+    expect(page.creature(PLATYPUS)).toMatchObject({ xp: 5 });
+  });
+
   // LEGACY `awardXP` 18224-18233: experience that raises a level says "Level N — <name>" and why.
   it('a meal whose experience raises the beast\'s level says so, as the legacy game did; one that does not says nothing', async () => {
     const page = await carePage({ held: [heldPage(11, { xp: 4 }), heldPage(0), heldPage(1), heldPage(2)] });
     // 4 + 1 + 2 is 7: the second award crosses 6, the first level.
     const { facts } = await committed(page.feed(PLATYPUS, PERSIMMON));
     expect(facts.meals[0]!.levelUps).toEqual([{ level: 1, why: 'a taste discovered' }]);
-    expect(levelUpNotices(facts)).toEqual([{ icon: 'shield', title: 'Level 1 — Platypus', message: ['Earned a taste discovered.'] }]);
-    // The same flavour again pays nothing and says nothing; a new flavour pays 2 (9) and stays level 1.
-    expect(levelUpNotices((await committed(page.feed(PLATYPUS, CLUB))).facts)).toEqual([]);
-    expect(levelUpNotices((await committed(page.feed(PLATYPUS, CRANBERRY))).facts)).toEqual([]);
+    // One call says the whole meal, in the legacy order: the level (said as the meal was eaten, 18231), then the
+    // meal's own line (19192).
+    expect(feedNotices(facts)).toEqual([
+      { icon: 'shield', title: 'Level 1 — Platypus', message: ['Earned a taste discovered.'] },
+      { icon: 'meal', title: 'Platypus devours it eagerly — a visible surge of vigour.', message: ['It loves Insight-rich flora — +2 bloodline.'] },
+    ]);
+    // The same flavour again pays nothing and says no level; a new flavour pays 2 (9) and stays level 1.
+    expect(feedNotices((await committed(page.feed(PLATYPUS, CLUB))).facts).map(({ icon }) => icon)).toEqual(['meal']);
+    expect(feedNotices((await committed(page.feed(PLATYPUS, CRANBERRY))).facts).map(({ icon }) => icon)).toEqual(['meal']);
     // The third and the sixth level wake an innate art (18231).
     const third = await carePage({ held: [heldPage(11, { xp: 53 }), heldPage(0)] });
-    expect(levelUpNotices((await committed(third.feed(PLATYPUS, PERSIMMON))).facts)).toEqual([{ icon: 'shield', title: 'Level 3 — Platypus', message: ['A new innate art awakens!'] }]);
+    expect(feedNotices((await committed(third.feed(PLATYPUS, PERSIMMON))).facts)[0]).toEqual({ icon: 'shield', title: 'Level 3 — Platypus', message: ['A new innate art awakens!'] });
     const sixth = await carePage({ held: [heldPage(11, { xp: 214 }), heldPage(0)] });
-    expect(levelUpNotices((await committed(sixth.feed(PLATYPUS, PERSIMMON))).facts)).toEqual([{ icon: 'shield', title: 'Level 6 — Platypus', message: ['A new innate art awakens!'] }]);
+    expect(feedNotices((await committed(sixth.feed(PLATYPUS, PERSIMMON))).facts)[0]).toEqual({ icon: 'shield', title: 'Level 6 — Platypus', message: ['A new innate art awakens!'] });
     // A Mend says each level its meals raised, in order: the first loved meal here raises level 1 by its first award.
     const mended = await carePage({ held: [heldPage(11, { xp: 5, hurt: 0.45 }), heldPage(0), heldPage(1)] });
     const mend = await committed(mended.mend(PLATYPUS));
     expect(mend.facts.meals.map(({ levelUps }) => levelUps)).toEqual([[{ level: 1, why: 'a welcome meal' }], []]);
-    expect(levelUpNotices(mend.facts)).toEqual([{ icon: 'shield', title: 'Level 1 — Platypus', message: ['Earned a welcome meal.'] }]);
+    expect(mendNotices(mend.facts)).toEqual([
+      { icon: 'shield', title: 'Level 1 — Platypus', message: ['Earned a welcome meal.'] },
+      { icon: 'heart', title: '2 safe meals served.', message: ['Now Healthy.'] },
+    ]);
   });
 
   it('the fifth meal earns Zookeeper (LEGACY 16434)', async () => {
@@ -321,7 +365,7 @@ describe('Mend: the safest meals in one press', () => {
     expect(await page.receipts()).toHaveLength(1);
     expect(page.outcomes.committed).toEqual([{ kind: 'mend', receiptOrdinal: 0 }]);
     expect(page.carrierAgrees()).toBe(true);
-    expect(mendNotice(facts)).toEqual({ icon: 'heart', title: '2 safe meals served.', message: ['Now Healthy.'] });
+    expect(mendNotices(facts)).toEqual([{ icon: 'heart', title: '2 safe meals served.', message: ['Now Healthy.'] }]);
   });
 
   // LEGACY 19042-19048 sorts the Compendium's flora, and a sort keeps ties as it found them: in the order the
@@ -362,7 +406,11 @@ describe('Mend: the safest meals in one press', () => {
     expect(facts.halt).toBe('out-of-safe-flora');
     expect(state.codex.map(([id]) => id)).toEqual([PLATYPUS, RAMBUTAN]);
     expect(state.stats.feeds).toBe(3);
-    expect(mendNotice(facts)).toEqual({ icon: 'heart', title: '3 safe meals served.', message: ['out of safe flora. Now Injured (45% hurt).'] });
+    // Three flavours first tasted: 1 + 2, then 2, then 2 is 7 experience, and the third meal's award reaches level 1.
+    expect(mendNotices(facts)).toEqual([
+      { icon: 'shield', title: 'Level 1 — Platypus', message: ['Earned a taste discovered.'] },
+      { icon: 'heart', title: '3 safe meals served.', message: ['out of safe flora. Now Injured (45% hurt).'] },
+    ]);
   });
 
   it('a whole beast, a beast with no safe flora, and training: refused, nothing written', async () => {
