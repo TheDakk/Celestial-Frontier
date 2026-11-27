@@ -16,7 +16,12 @@ export type MapBody = BodyBase & (
   | { kind: 'deco'; ref: DecoNode }
   | { kind: 'worm'; ref: { x: number; y: number } }
   | { kind: 'snova'; ref: SupernovaSite }
-  | { kind: 'protostar'; ref: SupernovaBirth });
+  | { kind: 'protostar'; ref: SupernovaBirth }
+  // The small bodies of a system (small-bodies.ts). `ref` is what the legacy game hands the card of each.
+  | { kind: 'moon'; ref: { pl: PlanetNode; m: number } }
+  | { kind: 'dwarf'; ref: { dw: Record<string, unknown>; sys: Record<string, unknown> } }
+  | { kind: 'comet'; ref: { cm: Record<string, unknown>; ci: number } }
+  | { kind: 'visitor'; ref: { v: Record<string, unknown> } });
 
 /** What a zoom asks for: enter the body under the view, leave the map, or hold the zoom at `z`. */
 export type DiveIntent = { kind: 'none' } | { kind: 'dive'; body: MapBody } | { kind: 'ascend' } | { kind: 'park'; z: number };
@@ -37,7 +42,7 @@ const DECO_LABELS: Readonly<Record<string, string>> = {
   rogue: 'rogue planet', fbd: 'failed brown dwarf',
 };
 /** Bodies that are neither galaxy, star nor planet come after those in the keyboard order. */
-const SCENERY_PRIORITY = 3;
+export const SCENERY_PRIORITY = 3;
 
 const HALF_PI = 1.5707963267948966;
 /** Cosine and sine by add, multiply, divide and round alone, which give the same bits on every device. */
@@ -49,6 +54,14 @@ export function cosSin(angle: number): readonly [number, number] {
   const cos = 1 - r2 / 2 * (1 - r2 / 12 * (1 - r2 / 30 * (1 - r2 / 56 * (1 - r2 / 90 * (1 - r2 / 132 * (1 - r2 / 182))))));
   const turn = ((quarter % 4) + 4) % 4;
   return turn === 0 ? [cos, sin] : turn === 1 ? [-sin, cos] : turn === 2 ? [-cos, -sin] : [sin, -cos];
+}
+
+/** How moon `m` of a planet stands about it at a time: its orbit in the planet's radii, and the turn it has made
+ *  (celestial-frontier.html 7758 to 7761). Its place is the orbit times the cosine across, and 0.4 of the sine down. */
+export function moonTurn(m: number, time: number): { orbit: number; cos: number; sin: number } {
+  const orbit = 1.7 + m * 0.48;
+  const [cos, sin] = cosSin(time * (0.55 / (orbit * Math.sqrt(orbit))) + m * 2.4);
+  return { orbit, cos, sin };
 }
 
 let coarse: { galaxy: ProvenGalaxy; stars: readonly StarNode[]; deco: readonly DecoNode[] } | null = null;
@@ -80,6 +93,12 @@ function fineStars(galaxy: ProvenGalaxy, cam: Camera, view: Viewport): StarNode[
   const stars: StarNode[] = [];
   for (let fx = fx0; fx <= fx1; fx++) for (let fy = fy0; fy <= fy1; fy++) stars.push(...galaxyFineCell(galaxy, prof, fx, fy));
   return stars;
+}
+
+/** Whether a world point is on the screen, clear of its 12 px edge. */
+export function onScreen(cam: Camera, viewport: Viewport, wx: number, wy: number): boolean {
+  const at = toScreen(cam, viewport, wx, wy);
+  return at.x >= SCREEN_EDGE && at.y >= SCREEN_EDGE && at.x <= viewport.w - SCREEN_EDGE && at.y <= viewport.h - SCREEN_EDGE;
 }
 
 function bodiesOf(nav: NavState, cam: Camera, view: Viewport, time: number): MapBody[] {
@@ -128,10 +147,7 @@ function bodiesOf(nav: NavState, cam: Camera, view: Viewport, time: number): Map
  *  (0 holds every planet at its starting angle). */
 export function visibleBodies(nav: NavState, cam: Camera, viewport: Viewport, time: number): MapBody[] {
   const all = bodiesOf(nav, cam, viewport, time);
-  const visible = all.filter((b) => {
-    const at = toScreen(cam, viewport, b.wx, b.wy);
-    return at.x >= SCREEN_EDGE && at.y >= SCREEN_EDGE && at.x <= viewport.w - SCREEN_EDGE && at.y <= viewport.h - SCREEN_EDGE;
-  });
+  const visible = all.filter((b) => onScreen(cam, viewport, b.wx, b.wy));
   return visible.length > 0 ? visible : all;
 }
 

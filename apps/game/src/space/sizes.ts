@@ -56,14 +56,29 @@ export function starLight(x: number, y: number, width: number, colour: number, s
   return items;
 }
 
+/** A planet's radius in world units: six for each unit of its size (celestial-frontier.html 7670). */
+export function planetRadius(P: Record<string, unknown>): number {
+  return 6 * (typeof P.sizeMul === 'number' && P.sizeMul !== 0 ? P.sizeMul : 1);
+}
+/** A moon's radius in world units: 0.108 of its planet's, and never under a half (celestial-frontier.html 7762). */
+export function moonRadius(P: Record<string, unknown>): number {
+  return Math.max(0.5, planetRadius(P) * 0.108);
+}
+/** The legacy game's own pick radius of each small body of a system, in world units: a dwarf planet (7806), the
+ *  interstellar visitor (7825) and a comet (7842). */
+const SMALL_RADIUS = { dwarf: 2.2, visitor: 4, comet: 2.2 } as const;
+
 /** How wide the game's own picture of a body is, in world units, at a zoom in screen pixels a unit: the whole sprite,
  *  its faint edge included. A press anywhere on it selects the body. A planet's is the square its night is drawn on,
- *  three of its radii. */
+ *  three of its radii. A small body of a system is as wide as the legacy game's own pick radius makes it: a moon its
+ *  true disc (7780). */
 export function pictureWidth(body: MapBody, zoom: number): number {
   switch (body.kind) {
     case 'galaxy': return body.ref.size * (body.ref.quasar ? GALAXY_WIDTH.quasar : body.ref.radio ? GALAXY_WIDTH.radioHost : GALAXY_WIDTH.galaxy);
     case 'star': return body.ref.s * starBase(zoom) * (body.priority === 2 ? STAR_WIDTH.fine : STAR_WIDTH.coarse);
-    case 'planet': return 3 * 6 * (typeof body.ref.P.sizeMul === 'number' && body.ref.P.sizeMul !== 0 ? body.ref.P.sizeMul : 1);
+    case 'planet': return 3 * planetRadius(body.ref.P);
+    case 'moon': return 2 * moonRadius(body.ref.pl.P);
+    case 'dwarf': case 'visitor': case 'comet': return 2 * SMALL_RADIUS[body.kind];
     case 'deco': {
       const k = body.ref.k;
       return k === 'rogue' ? WIDTH.rogue : k === 'fbd' ? WIDTH.fbd : (typeof body.ref.rr === 'number' ? body.ref.rr : 8) * (DECO_RADII[k] ?? 2.3);
@@ -81,10 +96,17 @@ const GRAIN_BELOW = 2.6;
  * body is drawn, a press this near its middle selects it. The legacy game's own number for each kind of body
  * (celestial-frontier.html): a planet 16 (7673); a galaxy 16 (6151), or 9 while it is a grain of light (6139, 6146);
  * a wormhole 14 (6570); a supernova site 13 (6693); a star of a galaxy 12 (6628), a fine star 9 (6651); scenery of a
- * galaxy 12 (6620); a protostar 11 (6700). `zoom` is in screen pixels a world unit.
+ * galaxy 12 (6620); a protostar 11 (6700); a comet 13 (7842); the interstellar visitor 12 (7825); a dwarf planet 11
+ * (7806). A moon has 10 only once the view is near enough that names are drawn, a zoom over 1/420 of the view's
+ * shorter side, `minSide`; farther out it has none, so its target is its true size and a press meant for its planet
+ * is the planet's (7773 to 7780). `zoom` is in screen pixels a world unit.
  */
-export function pickFloor(body: MapBody, zoom: number): number {
+export function pickFloor(body: MapBody, zoom: number, minSide: number): number {
   switch (body.kind) {
+    case 'moon': return zoom > minSide / 420 ? 10 : 0;
+    case 'dwarf': return 11;
+    case 'visitor': return 12;
+    case 'comet': return 13;
     case 'planet': return 16;
     case 'galaxy': return body.ref.size * zoom < GRAIN_BELOW ? 9 : 16;
     case 'worm': return 14;

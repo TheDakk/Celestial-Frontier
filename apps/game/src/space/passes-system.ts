@@ -40,8 +40,8 @@ const NIGHT_STEPS = [[0.28, 10], [0.42, 5], [0.68, 3]] as const;
 const NIGHT_SKY = 0x030610;
 const LIGHT_SHADE = 19;
 
-interface Comet { off: number; period: number; aMaj: number; ecc: number; tilt: number }
-interface Visitor { speed: number; off: number; ang: number; b: number }
+export interface Comet { off: number; period: number; aMaj: number; ecc: number; tilt: number }
+export interface Visitor { speed: number; off: number; ang: number; b: number }
 const rawOf = (seed: number): { comets?: readonly Comet[]; visitor?: Visitor } => systemFor(seed) as { comets?: readonly Comet[]; visitor?: Visitor };
 
 /** How many pixels of a picture lie in the disc of radius r about (x, y), counted a row at a time. */
@@ -208,7 +208,7 @@ export function dressPlanet(planet: PlanetNode, items: readonly SpaceItem[], v: 
 }
 
 /** Where a comet is at a time, in world units about the star. */
-function cometAt(comet: Comet, time: number): { x: number; y: number } {
+export function cometAt(comet: Comet, time: number): { x: number; y: number } {
   const [cos, sin] = cosSin(((time + comet.off) / comet.period) * TAU);
   const ox = comet.aMaj * (cos - comet.ecc);
   const oy = comet.aMaj * Math.sqrt(1 - comet.ecc * comet.ecc) * sin;
@@ -216,7 +216,7 @@ function cometAt(comet: Comet, time: number): { x: number; y: number } {
   return { x: tc * ox - ts * oy, y: ts * ox + tc * oy };
 }
 /** Where the visitor is at a time: along its straight path through the system, which it enters again when it leaves. */
-function visitorAt(visitor: Visitor, time: number): { x: number; y: number; cos: number; sin: number } {
+export function visitorAt(visitor: Visitor, time: number): { x: number; y: number; cos: number; sin: number } {
   const path = SYS_R * 2.6;
   const along = ((time * visitor.speed + visitor.off) % path) - path / 2;
   const [cos, sin] = cosSin(visitor.ang);

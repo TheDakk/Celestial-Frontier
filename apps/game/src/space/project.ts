@@ -11,7 +11,7 @@ import type { GalaxyNode, NavState, PlanetNode } from '@cf/scene';
 import type { Camera, Viewport } from './camera';
 import { hsl, place, rgbOf } from './draw';
 import type { Grid, MapPasses } from './draw';
-import { cosSin, galaxyContent, supernovaBodies, visibleBodies } from './model';
+import { cosSin, galaxyContent, moonTurn, supernovaBodies, visibleBodies } from './model';
 import type { MapBody } from './model';
 import { passCaptions, withPasses } from './passes';
 import type { Caption } from './passes';
@@ -113,8 +113,7 @@ function planetItems(p: PlanetNode, x: number, y: number, z: number, time: numbe
   items.push(drawn === undefined ? { kind: 'disc', x, y, r, bands } : { kind: 'disc', x, y, r: drawn >> 1, bands, element: name });
   if (r < 2) return items;
   for (let m = 0; m < p.moons; m++) {
-    const orbit = 1.7 + m * 0.48;
-    const [cos, sin] = cosSin(time * (0.55 / (orbit * Math.sqrt(orbit))) + m * 2.4);
+    const { orbit, cos, sin } = moonTurn(m, time);
     const reach = size * orbit * z;
     // A moon is 0.108 of its planet's radius (never under half a unit), and 2.18 of that across.
     items.push(blob(x + Math.round(cos * reach), y + Math.round(sin * reach * 0.4), sizing === undefined ? 1 : Math.max(0.5, size * 0.108) * 2.18 * z, 0xc8c8d0));
@@ -158,6 +157,8 @@ function bodyItems(body: MapBody, x: number, y: number, cam: Camera, grid: Grid,
     case 'worm': return [{ kind: 'element', name: 'wormhole', x, y, ramp: 0xb48cff, ...spanOf(sizing, WIDTH.wormhole, cam.z) }];
     case 'snova': return [{ kind: 'element', name: `supernova/${body.ref.remnant.toLowerCase()}`, x, y, ramp: 0xffb080, ...spanOf(sizing, WIDTH.supernova, cam.z) }];
     case 'protostar': return [{ kind: 'element', name: 'protostar', x, y, ramp: 0xffd2a0, ...spanOf(sizing, WIDTH.protostar, cam.z) }];
+    // A moon is painted with its planet, a dwarf planet with the scenery, a comet and the visitor by the passes.
+    case 'moon': case 'dwarf': case 'comet': case 'visitor': return [];
   }
 }
 

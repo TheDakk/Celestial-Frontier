@@ -25,13 +25,20 @@ const ROWS: ReadonlyArray<readonly [name: string, line: number, made: MapBody, z
   ['scenery of a galaxy', 6620, body({ kind: 'deco', ref: { k: 'neb', x: 0, y: 0 } }), 1, 12, 14.4, 16.8],
   ['a protostar', 6700, body({ kind: 'protostar' }), 1, 11, 13.2, 15.4],
   ['a fine star of a galaxy', 6651, star(2), 1, 9, 10.8, 12.6],
+  ['a comet', 7842, body({ kind: 'comet' }), 1, 13, 15.6, 18.2],
+  ['the interstellar visitor', 7825, body({ kind: 'visitor' }), 1, 12, 14.4, 16.8],
+  ['a dwarf planet', 7806, body({ kind: 'dwarf' }), 1, 11, 13.2, 15.4],
+  ['a moon, the view near enough that names are drawn: a zoom over 1/420 of the shorter side', 7780, body({ kind: 'moon' }), 1.43, 10, 12, 14],
+  ['a moon from farther out: no floor, its true size', 7780, body({ kind: 'moon' }), 600 / 420, 0, 0, 0],
 ];
+/** The shorter side of the view the rows are asked at. */
+const MIN_SIDE = 600;
 
 describe('how near a press must be to a body, by its kind', () => {
   it.each(ROWS)('%s (legacy line %i)', (_name, _line, made, zoom, base, mouse, touch) => {
-    expect(pickFloor(made, zoom)).toBe(base);
-    expect(pickFloor(made, zoom) * PICK_PADDING.mouse).toBeCloseTo(mouse, 9);
-    expect(pickFloor(made, zoom) * PICK_PADDING.touch).toBeCloseTo(touch, 9);
+    expect(pickFloor(made, zoom, MIN_SIDE)).toBe(base);
+    expect(pickFloor(made, zoom, MIN_SIDE) * PICK_PADDING.mouse).toBeCloseTo(mouse, 9);
+    expect(pickFloor(made, zoom, MIN_SIDE) * PICK_PADDING.touch).toBeCloseTo(touch, 9);
   });
 
   it('the padding is the legacy game\'s: a fifth more by mouse, two fifths more by touch', () => {

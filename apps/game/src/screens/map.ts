@@ -14,8 +14,8 @@ import { paintPixels } from '../platform/canvas';
 import { PICK_PADDING, escapeTarget, mountGestures, mountMapKeys, pick, type Gesture, type MapKeyTarget } from '../input';
 import type { NavController, NavOutcome } from '../nav';
 import {
-  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, orbitClock, parkBelowTrigger, pickFloor, pictureWidth, placedLabels, showSpace,
-  supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Lettered, type MapBody, type MapFrame, type Viewport,
+  ascentCamera, descentCamera, diveIntent, entryZoom, mapPicture, minSideOf, orbitClock, parkBelowTrigger, pickFloor, pictureWidth, placedLabels, ringUnder, showSpace,
+  smallBodies, supernovaBodies, toScreen, visibleBodies, zoomAbout, zoomLimits, type Camera, type Lettered, type MapBody, type MapFrame, type Viewport,
 } from '../space';
 import { createFrameCoalescer, currentSheet, drawLines, edged, interfaceGaps, sheetColours, type Toast } from '../ui';
 import { el } from './dom';
@@ -94,7 +94,7 @@ export function mapScreen(ports: MapPorts): ScreenDef {
        *  holds every clock of the map at its start whatever the orbit clock has counted. */
       const orbit = (): number => (ports.reducedMotion() ? 0 : orbits.time());
       const bodiesAt = (camera: Camera): MapBody[] =>
-        [...visibleBodies(nav.nav, camera, view(), orbit()), ...supernovaBodies(nav.nav, ports.epoch())];
+        [...visibleBodies(nav.nav, camera, view(), orbit()), ...supernovaBodies(nav.nav, ports.epoch()), ...smallBodies(nav.nav, camera, view(), time(), orbit())];
 
       const describe = (kind: string, data: unknown): Descriptor | null => {
         const names = ports.live().customNames;
@@ -178,9 +178,13 @@ export function mapScreen(ports: MapPorts): ScreenDef {
         } else {
           // Each kind of body has its own floor, wider under a finger than under a mouse.
           const padding = PICK_PADDING[ctx.inputMode()];
-          const hit = pick(targets(), gesture.x, gesture.y, (target) => pickFloor(target.body, cam.z) * padding);
+          const hit = pick(targets(), gesture.x, gesture.y, (target) => pickFloor(target.body, cam.z, minSide()) * padding);
+          const ringHit = hit === null ? ringUnder(nav.nav, cam, view(), gesture.x, gesture.y) : null;
           if (hit !== null) select(hit.body, null);
-          else if (nav.nav.mode === 'universe') {
+          else if (ringHit !== null) {
+            const about = describe(ringHit.kind, ringHit.data);
+            if (about !== null) { card.show(about, null, null); ports.sound.ping(); }
+          } else if (nav.nav.mode === 'universe') {
             const { w, h } = view();
             const wx = cam.x + (gesture.x - w / 2) / cam.z;
             const wy = cam.y + (gesture.y - h / 2) / cam.z;

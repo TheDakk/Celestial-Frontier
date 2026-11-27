@@ -57,7 +57,8 @@ describe('the map screen\'s bodies: where a press finds them, and how near it mu
       return cardTitle();
     };
     expect([pressed(-19, 0, 'mouse'), pressed(0, 19, 'mouse'), pressed(-19.5, 0, 'mouse'), pressed(-14, 14, 'mouse')]).toEqual(['Mercury', 'Mercury', null, null]);
-    expect([pressed(22.2, 0, 'touch'), pressed(0, -22.2, 'touch'), pressed(22.6, 0, 'touch'), pressed(16, -16, 'touch')]).toEqual(['Mercury', 'Mercury', null, null]);
+    // Below it, not above: at second 0 Comet Taran stands 25 pixels above Mercury, and a press nearer the comet is the comet's.
+    expect([pressed(22.2, 0, 'touch'), pressed(0, 22.2, 'touch'), pressed(22.6, 0, 'touch'), pressed(16, -16, 'touch')]).toEqual(['Mercury', 'Mercury', null, null]);
   });
 
   it('in a galaxy a star and scenery answer within 14.4 pixels by mouse and 16.8 by touch: nearer than a planet asks', async () => {

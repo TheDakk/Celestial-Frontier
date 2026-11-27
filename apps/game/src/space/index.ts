@@ -5,3 +5,4 @@ export { mapPicture, type MapFrame } from './project';
 export { showSpace } from './canvas';
 export { placedLabels, type Lettered } from './labels';
 export { pickFloor, pictureWidth } from './sizes';
+export { ringUnder, smallBodies } from './small-bodies';
