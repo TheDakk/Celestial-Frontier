@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { parseCatalogueText, PIXEL_CHARS, SKIN_NAMES, TIER_SIZE, type Catalogue, type PartFrame, type SizeTier } from '@cf/art-format';
 import type { Recipe } from '@cf/art-recipe';
-import { SKIN_TABLE, compose, paintSkin } from '@cf/art-compose';
+import { SKIN_TABLE, compose, paintSkin, settleTexture } from '@cf/art-compose';
 import { checkers, comb, lonePixels, specks, turns, type Picture } from './texture-measures';
 
 // Armour: plates and chitin on a large creature. Whole creatures are measured on the finished picture (compose: stacked,
@@ -326,6 +326,18 @@ describe('armour is drawn as pieces, never as a mesh, a ruled grid or a comb', (
     expect(comb(mixed)).toBe(12);
     expect(comb(pic(['211122211122', ...block(12, 5, '2')]))).toBe(2);
     expect(litRuns(pic(['233332333322', ...block(12, 5, '2')]), 0)).toEqual([[1, 4], [6, 4]]);
+  });
+
+  it('settling armour takes back a comb longer than a plate\'s edge, whatever its values, and leaves a shorter one', () => {
+    // Two rows thick, so no pixel stands alone, and of mixed values, so no two values come in turn: only a comb.
+    const settled = (row: string): string[] => {
+      const before = grid(block(row.length, 4, '2'));
+      const out = grid([...block(row.length, 1, '2'), row, row, ...block(row.length, 1, '2')]);
+      settleTexture(row.length, 4, before, out, { x0: 0, y0: 0, x1: row.length - 1, y1: 3 }, true);
+      return [0, 1, 2, 3].map((y) => Array.from(out.subarray(y * row.length, (y + 1) * row.length), (v) => PIXEL_CHARS[v]).join(''));
+    };
+    expect(settled('21232423212422')).toEqual(block(14, 4, '2'));   // texture and hide in turn eleven times: a comb
+    expect(settled('21232422222222')).toEqual(['22222222222222', '21232422222222', '21232422222222', '22222222222222']); // five: a plate's edge
   });
 
   it('on a flat middle shade a piece leaves its face as the hide was: no mesh, dots or blocks inside it', () => {
