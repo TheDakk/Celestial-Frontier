@@ -1,8 +1,8 @@
-/* The art agent's own finished maps, read where they lie: the code branch holds no kit file and no image. The kits
-   are looked for in the folder named by CF_PLANET_KITS, else in celestial-frontier-artwork/targets-pending/planet-kits
-   beside the code folder or any folder above this one. Where there are none, these tests are skipped. */
+/* The art agent's own finished maps, read where they lie, as a measure taken by hand: these tests run only when
+   CF_PLANET_KITS names the folder of the kits, and are skipped otherwise. The gate names no such folder, so it reads
+   nothing outside this repository and counts the same on every machine. */
 import { existsSync, readFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { join } from 'node:path';
 import { inflateSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import { loneRuns, mendMap, type GlobeLayer } from '../src/index';
@@ -10,12 +10,7 @@ import { flicker } from './planet-support';
 
 function kitsFolder(): string | undefined {
   const named = process.env['CF_PLANET_KITS'];
-  if (named !== undefined && named !== '') return existsSync(named) ? named : undefined;
-  for (let at = process.cwd(); ; at = dirname(at)) {
-    const there = join(at, 'celestial-frontier-artwork', 'targets-pending', 'planet-kits');
-    if (existsSync(there)) return there;
-    if (dirname(at) === at) return undefined;
-  }
+  return named !== undefined && named !== '' && existsSync(named) ? named : undefined;
 }
 const KITS = kitsFolder();
 const has = (...path: string[]): boolean => KITS !== undefined && existsSync(join(KITS, ...path));
@@ -85,7 +80,7 @@ const mended = (layer: GlobeLayer): { layer: GlobeLayer; rewritten: number } => 
 };
 const tell = (line: string): void => console.log(line);
 
-describe.skipIf(KITS === undefined)('the art agent\'s finished maps (skipped where no planet-kits folder is found)', () => {
+describe.skipIf(KITS === undefined)('the art agent\'s finished maps (run by hand: skipped unless CF_PLANET_KITS names the kits\' folder)', () => {
   for (const size of ['384', '192'] as const) {
     it.skipIf(!has('gas', 'world-wrap', `map-${size}.txt`))(`gas, ${size} wide: reports its one-pixel runs and its flicker, and after mendMap has neither`, () => {
       const map = textLayer(join(KITS!, 'gas', 'world-wrap', `map-${size}.txt`));
