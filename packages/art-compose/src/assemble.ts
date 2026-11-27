@@ -11,8 +11,9 @@ import { armoured, paintSkin, settleTexture, texturedByRule, type Box } from './
 // A part that carries a mark, on a creature whose pattern is not plain, is painted (marks.ts) before it is stacked.
 // Then, on a creature whose recipe names a skin, every part in a mark slot takes the skin texture (skin.ts), over its marks.
 // Once every part is stacked, a texture pixel a rule painted that the stacking left alone (half its cluster under another
-// part) is taken back (settleTexture); a drawn skin layer's pixels are never taken back. Armour (plates, chitin) is
-// settled as the finished picture will show it (settleFinished), so no pixel of it stands alone once the creature is finished.
+// part) is taken back (settleTexture); a drawn skin layer's pixels are never taken back. Armour (plates and chitin on a
+// large creature) is settled as the finished picture will show it instead (settleFinished), so no pixel of it stands
+// alone once the creature is finished.
 
 export interface Assembly {
   buffer: PixelBuffer;
@@ -214,11 +215,12 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
 }
 
 /**
- * Settles armour on the picture as it is and as the finishing pass will show it, until neither takes a pixel back.
- * For the second, the creature and the same creature without its texture are finished in copies (the pixels round
- * the textured parts only), the texture is settled there (settleTexture), and every pixel taken back there is taken back in `buffer`. The finishing pass changes
- * a pixel by its own value and the empty pixels round it alone, so finishing `buffer` afterwards gives exactly the
- * settled copy: no texture pixel of the finished creature stands alone, makes a checker or a run of two values in turn.
+ * Settles armour on the picture as the finishing pass will show it: the creature and the same creature without its
+ * texture are finished in copies (the pixels round the textured parts only), the texture is settled there
+ * (settleTexture), and every pixel taken back there is taken back in `buffer`. The finishing pass changes a pixel by
+ * its own value and the empty pixels round it alone, and the skin never empties or fills a pixel, so finishing `buffer`
+ * afterwards gives exactly the settled copy: no texture pixel of the finished creature stands alone, makes a checker,
+ * a run of two values in turn or a comb.
  */
 function settleFinished(buffer: PixelBuffer, untextured: PixelBuffer, box: Box): void {
   const { w, h } = buffer;
@@ -227,26 +229,16 @@ function settleFinished(buffer: PixelBuffer, untextured: PixelBuffer, box: Box):
   const y0 = Math.max(0, box.y0 - REACH); const y1 = Math.min(h - 1, box.y1 + REACH);
   const shown = new Uint8Array(w * h);
   const bare = new Uint8Array(w * h);
-  for (let again = true; again;) {
-    again = false;
-    settleTexture(w, h, untextured.pixels, buffer.pixels, box, true);
-    for (let y = y0; y <= y1; y++) {
-      for (let x = x0; x <= x1; x++) {
-        const i = y * w + x;
-        // The skin never empties or fills a pixel, so both pictures are finished from the one shape.
-        shown[i] = finishedPixel(w, h, buffer.pixels, x, y);
-        bare[i] = buffer.pixels[i] === untextured.pixels[i] ? shown[i] ?? 0 : finishedPixel(w, h, untextured.pixels, x, y);
-      }
+  for (let y = y0; y <= y1; y++) {
+    for (let x = x0; x <= x1; x++) {
+      const i = y * w + x;
+      shown[i] = finishedPixel(w, h, buffer.pixels, x, y);
+      bare[i] = buffer.pixels[i] === untextured.pixels[i] ? shown[i] ?? 0 : finishedPixel(w, h, untextured.pixels, x, y);
     }
-    settleTexture(w, h, bare, shown, box, true);
-    for (let y = y0; y <= y1; y++) {
-      for (let x = x0; x <= x1; x++) {
-        const i = y * w + x;
-        if (shown[i] !== bare[i] || buffer.pixels[i] === untextured.pixels[i]) continue;
-        buffer.pixels[i] = untextured.pixels[i] ?? 0;
-        again = true;
-      }
-    }
+  }
+  settleTexture(w, h, bare, shown, box, true);
+  for (let y = y0; y <= y1; y++) {
+    for (let x = x0; x <= x1; x++) if (shown[y * w + x] === bare[y * w + x]) buffer.pixels[y * w + x] = untextured.pixels[y * w + x] ?? 0;
   }
 }
 /** How far from any pixel of an eye, each way, armour is taken back once the creature is stacked. */
