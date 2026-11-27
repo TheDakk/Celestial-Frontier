@@ -1029,9 +1029,31 @@ export function projectLegacyOwnershipMirror(state: OwnershipStateV1): LegacyOwn
   });
 }
 
+/** The order of the legacy Compendium list after a step of this authority,
+    as the legacy game's Map kept it (`codex.set` 14798, `codex.delete`
+    18809): the pages held before stay where they were, a page that left is
+    gone, and a page stored now goes to the end, one that left and came back
+    among them. `held` are the ids the list holds now, `projected` the ids of
+    the next step's projection. A writer of the list orders it by this and
+    never by the projection, whose order is a world's roster. */
+export function legacyCompendiumOrder(
+  held: readonly string[],
+  projected: readonly string[],
+): string[] {
+  const next = new Set(projected);
+  const kept = held.filter((id) => next.has(id));
+  const before = new Set(kept);
+  return [...kept, ...projected.filter((id) => !before.has(id))];
+}
+
 /** Semantic join between Arc 4 authority and the complete v4 compatibility
     surface it owns. Unrelated custom names remain outside Arc 4; every name
     keyed to one projected Compendium row is compared in projected order.
+    The Compendium's rows are compared page by page, whatever their order:
+    the order is the list's own, the order species were stored in (the
+    legacy game's Compendium was a Map, 14660 and 14798, and its save wrote
+    that order, 16592), and this authority keeps its rows by their ids and
+    holds no time of capture. No page may be missing, repeated or added.
     Hostile, malformed, protected or unrepresentable inputs fail closed. */
 export function arc4OwnershipLegacyMirrorMatches(
   state: OwnershipStateV1,
@@ -1082,7 +1104,10 @@ export function arc4OwnershipLegacyMirrorMatches(
       return ownedNameKeys.has(candidate[0]);
     });
 
-    return canonicalJson(actualCodex) === canonicalJson(mirror.codex)
+    const byId = <T extends { readonly legacyCodexId: string }>(rows: readonly T[]): T[] => [...rows].sort((left, right) => (
+      left.legacyCodexId < right.legacyCodexId ? -1 : left.legacyCodexId > right.legacyCodexId ? 1 : 0
+    ));
+    return canonicalJson(byId(actualCodex)) === canonicalJson(byId(mirror.codex))
       && canonicalJson(actualOwnedNames) === canonicalJson(mirror.customNames)
       && canonicalJson(rawBioX) === canonicalJson(mirror.bioX)
       && rawScout === mirror.scoutId;

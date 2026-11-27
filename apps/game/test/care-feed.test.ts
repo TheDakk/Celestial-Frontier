@@ -7,7 +7,7 @@ import { SCENE_OWNERSHIP_ADDRESS_RESOLVER, preflightCaptureV1 } from '@cf/domain
 import { createSessionRNG } from '@cf/domain-sessionrng';
 import { arc4OwnershipLegacyMirrorMatches, readArc4Ownership } from '@cf/persistence';
 import { captureSnapshotV1 } from '../src/capture';
-import { MEAL_LINES, bioscanFenceV1, feedNotice, flavourOf, levelUpNotices, mendNotice, settleBioscanV1, settleFeedV1, tasteOf } from '../src/care';
+import { MEAL_LINES, bioscanFenceV1, feedNotice, flavourOf, levelUpNotices, mendNotice, settleBioscanV1, settleFeedV1, settleMendV1, tasteOf } from '../src/care';
 import { stageStarterCharterEventV1 } from '../src/guidance';
 import { carePage, earthId, farPlant, heldPage } from './care-support';
 import { EARTH, capturePage, captureSession, rosterFor } from './capture-support';
@@ -322,6 +322,36 @@ describe('Mend: the safest meals in one press', () => {
     expect(page.outcomes.committed).toEqual([{ kind: 'mend', receiptOrdinal: 0 }]);
     expect(page.carrierAgrees()).toBe(true);
     expect(mendNotice(facts)).toEqual({ icon: 'heart', title: '2 safe meals served.', message: ['Now Healthy.'] });
+  });
+
+  // LEGACY 19042-19048 sorts the Compendium's flora, and a sort keeps ties as it found them: in the order the
+  // species were stored (the Compendium is a Map, 14660, 14798). The review measured the stored Compendium in roster
+  // order instead, and Mend's first meal differing from the legacy game's in 4% to 22% of presses.
+  it('of two flora it loves alike, it is served the one scavenged first, whatever their places in the world\'s roster', async () => {
+    // Only the Persimmon (row 0), the Devil's Club (row 1) and the Barrel Cactus Fruit (row 5) are left to scavenge.
+    // A session whose first scavenge takes the second of them and whose second takes the first.
+    let seed = 1;
+    for (; seed < 400_000; seed++) {
+      const rng = createSessionRNG(seed);
+      const pick = rng.at('capture.candidate', 0);
+      if (pick >= 1 / 3 && pick < 2 / 3 && rng.at('capture.success', 0) < 0.02 && rng.at('capture.candidate', 1) < 0.5 && rng.at('capture.success', 1) < 0.02) break;
+    }
+    const page = await capturePage({
+      sessionSeed: seed,
+      change: (state) => { state.codex = [heldPage(11, { hurt: 0.2 }), ...[2, 3, 4, 6, 7].map((row) => heldPage(row))]; },
+    });
+    const first = await page.press('scavenge');
+    const second = await page.press('scavenge');
+    expect(first).toMatchObject({ kind: 'committed', facts: { hit: true, speciesId: CLUB } });
+    expect(second).toMatchObject({ kind: 'committed', facts: { hit: true, speciesId: PERSIMMON } });
+    // The Compendium lists them as they were stored: the Devil's Club, then the Persimmon.
+    expect(page.durable().codex.map(([id]) => id).slice(-2)).toEqual([CLUB, PERSIMMON]);
+    const tiers = page.durable().codex.filter(([id]) => id === CLUB || id === PERSIMMON).map(([, entry]) => entry.tier);
+    expect(tiers[0]).toBe(tiers[1]);
+    // Both are loved and of one grade: the tie goes to the one stored first.
+    const mend = await committed(settleMendV1({ door: page.loop }, { speciesId: PLATYPUS, codecNow: NOW }));
+    expect(mend.facts.meals.map(({ floraId, taste }) => [floraId, taste])).toEqual([[CLUB, 'loved']]);
+    expect(page.durable().codex.map(([id]) => id).at(-1)).toBe(PERSIMMON);
   });
 
   it('with the loved flora gone it serves the ones the beast is indifferent to, and stops when no safe flora is left', async () => {

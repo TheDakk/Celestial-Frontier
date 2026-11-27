@@ -32,6 +32,7 @@ import {
   arc4OwnershipLegacyMirrorMatches,
   canonicalizeV5Extensions,
   encodeArc4Ownership,
+  legacyCompendiumOrder,
   migrateLegacyOwnership,
   prepareArc4OwnershipLegacyMigration,
   prepareArc4OwnershipWrite,
@@ -232,6 +233,22 @@ describe('@cf/persistence — strict sharded Arc 4 ownership', () => {
     expect(arc4OwnershipLegacyMirrorMatches(changed, projectedLegacyFixture(changed))).toBe(true);
   });
 
+  // LEGACY: the Compendium is a Map (14660); `set` on a new id appends (14798), `delete` removes (18809), and a
+  // species that left and is stored again is appended.
+  it('the order of the legacy Compendium, step by step: a page that leaves is gone, one stored goes last, one that comes back goes last', () => {
+    // Held a, b, c; the next step holds them all: nothing moves, whatever order the projection lists.
+    expect(legacyCompendiumOrder(['a', 'b', 'c'], ['c', 'a', 'b'])).toEqual(['a', 'b', 'c']);
+    // b is eaten.
+    expect(legacyCompendiumOrder(['a', 'b', 'c'], ['a', 'c'])).toEqual(['a', 'c']);
+    // d is caught: last, though the projection lists it first.
+    expect(legacyCompendiumOrder(['a', 'c'], ['d', 'a', 'c'])).toEqual(['a', 'c', 'd']);
+    // b is scavenged again: last now, not where it was.
+    expect(legacyCompendiumOrder(['a', 'c', 'd'], ['a', 'b', 'c', 'd'])).toEqual(['a', 'c', 'd', 'b']);
+    // The scout is lost and a Paragon stored in one step.
+    expect(legacyCompendiumOrder(['a', 'c', 'd', 'b'], ['b', 'c', 'd', 'p'])).toEqual(['c', 'd', 'b', 'p']);
+    expect(legacyCompendiumOrder([], [])).toEqual([]);
+  });
+
   it('matches every owned legacy fact exactly and fails closed on hostile or divergent mirrors', () => {
     const migrated = migrateLegacyOwnership(legacyFixture());
     if (migrated.kind !== 'migrated') throw new Error(`fixture failed: ${migrated.kind}`);
@@ -249,8 +266,18 @@ describe('@cf/persistence — strict sharded Arc 4 ownership', () => {
     const wrongEntryId = structuredClone(source);
     wrongEntryId.codex[0]![1].id = 's-hostile';
     expect(arc4OwnershipLegacyMirrorMatches(state, wrongEntryId)).toBe(false);
+    // The Compendium's order is its own: the legacy game's was the order species were stored in (a Map, LEGACY
+    // 14660, 14798), which the carrier does not hold. The same pages in another order are the same Compendium.
+    expect(source.codex.length).toBeGreaterThan(1);
     const reorderedCodex = { ...source, codex: [...source.codex].reverse() };
-    expect(arc4OwnershipLegacyMirrorMatches(state, reorderedCodex)).toBe(false);
+    expect(arc4OwnershipLegacyMirrorMatches(state, reorderedCodex)).toBe(true);
+    // The pages themselves admit no change: none missing, none twice, none besides.
+    expect(arc4OwnershipLegacyMirrorMatches(state, { ...source, codex: source.codex.slice(1) })).toBe(false);
+    expect(arc4OwnershipLegacyMirrorMatches(state, { ...source, codex: [...source.codex.slice(1), source.codex[1]!] })).toBe(false);
+    expect(arc4OwnershipLegacyMirrorMatches(state, { ...source, codex: [...source.codex, source.codex[0]!] })).toBe(false);
+    const stranger = structuredClone(source.codex[0]!);
+    stranger[0] = 's987654321'; stranger[1].id = 's987654321';
+    expect(arc4OwnershipLegacyMirrorMatches(state, { ...source, codex: [...source.codex, stranger] })).toBe(false);
     expect(arc4OwnershipLegacyMirrorMatches(state, {
       ...source,
       customNames: [...source.customNames, ['cs1', 'Duplicate alias']],

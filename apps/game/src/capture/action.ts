@@ -34,6 +34,7 @@ import { classifyRealm, describeSpecies, sapienceTier, type Genome } from '@cf/d
 import { isCanonicalEarthWorldAddress } from '@cf/domain-opportunity';
 import { DOMAINS, planSessionRNGDraws } from '@cf/domain-sessionrng';
 import {
+  legacyCompendiumOrder,
   prepareArc4OwnershipWrite,
   prepareArc9ProgressionRefreshV1,
   projectLegacyOwnershipMirror,
@@ -221,7 +222,11 @@ function stage(input: CaptureActionInputV1, receipt: F4MultiOutcomeDeriveInput):
       const owned = new Set(mirror.customNames.map(([key]) => key));
       draft.customNames = [...draft.customNames.filter(([key]) => !owned.has(key)), ...mirror.customNames.map(([key, value]): [string, string] => [key, value])];
     }
-    draft.codex = mirror.codex.map((entry) => {
+    // The species caught goes to the end of the Compendium, as the legacy Map stored it (14798): the order is
+    // the order of storing, not the projection's order of the world's roster.
+    const rows = new Map(mirror.codex.map((entry) => [entry.legacyCodexId, entry]));
+    draft.codex = legacyCompendiumOrder(draft.codex.map(([id]) => id), mirror.codex.map((entry) => entry.legacyCodexId)).map((id) => {
+      const entry = rows.get(id)!;
       const was = held.get(entry.legacyCodexId);
       if (was === undefined) return [entry.legacyCodexId, codexEntry(entry.legacyCodexId, entry.g as Record<string, unknown>, entry.f, entry.w as Record<string, unknown> | null, plan.tier, name)];
       return [entry.legacyCodexId, entry.legacyCodexId === taught ? { ...was, g: entry.g as Record<string, unknown> } : was];

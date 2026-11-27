@@ -3,9 +3,12 @@
 // LEGACY celestial-frontier.html, v1.8.9: `tryCapture` 14865-14887, the card 13973-13988, the gates 13798 and 13734.
 import { describe, expect, it } from 'vitest';
 import { SCENE_OWNERSHIP_ADDRESS_RESOLVER, captureChanceV1, preflightCaptureV1, projectCaptureCapacityScenariosV1 } from '@cf/domain-acquisition';
+import { createSessionRNG } from '@cf/domain-sessionrng';
 import { resolveCF1WorldAddress } from '@cf/scene';
 import { arc4OwnershipLegacyMirrorMatches, readArc4Ownership } from '@cf/persistence';
 import { CAPTURE_RECEIPT_KIND_V1, captureGateV1, captureResultNotices, commitCaptureV1, type CaptureAuthorityV1, type CaptureTransactionV1 } from '../src/capture';
+import { settleScoutV1 } from '../src/care';
+import { stageStarterCharterEventV1 } from '../src/guidance';
 import { LEASE_TTL_MS, REGISTRY, createSaveRuntime } from '../src/save/index';
 import { EARTH, capturePage, captureSession, earthRows, rosterFor, type CapturePage } from './capture-support';
 import { SOL, solWorld } from './landing-support';
@@ -128,6 +131,41 @@ describe('a press is one committed receipt', () => {
     expect(facts.achievementIds).toEqual(expect.arrayContaining(['first', 'rare', 'legend']));
     expect(state.unlocked).toEqual(expect.arrayContaining(['first', 'rare', 'legend']));
     expect(page.live.unlocked).toEqual(expect.arrayContaining(['rare', 'legend']));
+  });
+
+  // LEGACY: the Compendium is a Map (14660), so it lists species in the order they were stored (`codex.set`
+  // 14798), and the save writes that order (16592). The carrier's own projection lists a world's species by
+  // their place in its roster; the stored Compendium keeps the order of storing.
+  it('the Compendium holds species in the order they were caught, not in the order of the world\'s roster', async () => {
+    // A session whose first press catches a beast of the roster's second half and whose second catches its first beast.
+    let seed = 1;
+    for (; seed < 400_000; seed++) {
+      const rng = createSessionRNG(seed);
+      if (rng.at('capture.candidate', 0) >= 0.5 && rng.at('capture.success', 0) < 0.02 && rng.at('capture.candidate', 1) < 1 / 7 && rng.at('capture.success', 1) < 0.02) break;
+    }
+    const page = await capturePage({ sessionSeed: seed });
+    const first = committed(await page.press('tame'));
+    const second = committed(await page.press('tame'));
+    expect([first.facts.hit, second.facts.hit]).toEqual([true, true]);
+    expect(second.facts.sourceOrdinal).toBe(11);
+    expect(first.facts.sourceOrdinal).toBeGreaterThan(second.facts.sourceOrdinal);
+    const order = [first.facts.speciesId, second.facts.speciesId];
+    expect(second.state.codex.map(([id]) => id)).toEqual(order);
+    expect(page.live.codex.map(([id]) => id)).toEqual(order);
+    // What storage holds reads back in the same order.
+    expect((await page.stored()).state.codex.map(([id]) => id)).toEqual(order);
+    // The carrier holds the same pages; the order is the Compendium's own.
+    expect(arc4OwnershipLegacyMirrorMatches(ownershipOf(page), second.state)).toBe(true);
+    // A care action on one of them leaves the order alone: the carrier's step is mirrored page by page.
+    const named = await settleScoutV1({ door: page.loop, charters: stageStarterCharterEventV1 }, { speciesId: order[1]!, codecNow: NOW });
+    expect(named).toMatchObject({ kind: 'committed', facts: { scoutAfter: order[1] } });
+    expect(page.durable().codex.map(([id]) => id)).toEqual(order);
+    expect(arc4OwnershipLegacyMirrorMatches(ownershipOf(page), page.durable())).toBe(true);
+    // Another page that opens the same save finds the same order.
+    await page.runtime.release();
+    const { bootedHarness } = await import('./save-loop-support');
+    const reopened = await bootedHarness(page.backend, 'document-b');
+    expect(reopened.runtime.checkpointParent()?.codex.map(([id]) => id)).toEqual(order);
   });
 
   it('a miss lowers the remaining Yield by one and adds nothing', async () => {

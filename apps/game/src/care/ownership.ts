@@ -7,7 +7,13 @@
 
    A species leaves the Compendium whole, as `removeFromCodex` took it (18808-18821): its page, its creature or its
    plant, and the scout's post if it held it (`withoutSpeciesV1`). The player's own name for it stays among the
-   names, as the legacy game left it there. */
+   names, as the legacy game left it there.
+
+   The Compendium's ORDER is the state's own, as it was the legacy game's: its Compendium was a Map, which lists
+   species in the order they were stored (`codex.set` 14798), and its save wrote that order (16592). The carrier
+   keeps its rows by their ids and holds no time of capture, and its projection lists a world's species by their
+   place in the roster; so the order is never taken from the projection (`legacyCompendiumOrder`). Everything that reads
+   ties from the list reads the legacy order: "Mend — safest meals" (19042-19048), the Feed picker, the list. */
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   createOwnershipSuccessorV1,
@@ -17,6 +23,7 @@ import {
   type OwnershipStateV1,
 } from '@cf/domain-acquisition';
 import {
+  legacyCompendiumOrder,
   prepareArc4OwnershipWrite,
   projectLegacyOwnershipMirror,
   readArc4Ownership,
@@ -80,7 +87,9 @@ export function stageOwnership(input: Readonly<{
   const mirror = projectLegacyOwnershipMirror(successor);
   if (mirror.kind !== 'projected') return refuse(`ownership:${mirror.kind}`);
   const held = new Map(draft.codex);
-  draft.codex = mirror.codex.map((row) => {
+  const rows = new Map(mirror.codex.map((row) => [row.legacyCodexId, row]));
+  draft.codex = legacyCompendiumOrder(draft.codex.map(([id]) => id), mirror.codex.map((row) => row.legacyCodexId)).map((id) => {
+    const row = rows.get(id)!;
     const was = held.get(row.legacyCodexId);
     const g = row.g as Record<string, unknown>;
     if (was === undefined) {
