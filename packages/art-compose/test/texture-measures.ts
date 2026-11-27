@@ -40,6 +40,64 @@ export function alternations(p: Picture): number {
   }
   return n;
 }
+/** Runs of four drawn pixels along a row or a column that are two values in turn, with a texture pixel among them: what a run of every other pixel is on armour, whose pieces hold pixels left as they were. */
+export function turns(p: Picture): number {
+  let n = 0;
+  for (let y = 0; y < p.h; y++) {
+    for (let x = 0; x < p.w; x++) {
+      for (const [dx, dy] of [[1, 0], [0, 1]] as const) {
+        const v = [0, 1, 2, 3].map((k) => at(p.after, p, x + k * dx, y + k * dy));
+        if (v.includes(0) || v[0] === v[1] || v[0] !== v[2] || v[1] !== v[3]) continue;
+        if ([0, 1, 2, 3].some((k) => changed(p, x + k * dx, y + k * dy))) n++;
+      }
+    }
+  }
+  return n;
+}
+/** The longest run of drawn pixels along a row or a column that are texture and hide in turn, whatever their values, from a texture pixel: a comb. */
+export function comb(p: Picture): number {
+  let most = 0;
+  for (let y = 0; y < p.h; y++) {
+    for (let x = 0; x < p.w; x++) {
+      if (!changed(p, x, y)) continue;
+      for (const [dx, dy] of [[1, 0], [0, 1]] as const) {
+        let n = 0;
+        while (at(p.after, p, x + n * dx, y + n * dy) !== 0 && changed(p, x + n * dx, y + n * dy) === (n % 2 === 0)) n++;
+        if (n > most) most = n;
+      }
+    }
+  }
+  return most;
+}
+/**
+ * Specks: pieces of one value, joined above, below, left or right, of four pixels or fewer, that hold a texture pixel.
+ * Armour on a flat middle shade leaves its faces as the hide was and its edges joined, so it has next to none; a mesh
+ * of dots or small blocks laid over the faces is all specks.
+ */
+export function specks(p: Picture): number {
+  const seen = new Uint8Array(p.w * p.h);
+  let n = 0;
+  for (let start = 0; start < seen.length; start++) {
+    const v = p.after[start] ?? 0;
+    if (seen[start] === 1 || v === 0) continue;
+    const queue = [start];
+    seen[start] = 1;
+    let size = 0; let texture = false;
+    while (queue.length > 0) {
+      const i = queue.pop() as number;
+      size++;
+      if (p.after[i] !== p.before[i]) texture = true;
+      const x = i % p.w;
+      for (const j of [x > 0 ? i - 1 : -1, x < p.w - 1 ? i + 1 : -1, i - p.w, i + p.w]) {
+        if (j < 0 || j >= seen.length || seen[j] === 1 || p.after[j] !== v) continue;
+        seen[j] = 1;
+        queue.push(j);
+      }
+    }
+    if (texture && size <= 4) n++;
+  }
+  return n;
+}
 /** Texture pixels, as a share of the hide (the pixels drawn 1 to 12). */
 export function coverage(p: Picture): number {
   let hide = 0; let texture = 0;

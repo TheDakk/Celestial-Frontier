@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { parseCatalogueText, type PartFrame, type SlotName } from '@cf/art-format';
 import type { Recipe } from '@cf/art-recipe';
-import { blit, compose, createBuffer, finish, hashBuffer, toAscii, type PixelBuffer } from '@cf/art-compose';
+import { blit, compose, createBuffer, finish, finishedPixel, hashBuffer, toAscii, type PixelBuffer } from '@cf/art-compose';
 
 const frameOf = (w: number, h: number, values: number[]): PartFrame => ({ w, h, pixels: Uint8Array.from(values), anchor: [0, 0], attach: {} });
 const solid = (w: number, h: number, v: number): PartFrame => frameOf(w, h, new Array<number>(w * h).fill(v));
@@ -291,5 +291,22 @@ describe('compose', () => {
     expect(a.hash).toBe(b.hash);
     expect(a.hash).toMatch(/^[0-9a-f]{8}$/);
     expect(a.buffer.pixels).toEqual(b.buffer.pixels);
+  });
+});
+
+describe('finishedPixel', () => {
+  it('gives every pixel of a picture the value finish writes there, edges, eyes, bone, deep and the outline included', () => {
+    // Pictures of every value 0 to 28 thrown from a fixed sequence, a third of the pixels empty.
+    let state = 12345;
+    const next = (): number => { state = (Math.imul(state, 1103515245) + 12345) >>> 0; return state >>> 8; };
+    for (let n = 0; n < 20; n++) {
+      const w = 5 + (next() % 12); const h = 5 + (next() % 9);
+      const pixels = Uint8Array.from({ length: w * h }, () => (next() % 3 === 0 ? 0 : next() % 29));
+      const whole = { w, h, pixels: Uint8Array.from(pixels) };
+      finish(whole);
+      const each = Uint8Array.from({ length: w * h }, (_, i) => finishedPixel(w, h, pixels, i % w, Math.floor(i / w)));
+      expect(Array.from(each), `picture ${n}`).toEqual(Array.from(whole.pixels));
+      expect(Array.from(whole.pixels), `picture ${n} is changed by the finish`).not.toEqual(Array.from(pixels));
+    }
   });
 });

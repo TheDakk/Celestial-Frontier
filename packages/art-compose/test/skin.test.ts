@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PIXEL_CHARS, SKIN_NAMES, TIER_SIZE, type LayerName, type PartFrame, type SizeTier, type SkinName } from '@cf/art-format';
-import { SKIN_TABLE, paintSkin, type Stamp } from '@cf/art-compose';
-import { alternations, checkers, coverage, COVER_MOST, lonePixels, LINES_ON_A_BODY_REPEAT_MOST, pitch, PITCH_MOST, repeat, REPEAT_MOST, type Picture } from './texture-measures';
+import { SKIN_TABLE, armoured, hashBuffer, paintSkin, type Stamp } from '@cf/art-compose';
+import { alternations, checkers, comb, coverage, COVER_MOST, lonePixels, LINES_ON_A_BODY_REPEAT_MOST, pitch, PITCH_MOST, repeat, REPEAT_MOST, turns, type Picture } from './texture-measures';
 
 /** Rows of pixel characters ('.' is 0) as one row-major array. */
 const grid = (rows: readonly string[]): Uint8Array => Uint8Array.from(rows.join('').split('').map((c) => PIXEL_CHARS.indexOf(c)));
@@ -158,7 +158,10 @@ describe('a textured skin is drawn as solid clusters, never a grid of dots, dash
             const label = `${skin} ${tier} seed ${seed} ${frame.w}x${frame.h}`;
             expect(lonePixels(p), `lone pixels: ${label}`).toBe(0);
             expect(checkers(p), `checkers: ${label}`).toBe(0);
-            expect(alternations(p), `runs of every other pixel: ${label}`).toBe(0);
+            // Armour (plates and chitin at large) holds pixels left as they were inside a piece: there a run of every
+            // other pixel is two values in turn, and no comb of texture and hide in turn is longer than a plate's edge.
+            if (armoured(skin, tier)) { expect(turns(p), `two values in turn: ${label}`).toBe(0); expect(comb(p), `comb: ${label}`).toBeLessThanOrEqual(6); }
+            else expect(alternations(p), `runs of every other pixel: ${label}`).toBe(0);
             if (p.after.some((v, i) => v !== p.before[i])) drawn++;
           }
         }
@@ -167,8 +170,8 @@ describe('a textured skin is drawn as solid clusters, never a grid of dots, dash
       }
     });
 
-    it(`${tier}: the texture on a body covers at most three tenths of the hide and does not repeat as a grid`, () => {
-      for (const skin of TEXTURED) {
+    it(`${tier}: the texture on a body covers at most three tenths of the hide and does not repeat as a grid (armour: armour.test.ts)`, () => {
+      for (const skin of TEXTURED.filter((s) => !armoured(s, tier))) {
         for (const seed of SEEDS) {
           const p = painted(body(tier), skin, tier, seed);
           expect(coverage(p), `${skin} ${tier} seed ${seed}`).toBeGreaterThan(0.02);
@@ -185,7 +188,8 @@ describe('a textured skin is drawn as solid clusters, never a grid of dots, dash
     it(`${tier}: on a flat hide the texture has no fixed pitch: scattered clusters are spaced unevenly, and lines do not repeat`, () => {
       // A flat hide is where a grid shows: nothing in the shading breaks it up.
       const flat = frameOf(block(96, 64, '2'));
-      for (const skin of TEXTURED) {
+      // Armour covers the hide it lies on and its rows are rows: its own measures are in armour.test.ts.
+      for (const skin of TEXTURED.filter((s) => !armoured(s, tier))) {
         for (let seed = 0; seed < 12; seed++) {
           const p = painted(flat, skin, tier, seed);
           const label = `${skin} ${tier} seed ${seed}`;
@@ -334,6 +338,28 @@ describe('a textured skin is drawn as solid clusters, never a grid of dots, dash
 });
 
 describe('paintSkin', () => {
+  it('everything but large armour is painted as it was before plates and chitin were redrawn', () => {
+    // Each skin's pictures on a body and a limb at seven seeds, as one hash, recorded from the painter before the armour
+    // was rebuilt (the code branch at 7fac37e): the six other ruled skins at every tier, and plates and chitin on a small
+    // and a medium creature (accepted as they are; small armour is to be drawn by hand). None may move by a pixel.
+    const recorded = { scaled: '933098c7', furred: '62e6aad8', slick: 'dd02bb27', warty: '437764e6', feathered: '758facea', crystalline: '59e17b7d', chitinous: '609c6d8d', plated: '416876b7' };
+    const now: Record<string, string> = {};
+    for (const skin of RULED) {
+      const all: number[] = [];
+      for (const tier of TIERS) {
+        if (armoured(skin, tier)) continue;
+        for (const seed of SEEDS) for (const frame of [body(tier), limb(tier)]) all.push(...paintSkin(frame, frame.pixels, skin, tier, seed)!);
+      }
+      now[skin] = hashBuffer({ w: all.length, h: 1, pixels: all });
+    }
+    expect(now).toEqual(recorded);
+  });
+  it('armour is plates and chitin on a large creature and a Guardian, and nothing else', () => {
+    const is: string[] = [];
+    for (const skin of SKIN_NAMES) for (const tier of TIERS) if (armoured(skin, tier)) is.push(`${skin} ${tier}`);
+    expect(is).toEqual(['chitinous large', 'chitinous guardian', 'plated large', 'plated guardian']);
+  });
+
   it('each rule skin changes some pixel, and the eight differ pairwise', () => {
     expect(RULED.length).toBe(8);
     const seen = new Set<string>();
@@ -501,7 +527,8 @@ describe('the table', () => {
       const rule = SKIN_TABLE[skin];
       if (rule.mode !== 'seams' && rule.mode !== 'plates') continue;
       // The count of spacings (jitter + 1) shares no factor with the stride of five the painter steps through them by.
-      for (const tier of TIERS) expect(rule.tiers[tier].gap >= 4 && rule.tiers[tier].jitter * 2 >= rule.tiers[tier].gap && (rule.tiers[tier].jitter + 1) % 5 !== 0, `${skin} ${tier}`).toBe(true);
+      for (const tier of ['small', 'medium', 'large'] as const) expect(rule.lines[tier].gap >= 4 && rule.lines[tier].jitter * 2 >= rule.lines[tier].gap && (rule.lines[tier].jitter + 1) % 5 !== 0, `${skin} ${tier}`).toBe(true);
+      if (rule.mode === 'seams') expect((rule.armour.jitter + 1) % 5, skin).not.toBe(0);
     }
   });
 

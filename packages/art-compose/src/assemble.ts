@@ -3,14 +3,16 @@ import type { Recipe, RecipePart } from '@cf/art-recipe';
 import { accentAsIris, blit, createBuffer, type PixelBuffer } from './buffer';
 import { paintMarks } from './marks';
 import { PHASE_SPREAD } from './patterns';
-import { paintSkin, settleTexture, texturedByRule } from './skin';
+import { finishedPixel } from './finish';
+import { armoured, paintSkin, settleTexture, texturedByRule, type Box } from './skin';
 
 // The recipe's ramps and glow flag are not applied here: the buffer holds slot values 0-28 for a later display step. An eye part's accent values 5-8 are written as the iris values 17-20.
 // So are a jelly's (family `gelatinous`) torso values 5-8, its organelles, before any mark is painted, so no mark covers one.
 // A part that carries a mark, on a creature whose pattern is not plain, is painted (marks.ts) before it is stacked.
 // Then, on a creature whose recipe names a skin, every part in a mark slot takes the skin texture (skin.ts), over its marks.
 // Once every part is stacked, a texture pixel a rule painted that the stacking left alone (half its cluster under another
-// part) is taken back (settleTexture); a drawn skin layer's pixels are never taken back.
+// part) is taken back (settleTexture); a drawn skin layer's pixels are never taken back. Armour (plates, chitin) is
+// settled as the finished picture will show it (settleFinished), so no pixel of it stands alone once the creature is finished.
 
 export interface Assembly {
   buffer: PixelBuffer;
@@ -203,6 +205,71 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     blit(buffer, frame, p.x, p.y, false, rp.slot === 'eyes');
     if (untextured !== null) blit(untextured, bare ?? frame, p.x, p.y, false, rp.slot === 'eyes');
   }
-  if (untextured !== null) settleTexture(buffer.w, buffer.h, untextured.pixels, buffer.pixels, textured);
+  if (untextured !== null && skin !== undefined && armoured(skin, recipe.tier)) {
+    clearRoundEyes(buffer, untextured, textured);
+    settleFinished(buffer, untextured, textured);
+  }
+  else if (untextured !== null) settleTexture(buffer.w, buffer.h, untextured.pixels, buffer.pixels, textured);
   return { buffer, contact: pose?.contact ?? null, gaps, scaffold };
 }
+
+/**
+ * Settles armour on the picture as it is and as the finishing pass will show it, until neither takes a pixel back.
+ * For the second, the creature and the same creature without its texture are finished in copies (the pixels round
+ * the textured parts only), the texture is settled there (settleTexture), and every pixel taken back there is taken back in `buffer`. The finishing pass changes
+ * a pixel by its own value and the empty pixels round it alone, so finishing `buffer` afterwards gives exactly the
+ * settled copy: no texture pixel of the finished creature stands alone, makes a checker or a run of two values in turn.
+ */
+function settleFinished(buffer: PixelBuffer, untextured: PixelBuffer, box: Box): void {
+  const { w, h } = buffer;
+  // The settling reads up to three pixels past the texture, which lies inside `box`: only those pixels are finished.
+  const x0 = Math.max(0, box.x0 - REACH); const x1 = Math.min(w - 1, box.x1 + REACH);
+  const y0 = Math.max(0, box.y0 - REACH); const y1 = Math.min(h - 1, box.y1 + REACH);
+  const shown = new Uint8Array(w * h);
+  const bare = new Uint8Array(w * h);
+  for (let again = true; again;) {
+    again = false;
+    settleTexture(w, h, untextured.pixels, buffer.pixels, box, true);
+    for (let y = y0; y <= y1; y++) {
+      for (let x = x0; x <= x1; x++) {
+        const i = y * w + x;
+        // The skin never empties or fills a pixel, so both pictures are finished from the one shape.
+        shown[i] = finishedPixel(w, h, buffer.pixels, x, y);
+        bare[i] = buffer.pixels[i] === untextured.pixels[i] ? shown[i] ?? 0 : finishedPixel(w, h, untextured.pixels, x, y);
+      }
+    }
+    settleTexture(w, h, bare, shown, box, true);
+    for (let y = y0; y <= y1; y++) {
+      for (let x = x0; x <= x1; x++) {
+        const i = y * w + x;
+        if (shown[i] !== bare[i] || buffer.pixels[i] === untextured.pixels[i]) continue;
+        buffer.pixels[i] = untextured.pixels[i] ?? 0;
+        again = true;
+      }
+    }
+  }
+}
+/** How far from any pixel of an eye, each way, armour is taken back once the creature is stacked. */
+const EYE_MARGIN = 2;
+/** A pixel of an eye: the eye, its highlight or its iris (13, 14, 17 to 20). */
+const eyePixel = (v: number): boolean => v === 13 || v === 14 || (v >= 17 && v <= 20);
+
+/**
+ * Takes back the texture within `EYE_MARGIN` pixels of every eye pixel of the stacked creature, wherever the eye came
+ * from (its own part, a pose's offset, the body's own drawing), so no armour touches an eye. The part painter already
+ * keeps a box round each eye point clear; an eye larger than that box, or moved by a pose, is caught here.
+ */
+function clearRoundEyes(buffer: PixelBuffer, untextured: PixelBuffer, box: Box): void {
+  const { w, h } = buffer;
+  for (let y = Math.max(0, box.y0 - EYE_MARGIN); y <= box.y1 + EYE_MARGIN && y < h; y++) {
+    for (let x = Math.max(0, box.x0 - EYE_MARGIN); x <= box.x1 + EYE_MARGIN && x < w; x++) {
+      if (!eyePixel(buffer.pixels[y * w + x] ?? 0)) continue;
+      for (let ny = Math.max(0, y - EYE_MARGIN); ny <= y + EYE_MARGIN && ny < h; ny++) {
+        for (let nx = Math.max(0, x - EYE_MARGIN); nx <= x + EYE_MARGIN && nx < w; nx++) buffer.pixels[ny * w + nx] = untextured.pixels[ny * w + nx] ?? 0;
+      }
+    }
+  }
+}
+
+/** How far past a texture pixel the settling reads: the four pixels of a run from it, either way. */
+const REACH = 3;

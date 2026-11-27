@@ -39,3 +39,18 @@ export function finish(buffer: PixelBuffer): void {
     }
   }
 }
+
+/**
+ * The value the finishing pass gives the pixel at (x, y) of an unfinished picture: exactly what `finish` writes there,
+ * read from the picture as it is, for a caller that needs a few finished pixels and not a finished copy.
+ */
+export function finishedPixel(w: number, h: number, pixels: Uint8Array, x: number, y: number): number {
+  const clear = (cx: number, cy: number): boolean => cx < 0 || cy < 0 || cx >= w || cy >= h || pixels[cy * w + cx] === TRANSPARENT;
+  const v = pixels[y * w + x] ?? 0;
+  if (v === TRANSPARENT) return !clear(x - 1, y) || !clear(x + 1, y) || !clear(x, y - 1) || !clear(x, y + 1) ? OUTLINE : TRANSPARENT;
+  if (v >= EYE && (v < FIRST_OWN || v > LAST_OWN)) return v;
+  const base = v - ((v - 1) & 3);
+  const d = (clear(x, y - 1) && clear(x - 1, y) ? 1 : 0) - (clear(x, y + 1) ? 1 : 0);
+  const shade = v - base + d;
+  return base + (shade < 0 ? 0 : shade > 3 ? 3 : shade);
+}
