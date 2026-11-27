@@ -52,8 +52,6 @@ import { DOMAINS } from '@cf/domain-sessionrng';
 import { ringGrade } from '@cf/domain-strays';
 import { systemFor } from '@cf/domain-worldgen';
 import {
-  prepareArc9EventAchievementJoinV1,
-  prepareArc9ProgressionRefreshV1,
   readArc2EngineeringLoadout,
   readWorldIdentity,
   worldIdentityRecord,
@@ -66,7 +64,7 @@ import { ascStageOf, bankBioscan, reconcileV2Chapters, type CanonicalCF1WorldAdd
 import { bioscanDanger, creatureCondition, depthTax, resolveBioscanPress, type BioscanDanger, type CreatureConditionLabel } from './bioscan-hazard';
 import { revealBiosphere } from './bioscan-reveal';
 import {
-  commitCare, refuse, settleCare, type CareAuthority, type CareCharterStager, type CareOutcome, type CareReceipt, type CareSettleDeps, type CareStaged,
+  commitCare, refreshProgression, refuse, settleCare, unlockAchievement, type CareAuthority, type CareCharterStager, type CareOutcome, type CareReceipt, type CareSettleDeps, type CareStaged,
 } from './commit';
 import { compendiumId, compendiumRow, contentsOf, ownershipOf, stageOwnership } from './ownership';
 import { paragonIndexAt } from './paragon-finder';
@@ -189,12 +187,6 @@ function ready(input: BioscanActionInputV1, state: SaveStateV2, extensions: V5Ex
   return { card, danger };
 }
 
-function unlock(draft: SaveStateV2, id: 'survivor' | 'brink' | 'civ' | 'spacefar'): void {
-  const join = prepareArc9EventAchievementJoinV1(draft, id);
-  if (join.kind !== 'prepared') return refuse(`achievement:${join.reason}`);
-  if (join.added) draft.unlocked = [...join.nextUnlockedIds];
-}
-
 function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<BioscanFactsV1> {
   const { address } = input;
   const { draft, extensions } = receipt;
@@ -239,7 +231,7 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
     } else {
       draft.hp = resolved.hpAfter;
     }
-    for (const id of resolved.unlocks) unlock(draft, id);
+    for (const id of resolved.unlocks) unlockAchievement(draft, id);
   }
 
   let firstScan = false;
@@ -271,7 +263,7 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
         draft.ascCh = reconciled.nextChapter;
       }
     }
-    for (const id of reveal.unlocks) unlock(draft, id);
+    for (const id of reveal.unlocks) unlockAchievement(draft, id);
     if (reveal.paragon !== null) {
       const genome = paragonGenomeV1(reveal.paragon);
       const identity = canonicalGenomeIdentityV1(genome);
@@ -314,12 +306,7 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
     // A stored page raises the best find before the achievements are looked at (`onSpeciesStored` 16476).
     draft.stats = { ...draft.stats, best: Math.max(draft.stats.best ?? 0, stored.tier ?? 0) };
   }
-  const refresh = prepareArc9ProgressionRefreshV1(draft);
-  if (refresh.kind === 'protected') return refuse(`progression:${refresh.reason}`);
-  if (refresh.kind === 'ready') {
-    draft.unlocked = [...refresh.successorState.unlocked];
-    draft.stats = { ...refresh.successorState.stats };
-  }
+  refreshProgression(draft);
   const held = new Set(draft.codex.map(([id]) => id));
   const facts: BioscanFactsV1 = {
     worldKey: address.key, planetSeed: seed, danger: { pct: danger.pct, dmg: danger.dmg }, rolled: danger.pct > 0, hostile: resolved.hostile, damage: resolved.damage,

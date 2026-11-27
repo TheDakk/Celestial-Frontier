@@ -467,6 +467,123 @@ function recordLegacyCare(script) {
   return cases;
 }
 
+/* ---- the v1 tastes, a flora's flavour, the explorer's meal and the order of Mend ---- */
+
+/** Runs the v1 tastes (`faunaTastes`), a flora's flavour (`floraStat`), the explorer's meal (`healExplorer` and the
+    press that calls it) and the order in which "Mend — safest meals" picks its flora. */
+function recordLegacyMeals(script) {
+  const cases = [];
+  const v1 = new Function('Math', '_equipBonus', 'document', 'note', `
+    const codex=new Map(), techOwned=new Set(), unlocked=new Set();
+    let tutDone=true, _tutRig=null, codexOpen=false, scoutId=null;
+    const codexCountEl={textContent:''};
+    const toast=(title, text)=>note('toast', [title, text]);
+    const unlock=(id)=>{ if(!unlocked.has(id)){ unlocked.add(id); note('unlock', id); } };
+    const gameEvent=(type, detail)=>note('event', [type, detail]);
+    const checkAch=()=>{}, renderRank=()=>{}, queueSave=()=>{}, renderHP=()=>{}, renderCodex=()=>{}, playRaritySting=()=>{}, fxBurst=()=>{}, FX_GREEN=[];
+    ${cutUnique(script, 'function clamp(v,a,b){', '}')}
+    ${cutUnique(script, 'function mulberry32(a){', '/4294967296}}')}
+    ${cutUnique(script, 'function hashInt(seed,x,y){', 'return h>>>0;\n}')}
+    ${cutUnique(script, 'function removeFromCodex(id){', '  if(codexOpen) renderCodex();\n}')}
+    ${cutUnique(script, "const STAT_KEYS=['vit'", '];')}
+    ${cutUnique(script, 'const STAT_META={', '\n};')}
+    ${cutUnique(script, 'let pstats={', '};')}
+    ${cutUnique(script, 'function hpMaxFromVit(){', '}')}
+    ${cutUnique(script, 'function floraStat(g){', '}')}
+    ${cutUnique(script, 'let HP_MAX=hpMaxFromVit();', ';')}
+    ${cutUnique(script, 'let hp=HP_MAX;', ';')}
+    ${cutUnique(script, 'function recomputeHPMax(){', 'renderHP(); }')}
+    ${cutUnique(script, 'function faunaTastes(g){', 'dislikes:[ks[4]]};\n}')}
+    ${cutUnique(script, 'function healExplorer(floraEntry, roll){', 'return {ok:true, pois, heal, stat, gain};\n}')}
+    function pressHeal(other, resEl, pickList){
+    ${cutUnique(script, "  if(_pickMode==='heal'){", '    return;\n  }').replace("if(_pickMode==='heal'){", '{')}
+    }
+    function safest(base){
+      let fl;
+      {
+    ${cutUnique(script, '          const tastes=faunaTastes(base.genome);', '            });').replace('const fl=', 'fl=')}
+      }
+      return fl.map((e)=>e.id);
+    }
+    return {
+      faunaTastes, floraStat, healExplorer, pressHeal, safest, STAT_META,
+      set(o){ codex.clear(); for(const e of o.codex||[]) codex.set(e.id, e); techOwned.clear(); for(const t of o.tech||[]) techOwned.add(t); unlocked.clear();
+        pstats={vit:50, fer:50, res:50, agi:50, ins:50, ...(o.pstats||{})}; HP_MAX=hpMaxFromVit(); hp=o.hp==null?HP_MAX:o.hp; tutDone=o.tutDone!==false; _tutRig=o.rig||null; scoutId=o.scout||null; },
+      get(){ return { hp, hpMax:HP_MAX, pstats:{...pstats}, codex:[...codex.keys()], scout:scoutId }; },
+    };`);
+  let randoms = [];
+  let healGear = 0;
+  let notes = [];
+  const math = Object.create(Math);
+  math.random = () => {
+    if (randoms.length === 0) throw new Error('a random value was drawn that the case did not supply');
+    return randoms.shift();
+  };
+  const title = { textContent: '' };
+  const game = v1(math, (key) => (key === 'heal' ? healGear : 0), { getElementById: () => title }, (kind, value) => { notes.push([kind, value]); });
+
+  // tastes: faunaTastes for a beast's seed. flavour: floraStat for a plant's seed.
+  const SEEDS = [0, 1, 2, 7, 133, 999, 65535, 65536, 0x7FFFFFFF, 0x80000000, 0xFFFFFFFE, 0xFFFFFFFF];
+  for (let i = 0; i < 288; i++) SEEDS.push((Math.imul(i + 1, 2654435761) >>> 0));
+  for (const seed of SEEDS) cases.push({ group: 'tastes', input: { seed }, output: game.faunaTastes({ seed }) });
+  for (const seed of SEEDS) cases.push({ group: 'flavour', input: { seed }, output: game.floraStat({ seed }) });
+  cases.push({ group: 'flavour', input: { seed: null }, output: game.floraStat({}) });
+  cases.push({ group: 'stat-names', input: {}, output: Object.fromEntries(Object.entries(game.STAT_META).map(([key, meta]) => [key, meta.name])) });
+
+  // A plant of each flavour: the first seed of SEEDS whose floraStat is that stat.
+  const plantOf = Object.fromEntries(['vit', 'fer', 'res', 'agi', 'ins'].map((stat) => [stat, SEEDS.find((seed) => game.floraStat({ seed }) === stat)]));
+  const flora = (seed, tier) => ({ id: 's' + seed, name: 'Plant ' + seed, kind: 'Flora', genome: { seed, kingdom: 'flora' }, grade: tier === null ? null : { tier } });
+  const snap = () => ({ ...game.get(), notes });
+
+  // meal: healExplorer for a plant of a tier and flavour, a roll, the health, the stats, the meal gear and the lab.
+  const meal = (o) => {
+    healGear = o.gear || 0; notes = [];
+    const plant = flora(plantOf[o.stat || 'fer'], o.tier);
+    game.set({ codex: [plant, flora(424242, 0)], hp: o.hp, pstats: o.pstats, tech: o.lab ? ['lab1'] : [], scout: o.scout ? plant.id : null });
+    const result = game.healExplorer(plant, o.roll);
+    cases.push({ group: 'meal', input: o, output: { result, ...snap() } });
+  };
+  for (const tier of [null, 0, 1, 2, 3, 4, 5, 6, 7, 8, 14]) {
+    const pois = Math.max(0.05, Math.min(0.6, 0.08 + (tier || 0) * 0.07));
+    for (const roll of [0, pois - 1e-9, pois, pois + 1e-9, 0.95, 0.999]) for (const hp of [100, 60, 30, 5, 2, 1]) meal({ tier, roll, hp });
+  }
+  for (const stat of ['vit', 'fer', 'res', 'agi', 'ins']) for (const tier of [0, 3, 7]) for (const lab of [false, true]) for (const hp of [100, 40]) meal({ tier, roll: 0.999, hp, stat, lab });
+  for (const gear of [0.08, 0.12, 0.2, 0.32]) for (const tier of [0, 2, 5]) for (const roll of [0, 0.999]) meal({ tier, roll, hp: 20, gear });
+  for (const value of [320, 325, 328, 329, 330]) for (const stat of ['vit', 'ins']) meal({ tier: 6, roll: 0.999, hp: 50, stat, lab: true, pstats: { [stat]: value } });
+  for (const vit of [10, 11, 60, 164, 165]) meal({ tier: 2, roll: 0.999, hp: 15, stat: 'vit', pstats: { vit } });
+  meal({ tier: 1, roll: 0.999, hp: 100, scout: true });
+
+  // meal-press: the press of a plant in the heal picker; output adds the words of the result line and the title.
+  const press = (o) => {
+    healGear = o.gear || 0; notes = [];
+    const plant = flora(plantOf[o.stat || 'fer'], o.tier);
+    game.set({ codex: [plant], hp: o.hp, tech: o.lab ? ['lab1'] : [], tutDone: o.tutDone, rig: o.rig });
+    randoms = [...(o.values || [])];
+    const resEl = { innerHTML: '' }, pickList = { innerHTML: 'list' };
+    title.textContent = '';
+    game.pressHeal(plant, resEl, pickList);
+    cases.push({ group: 'meal-press', input: o, output: { said: resEl.innerHTML, title: title.textContent, ...snap(), unread: randoms.length } });
+  };
+  for (const tier of [0, 2, 5, 8]) for (const value of [0, 0.3, 0.999]) for (const hp of [100, 40, 9, 1]) press({ tier, hp, values: [value] });
+  press({ tier: 5, hp: 40, tutDone: false, values: [] });
+  press({ tier: 8, hp: 40, tutDone: false, values: [] });
+  press({ tier: 8, hp: 40, rig: { heal: 0.95 }, values: [] });
+  press({ tier: 3, hp: 40, stat: 'vit', lab: true, values: [0.999] });
+  press({ tier: 3, hp: 40, stat: 'ins', gear: 0.2, values: [0.999] });
+
+  // mend-order: the flora "Mend — safest meals" would serve a beast, safest first, from the plants held in order.
+  const beasts = SEEDS.slice(12, 24);
+  const larder = [];
+  for (let i = 0; i < 15; i++) larder.push([SEEDS[40 + i], [0, 3, 1, 0, 2, 5, 1, 4, 0, 2, 3, 1, 0, 6, 2][i]]);
+  for (const seed of beasts) for (const count of [0, 1, 5, 15]) {
+    const held = larder.slice(0, count).map(([plantSeed, tier]) => flora(plantSeed, tier));
+    const base = { id: 's' + seed, kind: 'Fauna', genome: { seed, kingdom: 'fauna', hurt: 0.5 } };
+    game.set({ codex: [base, ...held] });
+    cases.push({ group: 'mend-order', input: { beast: seed, flora: larder.slice(0, count) }, output: game.safest(base) });
+  }
+  return cases;
+}
+
 /* ---- the v1 descent, shared by its two recorders ---- */
 
 /** Runs the v1 descent rules. `edges` false: the cases of landing-descent. true: those of landing-descent-edges. */
@@ -894,6 +1011,12 @@ export const recorders = {
     kind: 'outputs',
     taken: 'The v1 biosphere scan, the Field Scout and the Fifty Paragons. paragon-site: paragonWhere(i) for i = 0..49, run with new Function over the v1 modules Rand, PlanetGen, WorldConfig, Naming, StarCatalog and WorldGen (each from "const <Name>=(()=>{" to "}=<Name>;"), GAL_SPRITE_SEEDS (GAL_SPRITES is supplied as that list: the walk reads only its length), slimGal and paragonWhere, with the real Math. Every other group runs new Function over unique script slices: clamp, mulberry32, codexId, levelOf, creatureCondition, hazardFlavor, DEPTH_TAX, depthTax, dangerOf, damageExplorer, routeHit, awardXP, autoScanWorld, discoverSpecies, and the statements of the survey card\'s click listener from "  const scan=e.target.closest(\'[data-scanlife]\');" to its "return;" (inline in that listener, so wrapped unchanged in function pressScan(e)). Supplied by the recorder: Math (the real one with random replaced by the case\'s queue of values), battleStats (a species\' power as the case gives it), regionAt (the case\'s region), _equipBonus (the case\'s suit cut under scut, 0 otherwise), HOME_GAL_SEED 999 as the script declares it, a document with no elements, and the containers and hooks the script declares beside them (codex, conquered, surveyedSet, techOwned, stats, scoutId, hp, essence, _parSites, toast, unlock, gameEvent, showDeath, removeFromCodex), each noting what it was told; paragonGenome gives {seed 9000+i}, _storeSpecies stores an entry whose grade is the tier the case gives the species, crossGenome a child of seed + 500000. A place is "home" (the home galaxy), "none" (no place) or a region number (another galaxy in that region). Groups, in order. paragon-site: the home world as paragonWhere returns it. danger: dangerOf for a world of three beasts of the input\'s powers and one plant. danger-none: a world with no beast. flavor: hazardFlavor(d, null) for a world type and a random value. condition: creatureCondition for a hurt. route: routeHit(dmg) with the suit\'s cut, the health and a scout of the input\'s hurt (null: none); output holds dead, the health, the scout, each genome, and notes (what was said, removed, unlocked) in order. route-other: a scout that is a plant, or gone from the Compendium. press: one press of Discover Life on a world of the input (beasts of `powers` and one plant) with the random values of the input; output holds the health, scout, surveyed set, stats, genomes, notes in order and the count of values left unread. xp: awardXP(n) to a beast holding xp; output is its xp, level and notes. discover: discoverSpecies of a new beast of the input\'s tier with a scout standing; output is the scout\'s xp, the Stardust, the stats and what was stored.',
     record: ({ script }) => recordLegacyCare(script),
+  },
+  'care-meals': {
+    test: 'apps/game/test/care-meals-legacy.test.ts',
+    kind: 'outputs',
+    taken: 'The v1 tastes, a flora\'s flavour, the explorer\'s meal and the order of Mend, run with new Function over unique script slices: clamp, mulberry32, hashInt, removeFromCodex, STAT_KEYS, STAT_META, pstats, hpMaxFromVit, floraStat, HP_MAX, hp, recomputeHPMax, faunaTastes, healExplorer, the heal branch of the picker\'s click listener from "  if(_pickMode===\'heal\'){" to its "return;" (inline in that listener, so wrapped unchanged in function pressHeal(other, resEl, pickList) with its condition dropped), and the statements of the "Mend — safest meals" listener that choose the flora, from "const tastes=faunaTastes(base.genome);" to the end of its sort (wrapped in function safest(base), which returns the ids in order). Supplied by the recorder: Math (the real one with random replaced by the case\'s queue of values), _equipBonus (the case\'s meal gear under heal, 0 otherwise), a document whose one element keeps textContent, and the containers and hooks the script declares beside them (codex, techOwned, tutDone, _tutRig, scoutId, toast, unlock, gameEvent), each noting what it was told. A plant is {id "s"+seed, kind Flora, genome {seed}, grade {tier}} (grade null for tier null). Groups, in order. tastes: faunaTastes({seed}). flavour: floraStat({seed}); the last case has no seed. stat-names: STAT_META\'s name per stat key. meal: healExplorer(plant, roll) for a plant of the input\'s tier whose flavour is the input\'s stat (fer when not given), with the health, the explorer\'s stats (50 each unless given), the meal gear and the Xenobotany Lab of the input; output holds the result, the health, its maximum, the stats, the Compendium\'s ids, the scout, and notes in order. meal-press: the press of that plant in the heal picker with the random values of the input, in training when tutDone is false, rigged when rig is given; output adds the result line\'s innerHTML, the title and the count of values left unread. mend-order: for a hurt beast of the input\'s seed and the plants held in the input\'s order as [seed, tier], the ids Mend would serve, safest first.',
+    record: ({ script }) => recordLegacyMeals(script),
   },
   'landing-descent': {
     test: 'apps/game/test/descent-policy.test.ts',

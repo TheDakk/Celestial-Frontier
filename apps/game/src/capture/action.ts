@@ -49,6 +49,7 @@ import {
   type V5Extensions,
 } from '@cf/persistence';
 import type { CanonicalCF1WorldAddress } from '@cf/scene';
+import { withKeptName } from './kept-name';
 import { teachScout } from './scout-lesson';
 import { captureSnapshotV1, type CaptureRosterSource, type CaptureWorldRoster } from './snapshot';
 
@@ -197,7 +198,10 @@ function stage(input: CaptureActionInputV1, receipt: F4MultiOutcomeDeriveInput):
   const parent = readArc4Ownership(extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
   if (parent.kind !== 'loaded') throw new CaptureRefusal(`ownership:${parent.kind}`);
   const lesson = plan.hit && plan.firstForSpecies ? teachScout(parent.state, plan.successor, plan.candidate.identity.speciesId) : null;
-  const successor = lesson?.successor ?? plan.successor;
+  // A species the player once named and lost (eaten, or fallen as the scout) comes back under that name (14796-14797).
+  const kept = plan.hit ? draft.customNames.find(([key]) => key === `c${plan.candidate.legacyCatalogueId}`)?.[1] : undefined;
+  const taught = lesson?.successor ?? plan.successor;
+  const successor = kept === undefined ? taught : withKeptName(parent.state, taught, plan.candidate.identity.speciesId, kept);
   const write = prepareArc4OwnershipWrite({ extensions, state: successor, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER });
   if (write.kind !== 'prepared') throw new CaptureRefusal(`ownership:${write.reason}`);
   const mirror = projectLegacyOwnershipMirror(successor);
@@ -205,14 +209,18 @@ function stage(input: CaptureActionInputV1, receipt: F4MultiOutcomeDeriveInput):
 
   const row = roster.view.all[plan.candidate.sourceOrdinal] as { _earthName?: unknown } | undefined;
   const genome = plan.candidate.identity.genome as unknown as Genome;
-  // An Earth species keeps its Earth name (14874).
-  const name = typeof row?._earthName === 'string' && row._earthName.length > 0 ? row._earthName : describeSpecies(genome).name;
+  // An Earth species keeps its Earth name (14874); the player's own name for it wins (14796-14797).
+  const name = kept ?? (typeof row?._earthName === 'string' && row._earthName.length > 0 ? row._earthName : describeSpecies(genome).name);
   const unlockedBefore = new Set(draft.unlocked);
   let stardust = 0;
   draft.bioX = mirror.bioX.map(([seed, [used, stamp]]) => [seed, [used, stamp]]);
   if (plan.hit) {
     const held = new Map(draft.codex);
     const taught = lesson === null ? null : `s${String(lesson.scoutSeed)}`;
+    if (kept !== undefined) {
+      const owned = new Set(mirror.customNames.map(([key]) => key));
+      draft.customNames = [...draft.customNames.filter(([key]) => !owned.has(key)), ...mirror.customNames.map(([key, value]): [string, string] => [key, value])];
+    }
     draft.codex = mirror.codex.map((entry) => {
       const was = held.get(entry.legacyCodexId);
       if (was === undefined) return [entry.legacyCodexId, codexEntry(entry.legacyCodexId, entry.g as Record<string, unknown>, entry.f, entry.w as Record<string, unknown> | null, plan.tier, name)];

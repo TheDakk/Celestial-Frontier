@@ -1,10 +1,10 @@
 // A page ready for the care actions: past training, the carriers made, with worlds and beasts to act on.
 import { SCENE_OWNERSHIP_ADDRESS_RESOLVER } from '@cf/domain-acquisition';
-import { classifyRealm, describeSpecies, sapienceTier, type Genome } from '@cf/domain-genome';
+import { classifyRealm, describeSpecies, makeGenome, sapienceTier, type Genome } from '@cf/domain-genome';
 import { createSessionRNG } from '@cf/domain-sessionrng';
 import { arc4OwnershipLegacyMirrorMatches, readArc4Ownership, type CodexEntry, type SaveStateV2 } from '@cf/persistence';
 import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
-import { bioscanFenceV1, settleBioscanV1, settleRenameV1, settleScoutV1 } from '../src/care';
+import { bioscanFenceV1, settleBioscanV1, settleFeedV1, settleMealV1, settleMendV1, settleRenameV1, settleScoutV1 } from '../src/care';
 import { stageStarterCharterEventV1 } from '../src/guidance';
 import { actionPage, type ActionPageOptions } from './action-support';
 import { earthRows } from './capture-support';
@@ -59,6 +59,15 @@ export function heldPage(index: number, extra: Record<string, unknown> = {}): [s
   }];
 }
 
+/** A flora from far away, held: the genome the legacy game makes of this seed at full rarity. Seed 7 is of tier 5
+    and nourishes Insight; seed 5 of tier 4, Vitality; seed 65 of tier 5, Vitality. */
+export function farPlant(seed: number): [string, CodexEntry] {
+  const genome = makeGenome(seed, 'flora', 1);
+  const described = describeSpecies(genome as Genome);
+  const id = `s${seed}`;
+  return [id, { id, name: described.name, kind: described.kind, tier: 0, realm: classifyRealm(genome as Genome), sapient: 0, from: 'A far world', hybrid: false, g: genome as unknown as Record<string, unknown>, where: null }];
+}
+
 export async function carePage(options: ActionPageOptions & { readonly held?: ReadonlyArray<[string, CodexEntry]>; readonly scout?: string } = {}) {
   const page = await actionPage({
     ...options,
@@ -79,6 +88,15 @@ export async function carePage(options: ActionPageOptions & { readonly held?: Re
     deps,
     scout: (speciesId: string) => settleScoutV1(deps, { speciesId, codecNow: NOW }),
     rename: (speciesId: string, rawName: string) => settleRenameV1({ door: page.loop, live: () => page.live }, { speciesId, rawName, codecNow: NOW }),
+    feed: (speciesId: string, floraId: string) => settleFeedV1({ door: page.loop }, { speciesId, floraId, codecNow: NOW }),
+    mend: (speciesId: string) => settleMendV1({ door: page.loop }, { speciesId, codecNow: NOW }),
+    meal: (floraId: string) => settleMealV1({ door: page.loop }, { floraId, codecNow: NOW }),
+    /** The stored ownership carrier. */
+    ownership: () => {
+      const read = readArc4Ownership(page.runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+      if (read.kind !== 'loaded') throw new Error(`ownership was ${read.kind}`);
+      return read.state;
+    },
     /** Whether the stored ownership carrier and the stored state's Compendium, names and scout say the same. */
     carrierAgrees: (): boolean => {
       const read = readArc4Ownership(page.runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);

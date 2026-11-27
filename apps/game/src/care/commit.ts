@@ -3,6 +3,7 @@
    from the receipt; one with none takes a receipt ordinal alone. The shape is the landing's and the capture's
    (`landing/landing-action.ts`, `capture/action.ts`), written once for the actions of this folder. */
 import { canonicalJson, sha256Hex } from '@cf/domain-acquisition';
+import { prepareArc9EventAchievementJoinV1, prepareArc9ProgressionRefreshV1, type Arc9SupportedEventAchievementIdV1 } from '@cf/persistence';
 import type {
   F4DeterministicProductDeriveInput,
   F4DeterministicProductTransactionOutcome,
@@ -20,6 +21,22 @@ export class CareRefusal extends Error {
   constructor(readonly detail: string) { super(detail); }
 }
 export const refuse = (detail: string): never => { throw new CareRefusal(detail); };
+
+/** Unlocks an achievement a deed of the action earned, on the draft. */
+export function unlockAchievement(draft: SaveStateV2, id: Arc9SupportedEventAchievementIdV1): void {
+  const join = prepareArc9EventAchievementJoinV1(draft, id);
+  if (join.kind !== 'prepared') return refuse(`achievement:${join.reason}`);
+  if (join.added) draft.unlocked = [...join.nextUnlockedIds];
+}
+/** Looks at every achievement the draft's counts now earn, and the rank (the legacy game's `checkAch`). */
+export function refreshProgression(draft: SaveStateV2): void {
+  const refresh = prepareArc9ProgressionRefreshV1(draft);
+  if (refresh.kind === 'protected') return refuse(`progression:${refresh.reason}`);
+  if (refresh.kind === 'ready') {
+    draft.unlocked = [...refresh.successorState.unlocked];
+    draft.stats = { ...refresh.successorState.stats };
+  }
+}
 
 type Stored<O extends { readonly kind: string }> =
   | Exclude<O, { readonly kind: 'committed' }>

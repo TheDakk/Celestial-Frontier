@@ -11,8 +11,8 @@
    any page. A name already the page's own is not stored a second time. */
 import { createCatalogSpeciesV1 } from '@cf/domain-acquisition';
 import { cleanName } from '@cf/domain-naming';
-import { prepareArc9EventAchievementJoinV1, prepareArc9ProgressionRefreshV1, type SaveStateV2, type V5ExtensionWrite } from '@cf/persistence';
-import { commitCare, refuse, settleCare, type CareAuthority, type CareDoor, type CareOutcome } from './commit';
+import type { SaveStateV2, V5ExtensionWrite } from '@cf/persistence';
+import { commitCare, refreshProgression, refuse, settleCare, unlockAchievement, type CareAuthority, type CareDoor, type CareOutcome } from './commit';
 import { compendiumRow, contentsOf, ownershipOf, stageOwnership } from './ownership';
 
 export const RENAME_ACTION = 'rename' as const;
@@ -74,15 +74,8 @@ export async function commitRenameV1(input: RenameActionInputV1): Promise<Rename
           contents: { ...contentsOf(ownership), catalogSpecies: ownership.catalogSpecies.map((species) => species === row.species ? renamed : species) },
         }));
       }
-      const namer = prepareArc9EventAchievementJoinV1(draft, 'namer');
-      if (namer.kind !== 'prepared') return refuse(`achievement:${namer.reason}`);
-      draft.unlocked = [...namer.nextUnlockedIds];
-      const refresh = prepareArc9ProgressionRefreshV1(draft);
-      if (refresh.kind === 'protected') return refuse(`progression:${refresh.reason}`);
-      if (refresh.kind === 'ready') {
-        draft.unlocked = [...refresh.successorState.unlocked];
-        draft.stats = { ...refresh.successorState.stats };
-      }
+      unlockAchievement(draft, 'namer');
+      refreshProgression(draft);
       return { facts: { speciesId, name, achievementIds: draft.unlocked.filter((id) => !unlockedBefore.has(id)) }, extensionWrites: writes };
     },
     verify: (stored, facts) => stored.customNames.find(([key]) => key === `c${facts.speciesId}`)?.[1] !== facts.name ? 'name'

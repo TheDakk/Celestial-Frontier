@@ -3,7 +3,8 @@
 import { describe, expect, it } from 'vitest';
 import type { SaveStateV2 } from '@cf/persistence';
 import {
-  bioscanFenceV1, settleBioscanV1, settleRenameV1, settleScoutV1, type CareAuthority, type CareCommitted, type CareDoor, type CareTransaction,
+  bioscanFenceV1, settleBioscanV1, settleFeedV1, settleMealV1, settleMendV1, settleRenameV1, settleScoutV1,
+  type CareAuthority, type CareCommitted, type CareDoor, type CareTransaction,
 } from '../src/care';
 import { carePage, clearSession, earthId, heldPage, strikeSession, type CarePage } from './care-support';
 import { EARTH } from './capture-support';
@@ -75,5 +76,51 @@ describe('the check after storage', () => {
       { door: lyingDoor(other, stored((state) => ({ ...state, codex: state.codex.map(([id, entry]) => [id, { ...entry, name: 'Another' }]) }))), live: () => other.live },
       { speciesId: earthId(11), rawName: 'Rex', codecNow: NOW });
     expect(page2).toMatchObject({ kind: 'committed-convergence', detail: 'postcommit:page' });
+  });
+
+  it('a companion\'s meal and a Mend are held to the same check, whatever is missing', async () => {
+    const beast = earthId(11), flora = earthId(0);
+    const page = (stats = 0) => carePage({ held: [heldPage(11, { hurt: 0.6 }), heldPage(0)], change: (state) => { state.stats.feeds = stats; } });
+    const genome = (change: (g: Record<string, unknown>) => Record<string, unknown>): Lie => stored((state) => ({
+      ...state, codex: state.codex.map(([id, entry]) => [id, id === beast ? { ...entry, g: change(entry.g) } : entry]),
+    }));
+    const cases: Array<[string, Lie, number]> = [
+      ['flora', stored((state) => ({ ...state, codex: [...state.codex, heldPage(0)] })), 0],
+      ['fed', genome((g) => ({ ...g, fed: 1 })), 0],
+      ['hurt', genome((g) => ({ ...g, hurt: 0.6 })), 0],
+      ['experience', genome((g) => ({ ...g, xp: 2 })), 0],
+      ['bond', genome(({ bond: _bond, ...g }) => g), 0],
+      ['feeds', stored((state) => ({ ...state, stats: { ...state.stats, feeds: 0 } })), 0],
+      ['achievements', stored((state) => ({ ...state, unlocked: state.unlocked.filter((id) => id !== 'feed5') })), 4],
+    ];
+    for (const [missing, lie, feeds] of cases) {
+      const fed = await page(feeds);
+      const outcome = await settleFeedV1({ door: lyingDoor(fed, lie) }, { speciesId: beast, floraId: flora, codecNow: NOW });
+      expect(outcome, missing).toMatchObject({ kind: 'committed-convergence', detail: `postcommit:${missing}` });
+    }
+    const honest = await page();
+    expect(await settleFeedV1({ door: lyingDoor(honest, (committed) => committed) }, { speciesId: beast, floraId: flora, codecNow: NOW })).toMatchObject({ kind: 'committed' });
+    const mended = await page();
+    expect(await settleMendV1({ door: lyingDoor(mended, genome((g) => ({ ...g, hurt: 0.6 }))) }, { speciesId: beast, codecNow: NOW }))
+      .toMatchObject({ kind: 'committed-convergence', detail: 'postcommit:hurt' });
+  });
+
+  it('the explorer\'s meal is held to the same check, whatever is missing', async () => {
+    const flora = earthId(0);
+    const cases: Array<[string, Lie]> = [
+      ['flora', stored((state) => ({ ...state, codex: [...state.codex, heldPage(0)] }))],
+      ['health', stored((state) => ({ ...state, hp: state.hp - 1 }))],
+      ['health', stored((state) => ({ ...state, HP_MAX: state.HP_MAX + 2 }))],
+      ['stat', stored((state) => ({ ...state, pstats: { ...state.pstats, ins: 50 } }))],
+      ['achievements', stored((state) => ({ ...state, unlocked: state.unlocked.filter((id) => id !== 'fieldmedic') }))],
+    ];
+    // In training a meal always nourishes (LEGACY 19146), so each case is a good meal.
+    for (const [missing, lie] of cases) {
+      const page = await carePage({ held: [heldPage(0)], change: (state) => { state.tutDone = false; state.hp = 40; } });
+      const outcome = await settleMealV1({ door: lyingDoor(page, lie) }, { floraId: flora, codecNow: NOW });
+      expect(outcome, missing).toMatchObject({ kind: 'committed-convergence', detail: `postcommit:${missing}` });
+    }
+    const honest = await carePage({ held: [heldPage(0)], change: (state) => { state.tutDone = false; state.hp = 40; } });
+    expect(await settleMealV1({ door: lyingDoor(honest, (committed) => committed) }, { floraId: flora, codecNow: NOW })).toMatchObject({ kind: 'committed' });
   });
 });
