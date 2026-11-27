@@ -3,7 +3,7 @@
 
    LEGACY celestial-frontier.html, v1.8.9:
    - the Discover Life row, its danger in whole percent and its two tips: 13934-13939;
-   - a strike on the explorer: `damageExplorer` 19338; on the scout: `routeHit` 13163;
+   - a strike on the explorer: `damageExplorer` 19338; on the scout: `routeHit` 13163; a scout lost: 13159;
    - Biosphere Surveyed: `autoScanWorld` 14901-14903;
    - the Scout button, its tip and what a press says: 15150, 15200-15202;
    - Renamed: 24625.
@@ -38,7 +38,9 @@ export function discoverLifeRow(lifeForms: number, danger: BioscanDanger): Reado
 /** What a committed scan says, in the legacy order: the strike, then the roster revealed. */
 export function bioscanNotices(facts: BioscanFactsV1): readonly CareNotice[] {
   const notices: CareNotice[] = [];
-  if (facts.scout !== null) {
+  if (facts.scout?.lost === true) {
+    notices.push(notice('skull', 'Scout Lost', `${facts.scout.name} took the strike meant for you — and had nothing left. It is gone.`));
+  } else if (facts.scout !== null) {
     notices.push(notice('scout', 'Scout Wounded',
       `${facts.scout.name} took the strike meant for you — now ${facts.scout.condition} (${Math.round(facts.scout.hurtAfter * 100)}% hurt). Feed it flora it loves to mend.`));
   } else if (facts.target === 'explorer' && !facts.dead) {

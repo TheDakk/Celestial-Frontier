@@ -44,6 +44,10 @@ describe('the check after storage', () => {
       ['achievements', stored((state) => ({ ...state, unlocked: state.unlocked.filter((id) => id !== 'survivor') })), { sessionSeed: strikeSession() }],
       ['scout', stored((state) => ({ ...state, codex: state.codex.map(([id, entry]) => [id, { ...entry, g: { ...entry.g, hurt: 0 } }]) })),
         { sessionSeed: strikeSession(), held: [heldPage(11)], scout: earthId(11) }],
+      // A scout the strike cost its life: its post still filled, or its page still in the Compendium.
+      ['scout', stored((state) => ({ ...state, scoutId: earthId(11) })), { sessionSeed: strikeSession(), held: [heldPage(11, { hurt: 0.8 })], scout: earthId(11) }],
+      ['scout', stored((state) => ({ ...state, codex: [...state.codex, heldPage(11, { hurt: 0.8 })] })),
+        { sessionSeed: strikeSession(), held: [heldPage(11, { hurt: 0.8 })], scout: earthId(11) }],
       ['state-not-stored', (committed) => ({ ...committed, state: { ...committed.state, hp: 5 } }) as CareCommitted, { sessionSeed: clearSession() }],
       ['receipt', (committed) => ({ ...committed, receipt: { ...committed.receipt, witness: 'another' } }) as CareCommitted, { sessionSeed: clearSession() }],
     ];

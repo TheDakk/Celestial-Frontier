@@ -166,7 +166,7 @@ describe('the scan hazard against the legacy game', () => {
     expect(seen).toEqual({ civ: 2, spacefar: 1, brink: 4, deeds: 50, quiet: 1, stored: 3, held: 1, unscanned: 4 });
   });
 
-  it('what a scan says is what the legacy game said, for every recorded press the save can hold', () => {
+  it('what a scan says is what the legacy game said, for every recorded press', () => {
     // The legacy game drew a small picture before some titles and a heart in one line; an icon stands for each here.
     const PICTURE = /^[\p{Extended_Pictographic}\uFE0F]+ /u;
     const legacyWords = (text: string) => text.replace(/<\/?b>/g, '');
@@ -180,19 +180,22 @@ describe('the scan hazard against the legacy game', () => {
         danger, planetType: input.ptype, draws: input.values, reinforcedHull: (input.tech ?? []).includes('hull1'), suitCut: input.suit ?? 0,
         hp: input.hp, scoutHurt: input.scoutHurt ?? null,
       });
-      if (got.scoutLost) continue; // not built: the save cannot take a creature out
       const known = new Set(input.known ?? []);
       const lifeForms = input.powers.length + 1;
       const facts = {
         hostile: got.hostile, damage: got.damage, flavour: got.flavour, target: got.target, hpAfter: got.hpAfter, dead: got.dead, scanned: got.scanCompletes,
-        scout: got.scoutHurtAfter === null ? null : { id: 's4000', name: 'Scout', hurtBefore: input.scoutHurt!, hurtAfter: got.scoutHurtAfter, condition: creatureCondition(got.scoutHurtAfter).label },
+        scout: got.target !== 'scout' ? null : got.scoutLost
+          ? { id: 's4000', name: 'Scout', hurtBefore: input.scoutHurt!, hurtAfter: null, condition: null, lost: true }
+          : { id: 's4000', name: 'Scout', hurtBefore: input.scoutHurt!, hurtAfter: got.scoutHurtAfter, condition: creatureCondition(got.scoutHurtAfter).label, lost: false },
         lifeForms, uncatalogued: lifeForms - [...known].filter((id) => id === 's3000' || /^s200\d$/.test(id)).length,
       } as unknown as BioscanFactsV1;
       expect(words(bioscanNotices(facts)), JSON.stringify(input))
         .toEqual((said(output.notes, 'toast') as Array<[string, string]>).map(([title, text]) => [PICTURE.test(title), title.replace(PICTURE, ''), legacyWords(text)]));
       compared++;
     }
-    expect(compared).toBe(51); // 55 presses, less the four that cost the scout its life
+    expect(compared).toBe(55);
+    // Four of them cost the scout its life, and say so.
+    expect(group('press').filter(({ output }) => (said(output.notes, 'toast') as Array<[string, string]>).some(([title]) => title.endsWith('Scout Lost')))).toHaveLength(4);
   });
 
   it('the row, the Scout button and the rename say the legacy words', () => {

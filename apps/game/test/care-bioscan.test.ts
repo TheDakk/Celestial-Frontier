@@ -4,15 +4,16 @@
 // 19329-19339, `autoScanWorld` 14888-14922.
 import { describe, expect, it } from 'vitest';
 import { paragonGenomeV1, paragonSeedV1 } from '@cf/domain-acquisition/paragon-internal';
+import { SCENE_OWNERSHIP_ADDRESS_RESOLVER, preflightCaptureV1 } from '@cf/domain-acquisition';
 import { createSessionRNG } from '@cf/domain-sessionrng';
-import type { CodexEntry } from '@cf/persistence';
-import { captureGateV1 } from '../src/capture';
+import { readArc4Ownership, type CodexEntry } from '@cf/persistence';
+import { captureGateV1, captureSnapshotV1 } from '../src/capture';
 import { bioscanDangerV1, bioscanFenceV1, bioscanGateV1, bioscanNotices, hazardFlavour } from '../src/care';
 import { LEASE_TTL_MS, REGISTRY, createSaveRuntime } from '../src/save/index';
 import {
   ADVANCED, CIVILIZED, EARTH_DANGER, EARTH_WOUND, FAR, PARAGON_HOME, VENUS, carePage, clearSession, earthId, heldPage, strikeSession,
 } from './care-support';
-import { EARTH, earthRows } from './capture-support';
+import { EARTH, earthRows, rosterFor } from './capture-support';
 import { SOL, solWorld } from './landing-support';
 import { dump } from './save-support';
 
@@ -166,35 +167,85 @@ describe('a strike with a Field Scout standing', () => {
     });
   });
 
-  it('a strike that would cost the scout its life is not built: the press is refused and nothing is written', async () => {
-    const page = await carePage({ sessionSeed: strikeSession(), held: [heldPage(11, { hurt: 0.8 })], scout: earthId(11) });
-    const before = await dump(page.backend);
-    expect(await page.scan(EARTH)).toMatchObject({ kind: 'refused', detail: 'scout-loss:not-carried' });
-    expect(await dump(page.backend)).toEqual(before);
-    expect(surveyed(page.live)).toEqual([]);
+  it('a strike that would cost the scout its life costs it: the scout is gone, the scan goes on, in one receipt (LEGACY 13154-13159)', async () => {
+    const seed = strikeSession();
+    const page = await carePage({
+      sessionSeed: seed, held: [heldPage(11, { hurt: 0.8 }), heldPage(12)], scout: earthId(11),
+      change: (state) => { state.customNames = [[`c${earthId(11)}`, 'Old Friend']]; },
+    });
+    expect(page.durable().codex.find(([id]) => id === earthId(11))?.[1].name).toBe('Old Friend');
+    const { state, facts } = await committed(page.scan(EARTH));
+    // 0.8 + 18 / 80 reaches 1: it had nothing left.
+    expect(facts).toMatchObject({ hostile: true, target: 'scout', scanned: true, firstScan: true, dead: false, hpBefore: 100, hpAfter: 100 });
+    expect(facts.scout).toEqual({ id: earthId(11), name: 'Old Friend', hurtBefore: 0.8, hurtAfter: null, condition: null, lost: true });
+    // What the legacy game writes: the scout's post is empty and the beast is out of the Compendium.
+    expect(state.scoutId).toBeNull();
+    expect(state.codex.map(([id]) => id)).toEqual([earthId(12)]);
+    expect(page.live.codex.map(([id]) => id)).toEqual([earthId(12)]);
+    expect(page.carrierAgrees()).toBe(true);
+    // What it counts: a strike, and nothing survived by the explorer.
+    expect(state.stats.scanhits).toBe(1);
+    expect(state.hp).toBe(100);
+    expect(state.unlocked).not.toContain('survivor');
+    // The scan went on: the world is revealed, and the lost beast is one of the species not held.
+    expect(surveyed(state)).toEqual([SOL.earth]);
+    expect(facts).toMatchObject({ lifeForms: 19, uncatalogued: 18 });
+    // What it says.
+    expect(bioscanNotices(facts)).toEqual([
+      { icon: 'skull', title: 'Scout Lost', message: ['Old Friend took the strike meant for you — and had nothing left. It is gone.'] },
+      { icon: null, title: 'Biosphere Surveyed', message: ['19 life forms revealed — 18 not yet in your Compendium. Tame the beasts; scavenge the growth.'] },
+    ]);
+    // One receipt, both values read.
+    expect(await page.receipts()).toHaveLength(1);
+    expect(page.outcomes.committed).toEqual([{ kind: 'bioscan', receiptOrdinal: 0 }]);
+    expect(page.runtime.diagnostics().sessionDraws).toEqual({ 'survey.hazard': 1, 'hazard.flavor': 1 });
+    // The player's own name for it stays among the names, as `removeFromCodex` left it (18808-18821).
+    expect(state.customNames).toContainEqual([`c${earthId(11)}`, 'Old Friend']);
+    // What was stored reads back the same.
+    expect((await page.stored()).state.codex.map(([id]) => id)).toEqual([earthId(12)]);
+    expect((await page.stored()).state.scoutId).toBeNull();
   });
 
-  // What stands today, until Dakk decides how the save carries a scout's death. The legacy game removes the scout
-  // and the scan goes on (13154-13159). Here the refusal reads no random value, so the session's next hazard value
-  // is still unread: the player learns that it strikes, and the next press, here or on any world, meets it.
-  it('the refused press consumes no roll and takes no receipt, however often it is made; the same strike waits for the next press', async () => {
+  it('a lost scout can be tamed again, as any species the Compendium does not hold', async () => {
+    const page = await carePage({ sessionSeed: strikeSession(), held: [heldPage(11, { hurt: 0.8 })], scout: earthId(11) });
+    await committed(page.scan(EARTH));
+    const read = readArc4Ownership(page.runtime.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (read.kind !== 'loaded') throw new Error(`ownership was ${read.kind}`);
+    expect(read.state).toMatchObject({ catalogSpecies: [], creatures: [], discoveries: [], scoutCreatureId: null });
+    const composed = captureSnapshotV1({ address: EARTH, epoch: page.durable().EPOCH_BASE, activePlayMs: 0, extensions: page.runtime.extensions, rosterFor });
+    if (composed.kind !== 'ready') throw new Error(`snapshot was ${composed.reason}`);
+    const pool = preflightCaptureV1(composed.snapshot, 'tame');
+    if (pool.kind !== 'ready') throw new Error(`tame was ${pool.reason}`);
+    expect(pool.pool.map((candidate) => candidate.legacyCatalogueId)).toContain(earthId(11));
+  });
+
+  // The review measured that a refused press told the player the next hazard value was a strike, and that the
+  // strike then waited for whichever scout stood next. No press is refused for the scout's sake now: the strike is
+  // spent on the scout it met.
+  it('the strike that costs a scout its life is spent on it: no press shows the next value and leaves it unread', async () => {
     const seed = strikeSession();
-    const page = await carePage({ sessionSeed: seed, held: [heldPage(11, { hurt: 0.8 }), heldPage(12)], scout: earthId(11) });
+    const civilized = CIVILIZED();
+    const page = await carePage({
+      sessionSeed: seed, held: [heldPage(11, { hurt: 0.8 }), heldPage(12)], scout: earthId(11),
+      change: (state) => { state.landed = [civilized.planet.seed]; },
+    });
     const before = await dump(page.backend);
-    for (let press = 0; press < 3; press++) {
-      expect(await page.scan(EARTH)).toMatchObject({ kind: 'refused', detail: 'scout-loss:not-carried', transaction: { kind: 'rejected' } });
-    }
-    expect(page.runtime.diagnostics().sessionDraws).toEqual({});
-    expect(await page.receipts()).toEqual([]);
-    expect(await dump(page.backend)).toEqual(before);
-    expect(page.outcomes.committed).toEqual([]);
-    // A healthy beast named the scout in its place takes that very strike: the session's first hazard value.
-    await committed(page.scout(earthId(12)));
-    const { facts } = await committed(page.scan(EARTH));
-    expect(facts).toMatchObject({ hostile: true, target: 'scout', scanned: true });
-    expect(facts.scout).toMatchObject({ id: earthId(12), hurtBefore: 0, hurtAfter: EARTH_WOUND / 80 });
-    expect(createSessionRNG(seed).at('survey.hazard', 0)).toBeLessThan(EARTH_DANGER);
+    const first = await page.scan(EARTH);
+    // The press that once answered `scout-loss:not-carried` and wrote nothing is committed and has read the value.
+    expect(first.kind).toBe('committed');
+    expect(page.outcomes.refused).toEqual([]);
+    expect(await dump(page.backend)).not.toEqual(before);
     expect(page.runtime.diagnostics().sessionDraws).toEqual({ 'survey.hazard': 1, 'hazard.flavor': 1 });
+    // A healthy beast named the scout in its place does not meet that strike: the next scan reads the session's
+    // second hazard value, whatever it is.
+    await committed(page.scout(earthId(12)));
+    const { facts } = await committed(page.scan(civilized));
+    const second = createSessionRNG(seed).at('survey.hazard', 1);
+    expect(facts.hostile).toBe(second < facts.danger.pct);
+    expect(facts.scout === null).toBe(!(second < facts.danger.pct));
+    expect(page.runtime.diagnostics().sessionDraws).toEqual({ 'survey.hazard': 2, 'hazard.flavor': 2 });
+    // And the first value was a strike on Earth: had it waited, the new scout would have taken it there.
+    expect(createSessionRNG(seed).at('survey.hazard', 0)).toBeLessThan(EARTH_DANGER);
   });
 });
 

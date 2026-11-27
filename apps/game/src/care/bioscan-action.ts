@@ -20,10 +20,11 @@
    nothing, so the roll is never made at a danger the player was not shown. (The legacy game kept the card on
    screen and rolled with it, epoch turned or not; here the player is shown the new row and presses again.)
 
-   NOT BUILT, and refused by name so that nothing else happens in its place:
-   - a strike that would cost the scout its life (13154-13159 removes it from the Compendium and the scan goes on).
-     The save's ownership carrier cannot take a creature or a species out; the press is refused with
-     `scout-loss:not-carried` and nothing is written.
+   A strike that would cost the scout its life costs it (13154-13159): the scout's post is emptied, the beast leaves
+   the Compendium, and the scan goes on. Nothing is unlocked by it; the strike is counted like any other.
+   One corner differs, and only a save brought from the legacy game can reach it: a scout that is the Paragon of the
+   very world scanned, lost to the strike, is not catalogued again by the same press (the legacy game looked for it
+   after the removal and stored it anew, 14909).
    A Paragon is a whole beast, as the legacy game stored it (14910): a page of the Compendium and its creature.
    What follows an explorer's death (`showDeath` 19371, then a new expedition, 20736) is not here: the facts say `dead` and a
    health of 0; the stored state holds 1, as the legacy game's own reader made of a dead save (16783).
@@ -38,6 +39,7 @@ import {
   createParagonDiscoveryRecordV1,
   ownershipContentId,
   ownershipStateDigestV1,
+  withoutSpeciesV1,
   type CreatureInstanceId,
   type DiscoveryRecordId,
   type OwnershipStateContentsV1,
@@ -147,7 +149,11 @@ export interface BioscanFactsV1 {
   readonly hpAfter: number;
   /** The explorer died of the strike: the scan did not complete. */
   readonly dead: boolean;
-  readonly scout: Readonly<{ id: string; name: string; hurtBefore: number; hurtAfter: number; condition: CreatureConditionLabel }> | null;
+  /** The scout that took the strike. One it cost its life is `lost`: it has no hurt and no condition afterwards. */
+  readonly scout:
+    | Readonly<{ id: string; name: string; hurtBefore: number; hurtAfter: number; condition: CreatureConditionLabel; lost: false }>
+    | Readonly<{ id: string; name: string; hurtBefore: number; hurtAfter: null; condition: null; lost: true }>
+    | null;
   /** The roster is revealed. */
   readonly scanned: boolean;
   /** The world joined the surveyed set with this scan. */
@@ -204,27 +210,32 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
     danger, planetType: card.planetType, draws: receipt.draws, reinforcedHull: draft.techOwned.includes(REINFORCED_HULL),
     suitCut: loadout.capabilities.bioscanDamageReduction, hp: draft.hp, scoutHurt: standing === null ? null : standing.creature.hurt ?? 0,
   });
-  if (resolved.scoutLost) return refuse('scout-loss:not-carried');
 
   const unlockedBefore = new Set(draft.unlocked);
   const hpBefore = draft.hp;
   const writes: V5ExtensionWrite[] = [];
-  const contents: { -readonly [K in keyof OwnershipStateContentsV1]: OwnershipStateContentsV1[K] } = contentsOf(ownership);
+  let contents: { -readonly [K in keyof OwnershipStateContentsV1]: OwnershipStateContentsV1[K] } = contentsOf(ownership);
   const touched: string[] = [];
+  let scoutLost = false;
   let scoutFact: BioscanFactsV1['scout'] = null;
   if (resolved.hostile) {
     // A strike is counted whoever takes it (14295).
     draft.stats = { ...draft.stats, scanhits: (draft.stats.scanhits ?? 0) + 1 };
     if (resolved.target === 'scout') {
-      // The strike was routed to the scout because one stands, and a scout it would cost its life is refused above.
+      // The strike was routed to the scout because one stands.
       const { id, creature: scout } = standing!;
-      const hurt = resolved.scoutHurtAfter!;
-      contents.creatures = contents.creatures.map((row) => row === scout ? createCreatureInstanceV1({ ...scout, hurt }) : row);
-      touched.push(id);
-      scoutFact = {
-        id, name: draft.codex.find(([held]) => held === id)?.[1].name ?? '', hurtBefore: scout.hurt ?? 0, hurtAfter: hurt,
-        condition: creatureCondition(hurt).label,
-      };
+      const named = { id, name: draft.codex.find(([held]) => held === id)?.[1].name ?? '', hurtBefore: scout.hurt ?? 0 };
+      if (resolved.scoutLost) {
+        // It had nothing left: its post is emptied and it leaves the Compendium (13156-13157).
+        contents = { ...withoutSpeciesV1(contents, scout.speciesId) };
+        scoutLost = true;
+        scoutFact = { ...named, hurtAfter: null, condition: null, lost: true };
+      } else {
+        const hurt = resolved.scoutHurtAfter!;
+        contents.creatures = contents.creatures.map((row) => row === scout ? createCreatureInstanceV1({ ...scout, hurt }) : row);
+        touched.push(id);
+        scoutFact = { ...named, hurtAfter: hurt, condition: creatureCondition(hurt).label, lost: false };
+      }
     } else {
       draft.hp = resolved.hpAfter;
     }
@@ -282,7 +293,7 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
       paragon = { index: reveal.paragon, speciesId: compendiumId(genome.seed), name: '', tier: null };
     }
   }
-  if (touched.length > 0 || paragon !== null) {
+  if (touched.length > 0 || scoutLost || paragon !== null) {
     writes.push(...stageOwnership({
       draft, extensions, parent: ownership, contents, touched,
       entryOf: (id, g, from, where) => {
@@ -334,7 +345,9 @@ export async function commitBioscanV1(input: BioscanActionInputV1): Promise<Bios
     verify: (stored, facts) => stored.hp !== Math.max(1, facts.hpAfter) ? 'health'
       : facts.scanned !== stored.surveyedSet.some((world) => Number(world) === address.planet.seed) ? 'surveyed-set'
         : (stored.stats.surveys ?? 0) !== facts.surveys ? 'surveys'
-          : facts.scout !== null && stored.codex.find(([id]) => id === facts.scout!.id)?.[1].g.hurt !== facts.scout.hurtAfter ? 'scout'
+          : facts.scout !== null && (facts.scout.lost
+            ? stored.scoutId !== null || stored.codex.some(([id]) => id === facts.scout!.id)
+            : stored.codex.find(([id]) => id === facts.scout!.id)?.[1].g.hurt !== facts.scout.hurtAfter) ? 'scout'
             : facts.paragon !== null && !stored.codex.some(([id]) => id === facts.paragon!.speciesId) ? 'paragon'
               : facts.achievementIds.some((id) => !stored.unlocked.includes(id)) ? 'achievements'
                 : facts.charters.completedIds.some((id) => !stored.chDone.includes(id)) ? 'charters' : null,
