@@ -48,14 +48,15 @@ const tiers = <T>(small: T, medium: T, large: T): Record<SizeTier, T> => ({ smal
  * - Armour: a creature of one of `tiers` (large, Guardian), unless its body is listed under its skin in `lines`.
  * - Lines: every small and medium creature (their armour is drawn by hand, as layers), and at the armour tiers the
  *   bodies in `lines`, each a family or a family and torso kind (the scaffold id without its tier):
- *   chitin on any fish, any tentacled body and a jelly; plates on an octopus and a jelly. On those the rule's armour
- *   read as bars and slabs across the form (Dakk's verdicts of 2026-11-26), so they keep the lines until drawn by hand.
+ *   chitin on any fish, any tentacled body, a jelly, a viper and a beetle; plates on an octopus and a jelly. On those
+ *   the rule's armour read as bars and slabs across the form (Dakk's verdict on large fish of 2026-11-26, and the same
+ *   look found since on the others), so they keep the lines until drawn by hand.
  */
 export const ARMOUR = deepFreeze({
   tiers: ['large', 'guardian'] as readonly SizeTier[],
   lines: {
     plated: ['gelatinous', 'tentacled/octopus'] as readonly string[],
-    chitinous: ['fish', 'gelatinous', 'tentacled'] as readonly string[],
+    chitinous: ['fish', 'gelatinous', 'insect/beetle', 'serpent/viper', 'tentacled'] as readonly string[],
   },
 });
 

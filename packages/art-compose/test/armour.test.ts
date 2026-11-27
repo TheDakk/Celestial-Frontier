@@ -29,7 +29,8 @@ const rows = (w: number, h: number, shade: (x: number, y: number) => string): st
  * eye point and an eye wider than the box the painter keeps clear round that point, a tail, two near legs side by side and two far legs side by side, each a thigh over (near) or under (far)
  * the torso's lower half and a shin half as wide.
  */
-function catalogue(tier: SizeTier, hide: Hide, family = 'quadruped'): Catalogue {
+function catalogue(tier: SizeTier, hide: Hide, body = 'quadruped'): Catalogue {
+  const [family, kind = 'sturdy'] = body.split('/') as [string, string?];
   const s = sizes(tier);
   const [hi, lo] = hide === 'pale' ? ['4', '3'] : ['2', '1'];
   const torso = rows(s.body.w, s.body.h, (x, y) => {
@@ -67,19 +68,20 @@ part ${family}/nearLimbs/leg/${tier}/v0
 frame rest anchor=0,0
 ${leg}
 
-scaffold ${family}/sturdy/${tier} origin=${s.w >> 2},${s.h >> 3}
+scaffold ${family}/${kind}/${tier} origin=${s.w >> 2},${s.h >> 3}
 pose rest
 entry torso 0 rest 0 0
 `);
 }
 
-function recipe(tier: SizeTier, skin: number | null, phase: number, family = 'quadruped'): Recipe {
+function recipe(tier: SizeTier, skin: number | null, phase: number, body = 'quadruped'): Recipe {
+  const [family, kind = 'sturdy'] = body.split('/') as [string, string?];
   const id = (slot: string, kind: string): string => `${family}/${slot}/${kind}/${tier}/v0`;
   const parts = ([['farLimbs', 0, id('farLimbs', 'leg')], ['farLimbs', 1, id('farLimbs', 'leg')], ['tail', 0, id('tail', 't1')], ['torso', 0, id('torso', 'sturdy')],
     ['nearLimbs', 0, id('nearLimbs', 'leg')], ['nearLimbs', 1, id('nearLimbs', 'leg')], ['head', 0, id('head', 'h1')], ['eyes', 0, id('eyes', 'eye')]] as const)
     .map(([slot, index, partId]) => ({ slot, index, partId, source: 'own' as const }));
   return {
-    version: 1, identity: 'test', family, tier, scaffoldId: `${family}/sturdy/${tier}`, parts,
+    version: 1, identity: 'test', family, tier, scaffoldId: `${family}/${kind}/${tier}`, parts,
     ramps: { primary: 'r', accent: 'r', underside: 'r', iris: 'r' }, marking: { pattern: 0, strength: 2, phase },
     shift: { head: [0, 0], tail: [0, 0] }, legs: 4, eyes: 2, glow: false, gaps: [], opacity: 100, airborne: false, theme: null, rim: 0, skin,
   };
@@ -317,6 +319,10 @@ describe('plates and chitin on a finished large creature, on a pale hide and on 
     expect(hashOf('chitinous', 'fish')).toBe(recorded.chitinous);
     expect(hashOf('chitinous', 'gelatinous')).toBe(recorded.chitinous);
     expect(hashOf('chitinous', 'tentacled')).toBe(recorded.chitinous);
+    expect(hashOf('chitinous', 'serpent/viper')).toBe(recorded.chitinous);
+    expect(hashOf('chitinous', 'insect/beetle')).toBe(recorded.chitinous);
+    // Their plates, and the other serpent's and insects' chitin, are armour.
+    for (const [skin, body] of [['plated', 'serpent/viper'], ['plated', 'insect/beetle'], ['chitinous', 'serpent/snake'], ['chitinous', 'insect/mantis']] as const) expect(hashOf(skin, body), `${skin} ${body}`).not.toBe(recorded[skin]);
     expect(hashOf('plated', 'gelatinous')).toBe(recorded.plated);
     expect(hashOf('plated', 'fish')).not.toBe(recorded.plated);
     expect(hashOf('chitinous', 'quadruped')).not.toBe(recorded.chitinous);

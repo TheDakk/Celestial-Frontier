@@ -355,14 +355,14 @@ describe('paintSkin', () => {
     expect(now).toEqual(recorded);
   });
   it('armour is plates and chitin on a large creature and a Guardian, but for the bodies that keep the lines', () => {
-    const BODIES = ['quadruped/sturdy', 'insect/beetle', 'serpent/snake', 'crustacean/crab', 'fish/shark', 'fish/angler', 'tentacled/squid', 'tentacled/octopus', 'gelatinous/body'];
+    const BODIES = ['quadruped/sturdy', 'insect/beetle', 'insect/mantis', 'serpent/snake', 'serpent/viper', 'crustacean/crab', 'fish/shark', 'fish/angler', 'tentacled/squid', 'tentacled/octopus', 'gelatinous/body'];
     const is: string[] = [];
     for (const skin of SKIN_NAMES) for (const tier of TIERS) if (armoured(skin, tier)) is.push(`${skin} ${tier}`);
     expect(is).toEqual(['chitinous large', 'chitinous guardian', 'plated large', 'plated guardian']);
     // By body, the same for a large creature and a Guardian; no small or medium body is armoured.
     for (const tier of ['large', 'guardian'] as const) {
-      expect(BODIES.filter((b) => armoured('plated', tier, b)), tier).toEqual(['quadruped/sturdy', 'insect/beetle', 'serpent/snake', 'crustacean/crab', 'fish/shark', 'fish/angler', 'tentacled/squid']);
-      expect(BODIES.filter((b) => armoured('chitinous', tier, b)), tier).toEqual(['quadruped/sturdy', 'insect/beetle', 'serpent/snake', 'crustacean/crab']);
+      expect(BODIES.filter((b) => armoured('plated', tier, b)), tier).toEqual(['quadruped/sturdy', 'insect/beetle', 'insect/mantis', 'serpent/snake', 'serpent/viper', 'crustacean/crab', 'fish/shark', 'fish/angler', 'tentacled/squid']);
+      expect(BODIES.filter((b) => armoured('chitinous', tier, b)), tier).toEqual(['quadruped/sturdy', 'insect/mantis', 'serpent/snake', 'crustacean/crab']);
     }
     for (const tier of ['small', 'medium'] as const) for (const skin of SKIN_NAMES) expect(BODIES.some((b) => armoured(skin, tier, b)), `${skin} ${tier}`).toBe(false);
     // A family is matched whole, not by its first letters, and no other skin is ever armour.
@@ -388,7 +388,7 @@ describe('paintSkin', () => {
       }
       expect(hashOf(skin, 'quadruped/sturdy'), `${skin} quadruped`).not.toBe(recorded[skin]);
     }
-    expect(ARMOUR.lines).toEqual({ plated: ['gelatinous', 'tentacled/octopus'], chitinous: ['fish', 'gelatinous', 'tentacled'] });
+    expect(ARMOUR.lines).toEqual({ plated: ['gelatinous', 'tentacled/octopus'], chitinous: ['fish', 'gelatinous', 'insect/beetle', 'serpent/viper', 'tentacled'] });
   });
 
   it('each rule skin changes some pixel, and the eight differ pairwise', () => {
