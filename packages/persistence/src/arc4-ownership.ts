@@ -39,7 +39,13 @@ import {
   type V5Segment,
 } from './migration-v5.js';
 
-export const ARC4_OWNERSHIP_VERSION = 1 as const;
+/* The carrier's version. Version 2 (Dakk, 2026-11-27) stores the same rows as version 1 under two wider laws of
+   `@cf/domain-acquisition`: a species may leave the Compendium whole (an eaten plant, a lost beast), and a Paragon's
+   record may own the creature it is. A build that knows only version 1 would call such a state corrupt, so it must
+   see a newer version and hold the page. A version-1 carrier is read as stored; every write is version 2. */
+export const ARC4_OWNERSHIP_VERSION = 2 as const;
+export const ARC4_OWNERSHIP_READ_VERSIONS = Object.freeze([1, 2] as const);
+export type Arc4OwnershipCarrierVersion = typeof ARC4_OWNERSHIP_READ_VERSIONS[number];
 export const ARC4_OWNERSHIP_FIXED_SHARDS = 4 as const;
 export const ARC4_OWNERSHIP_PREFIX = 'arc4.ownership.' as const;
 export const ARC4_OWNERSHIP_MANIFEST_NAMESPACE = 'arc4.ownership.manifest' as const;
@@ -274,8 +280,8 @@ function carrierJson(value: unknown): string {
   return json;
 }
 
-function makeCarrier(value: unknown): V5ExtensionCarrier {
-  return Object.freeze({ version: ARC4_OWNERSHIP_VERSION, json: carrierJson(value) });
+function makeCarrier(value: unknown, version: Arc4OwnershipCarrierVersion): V5ExtensionCarrier {
+  return Object.freeze({ version, json: carrierJson(value) });
 }
 
 interface EncodedShard {
@@ -293,11 +299,12 @@ function shardValue(
   end: number,
   total: number,
   rows: readonly unknown[],
+  version: Arc4OwnershipCarrierVersion,
 ): Readonly<Record<string, unknown>> {
   const slice = rows.slice(start, end);
   return Object.freeze({
     schema: ARC4_OWNERSHIP_SHARD_SCHEMA,
-    version: ARC4_OWNERSHIP_VERSION,
+    version,
     kind,
     revision,
     index,
@@ -317,9 +324,10 @@ function encodedShard(
   start: number,
   end: number,
   rows: readonly unknown[],
+  version: Arc4OwnershipCarrierVersion,
 ): EncodedShard {
-  const value = shardValue(group.kind, revision, index, start, end, rows.length, rows);
-  const carrier = makeCarrier(value);
+  const value = shardValue(group.kind, revision, index, start, end, rows.length, rows, version);
+  const carrier = makeCarrier(value, version);
   return Object.freeze({
     write: Object.freeze({
       segment: group.segment,
@@ -336,6 +344,7 @@ function encodeShardGroup(
   group: typeof SHARD_GROUPS[number],
   revision: number,
   rows: readonly unknown[],
+  version: Arc4OwnershipCarrierVersion,
 ): readonly EncodedShard[] {
   const result: EncodedShard[] = [];
   let start = 0;
@@ -347,7 +356,7 @@ function encodeShardGroup(
       while (low < high) {
         const middle = Math.ceil((low + high) / 2);
         try {
-          encodedShard(group, revision, index, start, middle, rows);
+          encodedShard(group, revision, index, start, middle, rows, version);
           low = middle;
         } catch (error) {
           if (!(error instanceof Arc4CarrierError) || error.code !== 'bounds') throw error;
@@ -359,7 +368,7 @@ function encodeShardGroup(
         throw new Arc4CarrierError('bounds', `Arc 4 ${group.kind} row exceeds one shard`);
       }
     }
-    const shard = encodedShard(group, revision, index, start, end, rows);
+    const shard = encodedShard(group, revision, index, start, end, rows, version);
     result.push(shard);
     start = end;
   }
@@ -386,8 +395,13 @@ function extensionsFromWrites(writes: readonly Arc4OwnershipExtensionWriteV1[]):
   }
 }
 
-/** Encode one registered state into the complete fixed namespace inventory. */
+/** Encode one registered state into the complete fixed namespace inventory, at the version written today. */
 export function encodeArc4Ownership(state: OwnershipStateV1): EncodedArc4OwnershipV1 {
+  return encodeAt(state, ARC4_OWNERSHIP_VERSION);
+}
+
+/** The same inventory at a version this build reads: the fixed point a stored carrier is held to. */
+function encodeAt(state: OwnershipStateV1, version: Arc4OwnershipCarrierVersion): EncodedArc4OwnershipV1 {
   if (!isOwnershipStateV1(state)) throw new TypeError('Arc 4 ownership state must be registered');
   const mirror = ownershipStateMirrorV1(state);
   const groups = new Map<ShardKind, readonly EncodedShard[]>();
@@ -396,6 +410,7 @@ export function encodeArc4Ownership(state: OwnershipStateV1): EncodedArc4Ownersh
       group,
       state.revision,
       mirror[group.kind] as readonly unknown[],
+      version,
     ));
   }
   const progressPayload = Object.freeze({
@@ -409,11 +424,11 @@ export function encodeArc4Ownership(state: OwnershipStateV1): EncodedArc4Ownersh
     namespace: ARC4_OWNERSHIP_PROGRESS_NAMESPACE,
     carrier: makeCarrier(Object.freeze({
       schema: ARC4_OWNERSHIP_PROGRESS_SCHEMA,
-      version: ARC4_OWNERSHIP_VERSION,
+      version,
       revision: state.revision,
       digest: progressDigest,
       payload: progressPayload,
-    })),
+    }), version),
   });
   const shardDigests = Object.freeze(Object.fromEntries(SHARD_GROUPS.map((group) => [
     group.kind,
@@ -424,7 +439,7 @@ export function encodeArc4Ownership(state: OwnershipStateV1): EncodedArc4Ownersh
     namespace: ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
     carrier: makeCarrier(Object.freeze({
       schema: ARC4_OWNERSHIP_MANIFEST_SCHEMA,
-      version: ARC4_OWNERSHIP_VERSION,
+      version,
       revision: state.revision,
       mode: state.mode,
       fixedShardCount: ARC4_OWNERSHIP_FIXED_SHARDS,
@@ -440,7 +455,7 @@ export function encodeArc4Ownership(state: OwnershipStateV1): EncodedArc4Ownersh
       progressDigest,
       stateDigest: ownershipStateDigestV1(state),
       legacyProtection: mirror.legacyProtection,
-    })),
+    }), version),
   });
   const writes = sortedWrites([
     manifestWrite,
@@ -465,7 +480,7 @@ interface DecodedManifest {
   readonly legacyProtection: CanonicalJson;
 }
 
-function decodeManifest(carrier: V5ExtensionCarrier): DecodedManifest {
+function decodeManifest(carrier: V5ExtensionCarrier, stored: Arc4OwnershipCarrierVersion): DecodedManifest {
   const row = parsedCanonicalJson(carrier.json, 'Arc 4 ownership manifest');
   exactKeys(row, [
     'schema', 'version', 'revision', 'mode', 'fixedShardCount', 'rowCounts', 'shardDigests',
@@ -474,7 +489,7 @@ function decodeManifest(carrier: V5ExtensionCarrier): DecodedManifest {
   if (row.schema !== ARC4_OWNERSHIP_MANIFEST_SCHEMA) throw new Arc4CarrierError('corrupt', 'manifest schema is invalid');
   const version = integer(row.version!, 'manifest version');
   if (version > ARC4_OWNERSHIP_VERSION) throw new Arc4CarrierError('future', 'manifest is future', version);
-  if (version !== ARC4_OWNERSHIP_VERSION
+  if (version !== stored
     || row.fixedShardCount !== ARC4_OWNERSHIP_FIXED_SHARDS
     || (row.mode !== 'current' && row.mode !== 'legacy-protected')) {
     throw new Arc4CarrierError('corrupt', 'manifest identity is invalid');
@@ -516,6 +531,7 @@ function decodeShardGroup(
   extensions: V5Extensions,
   group: typeof SHARD_GROUPS[number],
   manifest: DecodedManifest,
+  stored: Arc4OwnershipCarrierVersion,
 ): readonly CanonicalJson[] {
   const rows: CanonicalJson[] = [];
   let expectedStart = 0;
@@ -527,7 +543,7 @@ function decodeShardGroup(
     ], `Arc 4 ${group.kind} shard ${index}`);
     const version = integer(shard.version!, 'shard version');
     if (version > ARC4_OWNERSHIP_VERSION) throw new Arc4CarrierError('future', 'shard is future', version);
-    if (shard.schema !== ARC4_OWNERSHIP_SHARD_SCHEMA || version !== ARC4_OWNERSHIP_VERSION
+    if (shard.schema !== ARC4_OWNERSHIP_SHARD_SCHEMA || version !== stored
       || shard.kind !== group.kind || shard.revision !== manifest.revision
       || shard.index !== index || shard.count !== ARC4_OWNERSHIP_FIXED_SHARDS
       || shard.total !== manifest.rowCounts[group.kind]) {
@@ -554,6 +570,7 @@ function decodeShardGroup(
 function decodeProgress(
   carrier: V5ExtensionCarrier,
   manifest: DecodedManifest,
+  stored: Arc4OwnershipCarrierVersion,
 ): Readonly<{
   biosphereProgress: readonly CanonicalJson[];
   legacyBioX: readonly CanonicalJson[];
@@ -563,7 +580,7 @@ function decodeProgress(
   exactKeys(progress, ['schema', 'version', 'revision', 'digest', 'payload'], 'Arc 4 ownership progress');
   const version = integer(progress.version!, 'progress version');
   if (version > ARC4_OWNERSHIP_VERSION) throw new Arc4CarrierError('future', 'progress is future', version);
-  if (progress.schema !== ARC4_OWNERSHIP_PROGRESS_SCHEMA || version !== ARC4_OWNERSHIP_VERSION
+  if (progress.schema !== ARC4_OWNERSHIP_PROGRESS_SCHEMA || version !== stored
     || progress.revision !== manifest.revision) throw new Arc4CarrierError('corrupt', 'progress descriptor is invalid');
   const payload = object(progress.payload!, 'Arc 4 progress payload');
   exactKeys(payload, ['biosphereProgress', 'legacyBioX', 'scoutCreatureId'], 'Arc 4 progress payload');
@@ -604,14 +621,21 @@ function ownedNamespaceStatus(extensions: V5Extensions): 'absent' | 'complete' {
   return 'complete';
 }
 
-function checkOuterVersions(extensions: V5Extensions): void {
+/** The one version every part of the stored carrier is at: a newer one is future, a mixed or unknown one corrupt. */
+function checkOuterVersions(extensions: V5Extensions): Arc4OwnershipCarrierVersion {
+  let stored: Arc4OwnershipCarrierVersion | null = null;
   for (const { segment, namespace } of ARC4_OWNERSHIP_EXTENSION_TARGETS) {
     const version = extensions[segment]![namespace]!.version;
     if (version > ARC4_OWNERSHIP_VERSION) {
       throw new Arc4CarrierError('future', 'Arc 4 ownership carrier is future', version);
     }
-    if (version !== ARC4_OWNERSHIP_VERSION) throw new Arc4CarrierError('corrupt', 'Arc 4 carrier version is invalid');
+    if (!(ARC4_OWNERSHIP_READ_VERSIONS as readonly number[]).includes(version) || (stored !== null && version !== stored)) {
+      throw new Arc4CarrierError('corrupt', 'Arc 4 carrier version is invalid');
+    }
+    stored = version as Arc4OwnershipCarrierVersion;
   }
+  if (stored === null) throw new Arc4CarrierError('corrupt', 'Arc 4 ownership carrier is absent');
+  return stored;
 }
 
 /** Decode a complete current fixed point. Missing/future classification is
@@ -624,11 +648,11 @@ export function decodeArc4Ownership(
   if (ownedNamespaceStatus(extensions) !== 'complete') {
     throw new Arc4CarrierError('corrupt', 'Arc 4 ownership carrier is absent');
   }
-  checkOuterVersions(extensions);
-  const manifest = decodeManifest(extensions.player![ARC4_OWNERSHIP_MANIFEST_NAMESPACE]!);
+  const stored = checkOuterVersions(extensions);
+  const manifest = decodeManifest(extensions.player![ARC4_OWNERSHIP_MANIFEST_NAMESPACE]!, stored);
   const decodedGroups = new Map<ShardKind, readonly CanonicalJson[]>();
-  for (const group of SHARD_GROUPS) decodedGroups.set(group.kind, decodeShardGroup(extensions, group, manifest));
-  const progress = decodeProgress(extensions.player![ARC4_OWNERSHIP_PROGRESS_NAMESPACE]!, manifest);
+  for (const group of SHARD_GROUPS) decodedGroups.set(group.kind, decodeShardGroup(extensions, group, manifest, stored));
+  const progress = decodeProgress(extensions.player![ARC4_OWNERSHIP_PROGRESS_NAMESPACE]!, manifest, stored);
   const mirror: OwnershipStateMirrorV1 = {
     schema: OWNERSHIP_STATE_SCHEMA,
     version: OWNERSHIP_STATE_VERSION,
@@ -650,7 +674,7 @@ export function decodeArc4Ownership(
   if (ownershipStateDigestV1(state) !== manifest.stateDigest) {
     throw new Arc4CarrierError('corrupt', 'Arc 4 ownership state digest is invalid');
   }
-  const fixed = encodeArc4Ownership(state);
+  const fixed = encodeAt(state, stored);
   for (const write of fixed.writes) {
     const current = extensions[write.segment]![write.namespace]!;
     if (current.version !== write.carrier.version || current.json !== write.carrier.json) {

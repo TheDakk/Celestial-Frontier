@@ -337,7 +337,7 @@ describe('what a completed scan leads to', () => {
     expect(alien.state.ascProg['c2-scan']).toBeUndefined();
   });
 
-  it('at a Paragon\'s home world the Paragon is catalogued: one page more, no creature, no attempt spent', async () => {
+  it('at a Paragon\'s home world the Paragon is catalogued: one page more, a whole beast, no attempt spent', async () => {
     const home = PARAGON_HOME();
     const page = await carePage({ change: (state) => { state.landed = [home.planet.seed]; } });
     const { state, facts } = await committed(page.scan(home));
@@ -355,6 +355,12 @@ describe('what a completed scan leads to', () => {
     expect(state.bioX).toEqual([]);
     expect(state.codex).toHaveLength(1);
     expect(page.carrierAgrees()).toBe(true);
+    // A Paragon is a beast like any other (LEGACY 14904-14917 stores it with `_storeSpecies`): it can be named the
+    // Field Scout (15150), and then it is the one that takes the next strike.
+    expect(await committed(page.scout(id))).toMatchObject({ facts: { scoutAfter: id, named: true } });
+    expect(page.durable().scoutId).toBe(id);
+    expect(page.carrierAgrees()).toBe(true);
+    await committed(page.scout(id));
     // A world with no beast has no danger: the scan read no random value, so the next scan's hazard is the session's first.
     const next = await committed(page.scan(EARTH));
     expect(next.facts.hostile).toBe(createSessionRNG(0xC4A7_0002).at('survey.hazard', 0) < EARTH_DANGER);

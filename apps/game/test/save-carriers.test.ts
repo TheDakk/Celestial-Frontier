@@ -15,9 +15,12 @@ import {
   type StorageBackend,
   type V5Extensions,
 } from '@cf/persistence';
+import { settleScoutV1 } from '../src/care';
+import { stageStarterCharterEventV1 } from '../src/guidance';
 import { CARRIERS, REGISTRY, bootstrapCarriers, startCarriers, watchCarriers } from '../src/save/index';
 import { heldNoticeFor } from '../src/screens/notices';
 import { bootedHarness } from './save-loop-support';
+import { earthId, heldPage } from './care-support';
 import { NOW, controlledClock, dump, namedState, seedCurrentSave } from './save-support';
 
 const loadedKinds = (extensions: V5Extensions) => ({
@@ -278,5 +281,41 @@ describe('the product carriers start at boot', () => {
     }));
     expect(outcome.kind).toBe('committed');
     expect(loadedKinds((await stored(h.backend)).extensions)).toEqual(ALL('loaded'));
+  });
+});
+
+describe('an ownership carrier stored by the first version of the format', () => {
+  /** A save past training holding one beast, its ownership carrier marked version 1 in every part. */
+  async function olderSave() {
+    const state = namedState('Vega');
+    state.tutDone = true;
+    state.codex = [heldPage(11)];
+    const made = prepareArc4OwnershipLegacyMigration({ extensions: {}, legacy: state, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER });
+    if (made.kind !== 'prepared') throw new Error(`ownership was ${made.kind}`);
+    const older: Record<string, Record<string, { version: number; json: string }>> = {};
+    for (const { segment, namespace, carrier } of made.writes) {
+      expect(carrier.version).toBe(2);
+      (older[segment] ??= {})[namespace] = { version: 1, json: carrier.json.replace('"version":2', '"version":1') };
+    }
+    const backend = createMemoryBackend();
+    await seedCurrentSave(backend, 'Vega', older as V5Extensions, (seeded) => { seeded.tutDone = true; seeded.codex = [heldPage(11)]; });
+    return backend;
+  }
+  const versions = (extensions: V5Extensions): number[] => [...new Set(Object.values(extensions).flatMap((names) =>
+    Object.entries(names ?? {}).filter(([name]) => name.startsWith('arc4.ownership.')).map(([, carrier]) => carrier.version)))];
+
+  it('boots as stored, and the next action on it stores the carrier at version 2', async () => {
+    const backend = await olderSave();
+    const h = await bootedHarness(backend);
+    await expect(startCarriers({ runtime: h.runtime, loop: h.loop })).resolves.toMatchObject({ boot: { status: { ownership: 'loaded' }, refused: [] } });
+    // Reading it does not rewrite it.
+    expect(versions((await stored(backend)).extensions)).toEqual([1]);
+
+    const named = await settleScoutV1({ door: h.loop, charters: stageStarterCharterEventV1 }, { speciesId: earthId(11), codecNow: NOW });
+    expect(named).toMatchObject({ kind: 'committed', facts: { scoutAfter: earthId(11) } });
+    const after = await stored(backend);
+    expect(versions(after.extensions)).toEqual([2]);
+    expect(after.state.scoutId).toBe(earthId(11));
+    expect(loadedKinds(after.extensions).ownership).toBe('loaded');
   });
 });

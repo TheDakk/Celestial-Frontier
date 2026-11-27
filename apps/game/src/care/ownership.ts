@@ -5,9 +5,9 @@
    state's own Compendium, names and scout. A care action changes the carrier by one step and writes the mirror of
    that step into the draft, so the two never disagree.
 
-   The carrier cannot take a species out of the Compendium, a creature out of the roster, or a plant out of the
-   stores (`@cf/domain-acquisition` `validateSuccessor`): the legacy steps that do (a meal consumed, a scout lost)
-   are not built on it; see `bioscan-action.ts`. */
+   A species leaves the Compendium whole, as `removeFromCodex` took it (18808-18821): its page, its creature or its
+   plant, and the scout's post if it held it (`withoutSpeciesV1`). The player's own name for it stays among the
+   names, as the legacy game left it there. */
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   createOwnershipSuccessorV1,
@@ -40,8 +40,7 @@ export function ownershipOf(extensions: V5Extensions): OwnershipStateV1 {
 
 export interface CompendiumRow {
   readonly species: CatalogSpeciesV1;
-  /** The creature this page is: the one the species was first taken with. Null for a plant, a fungus, a microbe,
-      and a Paragon, which the carrier keeps as a page alone. */
+  /** The creature this page is: the one the species was first taken with. Null for a plant, a fungus, a microbe. */
   readonly creature: CreatureInstanceV1 | null;
 }
 /** The Compendium page with this id, or null. */

@@ -24,9 +24,8 @@
    - a strike that would cost the scout its life (13154-13159 removes it from the Compendium and the scan goes on).
      The save's ownership carrier cannot take a creature or a species out; the press is refused with
      `scout-loss:not-carried` and nothing is written.
-   Carried as far as the save allows: a Paragon is a page of the Compendium with no creature behind it (the carrier
-   keeps it so), where the legacy game stored a whole beast that could be fed, bred or named the scout. What follows
-   an explorer's death (`showDeath` 19371, then a new expedition, 20736) is not here: the facts say `dead` and a
+   A Paragon is a whole beast, as the legacy game stored it (14910): a page of the Compendium and its creature.
+   What follows an explorer's death (`showDeath` 19371, then a new expedition, 20736) is not here: the facts say `dead` and a
    health of 0; the stored state holds 1, as the legacy game's own reader made of a dead save (16783).
 
    The painted port (`bioscan-action.ts`) kept the explorer alive at 1, capped the scout at 0.85, found a Paragon
@@ -39,6 +38,7 @@ import {
   createParagonDiscoveryRecordV1,
   ownershipContentId,
   ownershipStateDigestV1,
+  type CreatureInstanceId,
   type DiscoveryRecordId,
   type OwnershipStateContentsV1,
 } from '@cf/domain-acquisition';
@@ -271,6 +271,13 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
         recordId, speciesId: identity.speciesId, paragonIndex: reveal.paragon, worldAddress: address, receiptOrdinal: receipt.receiptOrdinal,
       })];
       contents.catalogSpecies = [...contents.catalogSpecies, createCatalogSpeciesV1({ identity, alias: null, firstObservationId: recordId })];
+      // A whole beast, stored as any other is (`_storeSpecies` 14910): it can be fed, wounded and named the scout.
+      contents.creatures = [...contents.creatures, createCreatureInstanceV1({
+        creatureId: ownershipContentId('creature', `${recordId}:creature`) as CreatureInstanceId,
+        speciesId: identity.speciesId, genomeIdentity: identity.genomeIdentity, genome: identity.genome, nickname: null, origin: 'wild',
+        acquisitionRecordId: recordId, lineage: { kind: 'none', generation: Number(genome.gen ?? 0) },
+        xp: null, hurt: null, fed: null, brood: null, assignment: null, bond: null,
+      })];
       draft.stats = { ...draft.stats, paragons: reveal.paragons };
       paragon = { index: reveal.paragon, speciesId: compendiumId(genome.seed), name: '', tier: null };
     }

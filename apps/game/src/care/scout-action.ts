@@ -7,8 +7,8 @@
    (`bioscan-action.ts`) and learns from each newly catalogued species (`capture/action.ts`).
 
    Ported from the painted port's `arc5-scout-action.ts`, which named a creature by its own id and refused an
-   unchanged press; here the press is the legacy toggle on the Compendium's page. A Paragon's page has no creature
-   behind it in the save's carrier, so it cannot be named the scout (the legacy game could). */
+   unchanged press; here the press is the legacy toggle on the Compendium's page. A Paragon is a beast like any
+   other and can be named. */
 import type { SaveStateV2, V5ExtensionWrite } from '@cf/persistence';
 import { commitCare, refuse, settleCare, type CareAuthority, type CareCharterStager, type CareOutcome, type CareSettleDeps } from './commit';
 import { compendiumRow, contentsOf, ownershipOf, stageOwnership } from './ownership';

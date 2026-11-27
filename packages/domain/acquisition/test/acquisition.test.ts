@@ -287,7 +287,7 @@ describe('@cf/domain-acquisition — truthful Arc 4 ownership', () => {
       biosphereProgress: parent.biosphereProgress,
       legacyBioX: parent.legacyBioX,
       scoutCreatureId: parent.scoutCreatureId,
-    })).toThrow(/required owned row|future tombstone schema/u);
+    })).toThrow(/required owned row|leaves only with its species/u);
     const replenished = createSpecimenLotV1({ ...specimen, quantity: specimen.quantity + 1 });
     expect(() => createOwnershipSuccessorV1(parent, {
       catalogSpecies: parent.catalogSpecies,
@@ -675,7 +675,7 @@ describe('@cf/domain-acquisition — truthful Arc 4 ownership', () => {
       biosphereProgress: decodedOwned.biosphereProgress,
       legacyBioX: decodedOwned.legacyBioX,
       scoutCreatureId: null,
-    })).toThrow(/cannot be removed without a future tombstone schema/u);
+    })).toThrow(/a creature leaves only with its species/u);
   });
 
   it('rejects accessors, symbols, non-enumerable data, custom prototypes, sparse arrays, and cycles', () => {

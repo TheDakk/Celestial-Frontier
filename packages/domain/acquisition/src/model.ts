@@ -1045,11 +1045,11 @@ function validateRelationships(state: OwnershipStateV1): void {
       throw new TypeError('specimen origin does not match acquisition provenance');
     }
   }
+  /* A Paragon is a whole beast, as in the legacy game (celestial-frontier.html 1.8.9, 14904-14917): its record may
+     own the one creature it is. A Paragon stored as a page alone, as the carrier's first version kept it, is still
+     valid. */
   for (const row of state.discoveries) {
     const species = catalog.get(row.speciesId)!;
-    if (row.provenance.kind === 'paragon' && acquisitionOwners.has(row.recordId)) {
-      throw new TypeError('Paragon catalogue observation cannot own an individual or specimen');
-    }
     if ((row.provenance.kind === 'legacy' || species.kingdom !== 'fauna')
       && !acquisitionOwners.has(row.recordId)) {
       throw new TypeError('acquisition audit row lacks its required owned row');
@@ -1192,18 +1192,33 @@ function validateCreatureHistory(prior: CreatureInstanceV1, current: CreatureIns
   }
 }
 
+/* What a successor may do. Rows are immutable and counts only grow, with one exception: a species may leave the
+   Compendium, and then it leaves whole. The legacy game deleted the page and with it the creature or the plant
+   (celestial-frontier.html 1.8.9, `removeFromCodex` 18808-18821: a meal consumed, a beast lost), after which the
+   species could be found again as new. So when a catalogue row is absent from the successor, every record,
+   creature, lot and mark on a world of that species must be absent too (`validateRelationships` refuses a row
+   left behind); nothing else may be removed, and a species that stays keeps its first record. */
 function validateSuccessor(parent: OwnershipStateV1, next: OwnershipStateV1): void {
   if (parent.mode !== 'current' || next.mode !== 'current') throw new TypeError('protected ownership has no ordinary successor');
   const catalogs = rowMap(next.catalogSpecies, (row) => row.speciesId);
+  const left = new Set<SpeciesId>();
   for (const row of parent.catalogSpecies) {
     const current = catalogs.get(row.speciesId);
-    if (!current || !same(catalogImmutable(row), catalogImmutable(current))) {
-    throw new TypeError('catalogue first observation/identity is immutable');
+    if (!current) { left.add(row.speciesId); continue; }
+    if (!same(catalogImmutable(row), catalogImmutable(current))) {
+      throw new TypeError('catalogue first observation/identity is immutable');
     }
   }
   const discoveries = rowMap(next.discoveries, (row) => row.recordId);
-  for (const row of parent.discoveries) if (!same(sourceMirror(row), discoveries.get(row.recordId) && sourceMirror(discoveries.get(row.recordId)!))) {
-    throw new TypeError('discovery audit rows are immutable and cannot be removed');
+  for (const row of parent.discoveries) {
+    const current = discoveries.get(row.recordId);
+    if (left.has(row.speciesId)) {
+      if (current) throw new TypeError('a record of a species that left cannot stay');
+      continue;
+    }
+    if (!current || !same(sourceMirror(row), sourceMirror(current))) {
+      throw new TypeError('discovery audit rows are immutable and leave only with their species');
+    }
   }
   const parentDiscoveryIds = new Set(parent.discoveries.map((row) => row.recordId));
   for (const row of next.discoveries) {
@@ -1214,7 +1229,10 @@ function validateSuccessor(parent: OwnershipStateV1, next: OwnershipStateV1): vo
   const creatures = rowMap(next.creatures, (row) => row.creatureId);
   for (const prior of parent.creatures) {
     const current = creatures.get(prior.creatureId);
-    if (!current) throw new TypeError('creature rows cannot be removed without a future tombstone schema');
+    if (!current) {
+      if (left.has(prior.speciesId)) continue;
+      throw new TypeError('a creature leaves only with its species');
+    }
     if (!same(creatureImmutable(prior), creatureImmutable(current))) {
       throw new TypeError('creature immutable identity changed');
     }
@@ -1230,7 +1248,10 @@ function validateSuccessor(parent: OwnershipStateV1, next: OwnershipStateV1): vo
   const specimens = rowMap(next.specimenLots, (row) => row.lotId);
   for (const prior of parent.specimenLots) {
     const current = specimens.get(prior.lotId);
-    if (!current) throw new TypeError('specimen rows cannot be removed without a future tombstone schema');
+    if (!current) {
+      if (left.has(prior.speciesId)) continue;
+      throw new TypeError('a specimen lot leaves only with its species');
+    }
     if (!same(specimenImmutable(prior), specimenImmutable(current)) || current.quantity > prior.quantity) {
       throw new TypeError('specimen lot identity changed or quantity increased');
     }
@@ -1251,12 +1272,32 @@ function validateSuccessor(parent: OwnershipStateV1, next: OwnershipStateV1): vo
     }
     if (current.cycle === prior.cycle) {
       const keys = new Set(current.successful.map((row) => `${row.speciesId}\u0000${row.source}`));
-      if (prior.successful.some((row) => !keys.has(`${row.speciesId}\u0000${row.source}`))) {
+      if (prior.successful.some((row) => !left.has(row.speciesId) && !keys.has(`${row.speciesId}\u0000${row.source}`))) {
         throw new TypeError('biosphere successful acquisition rolled back');
       }
     }
   }
   if (!same(parent.legacyBioX, next.legacyBioX)) throw new TypeError('legacy bioX evidence is immutable');
+}
+
+/** These rows with one species gone whole: its page, its records, its creatures and lots, its marks on every world
+    (the attempts it cost stay spent), and the scout if the scout was one of its creatures. The only removal a
+    successor allows (`validateSuccessor`). */
+export function withoutSpeciesV1(contents: OwnershipStateContentsV1, species: SpeciesId): OwnershipStateContentsV1 {
+  const scout = contents.scoutCreatureId === null ? null : contents.creatures.find((row) => row.creatureId === contents.scoutCreatureId);
+  return Object.freeze({
+    catalogSpecies: contents.catalogSpecies.filter((row) => row.speciesId !== species),
+    discoveries: contents.discoveries.filter((row) => row.speciesId !== species),
+    creatures: contents.creatures.filter((row) => row.speciesId !== species),
+    specimenLots: contents.specimenLots.filter((row) => row.speciesId !== species),
+    biosphereProgress: contents.biosphereProgress.map((row) => row.successful.some((mark) => mark.speciesId === species)
+      ? createBiosphereProgressV1({
+        worldAddress: row.worldAddress, cycle: row.cycle, used: row.used, successful: row.successful.filter((mark) => mark.speciesId !== species),
+      })
+      : row),
+    legacyBioX: contents.legacyBioX,
+    scoutCreatureId: scout?.speciesId === species ? null : contents.scoutCreatureId,
+  });
 }
 
 /** The later action planner supplies a complete next snapshot. This hook is

@@ -10,6 +10,7 @@ import {
   createLegacyBioXEvidenceV1,
   createOwnershipSuccessorV1,
   createSpecimenLotV1,
+  withoutSpeciesV1,
   createWorldDiscoveryRecordV1,
   decodeOwnershipStateV1,
   encodeOwnershipStateV1,
@@ -25,6 +26,7 @@ import {
   ARC4_OWNERSHIP_FIXED_SHARDS,
   ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
   ARC4_OWNERSHIP_PREFIX,
+  ARC4_OWNERSHIP_VERSION,
   V5_MAX_EXTENSION_JSON_BYTES,
   V5_MAX_EXTENSION_TOTAL_BYTES,
   arc4OwnershipLegacyMirrorMatches,
@@ -402,8 +404,8 @@ describe('@cf/persistence — strict sharded Arc 4 ownership', () => {
     if (prepared.kind !== 'prepared') throw new Error(`fixture failed: ${prepared.kind}`);
     const manifest = prepared.extensions.player![ARC4_OWNERSHIP_MANIFEST_NAMESPACE]!;
     expect(readArc4Ownership(replace(prepared.extensions, 'player', ARC4_OWNERSHIP_MANIFEST_NAMESPACE, {
-      ...manifest, version: 2,
-    }), SCENE_OWNERSHIP_ADDRESS_RESOLVER)).toEqual({ kind: 'future-version', version: 2 });
+      ...manifest, version: 3,
+    }), SCENE_OWNERSHIP_ADDRESS_RESOLVER)).toEqual({ kind: 'future-version', version: 3 });
     const last = ARC4_OWNERSHIP_EXTENSION_TARGETS.at(-1)!;
     expect(readArc4Ownership(remove(prepared.extensions, last.segment, last.namespace), SCENE_OWNERSHIP_ADDRESS_RESOLVER)).toEqual({ kind: 'corrupt' });
     expect(readArc4Ownership(replace(prepared.extensions, 'catalog', `${ARC4_OWNERSHIP_PREFIX}extra`, {
@@ -415,11 +417,11 @@ describe('@cf/persistence — strict sharded Arc 4 ownership', () => {
     const rows = shard.rows as unknown[];
     const duplicate = { ...shard, rows: [...rows, rows[0]] };
     expect(readArc4Ownership(replace(prepared.extensions, target.segment, target.namespace, {
-      version: 1, json: JSON.stringify(duplicate, Object.keys(duplicate).sort()),
+      version: ARC4_OWNERSHIP_VERSION, json: JSON.stringify(duplicate, Object.keys(duplicate).sort()),
     }), SCENE_OWNERSHIP_ADDRESS_RESOLVER)).toEqual({ kind: 'corrupt' });
     const badRange = { ...shard, start: 1 };
     expect(readArc4Ownership(replace(prepared.extensions, target.segment, target.namespace, {
-      version: 1, json: JSON.stringify(badRange, Object.keys(badRange).sort()),
+      version: ARC4_OWNERSHIP_VERSION, json: JSON.stringify(badRange, Object.keys(badRange).sort()),
     }), SCENE_OWNERSHIP_ADDRESS_RESOLVER)).toEqual({ kind: 'corrupt' });
   });
 
@@ -439,7 +441,7 @@ describe('@cf/persistence — strict sharded Arc 4 ownership', () => {
       biosphereProgress: parent.biosphereProgress,
       legacyBioX: parent.legacyBioX,
       scoutCreatureId: parent.scoutCreatureId === keptCreature.creatureId ? keptCreature.creatureId : null,
-    })).toThrow(/required owned row|future tombstone schema/u);
+    })).toThrow(/required owned row|leaves only with its species/u);
     const next = createOwnershipSuccessorV1(parent, {
       catalogSpecies: parent.catalogSpecies,
       discoveries: parent.discoveries,
@@ -572,4 +574,86 @@ describe('@cf/persistence — strict sharded Arc 4 ownership', () => {
     expect(migration.sourceEvidence).toMatchObject({ codexRows: 700, uniqueSpecies: 700 });
     expect(encodeArc4Ownership(migration.state).writes).toHaveLength(ARC4_OWNERSHIP_EXTENSION_TARGETS.length);
   }, 20_000);
+});
+
+/** The same carrier as the first version of the format stored it: every part marked version 1. */
+function asVersion1(extensions: V5Extensions): V5Extensions {
+  let out = extensions;
+  for (const { segment, namespace } of ARC4_OWNERSHIP_EXTENSION_TARGETS) {
+    const carrier = out[segment]![namespace]!;
+    const value = JSON.parse(carrier.json) as Record<string, unknown>;
+    expect(value.version).toBe(2);
+    out = replace(out, segment, namespace, { version: 1, json: carrier.json.replace('"version":2', '"version":1') });
+  }
+  return out;
+}
+
+describe('@cf/persistence — the ownership carrier, version 2', () => {
+  const bootstrap = () => {
+    const prepared = prepareArc4OwnershipLegacyMigration({ extensions: {}, legacy: legacyFixture(), resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER });
+    if (prepared.kind !== 'prepared') throw new Error(`fixture failed: ${prepared.kind}`);
+    return prepared;
+  };
+
+  it('every part of a carrier written today says version 2, outside and inside', () => {
+    expect(ARC4_OWNERSHIP_VERSION).toBe(2);
+    for (const write of bootstrap().writes) {
+      expect(write.carrier.version).toBe(2);
+      expect((JSON.parse(write.carrier.json) as { version: unknown }).version).toBe(2);
+    }
+  });
+
+  it('a carrier stored at version 1 reads as the same state, and its next write stores version 2 everywhere', () => {
+    const made = bootstrap();
+    const old = asVersion1(made.extensions);
+    const read = loaded(old);
+    expect(encodeOwnershipStateV1(read)).toBe(encodeOwnershipStateV1(made.state));
+    const next = createOwnershipSuccessorV1(read, {
+      catalogSpecies: read.catalogSpecies, discoveries: read.discoveries, creatures: read.creatures, specimenLots: read.specimenLots,
+      biosphereProgress: read.biosphereProgress, legacyBioX: read.legacyBioX, scoutCreatureId: null,
+    });
+    const prepared = prepareArc4OwnershipWrite({ extensions: old, state: next, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER });
+    expect(prepared.kind).toBe('prepared');
+    if (prepared.kind !== 'prepared') return;
+    for (const { segment, namespace } of ARC4_OWNERSHIP_EXTENSION_TARGETS) expect(prepared.extensions[segment]![namespace]!.version).toBe(2);
+    expect(loaded(prepared.extensions).scoutCreatureId).toBeNull();
+  });
+
+  it('a carrier of mixed versions, or marked one way outside and another inside, is corrupt; a newer one is a newer build\'s', () => {
+    const made = bootstrap();
+    const manifest = made.extensions.player![ARC4_OWNERSHIP_MANIFEST_NAMESPACE]!;
+    const read = (extensions: V5Extensions) => readArc4Ownership(extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    // Outside 1, inside 2, the rest 2.
+    expect(read(replace(made.extensions, 'player', ARC4_OWNERSHIP_MANIFEST_NAMESPACE, { ...manifest, version: 1 }))).toEqual({ kind: 'corrupt' });
+    // One part wholly version 1 among version 2.
+    expect(read(replace(made.extensions, 'player', ARC4_OWNERSHIP_MANIFEST_NAMESPACE, { version: 1, json: manifest.json.replace('"version":2', '"version":1') })))
+      .toEqual({ kind: 'corrupt' });
+    // Outside 2, inside 1.
+    expect(read(replace(made.extensions, 'player', ARC4_OWNERSHIP_MANIFEST_NAMESPACE, { version: 2, json: manifest.json.replace('"version":2', '"version":1') })))
+      .toEqual({ kind: 'corrupt' });
+    expect(read(replace(made.extensions, 'player', ARC4_OWNERSHIP_MANIFEST_NAMESPACE, { ...manifest, version: 3 }))).toEqual({ kind: 'future-version', version: 3 });
+  });
+
+  it('a species that left is gone from the stored carrier and from the mirror the old fields are made of', () => {
+    const made = bootstrap();
+    const parent = loaded(made.extensions);
+    const plant = parent.specimenLots[0]!;
+    const seed = parent.catalogSpecies.find((row) => row.speciesId === plant.speciesId)!.genome.seed;
+    const next = createOwnershipSuccessorV1(parent, withoutSpeciesV1({
+      catalogSpecies: parent.catalogSpecies, discoveries: parent.discoveries, creatures: parent.creatures, specimenLots: parent.specimenLots,
+      biosphereProgress: parent.biosphereProgress, legacyBioX: parent.legacyBioX, scoutCreatureId: parent.scoutCreatureId,
+    }, plant.speciesId));
+    const prepared = prepareArc4OwnershipWrite({ extensions: made.extensions, state: next, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER });
+    expect(prepared.kind).toBe('prepared');
+    if (prepared.kind !== 'prepared') return;
+    const stored = loaded(prepared.extensions);
+    expect(stored.catalogSpecies).toHaveLength(parent.catalogSpecies.length - 1);
+    expect(stored.specimenLots.some((row) => row.speciesId === plant.speciesId)).toBe(false);
+    expect(prepared.writes.map((write) => write.carrier.json).join('\n')).not.toContain(plant.speciesId);
+    const before = projectLegacyOwnershipMirror(parent), after = projectLegacyOwnershipMirror(stored);
+    if (before.kind !== 'projected' || after.kind !== 'projected') throw new Error('mirror unavailable');
+    expect(before.codex.some((row) => row.legacyCodexId === `s${String(seed)}`)).toBe(true);
+    expect(after.codex.some((row) => row.legacyCodexId === `s${String(seed)}`)).toBe(false);
+    expect(after.codex).toHaveLength(before.codex.length - 1);
+  });
 });
