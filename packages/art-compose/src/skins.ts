@@ -18,7 +18,7 @@ export interface Scatter {
   stamps: readonly Stamp[];                 // a throw's roll picks the one tried first
   spare: readonly Stamp[];                  // smaller ones, tried where none of `stamps` fits (a leg, a narrow band of shade)
 }
-/** Lines across a part's short side, `gap` to `gap + jitter` pixels apart: how a small or medium creature's plates and chitin are drawn, and a large body that is mostly arms. */
+/** Lines across a part's short side, `gap` to `gap + jitter` pixels apart: how a small or medium creature's plates and chitin are drawn, and the large bodies ARMOUR lists. */
 export interface Spacing { gap: number; jitter: number }
 /** Armour plates on a large creature: shields `wide` by `tall` pixels in overlapping rows, on a body and down a leg (skin.ts). */
 export interface Plates { wide: number; tall: number }
@@ -43,6 +43,22 @@ function deepFreeze<T>(value: T): T {
 /** One rule for each tier; a Guardian is drawn with the large tier's. */
 const tiers = <T>(small: T, medium: T, large: T): Record<SizeTier, T> => ({ small, medium, large, guardian: large });
 
+/**
+ * Where plates and chitin are drawn as armour, and where as the thin lines: the one place that says so.
+ * - Armour: a creature of one of `tiers` (large, Guardian), unless its body is listed under its skin in `lines`.
+ * - Lines: every small and medium creature (their armour is drawn by hand, as layers), and at the armour tiers the
+ *   bodies in `lines`, each a family or a family and torso kind (the scaffold id without its tier):
+ *   chitin on any fish, any tentacled body and a jelly; plates on an octopus and a jelly. On those the rule's armour
+ *   read as bars and slabs across the form (Dakk's verdicts of 2026-11-26), so they keep the lines until drawn by hand.
+ */
+export const ARMOUR = deepFreeze({
+  tiers: ['large', 'guardian'] as readonly SizeTier[],
+  lines: {
+    plated: ['gelatinous', 'tentacled/octopus'] as readonly string[],
+    chitinous: ['fish', 'gelatinous', 'tentacled'] as readonly string[],
+  },
+});
+
 // `untuned: true` is a first version Dakk has not seen on stills.
 export const SKIN_TABLE: Readonly<Record<SkinName, SkinRule>> = deepFreeze<Record<SkinName, SkinRule>>({
   // Scales: crescents, the dark lower edge of each scale; short dashes where a crescent has no room.
@@ -58,11 +74,11 @@ export const SKIN_TABLE: Readonly<Record<SkinName, SkinRule>> = deepFreeze<Recor
     { room: 26, loose: false, stamps: [['..D', '.DD', 'DD.'], ['.L', 'LL', 'L.'], ['.D', '.D', 'DD', 'D.'], ['.D', 'DD', 'D.']], spare: [['D', 'D']] },
   ) },
   // Chitin on a large creature (`armour`): one row of segments along the body, each lit in front and shaded behind,
-  // lapping over the next at a dark seam. On a small or medium one, and on a large body of arms (`lines`): dark seams.
+  // lapping over the next at a dark seam. Where ARMOUR says lines (`lines`): dark seams.
   chitinous: { untuned: true, mode: 'seams', lines: { small: { gap: 5, jitter: 5 }, medium: { gap: 6, jitter: 6 }, large: { gap: 8, jitter: 8 } }, armour: { gap: 11, jitter: 6, band: 9 } },
   slick: { untuned: true, mode: 'edge' },
   // Plates on a large creature (`armour`): shields in rows that follow the back, each with a lit upper edge, a shadow
-  // and a dark rim. On a small or medium one, and on a large body of arms (`lines`): a lit edge, a seam and a rim.
+  // and a dark rim. Where ARMOUR says lines (`lines`): a lit edge, a seam and a rim.
   plated: { untuned: true, mode: 'plates', lines: { small: { gap: 9, jitter: 6 }, medium: { gap: 14, jitter: 10 }, large: { gap: 20, jitter: 13 } }, armour: { wide: 13, tall: 7 } },
   // Warts: raised bumps scattered unevenly, lit above and shaded below.
   warty: { untuned: true, mode: 'scatter', tiers: tiers<Scatter>(

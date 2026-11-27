@@ -1,6 +1,6 @@
 import { SKIN_NAMES, type PartFrame, type SizeTier, type SkinName } from '@cf/art-format';
 import { handValue } from './marks';
-import { SKIN_TABLE, type Plates, type Scatter, type Segments, type Spacing } from './skins';
+import { ARMOUR, SKIN_TABLE, type Plates, type Scatter, type Segments, type Spacing } from './skins';
 
 const LAST_DRAWN = 12;
 
@@ -28,12 +28,13 @@ function roll(seed: number, a: number, b: number): number {
  * skin, tier and seed give the same picture on every device), and leaves no lone pixel, no two by two checker and no
  * run of every other pixel behind (settle). Scattered clusters step a pixel one shade. Armour (plates and chitin on a
  * large creature; a small or medium one keeps thin lines) is drawn as whole pieces, each one flat shade of the hide under it with a lit edge, a shadow and a dark rim, so it reads with
- * the same steps on a pale hide and on a dark one.
+ * the same steps on a pale hide and on a dark one. `body` (the creature's family and torso kind) is asked only to tell
+ * armour from lines.
  * Returns a new array, or `null` when the rule is `none` and the frame has no layer named for the skin.
  * Never changes its inputs. Pixels of any length but the frame's w x h throw a RangeError: a wrong array is refused,
  * never painted truncated or misaligned.
  */
-export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName, tier: SizeTier, seed: number): Uint8Array | null {
+export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName, tier: SizeTier, seed: number, body = ''): Uint8Array | null {
   if (pixels.length !== frame.w * frame.h) throw new RangeError(`paintSkin: ${pixels.length} pixels for a ${frame.w}x${frame.h} frame`);
   const hand = frame.layers?.[skin];
   const rule = SKIN_TABLE[skin];
@@ -63,14 +64,13 @@ export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName, 
   }
 
   // The hide the texture may use: the frame's pixels with a box round every eye point emptied, so nothing lies under an eye.
-  const hide = clearOfEyes(frame, pixels, EYE_CLEAR[tier], armoured(skin, tier));
+  const armour = armoured(skin, tier, body);
+  const hide = clearOfEyes(frame, pixels, EYE_CLEAR[tier], armour);
   const shape = shapeOf(w, h, hide);
   if (shape === null) return out;
   const salted = roll(seed, SKIN_NAMES.indexOf(skin), 0);
-  const upright = shape.x1 - shape.x0 < shape.y1 - shape.y0;
-  if (rule.mode === 'scatter' || !armoured(skin, tier) || (!upright && allArms(shape, hide, w))) {
-    // Scattered clusters; the lines a small or medium creature's plates and chitin are still drawn as; and the same
-    // lines on a large body that is mostly arms (an octopus, a jelly), where pieces of armour would cut the arms up.
+  if (rule.mode === 'scatter' || !armour) {
+    // Scattered clusters, and the lines plates and chitin are drawn as wherever they are not armour (ARMOUR, skins.ts).
     const draft: Draft = { w, h, pixels: hide, wish: new Int8Array(w * h), cluster: new Int32Array(w * h), clusters: 0, xs: [], ys: [] };
     if (rule.mode === 'scatter') scatter(draft, shape, rule.tiers[tier], salted);
     else lines(draft, shape, tier === 'small' ? rule.lines.small : tier === 'medium' ? rule.lines.medium : rule.lines.large, rule.mode === 'plates', salted);
@@ -82,19 +82,20 @@ export function paintSkin(frame: PartFrame, pixels: Uint8Array, skin: SkinName, 
     return out;
   }
   // Armour: each plate or segment is one piece of one shade, the hide's own there, with its edges lit and shaded from it.
-  const armour: Armour = { w, h, hide, tone: new Uint8Array(w * h), shade: new Int8Array(w * h).fill(-1), piece: [] };
+  const upright = shape.x1 - shape.x0 < shape.y1 - shape.y0;
+  const pieces: Armour = { w, h, hide, tone: new Uint8Array(w * h), shade: new Int8Array(w * h).fill(-1), piece: [] };
   if (rule.mode === 'plates') {
-    if (upright) greaves(armour, shape, rule.armour, salted);
-    else shields(armour, bodyOf(shape, hide, w), rule.armour, salted);
-  } else if (upright) joints(armour, shape, rule.armour, salted);
-  else segments(armour, bodyOf(shape, hide, w), rule.armour, salted);
+    if (upright) greaves(pieces, shape, rule.armour, salted);
+    else shields(pieces, bodyOf(shape, hide, w), rule.armour, salted);
+  } else if (upright) joints(pieces, shape, rule.armour, salted);
+  else segments(pieces, bodyOf(shape, hide, w), rule.armour, salted);
   const xs: number[] = [];
   const ys: number[] = [];
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
       const i = y * w + x;
       const host = hide[i] ?? 0;
-      const shade = armour.shade[i] ?? -1;
+      const shade = pieces.shade[i] ?? -1;
       if (shade < 0 || ((host - 1) & 3) === shade) continue;
       out[i] = host - ((host - 1) & 3) + shade;
       xs.push(x); ys.push(y);
@@ -360,25 +361,6 @@ function lines(d: Draft, shape: Shape, rule: Spacing, plates: boolean, seed: num
     }
     from = to + 1;
   }
-}
-
-/**
- * Whether a part is mostly arms: half or more of its columns of hide cross three or more separate runs of it. Such a
- * body (an octopus over its arms, a jelly over its tentacles) has no back for armour to follow.
- */
-function allArms(shape: Shape, pixels: Uint8Array, w: number): boolean {
-  let columns = 0; let crossed = 0;
-  for (let x = shape.x0; x <= shape.x1; x++) {
-    let runs = 0; let on = false;
-    for (let y = shape.y0; y <= shape.y1; y++) {
-      const now = skinnable(pixels[y * w + x] ?? 0);
-      if (now && !on) runs++;
-      on = now;
-    }
-    if (runs > 0) columns++;
-    if (runs >= 3) crossed++;
-  }
-  return 2 * crossed >= columns;
 }
 
 /** The least rows of hide a column split into several runs must hold in one run to take armour there: an arm or a leg is thinner. */
@@ -763,10 +745,11 @@ function settle(w: number, h: number, before: Uint8Array, out: Uint8Array, clust
 const COMB_MOST = 6;
 
 /**
- * Whether the skin is drawn as armour at the tier: plates and chitin on a large creature or a Guardian. A small or a
- * medium creature keeps the lines it had (its armour is the art agent's to draw, as layers).
+ * Whether the skin is drawn as armour on a creature of the tier and body (ARMOUR, skins.ts): plates and chitin on a large
+ * creature or a Guardian, but for the bodies that keep the thin lines. `body` is the creature's family and torso kind,
+ * its scaffold id without the tier (`fish/shark`); with none given, the tier alone decides.
  */
-export function armoured(skin: SkinName, tier: SizeTier): boolean {
-  const mode = SKIN_TABLE[skin].mode;
-  return (mode === 'plates' || mode === 'seams') && (tier === 'large' || tier === 'guardian');
+export function armoured(skin: SkinName, tier: SizeTier, body = ''): boolean {
+  if ((skin !== 'plated' && skin !== 'chitinous') || !ARMOUR.tiers.includes(tier)) return false;
+  return !ARMOUR.lines[skin].some((b) => body === b || body.startsWith(`${b}/`));
 }

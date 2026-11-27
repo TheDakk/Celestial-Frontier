@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { PIXEL_CHARS, SKIN_NAMES, TIER_SIZE, type LayerName, type PartFrame, type SizeTier, type SkinName } from '@cf/art-format';
-import { SKIN_TABLE, armoured, hashBuffer, paintSkin, type Stamp } from '@cf/art-compose';
+import { ARMOUR, SKIN_TABLE, armoured, hashBuffer, paintSkin, type Stamp } from '@cf/art-compose';
 import { alternations, checkers, comb, coverage, COVER_MOST, lonePixels, LINES_ON_A_BODY_REPEAT_MOST, pitch, PITCH_MOST, repeat, REPEAT_MOST, turns, type Picture } from './texture-measures';
 
 /** Rows of pixel characters ('.' is 0) as one row-major array. */
@@ -340,7 +340,7 @@ describe('a textured skin is drawn as solid clusters, never a grid of dots, dash
 describe('paintSkin', () => {
   it('everything but large armour is painted as it was before plates and chitin were redrawn', () => {
     // Each skin's pictures on a body and a limb at seven seeds, as one hash, recorded from the painter before the armour
-    // was rebuilt (the code branch at 7fac37e): the six other ruled skins at every tier, and plates and chitin on a small
+    // was rebuilt (the code branch): the six other ruled skins at every tier, and plates and chitin on a small
     // and a medium creature (accepted as they are; small armour is to be drawn by hand). None may move by a pixel.
     const recorded = { scaled: '933098c7', furred: '62e6aad8', slick: 'dd02bb27', warty: '437764e6', feathered: '758facea', crystalline: '59e17b7d', chitinous: '609c6d8d', plated: '416876b7' };
     const now: Record<string, string> = {};
@@ -354,10 +354,41 @@ describe('paintSkin', () => {
     }
     expect(now).toEqual(recorded);
   });
-  it('armour is plates and chitin on a large creature and a Guardian, and nothing else', () => {
+  it('armour is plates and chitin on a large creature and a Guardian, but for the bodies that keep the lines', () => {
+    const BODIES = ['quadruped/sturdy', 'insect/beetle', 'serpent/snake', 'crustacean/crab', 'fish/shark', 'fish/angler', 'tentacled/squid', 'tentacled/octopus', 'gelatinous/body'];
     const is: string[] = [];
     for (const skin of SKIN_NAMES) for (const tier of TIERS) if (armoured(skin, tier)) is.push(`${skin} ${tier}`);
     expect(is).toEqual(['chitinous large', 'chitinous guardian', 'plated large', 'plated guardian']);
+    // By body, the same for a large creature and a Guardian; no small or medium body is armoured.
+    for (const tier of ['large', 'guardian'] as const) {
+      expect(BODIES.filter((b) => armoured('plated', tier, b)), tier).toEqual(['quadruped/sturdy', 'insect/beetle', 'serpent/snake', 'crustacean/crab', 'fish/shark', 'fish/angler', 'tentacled/squid']);
+      expect(BODIES.filter((b) => armoured('chitinous', tier, b)), tier).toEqual(['quadruped/sturdy', 'insect/beetle', 'serpent/snake', 'crustacean/crab']);
+    }
+    for (const tier of ['small', 'medium'] as const) for (const skin of SKIN_NAMES) expect(BODIES.some((b) => armoured(skin, tier, b)), `${skin} ${tier}`).toBe(false);
+    // A family is matched whole, not by its first letters, and no other skin is ever armour.
+    expect(armoured('chitinous', 'large', 'fishlike/shark')).toBe(true);
+    for (const skin of SKIN_NAMES) if (skin !== 'plated' && skin !== 'chitinous') expect(armoured(skin, 'large', 'quadruped/sturdy'), skin).toBe(false);
+  });
+
+  it('a large body that keeps the lines is painted as before the armour was built, pixel for pixel', () => {
+    // Plates and chitin on a body and a limb of a large creature and a Guardian at seven seeds, as one hash, recorded from
+    // the code branch's painter (e02a6f8): every body ARMOUR lists under the skin gives exactly that, and a body it does
+    // not list gives something else (armour).
+    const recorded = { chitinous: '16f5f098', plated: '9d890ed0' };
+    const hashOf = (skin: 'plated' | 'chitinous', of: string): string => {
+      const all: number[] = [];
+      for (const tier of ['large', 'guardian'] as const) for (const seed of SEEDS) for (const frame of [body(tier), limb(tier)]) all.push(...paintSkin(frame, frame.pixels, skin, tier, seed, of)!);
+      return hashBuffer({ w: all.length, h: 1, pixels: all });
+    };
+    for (const skin of ['plated', 'chitinous'] as const) {
+      expect(ARMOUR.lines[skin].length, skin).toBeGreaterThan(0);
+      for (const listed of ARMOUR.lines[skin]) {
+        expect(hashOf(skin, listed), `${skin} ${listed}`).toBe(recorded[skin]);
+        expect(hashOf(skin, `${listed}/kind`), `${skin} ${listed}/kind`).toBe(recorded[skin]);
+      }
+      expect(hashOf(skin, 'quadruped/sturdy'), `${skin} quadruped`).not.toBe(recorded[skin]);
+    }
+    expect(ARMOUR.lines).toEqual({ plated: ['gelatinous', 'tentacled/octopus'], chitinous: ['fish', 'gelatinous', 'tentacled'] });
   });
 
   it('each rule skin changes some pixel, and the eight differ pairwise', () => {

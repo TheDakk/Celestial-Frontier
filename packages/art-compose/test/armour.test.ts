@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { parseCatalogueText, PIXEL_CHARS, SKIN_NAMES, TIER_SIZE, type Catalogue, type PartFrame, type SizeTier } from '@cf/art-format';
 import type { Recipe } from '@cf/art-recipe';
-import { SKIN_TABLE, compose, paintSkin, settleTexture } from '@cf/art-compose';
+import { SKIN_TABLE, compose, hashBuffer, paintSkin, settleTexture } from '@cf/art-compose';
 import { checkers, comb, lonePixels, specks, turns, type Picture } from './texture-measures';
 
 // Armour: plates and chitin on a large creature. Whole creatures are measured on the finished picture (compose: stacked,
@@ -29,7 +29,7 @@ const rows = (w: number, h: number, shade: (x: number, y: number) => string): st
  * eye point and an eye wider than the box the painter keeps clear round that point, a tail, two near legs side by side and two far legs side by side, each a thigh over (near) or under (far)
  * the torso's lower half and a shin half as wide.
  */
-function catalogue(tier: SizeTier, hide: Hide): Catalogue {
+function catalogue(tier: SizeTier, hide: Hide, family = 'quadruped'): Catalogue {
   const s = sizes(tier);
   const [hi, lo] = hide === 'pale' ? ['4', '3'] : ['2', '1'];
   const torso = rows(s.body.w, s.body.h, (x, y) => {
@@ -43,43 +43,43 @@ function catalogue(tier: SizeTier, hide: Hide): Catalogue {
   const x0 = s.body.w >> 3; const x1 = s.body.w - 2 * s.thigh - (s.body.w >> 3);
   const attach = `head:${s.body.w - 2},${s.body.h >> 3},tail:0,${half},near0:${x0},${half},near1:${x0 + s.thigh},${half},far0:${x1},${half},far1:${x1 + s.thigh},${half}`;
   return parseCatalogueText(`${HEADER}
-part quadruped/torso/sturdy/${tier}/v0
+part ${family}/torso/sturdy/${tier}/v0
 frame rest anchor=0,0 attach=${attach}
 ${torso}
 
-part quadruped/head/h1/${tier}/v0
+part ${family}/head/h1/${tier}/v0
 frame rest anchor=0,0 attach=eye0:${s.head.w >> 1},${s.head.h >> 1}
 ${head}
 
-part quadruped/eyes/eye/${tier}/v0
+part ${family}/eyes/eye/${tier}/v0
 frame rest anchor=${s.shin >> 1},1
 ${rows(s.shin + 2, 4, (x, y) => (y === 0 && x < 2 ? 'e' : 'd'))}
 
-part quadruped/tail/t1/${tier}/v0
+part ${family}/tail/t1/${tier}/v0
 frame rest anchor=${s.thigh - 1},0
 ${tail}
 
-part quadruped/farLimbs/leg/${tier}/v0
+part ${family}/farLimbs/leg/${tier}/v0
 frame rest anchor=0,0
 ${leg}
 
-part quadruped/nearLimbs/leg/${tier}/v0
+part ${family}/nearLimbs/leg/${tier}/v0
 frame rest anchor=0,0
 ${leg}
 
-scaffold quadruped/sturdy/${tier} origin=${s.w >> 2},${s.h >> 3}
+scaffold ${family}/sturdy/${tier} origin=${s.w >> 2},${s.h >> 3}
 pose rest
 entry torso 0 rest 0 0
 `);
 }
 
-function recipe(tier: SizeTier, skin: number | null, phase: number): Recipe {
-  const id = (slot: string, kind: string): string => `quadruped/${slot}/${kind}/${tier}/v0`;
+function recipe(tier: SizeTier, skin: number | null, phase: number, family = 'quadruped'): Recipe {
+  const id = (slot: string, kind: string): string => `${family}/${slot}/${kind}/${tier}/v0`;
   const parts = ([['farLimbs', 0, id('farLimbs', 'leg')], ['farLimbs', 1, id('farLimbs', 'leg')], ['tail', 0, id('tail', 't1')], ['torso', 0, id('torso', 'sturdy')],
     ['nearLimbs', 0, id('nearLimbs', 'leg')], ['nearLimbs', 1, id('nearLimbs', 'leg')], ['head', 0, id('head', 'h1')], ['eyes', 0, id('eyes', 'eye')]] as const)
     .map(([slot, index, partId]) => ({ slot, index, partId, source: 'own' as const }));
   return {
-    version: 1, identity: 'test', family: 'quadruped', tier, scaffoldId: `quadruped/sturdy/${tier}`, parts,
+    version: 1, identity: 'test', family, tier, scaffoldId: `${family}/sturdy/${tier}`, parts,
     ramps: { primary: 'r', accent: 'r', underside: 'r', iris: 'r' }, marking: { pattern: 0, strength: 2, phase },
     shift: { head: [0, 0], tail: [0, 0] }, legs: 4, eyes: 2, glow: false, gaps: [], opacity: 100, airborne: false, theme: null, rim: 0, skin,
   };
@@ -87,12 +87,12 @@ function recipe(tier: SizeTier, skin: number | null, phase: number): Recipe {
 
 const CATALOGUES = new Map<string, Catalogue>();
 /** The finished creature with the skin, and the same creature finished with none: what the texture is measured against. */
-function finished(tier: SizeTier, hide: Hide, skin: string, phase: number): Picture {
-  const key = `${tier} ${hide}`;
-  const cat = CATALOGUES.get(key) ?? catalogue(tier, hide);
+function finished(tier: SizeTier, hide: Hide, skin: string, phase: number, family = 'quadruped'): Picture {
+  const key = `${tier} ${hide} ${family}`;
+  const cat = CATALOGUES.get(key) ?? catalogue(tier, hide, family);
   CATALOGUES.set(key, cat);
-  const before = compose(recipe(tier, null, phase), 'rest', cat).buffer;
-  const after = compose(recipe(tier, SKIN_NAMES.indexOf(skin as never), phase), 'rest', cat).buffer;
+  const before = compose(recipe(tier, null, phase, family), 'rest', cat).buffer;
+  const after = compose(recipe(tier, SKIN_NAMES.indexOf(skin as never), phase, family), 'rest', cat).buffer;
   return { w: after.w, h: after.h, before: before.pixels, after: after.pixels };
 }
 
@@ -285,6 +285,43 @@ describe('plates and chitin on a finished large creature, on a pale hide and on 
     }
   }
 
+  it('the same large creature as a fish keeps chitin\'s thin lines and takes plates as armour; as a jelly it keeps the lines for both', () => {
+    // The one creature, composed under another family's name: only the name decides (ARMOUR, skins.ts).
+    for (const phase of PHASES) {
+      const share = (p: Picture): number => { const t = textured(p, 'large'); return t.all / t.hide; };
+      // Lines: a few seams, under a tenth of the hide, and no plate lapping over another. Armour: over a tenth.
+      for (const [family, skin] of [['fish', 'chitinous'], ['gelatinous', 'chitinous'], ['gelatinous', 'plated']] as const) {
+        const p = finished('large', 'pale', skin, phase, family);
+        expect(share(p), `${family} ${skin} phase ${phase}`).toBeGreaterThan(0);
+        expect(share(p), `${family} ${skin} phase ${phase}`).toBeLessThan(0.1);
+        expect(laps(p, true), `${family} ${skin} phase ${phase}`).toBe(0);
+      }
+      const plated = finished('large', 'pale', 'plated', phase, 'fish');
+      expect(share(plated), `fish plated phase ${phase}`).toBeGreaterThan(0.1);
+      expect(laps(plated, true), `fish plated phase ${phase}`).toBeGreaterThanOrEqual(6);
+      // And the fish's plates are the quadruped's: the family changes nothing else.
+      expect(Array.from(plated.after), `fish plated phase ${phase}`).toEqual(Array.from(finished('large', 'pale', 'plated', phase).after));
+    }
+  });
+
+  it('a large creature that keeps the lines is composed as before the armour was built, pixel for pixel', () => {
+    // The test creature finished with plates and with chitin at fifteen phases, as one hash each, recorded from the code
+    // branch's composer (e02a6f8), which draws every large creature with the lines: a fish's chitin and a jelly's plates
+    // and chitin give exactly that; armour gives something else.
+    const recorded = { chitinous: '9736aadc', plated: 'ab739a30' };
+    const hashOf = (skin: 'plated' | 'chitinous', family: string): string => {
+      const all: number[] = [];
+      for (const phase of PHASES) all.push(...finished('large', 'pale', skin, phase, family).after);
+      return hashBuffer({ w: all.length, h: 1, pixels: all });
+    };
+    expect(hashOf('chitinous', 'fish')).toBe(recorded.chitinous);
+    expect(hashOf('chitinous', 'gelatinous')).toBe(recorded.chitinous);
+    expect(hashOf('chitinous', 'tentacled')).toBe(recorded.chitinous);
+    expect(hashOf('plated', 'gelatinous')).toBe(recorded.plated);
+    expect(hashOf('plated', 'fish')).not.toBe(recorded.plated);
+    expect(hashOf('chitinous', 'quadruped')).not.toBe(recorded.chitinous);
+  });
+
   it('the same creature and phase give the same finished picture; another phase gives another', () => {
     for (const skin of ['plated', 'chitinous']) {
       const a = finished('large', 'pale', skin, 3);
@@ -418,26 +455,10 @@ describe('armour is drawn as pieces, never as a mesh, a ruled grid or a comb', (
 });
 
 describe('armour follows the body: it keeps off arms, and off an eye the body draws', () => {
-  // A mantle 80 by 16 over five arms, each 4 rows thick with 3 empty rows between: every column crosses six runs of hide.
   const mantle = block(80, 16, '3');
-  const arms = [0, 1, 2, 3, 4].flatMap(() => [...block(80, 3, '.'), ...block(80, 4, '3')]);
-
-  it('a body that is mostly arms is not cut into pieces: it keeps the thin lines, with no lit upper edge of a plate or a segment', () => {
-    const octopus = part([...mantle, ...arms]);
-    const solid = part(block(80, 51, '3'));
-    for (const skin of ['plated', 'chitinous'] as const) {
-      for (const seed of SEEDS) {
-        const p = painted(octopus, skin, seed);
-        expect(p.after.some((v, i) => v !== p.before[i]), `${skin} seed ${seed}: the body of arms takes its lines`).toBe(true);
-        expect(litRuns(p, 0), `${skin} seed ${seed}: the body of arms`).toEqual([]);
-        // Control: a solid body of the same box is armoured: its top row is the lit upper edge of its pieces.
-        expect(litRuns(painted(solid, skin, seed), 0).length, `${skin} seed ${seed}: a solid body`).toBeGreaterThanOrEqual(3);
-      }
-    }
-  });
 
   it('a body over a few arms takes armour on the body alone', () => {
-    // The mantle over two arms under its first third only: a third of the columns cross three runs, so it is armoured.
+    // A mantle 80 by 16 over two arms under its first third, each 4 rows thick with 3 empty rows over it.
     const few = part([...mantle, ...[0, 1].flatMap(() => [...block(80, 3, '.'), ...new Array<string>(4).fill('3'.repeat(28) + '.'.repeat(52))])]);
     for (const skin of ['plated', 'chitinous'] as const) {
       for (const seed of SEEDS) {

@@ -167,6 +167,9 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
   // Skin null (buildRecipe, buildSpeciesRecipe, a radial) paints nothing. A gene outside SKIN_NAMES cannot occur (resolveBody wraps it to 0-8).
   const skin = recipe.skin === null ? undefined : SKIN_NAMES[recipe.skin];
   // The same creature without any texture a rule paints, kept beside the picture from the first such part on.
+  // Whether this creature's plates or chitin are armour: its tier and its body, the scaffold id without the tier (skins.ts).
+  const body = recipe.scaffoldId.slice(0, Math.max(0, recipe.scaffoldId.lastIndexOf('/')));
+  const armour = skin !== undefined && armoured(skin, recipe.tier, body);
   let untextured: PixelBuffer | null = null;
   const textured = { x0: buffer.w, y0: buffer.h, x1: -1, y1: -1 }; // the box round every part a rule textured
   for (const rp of recipe.parts) {
@@ -191,7 +194,7 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     if (skin !== undefined && MARK_SLOTS.includes(rp.slot)) {
       // The texture's seed: the creature's phase, and the part's slot and index so two legs sharing a drawing differ.
       const nth = rp.index * MARK_SLOTS.length + MARK_SLOTS.indexOf(rp.slot);
-      const skinned = paintSkin(frame, frame.pixels, skin, recipe.tier, recipe.marking.phase + SKIN_SEED_STEP * nth);
+      const skinned = paintSkin(frame, frame.pixels, skin, recipe.tier, recipe.marking.phase + SKIN_SEED_STEP * nth, body);
       if (skinned !== null) {
         if (texturedByRule(frame, skin)) {
           bare = frame;
@@ -206,7 +209,7 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
     blit(buffer, frame, p.x, p.y, false, rp.slot === 'eyes');
     if (untextured !== null) blit(untextured, bare ?? frame, p.x, p.y, false, rp.slot === 'eyes');
   }
-  if (untextured !== null && skin !== undefined && armoured(skin, recipe.tier)) {
+  if (untextured !== null && armour) {
     clearRoundEyes(buffer, untextured, textured);
     settleFinished(buffer, untextured, textured);
   }
