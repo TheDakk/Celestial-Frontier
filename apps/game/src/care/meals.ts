@@ -19,7 +19,8 @@
    poison, death, and one of four events per taste): no roll and no companion poison. Loved: +2 fed, +3 for a flora
    of tier 4 or more, and 0.25 hurt mended. Neutral: +1 and 0.10. Disliked: nothing, and harmless. The flora is
    eaten every time. Fed stops at 200 as it did (18945). The first meal pays 1 experience and each flavour newly
-   tasted pays 2, once per companion for life, each remembered as a bond memory. The numbers are
+   tasted pays 2, each remembered as a bond memory of the companion's and each paid once a species, by the legacy
+   ledger of firsts (`awardXPOnce` 18200-18208; Dakk, 2026-11-27; `feedMeal`). The numbers are
    `@cf/domain-acquisition`'s (`companion-care.ts`), the painted port's table for D13; the tier is the Compendium
    page's own (the legacy `grade.tier`, 18917), where the painted port graded the genome afresh. */
 import {
@@ -59,21 +60,45 @@ export interface FeedMeal {
   readonly xpGain: number;
   /** The firsts this meal is: bond memories the companion did not hold. */
   readonly newMemories: ReadonlyArray<Readonly<{ id: string; kind: string }>>;
+  /** Of those firsts, the ones that paid experience, by their names in the species' ledger, in the order paid. */
+  readonly firstsPaid: readonly string[];
 }
-/** What one meal does to a companion (D13). `memories` are the ids of the bond memories it holds. */
-export function feedMeal(input: Readonly<{ taste: Taste; tier: number; flavour: Flavour; fed: number; hurt: number; xp: number; memories: readonly string[] }>): FeedMeal {
+/** The legacy ledger's name for the first meal (18968) and for a flavour first tasted (18969). */
+export const FIRST_MEAL = 'welcome';
+export const firstTaste = (flavour: Flavour): string => `taste:${flavour}`;
+/** The ledger's key for a first of the species with this Compendium id (`awardXPOnce` 18203). */
+export const xpFirstKey = (speciesId: string, first: string): string => `${speciesId}|${first}`;
+/** The experience a paid first is worth (D13: 1 for the first meal, 2 for a flavour). */
+export const firstXp = (first: string): number => first === FIRST_MEAL ? COMPANION_CARE_XP_V1.firstMeal : COMPANION_CARE_XP_V1.newFlavour;
+
+/** What one meal does to a companion (D13). `memories` are the ids of the bond memories it holds; `paidFirsts`
+    are the firsts its species' ledger already holds, by name.
+    Two records meet at a first. The bond memory is the companion's own (D13): a beast with no memory of a first
+    meal, or of a flavour, makes one, whatever came before it. The experience is the species' (Dakk, 2026-11-27,
+    by the legacy ledger): it is paid when the memory is new AND the ledger does not hold that first for the
+    species. So a beast lost and tamed again remembers its firsts anew and is paid for none its species was
+    already paid for. */
+export function feedMeal(input: Readonly<{
+  taste: Taste; tier: number; flavour: Flavour; fed: number; hurt: number; xp: number; memories: readonly string[]; paidFirsts: readonly string[];
+}>): FeedMeal {
   const row = COMPANION_FEED_POLICY_V2[input.taste];
   const fedAfter = Math.min(FED_MAX, Math.max(0, input.fed + (input.tier >= row.rareTier ? row.fedRare : row.fed)));
   const hurtAfter = round6(Math.max(0, input.hurt - row.mend));
   const held = new Set(input.memories);
+  const paid = new Set(input.paidFirsts);
   const newMemories: Array<Readonly<{ id: string; kind: string }>> = [];
-  let xpGain = 0;
-  if (!held.has(COMPANION_FIRST_MEAL_MEMORY_V1)) { newMemories.push(Object.freeze({ id: COMPANION_FIRST_MEAL_MEMORY_V1, kind: 'meal' })); xpGain += COMPANION_CARE_XP_V1.firstMeal; }
-  const tasted = companionTasteMemoryIdV1(input.flavour);
-  if (!held.has(tasted)) { newMemories.push(Object.freeze({ id: tasted, kind: 'taste' })); xpGain += COMPANION_CARE_XP_V1.newFlavour; }
+  const firstsPaid: string[] = [];
+  const first = (memory: string, kind: string, name: string): void => {
+    if (held.has(memory)) return;
+    newMemories.push(Object.freeze({ id: memory, kind }));
+    if (!paid.has(name)) firstsPaid.push(name);
+  };
+  first(COMPANION_FIRST_MEAL_MEMORY_V1, 'meal', FIRST_MEAL);
+  first(companionTasteMemoryIdV1(input.flavour), 'taste', firstTaste(input.flavour));
+  const xpGain = firstsPaid.reduce((sum, name) => sum + firstXp(name), 0);
   return Object.freeze({
     taste: input.taste, flavour: input.flavour, tier: input.tier, fedAfter, fedGain: fedAfter - input.fed, hurtAfter, mended: hurtAfter < input.hurt,
-    xpAfter: Math.min(COMPANION_XP_MAX_V1, input.xp + xpGain), xpGain, newMemories: Object.freeze(newMemories),
+    xpAfter: Math.min(COMPANION_XP_MAX_V1, input.xp + xpGain), xpGain, newMemories: Object.freeze(newMemories), firstsPaid: Object.freeze(firstsPaid),
   });
 }
 

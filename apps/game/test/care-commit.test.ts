@@ -89,6 +89,7 @@ describe('the check after storage', () => {
       ['fed', genome((g) => ({ ...g, fed: 1 })), 0],
       ['hurt', genome((g) => ({ ...g, hurt: 0.6 })), 0],
       ['experience', genome((g) => ({ ...g, xp: 2 })), 0],
+      ['firsts', stored((state) => ({ ...state, xpFirsts: state.xpFirsts.slice(1) })), 0],
       ['bond', genome(({ bond: _bond, ...g }) => g), 0],
       ['feeds', stored((state) => ({ ...state, stats: { ...state.stats, feeds: 0 } })), 0],
       ['achievements', stored((state) => ({ ...state, unlocked: state.unlocked.filter((id) => id !== 'feed5') })), 4],

@@ -21,11 +21,11 @@
    (`MEAL_LINES` in `notices.ts`). */
 import { createCreatureInstanceV1, withoutSpeciesV1, type CreatureInstanceV1, type OwnershipStateContentsV1, type OwnershipStateV1 } from '@cf/domain-acquisition';
 import { withCompanionBondMemoriesV1 } from '@cf/domain-acquisition/companion-care';
-import type { SaveStateV2 } from '@cf/persistence';
+import { prepareLegacyXpFirstClaim, readLegacyXpFirstsAuthority, type SaveStateV2, type V5ExtensionWrite, type V5Extensions } from '@cf/persistence';
 import { creatureCondition, type CreatureConditionLabel } from './bioscan-hazard';
 import { bondOf, companionLock } from './bond';
 import { commitCare, refreshProgression, refuse, settleCare, type CareAuthority, type CareDoor, type CareOutcome, type CareReceipt, type CareStaged } from './commit';
-import { MEND_MEALS_MAX, feedMeal, flavourOf, mendOrder, tasteOf, type Flavour, type Taste } from './meals';
+import { FIRST_MEAL, FLAVOURS, MEND_MEALS_MAX, feedMeal, firstTaste, flavourOf, mendOrder, tasteOf, xpFirstKey, type Flavour, type Taste } from './meals';
 import { compendiumRow, contentsOf, ownershipOf, stageOwnership } from './ownership';
 
 export const FEED_ACTION = 'feed' as const;
@@ -50,6 +50,8 @@ export interface FedMealV1 {
   readonly xpAfter: number;
   /** The bond memories this meal made: the first meal, a flavour first tasted. */
   readonly newMemoryIds: readonly string[];
+  /** The firsts this meal paid experience for, as the ledger keys them: `<Compendium id>|welcome`, `…|taste:<flavour>`. */
+  readonly firstsPaid: readonly string[];
 }
 export interface FeedFactsV1 {
   readonly speciesId: string;
@@ -91,6 +93,38 @@ function beastOf(ownership: OwnershipStateV1, speciesId: string): CreatureInstan
   return row.creature;
 }
 
+/** The species' firsts in the ledger of paid firsts, the legacy game's `xpFirsts` (18200-18208), which the save
+    carries with its overflow (`@cf/persistence`, `xp-firsts-authority.ts`). The ledger is keyed by the Compendium
+    id, so it outlives the beast: one lost and tamed again finds its species' firsts already paid. */
+function speciesFirsts(draft: SaveStateV2, extensions: V5Extensions, speciesId: string) {
+  const read = readLegacyXpFirstsAuthority(draft, extensions);
+  if (read.kind !== 'loaded') return refuse(`firsts:${read.reason}`);
+  const held = new Set([FIRST_MEAL, ...FLAVOURS.map(firstTaste)].filter((first) => {
+    const key = xpFirstKey(speciesId, first);
+    return read.window.includes(key) || read.archived.includes(key);
+  }));
+  let current = extensions;
+  let writes: readonly V5ExtensionWrite[] = [];
+  return {
+    /** The firsts already paid, by name. */
+    paid: (): readonly string[] => [...held],
+    /** Writes a first just paid into the ledger, on the draft; answers its key. */
+    claim: (first: string): string => {
+      const key = xpFirstKey(speciesId, first);
+      const claimed = prepareLegacyXpFirstClaim({ state: draft, extensions: current, key });
+      if (claimed.kind !== 'prepared') return refuse(`firsts:${claimed.kind === 'protected' ? claimed.reason : 'duplicate'}`);
+      draft.xpFirsts = [...claimed.state.xpFirsts];
+      draft.xpFirstsBinding = claimed.state.xpFirstsBinding ?? null;
+      current = claimed.extensions;
+      // Past its 4,000 keys the ledger keeps its oldest in a carrier of its own; the last write holds them all.
+      if (claimed.writes.length > 0) writes = claimed.writes;
+      held.add(first);
+      return key;
+    },
+    writes: (): readonly V5ExtensionWrite[] => writes,
+  };
+}
+
 /** Serves these flora to the beast in order, on the receipt's draft, and stages the carrier's step. */
 function serve(receipt: CareReceipt, speciesId: string, pick: (creature: CreatureInstanceV1, plants: readonly Plant[], served: number) => Plant | null): Omit<FeedFactsV1, 'halt'> & { extensionWrites: CareStaged<FeedFactsV1>['extensionWrites'] } {
   const { draft, extensions, activePlayMs } = receipt;
@@ -102,6 +136,7 @@ function serve(receipt: CareReceipt, speciesId: string, pick: (creature: Creatur
   let creature = before;
   let contents: OwnershipStateContentsV1 = contentsOf(ownership);
   let plants = larder(draft);
+  const firsts = speciesFirsts(draft, extensions, speciesId);
   const meals: FedMealV1[] = [];
   for (let plant = pick(creature, plants, 0); plant !== null; plant = pick(creature, plants, meals.length)) {
     const eaten = plant;
@@ -111,8 +146,9 @@ function serve(receipt: CareReceipt, speciesId: string, pick: (creature: Creatur
     const flavour = flavourOf(eaten.genome);
     const meal = feedMeal({
       taste: tasteOf(creature.genome, flavour), tier: eaten.tier, flavour, fed: creature.fed ?? 0, hurt: creature.hurt ?? 0, xp: creature.xp ?? 0,
-      memories: (creature.bond?.memories ?? []).map(({ id }) => id),
+      memories: (creature.bond?.memories ?? []).map(({ id }) => id), paidFirsts: firsts.paid(),
     });
+    const firstsPaid = meal.firstsPaid.map((first) => firsts.claim(first));
     const hurtBefore = creature.hurt ?? 0;
     creature = createCreatureInstanceV1({
       ...creature,
@@ -128,16 +164,16 @@ function serve(receipt: CareReceipt, speciesId: string, pick: (creature: Creatur
     meals.push(Object.freeze({
       floraId: eaten.id, floraName: eaten.name, taste: meal.taste, flavour, tier: eaten.tier, fedAfter: meal.fedAfter, fedGain: meal.fedGain,
       hurtBefore, hurtAfter: meal.hurtAfter, mended: meal.mended, condition: creatureCondition(meal.hurtAfter).label,
-      xpGain: meal.xpGain, xpAfter: meal.xpAfter, newMemoryIds: Object.freeze(meal.newMemories.map(({ id }) => id)),
+      xpGain: meal.xpGain, xpAfter: meal.xpAfter, newMemoryIds: Object.freeze(meal.newMemories.map(({ id }) => id)), firstsPaid: Object.freeze(firstsPaid),
     }));
   }
   const fed = creature;
   const unlockedBefore = new Set(draft.unlocked);
   const name = draft.codex.find(([id]) => id === speciesId)?.[1].name ?? '';
-  const extensionWrites = stageOwnership({
+  const extensionWrites = [...firsts.writes(), ...stageOwnership({
     draft, extensions, parent: ownership, touched: [speciesId],
     contents: { ...contents, creatures: contents.creatures.map((row) => row.creatureId === fed.creatureId ? fed : row) },
-  });
+  })];
   // Every meal is counted (19184), then the achievements are looked at (19211).
   draft.stats = { ...draft.stats, feeds: (draft.stats.feeds ?? 0) + meals.length };
   refreshProgression(draft);
@@ -156,6 +192,7 @@ function verify(stored: SaveStateV2, facts: FeedFactsV1): string | null {
     : g === undefined || (Number(g.fed) || 0) !== last.fedAfter ? 'fed'
       : (Number(g.hurt) || 0) !== last.hurtAfter ? 'hurt'
         : last.xpGain > 0 && g.xp !== last.xpAfter ? 'experience'
+          : facts.meals.some(({ firstsPaid }) => firstsPaid.some((key) => !stored.xpFirsts.includes(key))) ? 'firsts'
           : ((g.bond as { memories?: unknown[] } | undefined)?.memories?.length ?? 0) !== facts.bond.memories ? 'bond'
             : (stored.stats.feeds ?? 0) !== facts.feeds ? 'feeds'
               : facts.achievementIds.some((id) => !stored.unlocked.includes(id)) ? 'achievements' : null;

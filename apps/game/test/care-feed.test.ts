@@ -4,9 +4,11 @@
 // 19183-19211, "Mend — safest meals" 19029-19063. D13: BREEDING_AND_SHARING.md, "v2 companion care and bond".
 import { describe, expect, it } from 'vitest';
 import { SCENE_OWNERSHIP_ADDRESS_RESOLVER, preflightCaptureV1 } from '@cf/domain-acquisition';
+import { createSessionRNG } from '@cf/domain-sessionrng';
 import { arc4OwnershipLegacyMirrorMatches, readArc4Ownership } from '@cf/persistence';
 import { captureSnapshotV1 } from '../src/capture';
-import { MEAL_LINES, feedNotice, flavourOf, mendNotice, settleFeedV1, tasteOf } from '../src/care';
+import { MEAL_LINES, bioscanFenceV1, feedNotice, flavourOf, mendNotice, settleBioscanV1, settleFeedV1, tasteOf } from '../src/care';
+import { stageStarterCharterEventV1 } from '../src/guidance';
 import { carePage, earthId, farPlant, heldPage } from './care-support';
 import { EARTH, capturePage, captureSession, rosterFor } from './capture-support';
 import { NOW, dump } from './save-support';
@@ -28,7 +30,7 @@ describe('a meal a beast loves', () => {
     const { state, facts } = await committed(page.feed(PLATYPUS, PERSIMMON));
     expect(facts.meals).toEqual([{
       floraId: PERSIMMON, floraName: 'Persimmon', taste: 'loved', flavour: 'ins', tier: 0, fedAfter: 2, fedGain: 2, hurtBefore: 0.6, hurtAfter: 0.35, mended: true,
-      condition: 'Injured', xpGain: 3, xpAfter: 3, newMemoryIds: ['meal:first', 'taste:ins'],
+      condition: 'Injured', xpGain: 3, xpAfter: 3, newMemoryIds: ['meal:first', 'taste:ins'], firstsPaid: [`${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`],
     }]);
     expect(facts).toMatchObject({ speciesId: PLATYPUS, name: 'Platypus', halt: null, feeds: 1 });
     // The beast.
@@ -146,6 +148,73 @@ describe('what a meal teaches, and what the beast remembers of it', () => {
     const stored = (await page.stored()).state.codex.find(([id]) => id === PLATYPUS)![1].g as { bond?: { level: number; memories: unknown[] } };
     expect(stored.bond).toMatchObject({ level: 1 });
     expect(stored.bond!.memories).toHaveLength(4);
+  });
+
+  // Dakk, 2026-11-27: "the first-meal experience is earned once per species, by LEGACY's ledger". The legacy game
+  // kept every paid first under the Compendium id and a name (`awardXPOnce` 18200-18208: "welcome", "taste:<stat>",
+  // 18968-18969), and the ledger outlived the beast. The memories are the companion's own, as D13 has them.
+  it('each first paid is written in the ledger under the species\' Compendium id, once', async () => {
+    const page = await carePage({ held: [heldPage(11, { xp: 4 }), heldPage(0), heldPage(1), heldPage(2)] });
+    const first = await committed(page.feed(PLATYPUS, PERSIMMON));
+    expect(first.facts.meals[0]).toMatchObject({ xpGain: 3, firstsPaid: [`${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`] });
+    expect(first.state.xpFirsts).toEqual([`${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`]);
+    const same = await committed(page.feed(PLATYPUS, CLUB));
+    expect(same.facts.meals[0]).toMatchObject({ xpGain: 0, firstsPaid: [] });
+    const other = await committed(page.feed(PLATYPUS, CRANBERRY));
+    expect(other.facts.meals[0]).toMatchObject({ xpGain: 2, firstsPaid: [`${PLATYPUS}|taste:res`] });
+    expect((await page.stored()).state.xpFirsts).toEqual([`${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`, `${PLATYPUS}|taste:res`]);
+    expect(page.live.xpFirsts).toEqual([`${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`, `${PLATYPUS}|taste:res`]);
+  });
+
+  it('a beast lost and tamed again does not earn its species\' firsts again; it makes its own memories, and a flavour new to the species still pays', async () => {
+    // A session whose first hazard value strikes on Earth and whose first capture succeeds.
+    let seed = 1;
+    for (; seed < 200_000; seed++) {
+      const rng = createSessionRNG(seed);
+      if (rng.at('survey.hazard', 0) < 0.2 && rng.at('capture.success', 0) < 0.01) break;
+    }
+    // A flora from far away that nourishes Ferocity, which the Platypus dislikes, as the Rambutan does.
+    let fer = 100;
+    while (flavourOf(farPlant(fer)[1].g) !== 'fer') fer++;
+    const page = await capturePage({
+      sessionSeed: seed, scanned: [],
+      // Every beast of Earth but the Platypus is held too, so a tame can only bring the Platypus back.
+      change: (state) => {
+        state.codex = [heldPage(11, { hurt: 0.8 }), ...[12, 13, 14, 15, 16, 17, 18].map((row) => heldPage(row)), heldPage(2), heldPage(3), farPlant(fer)];
+        state.scoutId = PLATYPUS;
+      },
+    });
+    const door = { door: page.loop };
+    const feed = (floraId: string) => settleFeedV1(door, { speciesId: PLATYPUS, floraId, codecNow: NOW });
+    // The first Platypus: its first meal, a flavour it dislikes. 1 and 2.
+    const before = await committed(feed(RAMBUTAN));
+    expect(before.facts.meals[0]).toMatchObject({ taste: 'disliked', xpGain: 3, xpAfter: 3, newMemoryIds: ['meal:first', 'taste:fer'] });
+    // It is lost as the scout (LEGACY 13154-13159). The ledger outlives it, as the legacy game's did.
+    const scan = await committed(settleBioscanV1({ door: page.loop, charters: stageStarterCharterEventV1 }, { address: EARTH, shown: bioscanFenceV1(page.durable(), EARTH), codecNow: NOW }));
+    expect(scan.facts.scout).toMatchObject({ id: PLATYPUS, lost: true });
+    expect(scan.state.codex.some(([id]) => id === PLATYPUS)).toBe(false);
+    expect(scan.state.xpFirsts).toEqual([`${PLATYPUS}|welcome`, `${PLATYPUS}|taste:fer`]);
+    // Tamed again: a new companion, with no memory and no experience.
+    expect(await page.press('tame')).toMatchObject({ kind: 'committed', facts: { hit: true, speciesId: PLATYPUS } });
+    const tamed = page.durable().codex.find(([id]) => id === PLATYPUS)![1].g;
+    expect(tamed.xp ?? 0).toBe(0);
+    expect(tamed.bond).toBeUndefined();
+    // The same flavour again: the new companion remembers its first meal and the taste; neither pays.
+    const again = await committed(feed(`s${fer}`));
+    expect(again.facts.meals[0]).toMatchObject({ taste: 'disliked', flavour: 'fer', xpGain: 0, xpAfter: 0, firstsPaid: [], newMemoryIds: ['meal:first', 'taste:fer'] });
+    expect(again.facts.bond).toMatchObject({ memories: 2 });
+    expect(page.durable().codex.find(([id]) => id === PLATYPUS)![1].g.xp ?? 0).toBe(0);
+    // A flavour no Platypus has tasted pays its 2.
+    const fresh = await committed(feed(CRANBERRY));
+    expect(fresh.facts.meals[0]).toMatchObject({ flavour: 'res', xpGain: 2, xpAfter: 2, firstsPaid: [`${PLATYPUS}|taste:res`], newMemoryIds: ['taste:res'] });
+    expect(fresh.state.xpFirsts).toEqual([`${PLATYPUS}|welcome`, `${PLATYPUS}|taste:fer`, `${PLATYPUS}|taste:res`]);
+  });
+
+  it('a ledger brought from the legacy game counts: a species it paid a welcome meal earns only the tastes', async () => {
+    const page = await carePage({ held: [heldPage(11), heldPage(0)], change: (state) => { state.xpFirsts = ['s1|welcome', `${PLATYPUS}|welcome`]; } });
+    const { state, facts } = await committed(page.feed(PLATYPUS, PERSIMMON));
+    expect(facts.meals[0]).toMatchObject({ xpGain: 2, xpAfter: 2, firstsPaid: [`${PLATYPUS}|taste:ins`], newMemoryIds: ['meal:first', 'taste:ins'] });
+    expect(state.xpFirsts).toEqual(['s1|welcome', `${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`]);
   });
 
   it('the fifth meal earns Zookeeper (LEGACY 16434)', async () => {

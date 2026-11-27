@@ -132,7 +132,7 @@ describe('the order of Mend against the legacy game', () => {
 
 /* D13, as written in BREEDING_AND_SHARING.md ("v2 companion care and bond — D13 stage 1"), sentence by sentence. */
 describe('a companion\'s meal, by Dakk\'s decision D13', () => {
-  const fresh = { fed: 0, hurt: 0.5, xp: 0, memories: [] as string[] };
+  const fresh = { fed: 0, hurt: 0.5, xp: 0, memories: [] as string[], paidFirsts: [] as string[] };
 
   it('"Loved +2 fed (+3 for flora tier ≥ 4) and mends 0.25 hurt"', () => {
     expect(feedMeal({ ...fresh, taste: 'loved', tier: 0, flavour: 'ins' })).toMatchObject({ fedAfter: 2, fedGain: 2, hurtAfter: 0.25, mended: true });
@@ -173,14 +173,28 @@ describe('a companion\'s meal, by Dakk\'s decision D13', () => {
     const other = feedMeal({ ...fresh, xp: 3, memories: ['meal:first', 'taste:fer'], taste: 'loved', tier: 0, flavour: 'ins' });
     expect(other).toMatchObject({ xpGain: 2, xpAfter: 5, newMemories: [{ id: 'taste:ins', kind: 'taste' }] });
     // Every flavour once, and no more for life.
-    let xp = 0; const memories: string[] = [];
+    let xp = 0; const memories: string[] = []; const paid: string[] = [];
     for (let meal = 0; meal < 3; meal++) for (const flavour of FLAVOURS) {
-      const got = feedMeal({ fed: 0, hurt: 0, xp, memories, taste: 'neutral', tier: 0, flavour });
-      xp = got.xpAfter; memories.push(...got.newMemories.map(({ id }) => id));
+      const got = feedMeal({ fed: 0, hurt: 0, xp, memories, paidFirsts: paid, taste: 'neutral', tier: 0, flavour });
+      xp = got.xpAfter; memories.push(...got.newMemories.map(({ id }) => id)); paid.push(...got.firstsPaid);
     }
     expect(xp).toBe(11);
     expect(memories).toHaveLength(6);
+    // Each first paid is named as the legacy ledger named it (18968-18969).
+    expect(paid).toEqual(['welcome', 'taste:vit', 'taste:fer', 'taste:res', 'taste:agi', 'taste:ins']);
     // Experience stops at the ninth level's 486, as the save keeps it (LEGACY 16618).
     expect(feedMeal({ ...fresh, xp: 485, taste: 'loved', tier: 0, flavour: 'ins' })).toMatchObject({ xpAfter: 486, xpGain: 3 });
+  });
+
+  // Dakk, 2026-11-27: the experience of a first is earned once a species, by the legacy game's ledger (`xpFirsts`,
+  // `awardXPOnce` 18200-18208). The memories stay the companion's own; only the experience asks the ledger too.
+  it('a first the species\' ledger already holds is remembered by a new companion and pays it nothing', () => {
+    const tamedAgain = feedMeal({ ...fresh, paidFirsts: ['welcome', 'taste:fer'], taste: 'disliked', tier: 0, flavour: 'fer' });
+    expect(tamedAgain).toMatchObject({ xpGain: 0, xpAfter: 0, firstsPaid: [], newMemories: [{ id: 'meal:first', kind: 'meal' }, { id: 'taste:fer', kind: 'taste' }] });
+    // A flavour no beast of the species has tasted still pays its 2; the first meal is not paid again.
+    const newTaste = feedMeal({ ...fresh, paidFirsts: ['welcome', 'taste:fer'], taste: 'loved', tier: 0, flavour: 'ins' });
+    expect(newTaste).toMatchObject({ xpGain: 2, xpAfter: 2, firstsPaid: ['taste:ins'], newMemories: [{ id: 'meal:first' }, { id: 'taste:ins' }] });
+    // A first the companion already remembers is not paid, whatever the ledger says.
+    expect(feedMeal({ ...fresh, memories: ['meal:first', 'taste:ins'], taste: 'loved', tier: 0, flavour: 'ins' })).toMatchObject({ xpGain: 0, firstsPaid: [], newMemories: [] });
   });
 });
