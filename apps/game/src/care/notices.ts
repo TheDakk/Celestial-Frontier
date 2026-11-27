@@ -8,7 +8,8 @@
    - the Scout button, its tip and what a press says: 15150, 15200-15202;
    - Renamed: 24625;
    - the explorer's meal: 19150-19154; a companion's meal: 19187-19196, with one line a taste of the four the
-     removed roll picked among (`FEED_EVENTS`; `MEAL_LINES`), less the lines of the toxic bite; Mend: 19054-19058.
+     removed roll picked among (`FEED_EVENTS`; `MEAL_LINES`), less the lines of the toxic bite; Mend: 19054-19058;
+   - a level raised by experience: `awardXP` 18231.
    The legacy game drew a small picture before some titles; here each is the name of an icon. Its bold marks are
    not carried: the words are. The spectacle of a Paragon found (14911-14914) is rarity's show, a new design. */
 import type { BioscanDanger } from './bioscan-hazard';
@@ -113,6 +114,17 @@ export function feedNotice(name: string, meal: FedMealV1): CareNotice {
   const taste = meal.taste === 'loved' ? `It loves ${rich}` : meal.taste === 'disliked' ? `It dislikes ${rich}` : `It is indifferent to ${rich}`;
   const gain = meal.fedGain > 0 ? `+${meal.fedGain} bloodline` : 'no change';
   return notice('meal', `${name} ${MEAL_LINES[meal.taste]}.`, `${taste} — ${gain}.` + (meal.mended ? ` Its wounds mend — now ${conditionWords(meal)}.` : ''));
+}
+/** What experience that raised a beast's level says (`awardXP` 18231): the level and the beast, then that an
+    innate art woke (the third and the sixth level), or what the experience was earned for, or, for an award with
+    no reason, that its legend grows. The legacy game drew a shield before the title. */
+export function levelUpNotice(name: string, up: Readonly<{ level: number; why: string | null }>): CareNotice {
+  return notice('shield', `Level ${up.level} — ${name}`,
+    up.level === 3 || up.level === 6 ? 'A new innate art awakens!' : up.why !== null && up.why.length > 0 ? `Earned ${up.why}.` : 'Its legend grows.');
+}
+/** Every level the meals of one press raised, in the order they were raised: one meal for Feed, up to ten for Mend. */
+export function levelUpNotices(facts: FeedFactsV1): readonly CareNotice[] {
+  return Object.freeze(facts.meals.flatMap((meal) => meal.levelUps.map((up) => levelUpNotice(facts.name, up))));
 }
 /** What a committed press of "Mend — safest meals" says. */
 export function mendNotice(facts: FeedFactsV1): CareNotice {

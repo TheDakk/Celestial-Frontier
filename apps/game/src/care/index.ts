@@ -17,7 +17,7 @@ export type { ScoutActionInputV1, ScoutActionOutcomeV1, ScoutFactsV1 } from './s
 export { RENAME_ACTION, RENAME_RECEIPT_KIND_V1, SPECIES_NAME_MAX, cleanSpeciesName, commitRenameV1, settleRenameV1 } from './rename-action';
 export type { RenameActionInputV1, RenameActionOutcomeV1, RenameFactsV1, RenameSettleDeps } from './rename-action';
 export { EXPLORER_STAT_MAX, FED_MAX, FLAVOURS, FLAVOUR_NAMES, MEND_MEALS_MAX, XENOBOTANY_LAB, explorerMeal, feedMeal, flavourOf, mendOrder, tasteOf } from './meals';
-export type { ExplorerMeal, FeedMeal, Flavour, MealUnlock, Taste } from './meals';
+export type { ExplorerMeal, FeedMeal, Flavour, LevelUp, MealUnlock, Taste } from './meals';
 export { BOND_LEVELS, bondOf, companionCareV1, companionLock, restMinutes, scoutStands } from './bond';
 export type { Bond, BondLevel, CompanionCare, CompanionLock } from './bond';
 export { REST_ACTION, REST_RECEIPT_KIND_V1, commitRestV1, settleRestV1 } from './rest-action';
@@ -26,5 +26,5 @@ export { FEED_ACTION, FEED_RECEIPT_KIND_V1, MEND_ACTION, MEND_RECEIPT_KIND_V1, c
 export type { FedMealV1, FeedActionInputV1, FeedActionOutcomeV1, FeedFactsV1, FeedSettleDeps, MendActionInputV1, MendGateV1 } from './feed-action';
 export { MEAL_ACTION, MEAL_DOMAINS_V1, MEAL_RECEIPT_KIND_V1, TRAINING_MEAL_ROLL, commitMealV1, settleMealV1 } from './meal-action';
 export type { ExplorerMealFactsV1, MealActionInputV1, MealActionOutcomeV1 } from './meal-action';
-export { MEAL_LINES, SCOUT_BUTTON, bioscanNotices, discoverLifeRow, feedNotice, mealNotice, mendNotice, renameNotice, restNotice, restNotices, scoutNotice } from './notices';
+export { MEAL_LINES, SCOUT_BUTTON, bioscanNotices, discoverLifeRow, feedNotice, levelUpNotice, levelUpNotices, mealNotice, mendNotice, renameNotice, restNotice, restNotices, scoutNotice } from './notices';
 export type { CareCopyPart, CareNotice } from './notices';

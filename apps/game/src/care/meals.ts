@@ -26,6 +26,7 @@
 import {
   COMPANION_CARE_XP_V1, COMPANION_FEED_POLICY_V2, COMPANION_FIRST_MEAL_MEMORY_V1, COMPANION_XP_MAX_V1, companionTasteMemoryIdV1, faunaTastesV1,
 } from '@cf/domain-acquisition/companion-care';
+import { levelOf } from '@cf/domain-combatcore';
 import { floraStat } from '@cf/domain-strays';
 
 export const FLAVOURS = Object.freeze(['vit', 'fer', 'res', 'agi', 'ins'] as const);
@@ -62,7 +63,14 @@ export interface FeedMeal {
   readonly newMemories: ReadonlyArray<Readonly<{ id: string; kind: string }>>;
   /** Of those firsts, the ones that paid experience, by their names in the species' ledger, in the order paid. */
   readonly firstsPaid: readonly string[];
+  /** The levels this meal's experience raised, in order, each with the reason of the award that raised it. */
+  readonly levelUps: readonly LevelUp[];
 }
+/** A level reached by an award of experience, and what the award was for (`awardXP` 18224-18233). */
+export interface LevelUp { readonly level: number; readonly why: string }
+/** Why the legacy game said a meal's experience was earned (18968, 18969). */
+export const FIRST_MEAL_WHY = 'a welcome meal';
+export const FIRST_TASTE_WHY = 'a taste discovered';
 /** The legacy ledger's name for the first meal (18968) and for a flavour first tasted (18969). */
 export const FIRST_MEAL = 'welcome';
 export const firstTaste = (flavour: Flavour): string => `taste:${flavour}`;
@@ -96,9 +104,20 @@ export function feedMeal(input: Readonly<{
   first(COMPANION_FIRST_MEAL_MEMORY_V1, 'meal', FIRST_MEAL);
   first(companionTasteMemoryIdV1(input.flavour), 'taste', firstTaste(input.flavour));
   const xpGain = firstsPaid.reduce((sum, name) => sum + firstXp(name), 0);
+  // Each paid first is an award of its own, in the legacy order, and one that raises the level says so (`awardXP`
+  // 18224-18233).
+  const levelUps: LevelUp[] = [];
+  let xp = input.xp;
+  for (const name of firstsPaid) {
+    const before = levelOf({ xp });
+    xp = Math.min(COMPANION_XP_MAX_V1, xp + firstXp(name));
+    const level = levelOf({ xp });
+    if (level > before) levelUps.push(Object.freeze({ level, why: name === FIRST_MEAL ? FIRST_MEAL_WHY : FIRST_TASTE_WHY }));
+  }
   return Object.freeze({
     taste: input.taste, flavour: input.flavour, tier: input.tier, fedAfter, fedGain: fedAfter - input.fed, hurtAfter, mended: hurtAfter < input.hurt,
     xpAfter: Math.min(COMPANION_XP_MAX_V1, input.xp + xpGain), xpGain, newMemories: Object.freeze(newMemories), firstsPaid: Object.freeze(firstsPaid),
+    levelUps: Object.freeze(levelUps),
   });
 }
 

@@ -186,6 +186,26 @@ describe('a companion\'s meal, by Dakk\'s decision D13', () => {
     expect(feedMeal({ ...fresh, xp: 485, taste: 'loved', tier: 0, flavour: 'ins' })).toMatchObject({ xpAfter: 486, xpGain: 3 });
   });
 
+  // LEGACY `awardXP` 18224-18233: each award is added on its own, and one that raises the level says so with its
+  // reason; a level is floor(sqrt(xp / 6)), nine at most (`levelOf` 17567). The reasons are 18968-18969.
+  it('each paid first is its own award: the one that raises the level is named with the legacy reason', () => {
+    // 4 + 1 is 5, still level 0; + 2 is 7: level 1, for the taste.
+    expect(feedMeal({ ...fresh, xp: 4, taste: 'loved', tier: 0, flavour: 'ins' }).levelUps).toEqual([{ level: 1, why: 'a taste discovered' }]);
+    // 5 + 1 is 6: level 1, for the first meal; + 2 is 8, the same level.
+    expect(feedMeal({ ...fresh, xp: 5, taste: 'loved', tier: 0, flavour: 'ins' }).levelUps).toEqual([{ level: 1, why: 'a welcome meal' }]);
+    // Under the level's edge nothing is said: 0 + 3 is 3, and 8 + 3 is 11.
+    expect(feedMeal({ ...fresh, xp: 0, taste: 'loved', tier: 0, flavour: 'ins' }).levelUps).toEqual([]);
+    expect(feedMeal({ ...fresh, xp: 8, taste: 'loved', tier: 0, flavour: 'ins' }).levelUps).toEqual([]);
+    // A meal that pays nothing raises nothing, at the very edge too.
+    expect(feedMeal({ ...fresh, xp: 23, memories: ['meal:first', 'taste:ins'], taste: 'loved', tier: 0, flavour: 'ins' }).levelUps).toEqual([]);
+    expect(feedMeal({ ...fresh, xp: 23, paidFirsts: ['welcome', 'taste:ins'], taste: 'loved', tier: 0, flavour: 'ins' }).levelUps).toEqual([]);
+    // 53 + 1 is 54: level 3.
+    expect(feedMeal({ ...fresh, xp: 53, taste: 'loved', tier: 0, flavour: 'ins' }).levelUps).toEqual([{ level: 3, why: 'a welcome meal' }]);
+    // At the last level there is no level above.
+    expect(feedMeal({ ...fresh, xp: 485, taste: 'loved', tier: 0, flavour: 'ins' }).levelUps).toEqual([{ level: 9, why: 'a welcome meal' }]);
+    expect(feedMeal({ ...fresh, xp: 486, taste: 'loved', tier: 0, flavour: 'ins' }).levelUps).toEqual([]);
+  });
+
   // Dakk, 2026-11-27: the experience of a first is earned once a species, by the legacy game's ledger (`xpFirsts`,
   // `awardXPOnce` 18200-18208). The memories stay the companion's own; only the experience asks the ledger too.
   it('a first the species\' ledger already holds is remembered by a new companion and pays it nothing', () => {

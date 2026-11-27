@@ -7,7 +7,7 @@ import { SCENE_OWNERSHIP_ADDRESS_RESOLVER, preflightCaptureV1 } from '@cf/domain
 import { createSessionRNG } from '@cf/domain-sessionrng';
 import { arc4OwnershipLegacyMirrorMatches, readArc4Ownership } from '@cf/persistence';
 import { captureSnapshotV1 } from '../src/capture';
-import { MEAL_LINES, bioscanFenceV1, feedNotice, flavourOf, mendNotice, settleBioscanV1, settleFeedV1, tasteOf } from '../src/care';
+import { MEAL_LINES, bioscanFenceV1, feedNotice, flavourOf, levelUpNotices, mendNotice, settleBioscanV1, settleFeedV1, tasteOf } from '../src/care';
 import { stageStarterCharterEventV1 } from '../src/guidance';
 import { carePage, earthId, farPlant, heldPage } from './care-support';
 import { EARTH, capturePage, captureSession, rosterFor } from './capture-support';
@@ -31,6 +31,7 @@ describe('a meal a beast loves', () => {
     expect(facts.meals).toEqual([{
       floraId: PERSIMMON, floraName: 'Persimmon', taste: 'loved', flavour: 'ins', tier: 0, fedAfter: 2, fedGain: 2, hurtBefore: 0.6, hurtAfter: 0.35, mended: true,
       condition: 'Injured', xpGain: 3, xpAfter: 3, newMemoryIds: ['meal:first', 'taste:ins'], firstsPaid: [`${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`],
+      levelUps: [],
     }]);
     expect(facts).toMatchObject({ speciesId: PLATYPUS, name: 'Platypus', halt: null, feeds: 1 });
     // The beast.
@@ -215,6 +216,28 @@ describe('what a meal teaches, and what the beast remembers of it', () => {
     const { state, facts } = await committed(page.feed(PLATYPUS, PERSIMMON));
     expect(facts.meals[0]).toMatchObject({ xpGain: 2, xpAfter: 2, firstsPaid: [`${PLATYPUS}|taste:ins`], newMemoryIds: ['meal:first', 'taste:ins'] });
     expect(state.xpFirsts).toEqual(['s1|welcome', `${PLATYPUS}|welcome`, `${PLATYPUS}|taste:ins`]);
+  });
+
+  // LEGACY `awardXP` 18224-18233: experience that raises a level says "Level N — <name>" and why.
+  it('a meal whose experience raises the beast\'s level says so, as the legacy game did; one that does not says nothing', async () => {
+    const page = await carePage({ held: [heldPage(11, { xp: 4 }), heldPage(0), heldPage(1), heldPage(2)] });
+    // 4 + 1 + 2 is 7: the second award crosses 6, the first level.
+    const { facts } = await committed(page.feed(PLATYPUS, PERSIMMON));
+    expect(facts.meals[0]!.levelUps).toEqual([{ level: 1, why: 'a taste discovered' }]);
+    expect(levelUpNotices(facts)).toEqual([{ icon: 'shield', title: 'Level 1 — Platypus', message: ['Earned a taste discovered.'] }]);
+    // The same flavour again pays nothing and says nothing; a new flavour pays 2 (9) and stays level 1.
+    expect(levelUpNotices((await committed(page.feed(PLATYPUS, CLUB))).facts)).toEqual([]);
+    expect(levelUpNotices((await committed(page.feed(PLATYPUS, CRANBERRY))).facts)).toEqual([]);
+    // The third and the sixth level wake an innate art (18231).
+    const third = await carePage({ held: [heldPage(11, { xp: 53 }), heldPage(0)] });
+    expect(levelUpNotices((await committed(third.feed(PLATYPUS, PERSIMMON))).facts)).toEqual([{ icon: 'shield', title: 'Level 3 — Platypus', message: ['A new innate art awakens!'] }]);
+    const sixth = await carePage({ held: [heldPage(11, { xp: 214 }), heldPage(0)] });
+    expect(levelUpNotices((await committed(sixth.feed(PLATYPUS, PERSIMMON))).facts)).toEqual([{ icon: 'shield', title: 'Level 6 — Platypus', message: ['A new innate art awakens!'] }]);
+    // A Mend says each level its meals raised, in order: the first loved meal here raises level 1 by its first award.
+    const mended = await carePage({ held: [heldPage(11, { xp: 5, hurt: 0.45 }), heldPage(0), heldPage(1)] });
+    const mend = await committed(mended.mend(PLATYPUS));
+    expect(mend.facts.meals.map(({ levelUps }) => levelUps)).toEqual([[{ level: 1, why: 'a welcome meal' }], []]);
+    expect(levelUpNotices(mend.facts)).toEqual([{ icon: 'shield', title: 'Level 1 — Platypus', message: ['Earned a welcome meal.'] }]);
   });
 
   it('the fifth meal earns Zookeeper (LEGACY 16434)', async () => {

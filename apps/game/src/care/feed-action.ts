@@ -25,7 +25,7 @@ import { prepareLegacyXpFirstClaim, readLegacyXpFirstsAuthority, type SaveStateV
 import { creatureCondition, type CreatureConditionLabel } from './bioscan-hazard';
 import { bondOf, companionLock } from './bond';
 import { commitCare, refreshProgression, refuse, settleCare, type CareAuthority, type CareDoor, type CareOutcome, type CareReceipt, type CareStaged } from './commit';
-import { FIRST_MEAL, FLAVOURS, MEND_MEALS_MAX, feedMeal, firstTaste, flavourOf, mendOrder, tasteOf, xpFirstKey, type Flavour, type Taste } from './meals';
+import { FIRST_MEAL, FLAVOURS, MEND_MEALS_MAX, feedMeal, firstTaste, flavourOf, mendOrder, tasteOf, xpFirstKey, type Flavour, type LevelUp, type Taste } from './meals';
 import { compendiumRow, contentsOf, ownershipOf, stageOwnership } from './ownership';
 
 export const FEED_ACTION = 'feed' as const;
@@ -52,6 +52,8 @@ export interface FedMealV1 {
   readonly newMemoryIds: readonly string[];
   /** The firsts this meal paid experience for, as the ledger keys them: `<Compendium id>|welcome`, `…|taste:<flavour>`. */
   readonly firstsPaid: readonly string[];
+  /** The levels this meal's experience raised, each with the legacy reason of its award (`awardXP` 18224-18233). */
+  readonly levelUps: readonly LevelUp[];
 }
 export interface FeedFactsV1 {
   readonly speciesId: string;
@@ -165,6 +167,7 @@ function serve(receipt: CareReceipt, speciesId: string, pick: (creature: Creatur
       floraId: eaten.id, floraName: eaten.name, taste: meal.taste, flavour, tier: eaten.tier, fedAfter: meal.fedAfter, fedGain: meal.fedGain,
       hurtBefore, hurtAfter: meal.hurtAfter, mended: meal.mended, condition: creatureCondition(meal.hurtAfter).label,
       xpGain: meal.xpGain, xpAfter: meal.xpAfter, newMemoryIds: Object.freeze(meal.newMemories.map(({ id }) => id)), firstsPaid: Object.freeze(firstsPaid),
+      levelUps: meal.levelUps,
     }));
   }
   const fed = creature;
