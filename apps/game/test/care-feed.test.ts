@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest';
 import { SCENE_OWNERSHIP_ADDRESS_RESOLVER, preflightCaptureV1 } from '@cf/domain-acquisition';
 import { arc4OwnershipLegacyMirrorMatches, readArc4Ownership } from '@cf/persistence';
 import { captureSnapshotV1 } from '../src/capture';
-import { feedNotice, flavourOf, mendNotice, settleFeedV1, tasteOf } from '../src/care';
+import { MEAL_LINES, feedNotice, flavourOf, mendNotice, settleFeedV1, tasteOf } from '../src/care';
 import { carePage, earthId, farPlant, heldPage } from './care-support';
 import { EARTH, capturePage, captureSession, rosterFor } from './capture-support';
 import { NOW, dump } from './save-support';
@@ -46,8 +46,11 @@ describe('a meal a beast loves', () => {
     expect(await page.receipts()).toHaveLength(1);
     expect(page.outcomes.committed).toEqual([{ kind: 'feed', receiptOrdinal: 0 }]);
     expect(page.runtime.diagnostics().sessionDraws).toEqual({});
+    // The legacy line (19192): the beast and how it took the meal, then what the flora is to it and what it gained.
+    // Of the four lines the legacy roll chose among for a loved meal, Dakk kept its first (18895), 2026-11-27.
     expect(feedNotice(facts.name, facts.meals[0]!)).toEqual({
-      icon: 'meal', title: 'Platypus', message: ['It loves Insight-rich flora — +2 bloodline. Its wounds mend — now Injured (35% hurt).'],
+      icon: 'meal', title: 'Platypus devours it eagerly — a visible surge of vigour.',
+      message: ['It loves Insight-rich flora — +2 bloodline. Its wounds mend — now Injured (35% hurt).'],
     });
   });
 
@@ -69,6 +72,10 @@ describe('a meal a beast loves', () => {
     expect(facts.meals[0]).toMatchObject({ hurtBefore: 0.2, hurtAfter: 0, mended: true, condition: 'Healthy' });
     expect(page.creature(PLATYPUS)).not.toHaveProperty('hurt');
     expect(feedNotice(facts.name, facts.meals[0]!).message).toEqual(['It loves Insight-rich flora — +2 bloodline. Its wounds mend — now Healthy.']);
+    // One line a taste, whatever the meal's grade or gain: no roll picks among the legacy four.
+    expect(MEAL_LINES).toEqual({
+      loved: 'devours it eagerly — a visible surge of vigour', neutral: 'eats without much interest', disliked: 'spits it out and refuses, no worse for it',
+    });
   });
 });
 
@@ -78,7 +85,11 @@ describe('a meal a beast neither loves nor dislikes, and one it dislikes', () =>
     const { facts } = await committed(page.feed(PLATYPUS, CRANBERRY));
     expect(facts.meals[0]).toMatchObject({ taste: 'neutral', flavour: 'res', tier: 1, fedAfter: 11, fedGain: 1, hurtBefore: 0.6, hurtAfter: 0.5, mended: true });
     expect(page.creature(PLATYPUS)).toMatchObject({ fed: 11, hurt: 0.5 });
-    expect(feedNotice(facts.name, facts.meals[0]!).message).toEqual(['It is indifferent to Resilience-rich flora — +1 bloodline. Its wounds mend — now Injured (50% hurt).']);
+    // The legacy game's first line for a meal it neither loves nor dislikes (18901).
+    expect(feedNotice(facts.name, facts.meals[0]!)).toEqual({
+      icon: 'meal', title: 'Platypus eats without much interest.',
+      message: ['It is indifferent to Resilience-rich flora — +1 bloodline. Its wounds mend — now Injured (50% hurt).'],
+    });
   });
 
   it('a disliked meal does nothing and harms nothing; the flora is still eaten and the meal still counted', async () => {
@@ -90,7 +101,10 @@ describe('a meal a beast neither loves nor dislikes, and one it dislikes', () =>
     expect(state.codex.map(([id]) => id)).toEqual([PLATYPUS]);
     expect(state.stats.feeds).toBe(1);
     expect(state.stats.feedfails ?? 0).toBe(0);
-    expect(feedNotice(facts.name, facts.meals[0]!).message).toEqual(['It dislikes Ferocity-rich flora — no change.']);
+    // The one legacy line for a disliked meal that cost the beast nothing (18909), which is what D13's meal does.
+    expect(feedNotice(facts.name, facts.meals[0]!)).toEqual({
+      icon: 'meal', title: 'Platypus spits it out and refuses, no worse for it.', message: ['It dislikes Ferocity-rich flora — no change.'],
+    });
   });
 
   it('fed stops at 200: the meal is eaten, mends, and adds only what is left', async () => {

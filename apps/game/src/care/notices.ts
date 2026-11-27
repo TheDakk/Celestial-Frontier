@@ -7,15 +7,15 @@
    - Biosphere Surveyed: `autoScanWorld` 14901-14903;
    - the Scout button, its tip and what a press says: 15150, 15200-15202;
    - Renamed: 24625;
-   - the explorer's meal: 19150-19154; a companion's meal: 19187-19196, less the line the removed roll picked
-     (`FEED_EVENTS`) and the lines of the toxic bite; Mend: 19054-19058.
+   - the explorer's meal: 19150-19154; a companion's meal: 19187-19196, with one line a taste of the four the
+     removed roll picked among (`FEED_EVENTS`; `MEAL_LINES`), less the lines of the toxic bite; Mend: 19054-19058.
    The legacy game drew a small picture before some titles; here each is the name of an icon. Its bold marks are
    not carried: the words are. The spectacle of a Paragon found (14911-14914) is rarity's show, a new design. */
 import type { BioscanDanger } from './bioscan-hazard';
 import type { BioscanFactsV1 } from './bioscan-action';
 import type { FedMealV1, FeedFactsV1 } from './feed-action';
 import type { ExplorerMealFactsV1 } from './meal-action';
-import { FLAVOUR_NAMES } from './meals';
+import { FLAVOUR_NAMES, type Taste } from './meals';
 import type { RenameFactsV1 } from './rename-action';
 import type { RestFactsV1 } from './rest-action';
 
@@ -96,12 +96,23 @@ export function mealNotice(facts: ExplorerMealFactsV1): CareNotice {
 
 /** How wounded a beast is after a meal, as the legacy line said it: "Bruised (25% hurt)", or "Healthy". */
 const conditionWords = (meal: FedMealV1): string => meal.condition + (meal.condition === 'Healthy' ? '' : ` (${Math.round(meal.hurtAfter * 100)}% hurt)`);
-/** What one meal of a companion's says: what the flora is to it, what it gained, and its wounds if they mended. */
+/** How a beast takes a meal, one line a taste (Dakk, 2026-11-27). The legacy roll chose among four lines a taste
+    (`FEED_EVENTS` 18893-18912); D13 removed the roll, and these are the legacy lines whose effect is D13's: the
+    first loved line (18895, +2), the first neutral line (18901, +1), and the one disliked line that cost the
+    beast nothing (18909). The words and their marks are the legacy game's. */
+export const MEAL_LINES: Readonly<Record<Taste, string>> = Object.freeze({
+  loved: 'devours it eagerly — a visible surge of vigour',
+  neutral: 'eats without much interest',
+  disliked: 'spits it out and refuses, no worse for it',
+});
+/** What one meal of a companion's says, as the legacy line did (19192): the beast and how it took the meal, then
+    what the flora is to it, what it gained, and its wounds if they mended. The legacy line's first sentence, drawn
+    in the taste's colour, is the title here. */
 export function feedNotice(name: string, meal: FedMealV1): CareNotice {
   const rich = `${FLAVOUR_NAMES[meal.flavour]}-rich flora`;
   const taste = meal.taste === 'loved' ? `It loves ${rich}` : meal.taste === 'disliked' ? `It dislikes ${rich}` : `It is indifferent to ${rich}`;
   const gain = meal.fedGain > 0 ? `+${meal.fedGain} bloodline` : 'no change';
-  return notice('meal', name, `${taste} — ${gain}.` + (meal.mended ? ` Its wounds mend — now ${conditionWords(meal)}.` : ''));
+  return notice('meal', `${name} ${MEAL_LINES[meal.taste]}.`, `${taste} — ${gain}.` + (meal.mended ? ` Its wounds mend — now ${conditionWords(meal)}.` : ''));
 }
 /** What a committed press of "Mend — safest meals" says. */
 export function mendNotice(facts: FeedFactsV1): CareNotice {

@@ -16,8 +16,9 @@
    dispatch and Feed until ready"); the lock is read on the receipt's own clock of active play.
 
    NOT SAID HERE: the `fed` deed (19185). Its listeners are the weekly Charter `wk-feed` (24760) and a lesson of
-   training (25423), neither built; the facts hold what each needs. The legacy game's line about how the beast took
-   the meal (`FEED_EVENTS` 18893-18912) was picked by the roll D13 removed and is not carried. */
+   training (25423), neither built; the facts hold what each needs. Of the legacy game's lines about how the beast
+   took the meal (`FEED_EVENTS` 18893-18912), which the roll D13 removed picked among, one a taste is said
+   (`MEAL_LINES` in `notices.ts`). */
 import { createCreatureInstanceV1, withoutSpeciesV1, type CreatureInstanceV1, type OwnershipStateContentsV1, type OwnershipStateV1 } from '@cf/domain-acquisition';
 import { withCompanionBondMemoriesV1 } from '@cf/domain-acquisition/companion-care';
 import type { SaveStateV2 } from '@cf/persistence';
