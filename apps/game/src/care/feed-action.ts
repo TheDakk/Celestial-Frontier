@@ -12,7 +12,8 @@
      is never what ends a run; it is kept as the legacy rule it is.
    What a meal does to the companion is Dakk's decision D13 (2026-09-25), not the legacy roll: `meals.ts`. With no
    roll there is no toxic bite, so a meal never fails, `stats.feedfails` never rises, a beast never dies of one,
-   and Mend never stops for one.
+   and Mend never stops for one. A companion that rests, or is away, is not fed (D13: Rest locks "breed, combat,
+   dispatch and Feed until ready"); the lock is read on the receipt's own clock of active play.
 
    NOT SAID HERE: the `fed` deed (19185). Its listeners are the weekly Charter `wk-feed` (24760) and a lesson of
    training (25423), neither built; the facts hold what each needs. The legacy game's line about how the beast took
@@ -21,7 +22,7 @@ import { createCreatureInstanceV1, withoutSpeciesV1, type CreatureInstanceV1, ty
 import { withCompanionBondMemoriesV1 } from '@cf/domain-acquisition/companion-care';
 import type { SaveStateV2 } from '@cf/persistence';
 import { creatureCondition, type CreatureConditionLabel } from './bioscan-hazard';
-import { bondOf } from './bond';
+import { bondOf, companionLock } from './bond';
 import { commitCare, refreshProgression, refuse, settleCare, type CareAuthority, type CareDoor, type CareOutcome, type CareReceipt, type CareStaged } from './commit';
 import { MEND_MEALS_MAX, feedMeal, flavourOf, mendOrder, tasteOf, type Flavour, type Taste } from './meals';
 import { compendiumRow, contentsOf, ownershipOf, stageOwnership } from './ownership';
@@ -94,6 +95,9 @@ function serve(receipt: CareReceipt, speciesId: string, pick: (creature: Creatur
   const { draft, extensions, activePlayMs } = receipt;
   const ownership = ownershipOf(extensions);
   const before = beastOf(ownership, speciesId);
+  // A companion that rests, or is away, is not fed; one that recovers after a union is.
+  const lock = companionLock(before, activePlayMs);
+  if (lock === 'resting' || lock === 'away') return refuse(lock);
   let creature = before;
   let contents: OwnershipStateContentsV1 = contentsOf(ownership);
   let plants = larder(draft);

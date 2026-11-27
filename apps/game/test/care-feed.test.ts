@@ -105,8 +105,12 @@ describe('a meal a beast neither loves nor dislikes, and one it dislikes', () =>
 
 describe('what a meal teaches, and what the beast remembers of it', () => {
   it('the first meal pays 1 and each flavour newly tasted pays 2, once: the memories are kept on the beast', async () => {
-    const page = await carePage({ held: [heldPage(11, { xp: 4 }), heldPage(0), heldPage(1), heldPage(2), heldPage(3)] });
+    const page = await carePage({ activePlayMs: 540_000, held: [heldPage(11, { xp: 4 }), heldPage(0), heldPage(1), heldPage(2), heldPage(3)] });
     const first = await committed(page.feed(PLATYPUS, PERSIMMON));
+    // Each memory is stamped with the active play its receipt committed.
+    const stamp = page.runtime.activePlayMs();
+    expect(stamp).toBeGreaterThanOrEqual(540_000);
+    expect(page.ownership().creatures[0]!.bond!.memories.map(({ atActivePlayMs }) => atActivePlayMs)).toEqual([stamp, stamp]);
     expect(first.facts.meals[0]).toMatchObject({ xpGain: 3, xpAfter: 7, newMemoryIds: ['meal:first', 'taste:ins'] });
     expect(first.facts.bond).toEqual({ levelBefore: 0, levelAfter: 0, memories: 2 });
     // The same flavour again: nothing new.

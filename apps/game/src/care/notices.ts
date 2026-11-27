@@ -17,6 +17,7 @@ import type { FedMealV1, FeedFactsV1 } from './feed-action';
 import type { ExplorerMealFactsV1 } from './meal-action';
 import { FLAVOUR_NAMES } from './meals';
 import type { RenameFactsV1 } from './rename-action';
+import type { RestFactsV1 } from './rest-action';
 
 /** Words with icons among them: each part is text, or the name of an icon drawn in its place in the line. */
 export type CareCopyPart = string | Readonly<{ icon: string }>;
@@ -102,4 +103,9 @@ export function mendNotice(facts: FeedFactsV1): CareNotice {
   const served = facts.meals.length;
   return notice('heart', `${served} safe meal${served === 1 ? '' : 's'} served.`,
     (facts.halt === 'out-of-safe-flora' ? 'out of safe flora. ' : '') + `Now ${conditionWords(facts.meals.at(-1)!)}.`);
+}
+
+/** What a committed Rest says: the painted port's line for a resting companion. The legacy game has no Rest. */
+export function restNotice(facts: RestFactsV1): CareNotice {
+  return notice('rest', 'Resting', `${facts.name} — ${facts.minutes} min of play left`);
 }
