@@ -497,3 +497,125 @@ describe('armour follows the body: it keeps off arms, and off an eye the body dr
     }
   });
 });
+
+describe('where a body ends: the rows of each column armour may lie on', () => {
+  const SKINS = ['plated', 'chitinous'] as const;
+  /** Texture pixels of the columns x0 to x1 and rows y0 to y1, summed over the seeds. */
+  const inBox = (f: PartFrame, skin: 'plated' | 'chitinous', x0: number, x1: number, y0 = 0, y1 = f.h - 1): number => {
+    let n = 0;
+    for (const seed of SEEDS) {
+      const p = painted(f, skin, seed);
+      for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) if (texture(p, x, y)) n++;
+    }
+    return n;
+  };
+  /** A frame 60 wide: a solid body in its first 30 columns (rows 0 to `solid` - 1), and `right` (rows of 30) beside it. */
+  const beside = (solid: number, right: readonly string[]): PartFrame =>
+    part(right.map((r, y) => (y < solid ? '3' : '.').repeat(30) + r));
+  const run = (rws: number, c: string): string[] => block(30, rws, c);
+
+  it('a column split into runs takes armour only where its longest run is eight rows or more', () => {
+    for (const skin of SKINS) {
+      // Six rows over a gap and a thin run: too thin to be a body. Eight rows: a body.
+      const thin = beside(40, [...run(6, '3'), ...run(3, '.'), ...run(2, '3'), ...run(29, '.')]);
+      const thick = beside(40, [...run(8, '3'), ...run(3, '.'), ...run(2, '3'), ...run(27, '.')]);
+      expect(inBox(thin, skin, 31, 59), `${skin}: six rows`).toBe(0);
+      expect(inBox(thick, skin, 31, 59, 0, 7), `${skin}: eight rows`).toBeGreaterThan(100);
+      expect(inBox(thin, skin, 0, 28), `${skin}: the solid body beside it`).toBeGreaterThan(1000);
+    }
+  });
+
+  it('a column split into two runs of near the same length is no body: the longest must be twice any other', () => {
+    for (const skin of SKINS) {
+      const twins = beside(40, [...run(12, '3'), ...run(3, '.'), ...run(9, '3'), ...run(16, '.')]);
+      const body = beside(40, [...run(18, '3'), ...run(3, '.'), ...run(9, '3'), ...run(10, '.')]);
+      expect(inBox(twins, skin, 31, 59), `${skin}: twelve rows over nine`).toBe(0);
+      expect(inBox(body, skin, 31, 59, 0, 17), `${skin}: eighteen rows over nine`).toBeGreaterThan(150);
+      expect(inBox(body, skin, 31, 59, 18), `${skin}: the nine rows under it`).toBe(0);
+    }
+  });
+
+  it('a split column right beside the body is body only if its run touches the body\'s rows there', () => {
+    // A body in rows 0 to 15; beside it, columns split into a thin run (rows 20 to 22) and a long one (rows 30 to 49).
+    // The long run does not reach the body's rows, so the column against the body takes no armour. (The columns after
+    // it start a body of their own: the rule asks only of the column right beside one.)
+    const apart = beside(16, [...run(20, '.'), ...run(3, '3'), ...run(7, '.'), ...run(20, '3'), ...run(10, '.')]);
+    // The same with the long run from row 10 to 49: it touches the body's rows, and the column is body.
+    const joined = beside(16, [...run(4, '.'), ...run(3, '3'), ...run(3, '.'), ...run(40, '3'), ...run(10, '.')]);
+    for (const skin of SKINS) {
+      expect(inBox(apart, skin, 30, 30), `${skin}: apart`).toBe(0);
+      expect(inBox(joined, skin, 30, 30), `${skin}: joined`).toBeGreaterThan(20);
+    }
+  });
+
+  it('armour is not drawn under the lower edge of the body: neither a plate nor a segment reaches what lies below it', () => {
+    // A body 16 rows deep in its last 40 columns and 9 deep in its first 20, where an arm 4 rows thick lies two rows
+    // under it. A plate of the second row and a segment both hang lower than 9 rows where the body is 16 deep.
+    const rws = [...Array(16).keys()].map((y) => (y < 9 ? '3'.repeat(60) : y < 11 ? '.'.repeat(20) + '3'.repeat(40) : y < 15 ? '3'.repeat(60) : '.'.repeat(20) + '3'.repeat(40)));
+    const stepped = part(rws);
+    for (const skin of SKINS) {
+      expect(inBox(stepped, skin, 0, 19, 11, 14), `${skin}: on the arm`).toBe(0);
+      // Control: the deep part of the body is armoured down those same rows.
+      expect(inBox(stepped, skin, 22, 59, 9, 14), `${skin}: on the body beside it`).toBeGreaterThan(150);
+    }
+  });
+});
+
+describe('each part of a creature is armoured from its own seed, and the settling sees past the textured parts', () => {
+  it('two legs side by side, the same drawing, are not armoured alike', () => {
+    const s = sizes('large');
+    // The two near legs: the same frame, one thigh's width apart, drawn over the torso.
+    const x0 = (s.w >> 2) + (s.body.w >> 3); const y0 = (s.h >> 3) + (s.body.h >> 1);
+    for (const skin of ['plated', 'chitinous'] as const) {
+      let differ = 0;
+      for (const phase of PHASES) {
+        const p = finished('large', 'pale', skin, phase);
+        let same = true;
+        for (let y = 0; y < s.leg; y++) {
+          // The leg's own pixels: the thigh over its first third, the shin under it.
+          for (let x = 0; x < (y * 3 < s.leg ? s.thigh : s.shin); x++) {
+            if (at(p, x0 + x, y0 + y) !== at(p, x0 + s.thigh + x, y0 + y)) same = false;
+            // Control: without the skin the two legs are the same picture.
+            expect(p.before[(y0 + y) * p.w + x0 + x], `phase ${phase} (${x},${y})`).toBe(p.before[(y0 + y) * p.w + x0 + s.thigh + x]);
+          }
+        }
+        if (!same) differ++;
+      }
+      expect(differ, skin).toBeGreaterThanOrEqual(13);
+    }
+  });
+
+  it('a run of two values in turn that starts on armour and ends on a part beside it, outside the textured box, is taken back', () => {
+    // A slab torso 60 by 30 and, right against its back end, a fin (a back part: it takes no skin) of two columns, the
+    // first the plate's shadow shade and the second its rim's. Where a plate ends at the torso's last column its shadow
+    // and rim read shadow, rim, and the fin beside them shadow, rim again: two values in turn across the edge.
+    const cat = parseCatalogueText(`${HEADER}
+part quadruped/torso/slab/large/v0
+frame rest anchor=0,0 attach=back:60,0
+${rows(60, 30, () => '3')}
+
+part quadruped/back/fin/large/v0
+frame rest anchor=0,0
+${rows(2, 30, (x) => (x === 0 ? '2' : '1'))}
+
+scaffold quadruped/slab/large origin=40,30
+pose rest
+entry torso 0 rest 0 0
+`);
+    const of = (skin: number | null, phase: number): Recipe => ({
+      ...recipe('large', skin, phase), scaffoldId: 'quadruped/slab/large',
+      parts: [{ slot: 'torso', index: 0, partId: 'quadruped/torso/slab/large/v0', source: 'own' }, { slot: 'back', index: 0, partId: 'quadruped/back/fin/large/v0', source: 'own' }],
+    });
+    let atTheEdge = 0;
+    for (let phase = 0; phase < 15; phase++) {
+      const before = compose(of(null, phase), 'rest', cat).buffer;
+      const after = compose(of(SKIN_NAMES.indexOf('plated'), phase), 'rest', cat).buffer;
+      const p: Picture = { w: after.w, h: after.h, before: before.pixels, after: after.pixels };
+      expect(turns(p), `phase ${phase}`).toBe(0);
+      expect(checkers(p), `phase ${phase}`).toBe(0);
+      // Control: the torso's last two columns do take armour at some phase, so the edge was put to the test.
+      for (let y = 30; y < 60; y++) if (texture(p, 98, y) || texture(p, 99, y)) atTheEdge++;
+    }
+    expect(atTheEdge).toBeGreaterThan(30);
+  });
+});

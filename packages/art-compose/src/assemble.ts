@@ -166,10 +166,10 @@ export function assembleWithScaffold(recipe: Recipe, poseId: string, catalogue: 
   const pattern = PATTERN_NAMES[recipe.marking.pattern];
   // Skin null (buildRecipe, buildSpeciesRecipe, a radial) paints nothing. A gene outside SKIN_NAMES cannot occur (resolveBody wraps it to 0-8).
   const skin = recipe.skin === null ? undefined : SKIN_NAMES[recipe.skin];
-  // The same creature without any texture a rule paints, kept beside the picture from the first such part on.
   // Whether this creature's plates or chitin are armour: its tier and its body, the scaffold id without the tier (skins.ts).
   const body = recipe.scaffoldId.slice(0, Math.max(0, recipe.scaffoldId.lastIndexOf('/')));
   const armour = skin !== undefined && armoured(skin, recipe.tier, body);
+  // The same creature without any texture a rule paints, kept beside the picture from the first such part on.
   let untextured: PixelBuffer | null = null;
   const textured = { x0: buffer.w, y0: buffer.h, x1: -1, y1: -1 }; // the box round every part a rule textured
   for (const rp of recipe.parts) {
