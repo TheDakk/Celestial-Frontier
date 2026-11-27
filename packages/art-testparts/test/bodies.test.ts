@@ -5,6 +5,10 @@ import { buildRecipe, type Recipe, type RecipePart } from '@cf/art-recipe';
 import { assemble, compose } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { gapIsInfo, generatedTorsos, routeStates, shapedGenome } from '../../../tools/check-pack.mjs';
+import { poseSweepBudget } from '../../../tests/support/budget';
+
+// A pose-sweep file: it composes every routed body of the placeholder parts in every pose. Its tests take the pose-sweep budget, for the reason written at POSE_SWEEP_BUDGET_MS.
+poseSweepBudget();
 
 // The placeholder parts of every routed body (quadruped.txt, read through testCatalogue), drawn through buildRecipe.
 const TEXT = readFileSync(new URL('../src/quadruped.txt', import.meta.url), 'utf8');

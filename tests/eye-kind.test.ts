@@ -4,6 +4,10 @@ import { buildRecipe, type Recipe } from '@cf/art-recipe';
 import { describe, expect, it } from 'vitest';
 import { checkPack } from '../tools/check-pack.mjs';
 import { errorsOf, planted, PLACEHOLDER_TEXT } from './support/placeholder-check';
+import { poseSweepBudget } from './support/budget';
+
+// A pose-sweep file: it drives the pack checker over the whole placeholder pack, several times. Its tests take the pose-sweep budget, for the reason written at POSE_SWEEP_BUDGET_MS.
+poseSweepBudget();
 
 // An eye kind: one eye drawn for a whole eye count, at the one-eyed creature's eye place. A pack offers it as the part
 // `<family>/eyes/eye-<count>/<tier>/v0`; a pack without it draws the count's separate eyes, as before.

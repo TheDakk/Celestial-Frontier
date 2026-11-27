@@ -11,6 +11,10 @@ import { bodyOf, buildRecipe, EYELESS_HEAD, routeBody, torsoKindOf, WING_KINDS }
 import { checkPack, coverageShortfall, detachedSlots, formatReport, frameOrigin, gapIsInfo, generatedTorsos, labelPicture, neckJoins, numberedCopy, routeStates, shapedFor, shapedGenome, TORSO_POINTS_BY_FAMILY, type PackReport } from '../tools/check-pack.mjs';
 import type { Recipe } from '@cf/art-recipe';
 import type { Part } from '@cf/art-format';
+import { poseSweepBudget } from './support/budget';
+
+// A pose-sweep file: it drives the pack checker, on small packs and on the command line. Its tests take the pose-sweep budget, for the reason written at POSE_SWEEP_BUDGET_MS.
+poseSweepBudget();
 
 const TOOL = fileURLToPath(new URL('../tools/check-pack.mjs', import.meta.url));
 

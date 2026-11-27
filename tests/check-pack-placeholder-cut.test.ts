@@ -2,6 +2,10 @@ import { LIMB_COUNTS } from '@cf/art-format';
 import { describe, expect, it } from 'vitest';
 import { checkPack } from '../tools/check-pack.mjs';
 import { errorsOf, onlyScaffolds, planted, PLACEHOLDER_TEXT } from './support/placeholder-check';
+import { poseSweepBudget } from './support/budget';
+
+// A pose-sweep file: it drives the pack checker over cuts of the placeholder pack, the sturdy scaffold in each. Its tests take the pose-sweep budget, for the reason written at POSE_SWEEP_BUDGET_MS.
+poseSweepBudget();
 
 // Planted faults on cuts of the placeholder pack, in a file of their own so they run beside the scaffold groups.
 /** The limbs gene for a leg count. */

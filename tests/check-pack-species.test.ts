@@ -2,6 +2,10 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { checkPack, formatReport, type PackReport } from '../tools/check-pack.mjs';
 import { errorsOf, planted, PLACEHOLDER_TEXT } from './support/placeholder-check';
+import { poseSweepBudget } from './support/budget';
+
+// A pose-sweep file: it drives the pack checker over the placeholder species pack. Its tests take the pose-sweep budget, for the reason written at POSE_SWEEP_BUDGET_MS.
+poseSweepBudget();
 
 // The checker on the placeholder named species (packages/art-testparts/src/species.txt, read after the placeholder
 // pack as testSpeciesCatalogue reads it): a bird with wings and a crest, a headless urchin with spines, a snail with a

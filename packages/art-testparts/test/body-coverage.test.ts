@@ -7,6 +7,10 @@ import { assemble, compose } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { gapIsInfo, REQUIRED_POSES, shapedGenome } from '../../../tools/check-pack.mjs';
 import { nameState } from '../../art-recipe/test/name-tests';
+import { poseSweepBudget } from '../../../tests/support/budget';
+
+// A pose-sweep file: it composes every routed body of the placeholder parts in every pose. Its tests take the pose-sweep budget, for the reason written at POSE_SWEEP_BUDGET_MS.
+poseSweepBudget();
 
 // The coverage walk (body routing): every route a genome can take, every shape of it, and every part gene the planner
 // reads, drawn on the placeholder parts.

@@ -3,6 +3,10 @@ import { checkPack, formatReport } from '../tools/check-pack.mjs';
 import {
   BARE, composedOf, CRAB, errorsOf, FISH, GROUPS, INSECT, PLACEHOLDER_TEXT, PLAIN_FOUR, STURDY, TENTACLED, WINGED,
 } from './support/placeholder-check';
+import { poseSweepBudget } from './support/budget';
+
+// A pose-sweep file: it drives the pack checker over the whole placeholder pack. Its tests take the pose-sweep budget, for the reason written at POSE_SWEEP_BUDGET_MS.
+poseSweepBudget();
 
 // The checker on the placeholder catalogue, as a whole: everything about the pack that is not one scaffold's creatures.
 // The creatures are sampled in tests/check-pack-placeholder-{a,b,c}.test.ts, one scaffold group per file, so the slow

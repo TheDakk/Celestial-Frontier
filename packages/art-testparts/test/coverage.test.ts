@@ -5,6 +5,10 @@ import { assemble, compose, type PixelBuffer } from '@cf/art-compose';
 import { testCatalogue } from '@cf/art-testparts';
 import { gapIsInfo } from '../../../tools/check-pack.mjs';
 import { makeGenome } from '@cf/domain-genome';
+import { poseSweepBudget } from '../../../tests/support/budget';
+
+// A pose-sweep file: it composes every gene combination and every shift of the placeholder parts. Its tests take the pose-sweep budget, for the reason written at POSE_SWEEP_BUDGET_MS.
+poseSweepBudget();
 
 const cat = testCatalogue();
 const POSES = ['rest', 'approach', 'windup', 'strike', 'recover', 'hit', 'faint'];
