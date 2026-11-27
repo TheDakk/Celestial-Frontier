@@ -136,7 +136,7 @@ describe('@cf/domain-loot — exact-instance Inventory', () => {
     });
     const highAxes = previewGearSalvage(gearFromBase(25, 'meteor', {
       itemLevel: 4_000,
-      quality: 4_000,
+      quality: 1,
       rarityTier: 9,
     }));
     expect(highAxes.materials).toEqual([{ materialId: 'Ni', quantity: 1 }]);

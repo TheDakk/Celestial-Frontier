@@ -4,8 +4,10 @@
    module. It owns the strict instance shape, canonical legacy content,
    receipt-local identity, and the versioned exceptional-craft modifier policy;
    it does not invent source/depth drop pools, natural-affix tables, drawbacks,
-   upgrades, or sockets. Source owners derive a plan from generation.seed and
-   seal it in the F4 receipt transaction. This file has no ambient entropy or clock. */
+   upgrades, or sockets. It does hold what a piece may store: a well-made flag,
+   at most two modifiers of different families, and one named property. Source
+   owners derive a plan from generation.seed and seal it in the F4 receipt
+   transaction. This file has no ambient entropy or clock. */
 import { hashInt, mulberry32 } from '@cf/domain-rand';
 import {
   GEAR_SLOTS,
@@ -18,6 +20,7 @@ import {
   type GearSlot,
   type SlottedCatalogueDefinition,
 } from './catalogue.js';
+import { mayShare } from './families.js';
 import {
   UINT32_MAX,
   assertExactKeys,
@@ -27,6 +30,7 @@ import {
   deepFreeze,
   fnv1a32,
 } from './internal.js';
+import { ITEM_PROPERTIES, type PropertyId } from './properties.js';
 
 export const GEAR_SCHEMA = 1 as const;
 export const LOOT_TABLE_VERSION = 1 as const;
@@ -55,6 +59,13 @@ const MAX_ACTION_COMPONENT_CHARS = 192;
 const MAX_PROVENANCE_ID_CHARS = 512;
 const MAX_SOURCE_ACTION_ID_CHARS = 2_048;
 const LEGACY_RAW_RARITY_TIER_MAX = 14;
+/** Authored numbers a well-made piece never raises. A piece with only these
+ * (the Gravitic Anchor, the Star Compass) can never be well made. */
+const NEVER_WELL_MADE_EFFECT_KEYS: readonly string[] = Object.freeze(['speed', 'land100', 'struts']);
+
+/** Where a stored modifier came from. A row with no source predates the key. */
+export const GEAR_MODIFIER_SOURCES = Object.freeze(['spoils', 'forge'] as const);
+export type GearModifierSource = (typeof GEAR_MODIFIER_SOURCES)[number];
 
 export interface GearActionIdentity {
   readonly kind: GearSourceKind;
@@ -85,9 +96,12 @@ export interface LegacyAffixDefinition {
 
 export interface GearNaturalAffix {
   readonly affixId: LegacyAffixDefinition['key'];
+  /** The position and nothing else: the first row is the prefix, the second the suffix. */
   readonly role: AffixRole;
   readonly value: number;
+  /** The world tier (0 to 14) or item level that seeded the roll. */
   readonly tier: number;
+  readonly source?: GearModifierSource;
 }
 export type GearAffix = GearNaturalAffix;
 
@@ -95,6 +109,11 @@ export interface GearRecipeModifier {
   readonly affixId: string;
   readonly tier: number;
   readonly value: number;
+}
+
+/** One of the six named properties (`ITEM_PROPERTIES`). */
+export interface GearProperty {
+  readonly id: PropertyId;
 }
 
 export interface ExceptionalCraftModifierDefinition extends LegacyAffixDefinition {
@@ -112,6 +131,7 @@ export interface GearGenerationPlan {
   /** Exact entropy supplied by the source/F4 outcome owner. */
   readonly generationSeed: number;
   readonly itemLevel: number;
+  /** 0 as built, 1 well made. */
   readonly quality: number;
   readonly rarityTier: number;
   readonly naturalAffixes: readonly GearNaturalAffix[];
@@ -119,6 +139,8 @@ export interface GearGenerationPlan {
   readonly drawback: GearRecipeModifier | null;
   readonly upgrade: number;
   readonly sockets: readonly string[];
+  /** Absent on a piece with no property; never null. */
+  readonly property?: GearProperty;
 }
 
 /** A v1 save has one worn affix keyed by slot/base, but no prefix/suffix
@@ -139,7 +161,7 @@ export interface GearInstance {
   readonly slot: GearSlot;
   readonly baseTier: number;
   readonly itemLevel: number;
-  /** Construction quality remains a distinct source-owned integer axis. */
+  /** 0 as built, 1 well made. */
   readonly quality: number;
   readonly rarityTier: number;
   readonly rarity: GearRarity;
@@ -148,7 +170,11 @@ export interface GearInstance {
   readonly baseEffects: CatalogueEffects;
   /** Exact authored legacy effect keys; no synthetic implicit IDs. */
   readonly implicits: readonly string[];
+  /** The rolled modifiers, oldest first. A piece holds two modifiers at most,
+   * of different families, counting `craftedModifier` and `legacyAffix`; those
+   * two are made with the piece, so each is older than any row here. */
   readonly naturalAffixes: readonly GearNaturalAffix[];
+  readonly property?: GearProperty;
   readonly craftedModifier?: GearRecipeModifier;
   readonly drawback?: GearRecipeModifier;
   readonly upgrade: number;
@@ -421,6 +447,7 @@ function instanceCore(
   quality: number,
   rarityTier: number,
   naturalAffixesValue: readonly GearAffix[],
+  property: GearProperty | null,
   craftedModifier: GearRecipeModifier | null,
   drawback: GearRecipeModifier | null,
   upgrade: number,
@@ -448,6 +475,7 @@ function instanceCore(
     baseEffects: structuredClone(base.effects),
     implicits: [...base.implicits],
     naturalAffixes: [...naturalAffixesValue],
+    ...(property === null ? {} : { property: { ...property } }),
     ...(craftedModifier === null ? {} : { craftedModifier: { ...craftedModifier } }),
     ...(drawback === null ? {} : { drawback: { ...drawback } }),
     upgrade,
@@ -456,13 +484,15 @@ function instanceCore(
     legacyAffix,
     provenance,
   };
-  if (!hasValidAffixLayout(instance)) throw new RangeError('gear affix layout is incompatible with its exact base');
+  const fault = affixLayoutFault(instance);
+  if (fault !== null) throw new RangeError(`gear affix layout is refused: ${fault}`);
   return deepFreeze(instance);
 }
 
 function checkedNaturalAffix(raw: unknown, index: number): GearNaturalAffix {
   assertPlainRecord(raw, `natural affix ${index}`);
-  assertExactKeys(raw, ['affixId', 'tier', 'value', 'role'], `natural affix ${index}`);
+  const hasSource = Object.hasOwn(raw, 'source');
+  assertExactKeys(raw, ['affixId', 'tier', 'value', 'role', ...(hasSource ? ['source'] : [])], `natural affix ${index}`);
   const definitionValue = affixDefinition(raw.affixId);
   if (!definitionValue || !validGeneratedAffixValue(definitionValue, raw.value)) {
     throw new RangeError(`natural affix ${index} is unknown or outside its authored range`);
@@ -470,12 +500,38 @@ function checkedNaturalAffix(raw: unknown, index: number): GearNaturalAffix {
   if (raw.role !== 'prefix' && raw.role !== 'suffix') {
     throw new RangeError(`natural affix ${index} has unsupported role`);
   }
+  if (hasSource && !(GEAR_MODIFIER_SOURCES as readonly unknown[]).includes(raw.source)) {
+    throw new RangeError(`natural affix ${index} source is not spoils or forge`);
+  }
   return {
     affixId: definitionValue.key,
-    tier: checkedInteger(raw.tier, 0, 9, `natural affix ${index} tier`),
+    tier: checkedInteger(raw.tier, 0, LEGACY_RAW_RARITY_TIER_MAX, `natural affix ${index} tier`),
     value: raw.value,
     role: raw.role,
+    ...(hasSource ? { source: raw.source as GearModifierSource } : {}),
   };
+}
+
+function checkedProperty(raw: unknown): GearProperty {
+  assertPlainRecord(raw, 'gear property');
+  assertExactKeys(raw, ['id'], 'gear property');
+  const named = ITEM_PROPERTIES.find((candidate) => candidate.id === raw.id);
+  if (!named) throw new RangeError('gear property is not one of the six named');
+  return { id: named.id };
+}
+
+/** The relics and the cosmic pieces: authored and fixed. */
+function isAuthoredUnique(base: GearBaseDefinition): boolean {
+  return base.category === 'relic' || base.tier >= 4;
+}
+
+/** Whether a piece of this base may be well made: never a relic or a cosmic
+ * piece, and never a piece whose only numbers are ones well made leaves alone. */
+export function mayBeWellMade(baseId: string): boolean {
+  const base = SLOTTED_GEAR_BASES_V1.find((candidate) => candidate.id === baseId);
+  if (!base) throw new RangeError('well made is asked of something that is not canonical slotted gear');
+  return !isAuthoredUnique(base)
+    && Object.keys(base.effects).some((key) => !NEVER_WELL_MADE_EFFECT_KEYS.includes(key));
 }
 
 function checkedCraftedModifier(
@@ -509,9 +565,10 @@ export function createGearInstance(
     throw new RangeError('migration sourceActionId is reserved for deterministic legacy construction');
   }
   assertPlainRecord(planValue, 'GearGenerationPlan');
+  const hasProperty = Object.hasOwn(planValue, 'property');
   assertExactKeys(planValue, [
     'baseId', 'generationSeed', 'itemLevel', 'quality', 'rarityTier', 'naturalAffixes',
-    'craftedModifier', 'drawback', 'upgrade', 'sockets',
+    'craftedModifier', 'drawback', 'upgrade', 'sockets', ...(hasProperty ? ['property'] : []),
   ], 'GearGenerationPlan');
   if (typeof planValue.baseId !== 'string') throw new TypeError('GearGenerationPlan baseId must be a string');
   const base = getLootCatalogueDefinition(planValue.baseId);
@@ -530,15 +587,18 @@ export function createGearInstance(
   const craftedModifier = planValue.craftedModifier === null
     ? null
     : checkedCraftedModifier(planValue.craftedModifier, base, sourceActionId, generationSeed);
+  const quality = checkedInteger(planValue.quality, 0, 1, 'GearGenerationPlan quality');
+  if (quality === 1 && !mayBeWellMade(base.id)) throw new RangeError(`${base.id} can never be well made`);
   return instanceCore(
     sourceActionId,
     ordinal,
     base,
     'generated',
     checkedInteger(planValue.itemLevel, 0, UINT32_MAX, 'GearGenerationPlan itemLevel'),
-    checkedInteger(planValue.quality, 0, UINT32_MAX, 'GearGenerationPlan quality'),
+    quality,
     checkedInteger(planValue.rarityTier, 0, 9, 'GearGenerationPlan rarityTier'),
     planValue.naturalAffixes.map(checkedNaturalAffix),
+    hasProperty ? checkedProperty(planValue.property) : null,
     craftedModifier,
     null,
     0,
@@ -627,6 +687,7 @@ function createLegacyBaseInstance(
     0,
     base.rarityTier,
     [],
+    null,
     null,
     null,
     0,
@@ -743,20 +804,37 @@ export function isAffixCompatible(instance: GearInstance, affix: GearAffix | Leg
     && (!('forBaseId' in affix) || affix.forBaseId === base.id);
 }
 
-export function hasValidAffixLayout(instance: GearInstance): boolean {
-  const prefixes = instance.naturalAffixes.filter((affix) => affix.role === 'prefix');
-  const suffixes = instance.naturalAffixes.filter((affix) => affix.role === 'suffix');
+/** Why a piece's modifiers and property cannot sit together, or null. Every
+ * modifier counts, whichever field holds it. */
+function affixLayoutFault(instance: GearInstance): string | null {
+  const natural = instance.naturalAffixes;
+  const crafted = instance.craftedModifier
+    ? getExceptionalCraftModifierDefinition(instance.craftedModifier.affixId)?.effectKey
+    : null;
+  if (crafted === undefined) return 'the forged modifier is unknown';
   const keys = [
-    ...instance.naturalAffixes.map((affix) => affix.affixId),
+    ...(crafted ? [crafted] : []),
     ...(instance.legacyAffix ? [instance.legacyAffix.affixId] : []),
+    ...natural.map((affix) => affix.affixId),
   ];
-  return prefixes.length <= 2
-    && suffixes.length <= 2
-    && prefixes.length + suffixes.length === instance.naturalAffixes.length
-    && new Set(keys).size === keys.length
-    && instance.naturalAffixes.every((affix) => Number.isInteger(affix.tier)
-      && affix.tier >= 0 && affix.tier <= 9 && isAffixCompatible(instance, affix))
-    && (instance.legacyAffix === null || isAffixCompatible(instance, instance.legacyAffix));
+  const base = SLOTTED_GEAR_BASES_V1.find((candidate) => candidate.id === instance.baseId);
+  if (base && isAuthoredUnique(base) && keys.length > 1) return 'an authored piece holds at most one modifier';
+  if (keys.length > 2) return 'a piece holds at most two modifiers';
+  if (keys.length === 2 && !mayShare(keys[0]!, keys[1]!)) return 'two modifiers of one family cannot share a piece';
+  if (natural.some((affix, index) => affix.role !== (index === 0 ? 'prefix' : 'suffix'))) {
+    return 'the first stored modifier is the prefix and the second the suffix';
+  }
+  if (!natural.every((affix) => Number.isInteger(affix.tier)
+    && affix.tier >= 0 && affix.tier <= LEGACY_RAW_RARITY_TIER_MAX && isAffixCompatible(instance, affix))
+    || (instance.legacyAffix !== null && !isAffixCompatible(instance, instance.legacyAffix))) {
+    return 'a modifier is incompatible with its exact base';
+  }
+  if (instance.property && keys.length !== 2) return 'a property needs two modifiers';
+  return null;
+}
+
+export function hasValidAffixLayout(instance: GearInstance): boolean {
+  return affixLayoutFault(instance) === null;
 }
 
 export function encodeGearInstance(instance: GearInstance): string {
@@ -766,12 +844,14 @@ export function encodeGearInstance(instance: GearInstance): string {
 
 function decodeGearValue(raw: unknown): GearInstance {
   assertPlainRecord(raw, 'GearInstance');
+  const hasProperty = Object.hasOwn(raw, 'property');
   const hasCraftedModifier = Object.prototype.hasOwnProperty.call(raw, 'craftedModifier');
   const hasDrawback = Object.prototype.hasOwnProperty.call(raw, 'drawback');
   assertExactKeys(raw, [
     'schema', 'tableVersion', 'construction', 'instanceId', 'baseId', 'baseName',
     'slot', 'baseTier', 'itemLevel', 'quality', 'rarityTier', 'rarity', 'tags',
     'baseEffects', 'implicits', 'naturalAffixes',
+    ...(hasProperty ? ['property'] : []),
     ...(hasCraftedModifier ? ['craftedModifier'] : []),
     ...(hasDrawback ? ['drawback'] : []),
     'upgrade', 'sockets',
@@ -808,6 +888,7 @@ function decodeGearValue(raw: unknown): GearInstance {
       drawback: hasDrawback ? raw.drawback as unknown as GearRecipeModifier : null,
       upgrade: raw.upgrade as number,
       sockets: raw.sockets as string[],
+      ...(hasProperty ? { property: raw.property as GearProperty } : {}),
     });
   } else if (raw.construction === 'legacy') {
     if (typeof raw.baseId !== 'string') throw new TypeError('legacy GearInstance baseId must be a string');

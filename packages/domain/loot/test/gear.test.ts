@@ -34,15 +34,13 @@ const migrationSource = makeGearSourceActionId({
   receiptId: 'migration:v4-v5',
 });
 
-const fourNaturalAffixes = [
+const twoNaturalAffixes = [
   { affixId: 'yield', tier: 1, value: 0.10, role: 'prefix' },
-  { affixId: 'strike', tier: 2, value: 0.02, role: 'prefix' },
   { affixId: 'contact', tier: 3, value: 4, role: 'suffix' },
-  { affixId: 'heal', tier: 4, value: 0.08, role: 'suffix' },
 ] as const;
 
 const generationPlan = (
-  naturalAffixes: GearGenerationPlan['naturalAffixes'] = fourNaturalAffixes,
+  naturalAffixes: GearGenerationPlan['naturalAffixes'] = twoNaturalAffixes,
   generationSeed = 0x1234_5678,
 ): GearGenerationPlan => ({
   baseId: 'rig1',
@@ -119,7 +117,7 @@ describe('@cf/domain-loot — receipt identity and GearInstance authority', () =
     const first = createGearInstance(source, 0, generationPlan());
     const replay = createGearInstance(source, 0, generationPlan());
     const next = createGearInstance(source, 1, generationPlan());
-    const alternateSeed = createGearInstance(source, 0, generationPlan(fourNaturalAffixes, 0x8765_4321));
+    const alternateSeed = createGearInstance(source, 0, generationPlan(twoNaturalAffixes, 0x8765_4321));
     expect(replay).toEqual(first);
     expect(replay).not.toBe(first);
     expect(next.instanceId).not.toBe(first.instanceId);
@@ -222,13 +220,12 @@ describe('@cf/domain-loot — receipt identity and GearInstance authority', () =
       .toThrow('recipe/receipt-bound');
   });
 
-  it('enforces compatibility, uniqueness, and the 0–2 prefix / 0–2 suffix caps', () => {
-    for (const naturalAffixes of [[], fourNaturalAffixes] as const) {
+  it('enforces compatibility, uniqueness, and the limit of two modifiers', () => {
+    for (const naturalAffixes of [[], twoNaturalAffixes] as const) {
       const instance = createGearInstance(source, naturalAffixes.length, generationPlan(naturalAffixes));
       expect(hasValidAffixLayout(instance), instance.baseId).toBe(true);
       expect(new Set(instance.naturalAffixes.map((affix) => affix.affixId)).size).toBe(instance.naturalAffixes.length);
-      expect(instance.naturalAffixes.filter((affix) => affix.role === 'prefix').length).toBeLessThanOrEqual(2);
-      expect(instance.naturalAffixes.filter((affix) => affix.role === 'suffix').length).toBeLessThanOrEqual(2);
+      expect(instance.naturalAffixes.map((affix) => affix.role)).toEqual(['prefix', 'suffix'].slice(0, naturalAffixes.length));
       for (const affix of instance.naturalAffixes) {
         const definition = LEGACY_AFFIX_DEFINITIONS.find((candidate) => candidate.key === affix.affixId)!;
         expect(isAffixCompatible(instance, affix), `${instance.baseId}/${affix.affixId}`).toBe(true);
@@ -237,9 +234,9 @@ describe('@cf/domain-loot — receipt identity and GearInstance authority', () =
       }
     }
 
-    const fourAffixes = createGearInstance(source, 9, generationPlan());
-    const wrongSlot = { ...fourAffixes, slot: fourAffixes.slot === 'tool' ? 'helmet' : 'tool' } as GearInstance;
-    expect(isAffixCompatible(wrongSlot, fourAffixes.naturalAffixes[0]!)).toBe(false);
+    const twoAffixes = createGearInstance(source, 9, generationPlan());
+    const wrongSlot = { ...twoAffixes, slot: twoAffixes.slot === 'tool' ? 'helmet' : 'tool' } as GearInstance;
+    expect(isAffixCompatible(wrongSlot, twoAffixes.naturalAffixes[0]!)).toBe(false);
 
     expect(() => createGearInstance(source, 10, generationPlan([
       { affixId: 'yield', tier: 1, value: 0.10, role: 'prefix' },
