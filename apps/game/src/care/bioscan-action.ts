@@ -249,13 +249,13 @@ function stage(input: BioscanActionInputV1, receipt: CareReceipt): CareStaged<Bi
   if (resolved.scanCompletes) {
     const index = paragonIndexAt(seed);
     const reveal = revealBiosphere({
-      planetSeed: seed, surveyed: draft.surveyedSet.map(Number), surveys: draft.stats.surveys ?? 0, badge: card.badge,
+      planetSeed: seed, surveyed: draft.surveyedSet, surveys: draft.stats.surveys ?? 0, badge: card.badge,
       paragon: index === null ? null : { index, held: draft.codex.some(([id]) => id === compendiumId(paragonSeedV1(index))) },
       paragons: draft.stats.paragons ?? 0,
     });
     // The gate has refused a world already in the set, so this scan is the world's first and its deed is said.
     firstScan = reveal.firstScan;
-    draft.surveyedSet = [...draft.surveyedSet, seed];
+    draft.surveyedSet = [...reveal.surveyed];
     draft.stats = { ...draft.stats, surveys: reveal.surveys };
     // The deed: the Charters' own staging hears nothing in training (24908); neither does the Ascent (25285).
     const staged = input.charters({ draft, extensions, event: { kind: 'bioscan', address }, receiptOrdinal: receipt.receiptOrdinal, activePlayMs: receipt.activePlayMs });

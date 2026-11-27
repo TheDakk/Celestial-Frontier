@@ -513,6 +513,18 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
     expect(again.ok && new Map(again.state.codex).get('s7100001')!.name).toBe('Civet');
     expect((JSON.parse(exportSaveV2(imported.state, NOW)) as { codex: unknown[] }).codex[0]).toEqual({ g: pages.get('s7100001')!.g, f: 'Unknown world', w: null });
   });
+  it('a planet seed stored as text in the surveyed set is read as the number it is, once', () => {
+    /* LEGACY adds planet seeds, numbers, to the set (14889-14891) and counts its size (16825-16826). A seed
+       written as text would sit beside the same seed as a number and be counted twice. */
+    const imported = importSaveV2(JSON.stringify({ epoch: 0, codex: [], land: [], surveyed: [133, '133', '4294967295', 'p1', '0133', '1e3', '-5', '4294967296'] }), REGISTRY, NOW);
+    expect(imported.ok).toBe(true);
+    if (!imported.ok) return;
+    // A text that is not a planet seed written plainly is kept as it was.
+    expect(imported.state.surveyedSet).toEqual([133, 4294967295, 'p1', '0133', '1e3', '-5', '4294967296']);
+    expect(imported.state.stats.surveys).toBe(7);
+    const again = importSaveV2(exportSaveV2(imported.state, NOW), REGISTRY, NOW);
+    expect(again.ok && again.state.surveyedSet).toEqual(imported.state.surveyedSet);
+  });
   it('valid unwrapped size is an import/export fixed point across honest and large values', () => {
     const template = structuredClone(
       ((FX.inputs.veteran_rich as { codex: Array<{ g: Record<string, unknown> }> }).codex[0]!.g),

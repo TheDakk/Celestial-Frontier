@@ -30,6 +30,9 @@ describe('a clear scan', () => {
     expect(captureGateV1(page.durable(), page.runtime.extensions, EARTH)).toBe('not-scanned');
     const { state, facts } = await committed(page.scan(EARTH));
     expect(surveyed(state)).toEqual([SOL.earth]);
+    // The seed is stored as the number it is, in the state and in storage (a text seed would be a second entry).
+    expect(state.surveyedSet).toStrictEqual([SOL.earth]);
+    expect((await page.stored()).state.surveyedSet).toStrictEqual([SOL.earth]);
     expect(state.stats.surveys).toBe(1);
     expect(state.hp).toBe(100);
     expect(state.stats.scanhits ?? 0).toBe(0);
@@ -246,6 +249,25 @@ describe('a strike with a Field Scout standing', () => {
     expect(page.runtime.diagnostics().sessionDraws).toEqual({ 'survey.hazard': 2, 'hazard.flavor': 2 });
     // And the first value was a strike on Earth: had it waited, the new scout would have taken it there.
     expect(createSessionRNG(seed).at('survey.hazard', 0)).toBeLessThan(EARTH_DANGER);
+  });
+});
+
+describe('a surveyed set that holds a seed as text', () => {
+  it('reads the world as scanned, and a scan elsewhere leaves the set numbers alone, each world once', async () => {
+    const civilized = CIVILIZED();
+    const page = await carePage({
+      sessionSeed: clearSession(),
+      change: (state) => { state.surveyedSet = [String(SOL.earth), SOL.earth, 'p1']; state.landed = [civilized.planet.seed]; },
+    });
+    expect(page.durable().surveyedSet).toStrictEqual([SOL.earth, 'p1']);
+    expect(page.durable().stats.surveys).toBe(2);
+    expect(bioscanGateV1(page.durable(), page.runtime.extensions, EARTH)).toBe('already-revealed');
+    const { state, facts } = await committed(page.scan(civilized));
+    // What the set held that is no seed is kept as it was; the count is the set's size (LEGACY 14891).
+    expect(state.surveyedSet).toStrictEqual([SOL.earth, 'p1', civilized.planet.seed]);
+    expect(facts.surveys).toBe(3);
+    expect((await page.stored()).state.surveyedSet).toStrictEqual([SOL.earth, 'p1', civilized.planet.seed]);
+    expect((await page.stored()).state.stats.surveys).toBe(3);
   });
 });
 

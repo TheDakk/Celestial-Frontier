@@ -85,7 +85,8 @@ export interface SaveStateV2 {
   sfxVol: number; glassTint: number; motionMode: number; cardExpand: number;
   notifications: Array<{ id: number; tt: string; ms: string; t: number; read: boolean }>;
   /** The worlds whose biosphere was scanned: planet seeds (numbers), as the legacy game added them (14889).
-   * The reader keeps whatever a save held, so an entry is read with `Number(...)`. */
+   * The reader turns a seed written as text into its number and keeps anything else a save held, so an entry
+   * is read with `Number(...)`. */
   surveyedSet: unknown[];
   galSeen: unknown[]; surfSeen: unknown[]; xpFirsts: string[];
   /** Optional v5 overflow binding mirrored into the additive v4 `xpa` field.
@@ -649,8 +650,12 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       if (n && n.tt != null && notifications.length < 60)
         notifications.push({ id: num(n.id) | 0, tt: String(n.tt).slice(0, 200), ms: String(n.ms == null ? '' : n.ms).slice(0, 400), t: clamp(num(n.t), 0, 4e12) || now, read: !!n.read });
     }
+    /* A planet seed written as text (plain digits, a uint32) is the number it names: left as text it would sit
+       beside the same seed as a number and be counted twice. Anything else is kept as the save held it. */
     const surveyedSet = new Set<unknown>();
-    for (const s of _capA(data.surveyed, 60000)) surveyedSet.add(s);
+    for (const s of _capA(data.surveyed, 60000)) {
+      surveyedSet.add(typeof s === 'string' && /^(0|[1-9]\d{0,9})$/u.test(s) && Number(s) <= 0xFFFFFFFF ? Number(s) : s);
+    }
     stats.surveys = surveyedSet.size;
     const galSeen = new Set<unknown>(); for (const s of _capA(data.gals, 20000)) galSeen.add(s);
     const surfSeen = new Set<unknown>(); for (const s of _capA(data.surf, 60000)) surfSeen.add(s);

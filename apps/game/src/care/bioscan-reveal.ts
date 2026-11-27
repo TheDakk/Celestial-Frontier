@@ -12,8 +12,8 @@ export type RevealUnlock = 'civ' | 'spacefar';
 export interface BiosphereReveal {
   /** The world joined the surveyed set with this scan: the `bioscan` deed is said. */
   readonly firstScan: boolean;
-  /** The surveyed set afterwards: planet seeds. */
-  readonly surveyed: readonly number[];
+  /** The surveyed set afterwards: what it held, and this world's planet seed when the scan is its first. */
+  readonly surveyed: readonly unknown[];
   /** `stats.surveys` afterwards. */
   readonly surveys: number;
   readonly unlocks: readonly RevealUnlock[];
@@ -22,13 +22,13 @@ export interface BiosphereReveal {
   /** `stats.paragons` afterwards. */
   readonly paragons: number;
 }
-/** What the scan of this world writes. `surveyed` is the set before; `paragon` is the Paragon whose home this
+/** What the scan of this world writes. `surveyed` is the set before, as the save holds it; `paragon` is the Paragon whose home this
     world is and whether the Compendium holds it, null on any other world. */
 export function revealBiosphere(input: Readonly<{
-  planetSeed: number; surveyed: readonly number[]; surveys: number; badge: string | null;
+  planetSeed: number; surveyed: readonly unknown[]; surveys: number; badge: string | null;
   paragon: Readonly<{ index: number; held: boolean }> | null; paragons: number;
 }>): BiosphereReveal {
-  const firstScan = !input.surveyed.includes(input.planetSeed);
+  const firstScan = !input.surveyed.some((world) => Number(world) === input.planetSeed);
   const surveyed = firstScan ? [...input.surveyed, input.planetSeed] : [...input.surveyed];
   const unlocks: RevealUnlock[] = [];
   if (input.badge === 'Civilized' || input.badge === 'Advanced') unlocks.push('civ');
