@@ -8,3 +8,4 @@ export * from './planet-globe';
 export * from './planet-frame';
 export * from './planet-mend';
 export * from './planet-kit';
+export { gasPlan, type GasEvent, type GasPlan, type GasRibbon, type GasWind } from './planet-gas-plan';
