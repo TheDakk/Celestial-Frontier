@@ -7,8 +7,10 @@ export {
   type Arc2EngineeringLoadout,
   type EngineeringStackableCount,
 } from './engineering-loadout-internal.js';
+export * from './families.js';
 export * from './gear.js';
 export * from './inventory.js';
 export * from './legacy-imbue.js';
 export * from './presentation.js';
+export * from './properties.js';
 export * from './recipe.js';
