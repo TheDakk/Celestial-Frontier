@@ -15,6 +15,7 @@
     "@cf/domain-speciestraits": "*",
     "@cf/domain-strays": "*",
     "@cf/domain-surveyphrases": "*",
-    "@cf/domain-worldgen": "*"
+    "@cf/domain-worldgen": "*",
+    "@cf/scene": "*"
   }
 }
